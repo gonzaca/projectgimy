@@ -58,6 +58,7 @@ public class Vista extends javax.swing.JFrame {
         jl_PGS = new javax.swing.JLabel();
         jL_imagen = new javax.swing.JLabel();
         jL_bienvenido = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
         panel_registro_cliente = new javax.swing.JPanel();
         panel_menu = new javax.swing.JPanel();
         jbRegistrarCliente = new javax.swing.JButton();
@@ -322,6 +323,8 @@ public class Vista extends javax.swing.JFrame {
         jL_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jL_bienvenido.setText("Bienvenido");
 
+        jLabel85.setText("Prueba");
+
         javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
         panel_inicio.setLayout(panel_inicioLayout);
         panel_inicioLayout.setHorizontalGroup(
@@ -333,11 +336,17 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(229, Short.MAX_VALUE))
+            .addGroup(panel_inicioLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel85)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel85)
+                .addGap(28, 28, 28)
                 .addComponent(jl_PGS)
                 .addGap(31, 31, 31)
                 .addComponent(jL_bienvenido)
@@ -3126,6 +3135,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
