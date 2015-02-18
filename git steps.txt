@@ -1,0 +1,6 @@
+para subir los cambios a git:
+1-Para ver los archivos modificados o añadidos:
+git status
+git add .
+git commit -m "su mensaje e.g. añadi una nueva vista"
+git push origin master
