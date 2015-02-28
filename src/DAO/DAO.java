@@ -1,9 +1,16 @@
 package DAO;
 
+import Modelo.Cliente;
+import Modelo.Seguimiento;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Observable;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -18,8 +25,11 @@ public class DAO extends Observable {
             Class.forName(driverName);
             String url = "jdbc:oracle:thin:@localhost:1521:xe";
             OracleDataSource ods = new OracleDataSource();
+             Properties prop = new Properties();
+                prop.put("internal_logon", "sysdba");
             ods.setUser("gym");
             ods.setPassword("gym");
+               ods.setConnectionProperties(prop);
             ods.setURL(url);
             conn = ods.getConnection();
         } catch (ClassNotFoundException e) {
@@ -40,7 +50,7 @@ public class DAO extends Observable {
             String query
                     = "insert into Cliente(id_cliente, nombre, direccion,"
                     + " email, edad, sexo, telefono) "
-                    + "values(" + id_cliente + ", " + nombre + ", " 
+                    + "values(" + id_cliente + ", " + nombre + ", "
                     + direccion + "," + email + "," + edad + "," + sexo + "," + telefono + ")";
             Statement st = this.conn.createStatement();
             st.executeUpdate(query);
@@ -50,34 +60,22 @@ public class DAO extends Observable {
         }
     }
 
-    public void setSeguimiento(
-            float peso,
-            String fecha,
-            float imc,
-            float grasa,
-            float pecho,
-            float espalda,
-            float cadera,
-            float gluteos,
-            float cintura,
-            float pierna_izquierda,
-            float pierna_derecha,
-            float pantorrilla_izquierda,
-            float pantorrilla_derecha,
-            float brazo_izquierdo,
-            float brazo_derecho,
-            float antebrazo_derecho,
-            float antebrazo_izquierdo,
-            String cliente) {
+    public void setSeguimiento(float peso, String fecha, float imc, float grasa,
+            float pecho, float espalda, float cadera, float gluteos,
+            float cintura, float pierna_izquierda, float pierna_derecha,
+            float pantorrilla_izquierda, float pantorrilla_derecha, float brazo_izquierdo,
+            float brazo_derecho, float antebrazo_derecho, float antebrazo_izquierdo, String cliente) {
         String query
-                = "insert into seguimiento(peso, fecha, imc, grasa, pecho, espalda, cadera, gluteos, "
+                = "insert into seguimiento(peso, fecha, imc, grasa,"
+                + " pecho, espalda, cadera, gluteos, "
                 + "cintura,pierna_izquierda,pierna_derecha,pantorrilla_izquierda,pantorrilla_derecha, "
                 + "brazo_izquierdo, brazo_derecho, antebrazo_derecho,antebrazo_izquierdo, cliente)"
-                + "values(" +peso+","+ fecha+","+imc+","+grasa+","+pecho+","+espalda+","+cadera+","+
-                gluteos+","+cintura+","+pierna_izquierda+","+pierna_derecha+","+
-                pantorrilla_izquierda+","+pantorrilla_derecha+","+brazo_izquierdo+
-                ","+ brazo_derecho+","+ antebrazo_derecho+","+ antebrazo_izquierdo+","+ cliente+
-                ")";
+                + "values(" + peso + "," + fecha + "," + imc + "," + grasa + ","
+                + pecho + "," + espalda + "," + cadera + "," + gluteos + ","
+                + cintura + "," + pierna_izquierda + "," + pierna_derecha + ","
+                + pantorrilla_izquierda + "," + pantorrilla_derecha + "," + brazo_izquierdo
+                + "," + brazo_derecho + "," + antebrazo_derecho + "," + antebrazo_izquierdo + "," + cliente
+                + ")";
         try {
             Statement st = this.conn.createStatement();
             st.executeUpdate(query);
@@ -87,140 +85,192 @@ public class DAO extends Observable {
         }
     }
 
-//    public void deleteCliente(String id_cliente) {
-//        try {
-//            daoCliente.deleteById(id_cliente);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-//    public void setSaludCliente() {
-//        try {
-//            daoPadecimiento.createOrUpdate(p);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
-//
-//    public Cliente getCliente(String type, String att) {
-//        Cliente c = null;
-//        try {
-//            switch (type) {
-//                case "E-mail":
-//                    c = daoCliente.queryForEq("email", att).get(0);
-//                    break;
-//                case "Nombre":
-//                    c = daoCliente.queryForEq("nombre", att).get(0);
-//                    break;
-//                case "Cedula":
-//                    c = daoCliente.queryForEq("id_cliente", att).get(0);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return c;
-//    }
-//
-//    public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
-//        List<Seguimiento> s = getSeguimientos(c.getId_cliente());
-//        System.out.println(s.isEmpty());
-//        HashMap<String, Double> m = new HashMap();
-//        switch (at) {
-//            case "Piernas":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getPierna_derecha() + a.getPierna_izquierda()) / 2;
-//                    m.put(a.getFecha(), f);
-//                });
-//                 tipo_unidad= "cm";
-//                break;
-//            case "Brazos":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getBrazo_derecho() + a.getBrazo_izquierdo()) / 2;
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Pantorrillas":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getPantorrilla_derecha() + a.getPantorrilla_izquierda()) / 2;
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Antebrazos":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getAntebrazo_derecho() + a.getAntebrazo_izquierdo()) / 2;
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Cintura":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getCintura());
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Gluteos":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getGluteos());
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Cadera":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getCadera());
-//                    m.put(a.getFecha(), f);
-//                });
-//                break;
-//            case "Espalda":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getEspalda());
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Pecho":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getPecho());
-//                    m.put(a.getFecha(), f);
-//                }); tipo_unidad= "cm";
-//                break;
-//            case "Grasa":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getGrasa());
-//                    m.put(a.getFecha(), f);
-//                });
-//                break;
-//            case "Peso":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getPeso());
-//                    m.put(a.getFecha(), f);
-//                });
-//                tipo_unidad= "kg";
-//                break;
-//            case "IMC":
-//                s.stream().forEach((a) -> {
-//                    double f = (a.getImc());
-//                    m.put(a.getFecha(), f);
-//                });
-//                tipo_unidad= "imc";
-//                break;
-//            default:
-//                break;
-//        }
-//        System.out.println("m: "+m.isEmpty());
-//        return m;
-//    }
-//
-//    public List<Seguimiento> getSeguimientos(String id_cliente) {
-//        List<Seguimiento> list = null;
-//        try {
-//            list = daoSeguimiento.queryForEq("id_cliente", id_cliente);
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return list;
-//    }
-//
+    public void deleteCliente(String id_cliente) {
+        try {
+            Statement st = this.conn.createStatement();
+            st.executeUpdate("delete from Cliente where id_cliente =" + id_cliente);
+            conn.commit();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setSaludCliente(String lesion_osea, String desc_lesion_osea, String lesion_muscular,
+            String desc_lesion_muscular, String enfermedad_cardiovascular, String desc_enfermedad_cardiovascular,
+            String asfixia_por_ejercicio, String asmatico, String hipertenso,
+            String diabetico, String fumador, String epileptico,
+            String embarazo, String anemia, String mareos,
+            String desmayo, String nauseas, String dificul_respirar,
+            String pract_act_deportiva, String estuvo_otro_gym, String otro_padecimiento,
+            String cliente) {
+        String query = "insert into saludCliente( lesion_osea, desc_lesion_osea, lesion_muscular,"
+                + " desc_lesion_muscular, enfermedad_cardiovascular, desc_enfermedad_cardiovascular,"
+                + " asfixia_por_ejercicio, asmatico, hipertenso,"
+                + " diabetico, fumador, epileptico,"
+                + " embarazo, anemia, mareos,"
+                + " desmayo, nauseas, dificul_respirar,"
+                + " pract_act_deportiva, estuvo_otro_gym , otro_padecimiento,"
+                + " cliente)" + "values("
+                + lesion_osea + "," + desc_lesion_osea + "," + lesion_muscular + ","
+                + desc_lesion_muscular + "," + enfermedad_cardiovascular + "," + desc_enfermedad_cardiovascular + ","
+                + asfixia_por_ejercicio + "," + asmatico + "," + hipertenso + ","
+                + diabetico + "," + fumador + "," + epileptico + ","
+                + embarazo + "," + anemia + "," + mareos + ","
+                + desmayo + "," + nauseas + "," + dificul_respirar + ","
+                + pract_act_deportiva + "," + estuvo_otro_gym + "," + otro_padecimiento + ","
+                + cliente + ")";
+        try {
+            Statement st = this.conn.createStatement();
+            st.executeUpdate(query);
+            conn.commit();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public Cliente getCliente(String type, String att) {
+        Cliente c= new Cliente();
+        try {
+             Statement st = this.conn.createStatement();
+             String query = "";
+            st.executeUpdate(query);
+            switch (type) {
+                case "E-mail":
+                   query= "select * from cliente where email ="+att;
+                    break;
+                case "Nombre":
+                   query= "select * from cliente where nombre ="+att;
+                    break;
+                case "Cedula":
+                  query= "select * from cliente where id_cliente ="+att;
+                    break;
+                default:
+                    break;
+            }
+           ResultSet rs = st.executeQuery(query);
+           while(rs.next()){
+               c= new Cliente(rs.getString("id_cliente"), rs.getString("nombre"),
+                       rs.getString("direccion"),rs.getString("email"),
+                       Integer.getInteger(rs.getString("edad")), rs.getString("sexo"),
+                       rs.getString("telefono"));
+           }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+
+    public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
+        List<Seguimiento> s = getSeguimientos(c.getId_cliente());
+        System.out.println(s.isEmpty());
+        HashMap<String, Double> m = new HashMap();
+        switch (at) {
+            case "Piernas":
+                s.stream().forEach((a) -> {
+                    double f = (a.getPierna_derecha() + a.getPierna_izquierda()) / 2;
+                    m.put(a.getFecha(), f);
+                });
+                 tipo_unidad= "cm";
+                break;
+            case "Brazos":
+                s.stream().forEach((a) -> {
+                    double f = (a.getBrazo_derecho() + a.getBrazo_izquierdo()) / 2;
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Pantorrillas":
+                s.stream().forEach((a) -> {
+                    double f = (a.getPantorrilla_derecha() + a.getPantorrilla_izquierda()) / 2;
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Antebrazos":
+                s.stream().forEach((a) -> {
+                    double f = (a.getAntebrazo_derecho() + a.getAntebrazo_izquierdo()) / 2;
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Cintura":
+                s.stream().forEach((a) -> {
+                    double f = (a.getCintura());
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Gluteos":
+                s.stream().forEach((a) -> {
+                    double f = (a.getGluteos());
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Cadera":
+                s.stream().forEach((a) -> {
+                    double f = (a.getCadera());
+                    m.put(a.getFecha(), f);
+                });
+                break;
+            case "Espalda":
+                s.stream().forEach((a) -> {
+                    double f = (a.getEspalda());
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Pecho":
+                s.stream().forEach((a) -> {
+                    double f = (a.getPecho());
+                    m.put(a.getFecha(), f);
+                }); tipo_unidad= "cm";
+                break;
+            case "Grasa":
+                s.stream().forEach((a) -> {
+                    double f = (a.getGrasa());
+                    m.put(a.getFecha(), f);
+                });
+                break;
+            case "Peso":
+                s.stream().forEach((a) -> {
+                    double f = (a.getPeso());
+                    m.put(a.getFecha(), f);
+                });
+                tipo_unidad= "kg";
+                break;
+            case "IMC":
+                s.stream().forEach((a) -> {
+                    double f = (a.getImc());
+                    m.put(a.getFecha(), f);
+                });
+                tipo_unidad= "imc";
+                break;
+            default:
+                break;
+        }
+        System.out.println("m: "+m.isEmpty());
+        return m;
+    }
+
+    public List<Seguimiento> getSeguimientos(String id_cliente) {
+        List<Seguimiento> list = new ArrayList();
+        try {
+             Statement st = this.conn.createStatement();
+            ResultSet rs= st.executeQuery("delte from Seguimiento where cliente =" + id_cliente);
+            while(rs.next()){
+                list.add(new Seguimiento(
+                        rs.getString("seg_id"), Float.parseFloat(rs.getString("peso")), rs.getString("fecha"),
+                        Float.parseFloat(rs.getString("imc")), Float.parseFloat(rs.getString("grasa")), Float.parseFloat(rs.getString("pecho")),
+                        Float.parseFloat(rs.getString("espalda")), Float.parseFloat(rs.getString("cadera")), Float.parseFloat(rs.getString("gluteos")),
+                        Float.parseFloat(rs.getString("cintura")), Float.parseFloat(rs.getString("pierna_izquierda")), Float.parseFloat(rs.getString("pierna_derecha")),
+                        Float.parseFloat(rs.getString("pantorrilla_izquierda")), Float.parseFloat(rs.getString("pantorrilla_derecha")),Float.parseFloat(rs.getString("brazo_izquierdo")),
+                        Float.parseFloat(rs.getString("brazo_derecho")), Float.parseFloat(rs.getString("antebrazo_derecho")),
+               Float.parseFloat(rs.getString("antebrazo_izquierdo")), rs.getString("antebrazo_derecho")
+                ));
+            }
+            conn.commit();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+    
+    
 //    public Padecimiento getPadecimiento(String id_cliente) {
 //        Padecimiento p = null;
 //        try {
@@ -230,42 +280,39 @@ public class DAO extends Observable {
 //        }
 //        return p;
 //    }
-//
-//    public String[] RecuperaAtributosCliente(String at) {//recupera datos como strings para llenar combobox
-//        String[] hash = null;
-//        try {
-//            switch (at) {
-//                case "E-mail":
-//                    hash = daoCliente.query(
-//                            daoCliente.queryBuilder().where().isNotNull("email").prepare()
-//                    ).stream().
-//                            map((a) -> {
-//                                return a.getEmail();
-//                            }).
-//                            toArray(String[]::new);
-//                    break;
-//                case "Nombre":
-//                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("nombre").prepare()).stream().
-//                            map((a) -> {
-//                                return a.getNombre();
-//                            }).
-//                            toArray(String[]::new);
-//                    break;
-//                case "Cedula":
-//                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("id_cliente").prepare()).stream().
-//                            map((a) -> {
-//                                return a.getId_cliente();
-//                            }).
-//                            toArray(String[]::new);
-//                    break;
-//                default:
-//                    break;
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        return hash;
-//    }
+    
+    public String[] RecuperaAtributosCliente(String at) {//recupera datos como strings para llenar combobox
+        String[] hash = null;
+        ArrayList<String> atributos= new ArrayList();
+        String atributo="";
+        String query= "";
+        try {
+            switch (at) {
+                case "E-mail":
+                   query="select email from cliente";
+                      atributo="email";
+                    break;
+                case "Nombre":
+                   query="select nombre from cliente";
+                      atributo="nombre";
+                    break;
+                case "Cedula":
+                     query="select id_cliente from cliente";
+                     atributo="id_cliente";
+                    break;
+                default:
+                    break;
+            }
+             Statement st = this.conn.createStatement();
+                    ResultSet rs= st.executeQuery(query);
+                    while(rs.next()){
+                        atributos.add(rs.getString(atributo));
+                    }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return atributos.stream().toArray(String[]::new);
+    }
     public void cerrarConexion() {
         try {
             conn.close();
