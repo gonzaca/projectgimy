@@ -51,8 +51,8 @@ public class DAO extends Observable {
             String query
                     = "insert into Cliente(id_cliente, nombre, direccion,"
                     + " email, edad, sexo, telefono) "
-                    + "values(" + id_cliente + ", " + nombre + ", "
-                    + direccion + "," + email + "," + edad + "," + sexo + "," + telefono + ")";
+                    + "values('" + id_cliente + "', '" + nombre + "', '"
+                    + direccion + "', '" + email + "'," + edad + ", '" + sexo + "', '" + telefono + "')";
             Statement st = this.conn.createStatement();
             st.executeUpdate(query);
             conn.commit();
@@ -134,7 +134,6 @@ public class DAO extends Observable {
         try {
             Statement st = this.conn.createStatement();
             String query = "";
-            st.executeUpdate(query);
             switch (type) {
                 case "E-mail":
                     query = "select * from cliente where email =" + att;
@@ -149,12 +148,12 @@ public class DAO extends Observable {
                     break;
             }
             ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                c = new Cliente(rs.getString("id_cliente"), rs.getString("nombre"),
+            rs.next();
+            System.out.println(rs.getString("id_cliente"));
+            c = new Cliente(rs.getString("id_cliente"), rs.getString("nombre"),
                         rs.getString("direccion"), rs.getString("email"),
-                        Integer.getInteger(rs.getString("edad")), rs.getString("sexo"),
+                        Integer.parseInt(rs.getString("edad")), rs.getString("sexo"),
                         rs.getString("telefono"));
-            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

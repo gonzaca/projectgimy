@@ -116,12 +116,12 @@ public class Vista extends javax.swing.JFrame {
         email = new javax.swing.JTextField();
         jLDatosPersonales = new javax.swing.JLabel();
         nacimiento = new datechooser.beans.DateChooserCombo();
-        apellidos = new javax.swing.JFormattedTextField();
         jLApellidos = new javax.swing.JLabel();
         jLSexo = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox();
         jLabel38 = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jBAddCliente = new javax.swing.JButton();
@@ -816,17 +816,6 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        try {
-            apellidos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        apellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidosActionPerformed(evt);
-            }
-        });
-
         jLApellidos.setText("Apellidos:");
 
         jLSexo.setText("Sexo:");
@@ -834,6 +823,12 @@ public class Vista extends javax.swing.JFrame {
         sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"  ","Femenino", "Masculino" }));
 
         jLabel38.setText("Cedula");
+
+        apellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -855,8 +850,8 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cedula))
-                    .addComponent(apellidos)
-                    .addComponent(nombre))
+                    .addComponent(nombre)
+                    .addComponent(apellidos))
                 .addGap(148, 148, 148)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLMail)
@@ -889,10 +884,10 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLApellidos)
                     .addComponent(jLMail)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
@@ -1027,11 +1022,13 @@ public class Vista extends javax.swing.JFrame {
             panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_reg_fisicoLayout.setVerticalGroup(
@@ -1041,9 +1038,9 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         panel_datos.setViewportView(panel_reg_fisico);
@@ -1110,7 +1107,7 @@ public class Vista extends javax.swing.JFrame {
         panel_registro_clienteLayout.setVerticalGroup(
             panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addGap(210, 210, 210)
@@ -2873,10 +2870,6 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_salvar_en_archivoActionPerformed
 
-    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_apellidosActionPerformed
-
     private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
         panel_asignar_rutina.setVisible(false);
         panel_crear_rutina.setVisible(true);
@@ -3061,6 +3054,10 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidosActionPerformed
+
     public static void look() {
         try {//com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
             javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
@@ -3072,7 +3069,7 @@ public class Vista extends javax.swing.JFrame {
     private RegistroFisicoCliente registro_fisico;
     private Controlador control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField apellidos;
+    private javax.swing.JTextField apellidos;
     private javax.swing.JButton btn_asignar_pNutricional;
     private javax.swing.JButton btn_crear_perfil_Nutricional;
     private javax.swing.JTextField cardio_desc;
@@ -3404,6 +3401,10 @@ public class Vista extends javax.swing.JFrame {
     }
 
     private void cargarDatosPersonalesCliente(String editarCedula) {
+        Cliente c = this.control.getDao().getCliente("Cedula", editarCedula);
+        nombre.setText(c.getNombre());
+        cedula.setText(c.getId_cliente());
+        telefono.setText(c.getTelefono());
     }
 
 }

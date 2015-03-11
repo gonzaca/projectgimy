@@ -1,8 +1,6 @@
 package pgs;
 
 import Controlador.Controlador;
-import DAO.DAO;
-import Vista.Login;
 import Vista.SelectUser;
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import java.util.Properties;
