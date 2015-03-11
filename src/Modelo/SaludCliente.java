@@ -1,27 +1,51 @@
 package Modelo;
 
-public class SaludCliente {
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
+@DatabaseTable(tableName = "SaludCliente")
+public class SaludCliente {
+    @DatabaseField
     private String lesion_osea;
+    @DatabaseField
     private String desc_lesion_osea;
+    @DatabaseField
     private String lesion_muscular;
+    @DatabaseField
     private String desc_lesion_muscular;
+    @DatabaseField
     private String enfermedad_cardiovascular;
+    @DatabaseField
     private String desc_enfermedad_cardiovascular;
+    @DatabaseField
     private String asfixia_por_ejercicio;
+    @DatabaseField
     private String asmatico;
+    @DatabaseField
     private String hipertenso;
+    @DatabaseField
     private String diabetico;
+    @DatabaseField
     private String fumador;
+    @DatabaseField
     private String epileptico;
+    @DatabaseField
     private String embarazo;
+    @DatabaseField
     private String anemia;
+    @DatabaseField
     private String mareos;
+    @DatabaseField
     private String desmayo;
+    @DatabaseField
     private String nauseas;
+    @DatabaseField
     private String dificul_respirar;
+    @DatabaseField
     private String pract_act_deportiva;
+    @DatabaseField
     private String estuvo_otro_gym;
+    @DatabaseField
     private String otro_padecimiento;
     private String cliente;
 

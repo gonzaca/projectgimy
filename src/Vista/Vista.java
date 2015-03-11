@@ -12,9 +12,6 @@ import Modelo.Cliente;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -2832,12 +2829,14 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jBAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddClienteActionPerformed
-        this.control.getDao().setCliente(
-                cedula.getText(), nombre.getText(), direccion.getText(),
-             email.getText(), edad.getText(), sexo.getSelectedItem().toString(),telefono.getText());
+        Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
+            email.getText(), nacimiento.getText(), sexo.getSelectedItem().toString(), telefono.getText());
         
-        registro_fisico = new RegistroFisicoCliente(control,  cedula.getText());
-        registro_fisico.setVisible(true);
+        control.getDao().setCliente(cli);//mete el cliente en la base de datos
+
+        RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
+        rf.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
     }//GEN-LAST:event_jBAddClienteActionPerformed
 
     private void cedClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedClienteActionPerformed

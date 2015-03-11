@@ -1,24 +1,46 @@
 package Modelo;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+@DatabaseTable(tableName = "Seguimiento")
 public class Seguimiento {
 
+    @DatabaseField
     private String seg_id;
+    @DatabaseField
     private float peso;
+    @DatabaseField
     private String fecha;
+    @DatabaseField
     private float imc;
+    @DatabaseField
     private float grasa;
+    @DatabaseField
     private float pecho;
+    @DatabaseField
     private float espalda;
+    @DatabaseField
     private float cadera;
+    @DatabaseField
     private float gluteos;
+    @DatabaseField
     private float cintura;
+    @DatabaseField
     private float pierna_izquierda;
+    @DatabaseField
     private float pierna_derecha;
+    @DatabaseField
     private float pantorrilla_izquierda;
+    @DatabaseField
     private float pantorrilla_derecha;
+    @DatabaseField
     private float brazo_izquierdo;
+    @DatabaseField
     private float brazo_derecho;
+    @DatabaseField
     private float antebrazo_derecho;
+    @DatabaseField
     private float antebrazo_izquierdo;
     private String cliente;
 
