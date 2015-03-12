@@ -2834,6 +2834,8 @@ public class Vista extends javax.swing.JFrame {
         
         control.getDao().setCliente(cli);//mete el cliente en la base de datos
 
+        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
+        
         RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
         rf.setVisible(true);
         JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
