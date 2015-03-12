@@ -3381,6 +3381,7 @@ public class Vista extends javax.swing.JFrame {
         direccion.setText("");
         sexo.setSelectedIndex(0);
         nacimiento.setCurrent(null);
+        combo_lesion_musc.setSelectedIndex(0);
         
         this.panel_reg_fisico.repaint();
     }
