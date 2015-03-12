@@ -108,13 +108,13 @@ public class SelectUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAdminActionPerformed
-        this.dispose();
+        this.setVisible(false);
         LogAdmin l = new LogAdmin(control);
         l.mostrar();
     }//GEN-LAST:event_jBAdminActionPerformed
 
     private void jBClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClientActionPerformed
-        this.dispose();
+        this.setVisible(false);
         LogCliente l = new LogCliente(control);
         l.mostrar();
     }//GEN-LAST:event_jBClientActionPerformed

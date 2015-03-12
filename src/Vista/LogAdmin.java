@@ -127,14 +127,14 @@ public class LogAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
-        this.dispose();
+        this.setVisible(false);
         java.awt.EventQueue.invokeLater(() -> {
             admin.setVisible(true);
         });
     }//GEN-LAST:event_jBloginActionPerformed
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        this.dispose();
+        this.setVisible(false);;
         SelectUser s = new SelectUser(control);
         s.mostrar();
     }//GEN-LAST:event_jBCancelActionPerformed

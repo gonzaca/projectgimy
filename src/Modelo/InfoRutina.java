@@ -5,10 +5,10 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "InfoRutina")
 public class InfoRutina {
-    @DatabaseField(id = true, generatedId = true)
+    @DatabaseField(generatedId = true)
     int id;
-    @DatabaseField(foreign = true)
-    int rutina;
+    @DatabaseField(foreign = true, unique = true, columnName = "rutina")
+    Rutina rutina;
     @DatabaseField
     String ejercicio;
     @DatabaseField
@@ -23,7 +23,7 @@ public class InfoRutina {
     public InfoRutina(){
     }
     
-    public InfoRutina(int id, int rutina, String ejercicio, String serie, String repeticion, double peso, String tipo) {
+    public InfoRutina(int id, String ejercicio, String serie, String repeticion, double peso, String tipo, Rutina rutina) {
         this.id = id;
         this.rutina = rutina;
         this.ejercicio = ejercicio;
@@ -41,11 +41,11 @@ public class InfoRutina {
         this.id = id;
     }
 
-    public int getRutina() {
+    public Rutina getRutina() {
         return rutina;
     }
 
-    public void setRutina(int rutina) {
+    public void setRutina(Rutina rutina) {
         this.rutina = rutina;
     }
 

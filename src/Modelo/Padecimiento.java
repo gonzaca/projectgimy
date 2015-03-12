@@ -49,7 +49,7 @@ public class Padecimiento {
     @DatabaseField
     private String otro_padecimiento;
 
-    @DatabaseField(id = true, generatedId = true, columnName = "id")
+    @DatabaseField(id = true, columnName = "id")
     private String id;
     @DatabaseField(foreign = true, unique = true, columnName = "cliente")
     private Cliente cliente;
