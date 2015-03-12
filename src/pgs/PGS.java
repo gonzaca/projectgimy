@@ -19,17 +19,7 @@ public class PGS {
           prop.put("backgroundColor", "255 255 255");
           prop.put("backgroundPattern", "off");
           McWinLookAndFeel.setTheme(prop);
-          UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-          
-          String[] script = {"cmd.exe", "/c", "sc", "start","OracleServiceXE"};
-          Runtime runtime = Runtime.getRuntime();
-            try {
-                Process process = runtime.exec(script);
-                System.out.println("corrio");
-            } catch (IOException ex) {
-                System.out.println("error de base");
-            }
-          
+          UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");          
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.out.println(e.getMessage());
         }
