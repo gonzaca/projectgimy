@@ -91,7 +91,7 @@ public class DAO extends Observable {
     public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
         List<Seguimiento> s = getSeguimientos(c.getId_cliente());
         System.out.println(s.isEmpty());
-        HashMap<String, Double> m = new HashMap();
+        HashMap<String, Double> m = new HashMap<String, Double>();
         switch (at) {
             case "Piernas":
                 s.stream().forEach((a) -> {

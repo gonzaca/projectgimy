@@ -5,7 +5,6 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Seguimiento")
 public class Seguimiento {
-
     @DatabaseField
     private String seg_id;
     @DatabaseField
@@ -44,6 +43,9 @@ public class Seguimiento {
     private float antebrazo_izquierdo;
     private String cliente;
 
+    public Seguimiento(){
+    }
+    
     public Seguimiento(String seg_id, float peso, String fecha,
             float imc, float grasa, float pecho,
             float espalda, float cadera, float gluteos,

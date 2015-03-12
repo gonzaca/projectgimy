@@ -1,12 +1,22 @@
 package Modelo;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Cliente")
 public class Cliente {
-    @DatabaseField
+    @DatabaseField(id = true)
     private String id_cliente;
+    @ForeignCollectionField
+    private ForeignCollection<Seguimiento> seguimientos;
+    @ForeignCollectionField
+    private ForeignCollection<Pago> pagos;
+    @ForeignCollectionField
+    private ForeignCollection<Rutina> rutinas;
+    @ForeignCollectionField
+    private ForeignCollection<Padecimiento> padecimientos;
     @DatabaseField
     private String nombre;
     @DatabaseField
@@ -66,6 +76,22 @@ public class Cliente {
 
     public String getApellidos() {
         return apellidos;
+    }
+
+    public ForeignCollection<Seguimiento> getSeguimientos() {
+        return seguimientos;
+    }
+
+    public ForeignCollection<Pago> getPagos() {
+        return pagos;
+    }
+
+    public ForeignCollection<Rutina> getRutinas() {
+        return rutinas;
+    }
+
+    public ForeignCollection<Padecimiento> getPadecimientos() {
+        return padecimientos;
     }
 
 }

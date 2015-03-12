@@ -30,7 +30,7 @@ public class Controlador {
     
     public ArrayList<String> getJListData(JList l) {
         int[] selectedIx = l.getSelectedIndices();
-        ArrayList<String> aux = new ArrayList();
+        ArrayList<String> aux = new ArrayList<String>();
         IntStream.range(0, selectedIx.length).forEach(
                 (a) -> aux.add(l.getModel().getElementAt(selectedIx[a]).toString())
         );
