@@ -6,60 +6,61 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "SaludCliente")
 public class SaludCliente {
     @DatabaseField
-    private String lesion_osea;
+    private int lesion_osea;
     @DatabaseField
     private String desc_lesion_osea;
     @DatabaseField
-    private String lesion_muscular;
+    private int lesion_muscular;
     @DatabaseField
     private String desc_lesion_muscular;
     @DatabaseField
-    private String enfermedad_cardiovascular;
+    private int enfermedad_cardiovascular;
     @DatabaseField
     private String desc_enfermedad_cardiovascular;
     @DatabaseField
-    private String asfixia_por_ejercicio;
+    private int asfixia_por_ejercicio;
     @DatabaseField
-    private String asmatico;
+    private int asmatico;
     @DatabaseField
-    private String hipertenso;
+    private int hipertenso;
     @DatabaseField
-    private String diabetico;
+    private int diabetico;
     @DatabaseField
-    private String fumador;
+    private int fumador;
     @DatabaseField
-    private String epileptico;
+    private int epileptico;
     @DatabaseField
-    private String embarazo;
+    private int embarazo;
     @DatabaseField
-    private String anemia;
+    private int anemia;
     @DatabaseField
-    private String mareos;
+    private int mareos;
     @DatabaseField
-    private String desmayo;
+    private int desmayo;
     @DatabaseField
-    private String nauseas;
+    private int nauseas;
     @DatabaseField
-    private String dificul_respirar;
+    private int dificul_respirar;
     @DatabaseField
-    private String pract_act_deportiva;
+    private int pract_act_deportiva;
     @DatabaseField
-    private String estuvo_otro_gym;
+    private int estuvo_otro_gym;
     @DatabaseField
     private String otro_padecimiento;
+    @DatabaseField(id = true)
     private String cliente;
     
      public SaludCliente(){
      }
 
-    public SaludCliente(String lesion_osea, String desc_lesion_osea,
-            String lesion_muscular, String desc_lesion_muscular,
-            String enfermedad_cardiovascular, String desc_enfermedad_cardiovascular,
-            String asfixia_por_ejercicio, String asmatico, String hipertenso,
-            String diabetico, String fumador, String epileptico,
-            String embarazo, String anemia, String mareos,
-            String desmayo, String nauseas, String dificul_respirar,
-            String pract_act_deportiva, String estuvo_otro_gym,
+    public SaludCliente(int lesion_osea, String desc_lesion_osea,
+            int lesion_muscular, String desc_lesion_muscular,
+            int enfermedad_cardiovascular, String desc_enfermedad_cardiovascular,
+            int asfixia_por_ejercicio, int asmatico, int hipertenso,
+            int diabetico, int fumador, int epileptico,
+            int embarazo, int anemia, int mareos,
+            int desmayo, int nauseas, int dificul_respirar,
+            int pract_act_deportiva, int estuvo_otro_gym,
             String otro_padecimiento, String cliente) {
         this.lesion_osea = lesion_osea;
         this.desc_lesion_osea = desc_lesion_osea;
@@ -85,7 +86,7 @@ public class SaludCliente {
         this.cliente = cliente;
     }
 
-    public String getLesion_osea() {
+    public int getLesion_osea() {
         return lesion_osea;
     }
 
@@ -93,7 +94,7 @@ public class SaludCliente {
         return desc_lesion_osea;
     }
 
-    public String getLesion_muscular() {
+    public int getLesion_muscular() {
         return lesion_muscular;
     }
 
@@ -101,7 +102,7 @@ public class SaludCliente {
         return desc_lesion_muscular;
     }
 
-    public String getEnfermedad_cardiovascular() {
+    public int getEnfermedad_cardiovascular() {
         return enfermedad_cardiovascular;
     }
 
@@ -109,59 +110,59 @@ public class SaludCliente {
         return desc_enfermedad_cardiovascular;
     }
 
-    public String getAsfixia_por_ejercicio() {
+    public int getAsfixia_por_ejercicio() {
         return asfixia_por_ejercicio;
     }
 
-    public String getAsmatico() {
+    public int getAsmatico() {
         return asmatico;
     }
 
-    public String getHipertenso() {
+    public int getHipertenso() {
         return hipertenso;
     }
 
-    public String getDiabetico() {
+    public int getDiabetico() {
         return diabetico;
     }
 
-    public String getFumador() {
+    public int getFumador() {
         return fumador;
     }
 
-    public String getEpileptico() {
+    public int getEpileptico() {
         return epileptico;
     }
 
-    public String getEmbarazo() {
+    public int getEmbarazo() {
         return embarazo;
     }
 
-    public String getAnemia() {
+    public int getAnemia() {
         return anemia;
     }
 
-    public String getMareos() {
+    public int getMareos() {
         return mareos;
     }
 
-    public String getDesmayo() {
+    public int getDesmayo() {
         return desmayo;
     }
 
-    public String getNauseas() {
+    public int getNauseas() {
         return nauseas;
     }
 
-    public String getDificul_respirar() {
+    public int getDificul_respirar() {
         return dificul_respirar;
     }
 
-    public String getPract_act_deportiva() {
+    public int getPract_act_deportiva() {
         return pract_act_deportiva;
     }
 
-    public String getEstuvo_otro_gym() {
+    public int getEstuvo_otro_gym() {
         return estuvo_otro_gym;
     }
 

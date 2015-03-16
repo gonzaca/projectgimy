@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controlador.Controlador;
 import Modelo.Cliente;
+import Modelo.SaludCliente;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,9 +18,12 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
@@ -806,8 +810,7 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jLabel38)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(cedula))
-                        .addComponent(nombre)
-                        .addComponent(apellidos))
+                        .addComponent(nombre))
                     .addGap(148, 148, 148)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLMail)
@@ -826,6 +829,11 @@ public class Vista extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(jLDatosPersonales)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(505, Short.MAX_VALUE)))
             );
             jPanel13Layout.setVerticalGroup(
                 jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -842,8 +850,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLApellidos)
                         .addComponent(jLMail)
-                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel13Layout.createSequentialGroup()
@@ -865,6 +872,11 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLSexo))))
                     .addGap(24, 24, 24))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(84, Short.MAX_VALUE)))
             );
 
             jLDatosPersonales.setFont(new Font("Serif", Font.PLAIN, 18));
@@ -978,13 +990,11 @@ public class Vista extends javax.swing.JFrame {
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panel_reg_fisicoLayout.setVerticalGroup(
@@ -1682,7 +1692,7 @@ public class Vista extends javax.swing.JFrame {
             );
             panel_registro_rutinasLayout.setVerticalGroup(
                 panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
+                .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 1031, Short.MAX_VALUE)
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addContainerGap(63, Short.MAX_VALUE)
@@ -1980,7 +1990,7 @@ public class Vista extends javax.swing.JFrame {
             );
             panel_registro_nutricionalLayout.setVerticalGroup(
                 panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_menu2, javax.swing.GroupLayout.DEFAULT_SIZE, 1031, Short.MAX_VALUE)
+                .addComponent(panel_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 1031, Short.MAX_VALUE)
                 .addComponent(panel_datos4, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
@@ -2750,10 +2760,10 @@ public class Vista extends javax.swing.JFrame {
             desactivar_Cliente.setVisible(false);
             desactivar_Cliente.validate();
             desactivar_Cliente.paintComponents(desactivar_Cliente.getGraphics());
-            
-            String editarCedula = JOptionPane.showInputDialog(this,"Ingrese la cedula del cliente a editar: \n","Cedula de Cliente",JOptionPane.QUESTION_MESSAGE);
-            if(editarCedula != null){
-                cargarDatosPersonalesCliente(editarCedula);
+
+            String editarCedula = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente a editar: \n", "Cedula de Cliente", JOptionPane.QUESTION_MESSAGE);
+            if (editarCedula != null) {
+                cargarDatosCliente(editarCedula);
                 panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
                 panel_reg_fisico.setVisible(true);
                 panel_reg_fisico.validate();
@@ -2761,9 +2771,9 @@ public class Vista extends javax.swing.JFrame {
             }
         } else {
             this.limpiarCamposRegistro();
-            String editarCedula = JOptionPane.showInputDialog(this,"Ingrese la cedula del cliente a editar: \n","Cedula de Cliente",JOptionPane.QUESTION_MESSAGE);
-            if(editarCedula != null){
-                cargarDatosPersonalesCliente(editarCedula);
+            String editarCedula = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente a editar: \n", "Cedula de Cliente", JOptionPane.QUESTION_MESSAGE);
+            if (editarCedula != null) {
+                cargarDatosCliente(editarCedula);
                 panel_reg_fisico.repaint();
             }
         }
@@ -2789,17 +2799,35 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jBAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddClienteActionPerformed
-        Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
-            email.getText(), nacimiento.getText(), sexo.getSelectedItem().toString(), telefono.getText());
-        
-        control.getDao().setCliente(cli);//mete el cliente en la base de datos
 
-        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
-        this.limpiarCamposRegistro();
-        
-        RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
-        rf.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
+        if (valida_datos_personales() || valida_datos_salud()) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos!\rO seleccionar todas las opciones");
+        } else {
+            Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
+                    email.getText(), nacimiento.getText(), sexo.getSelectedIndex(), telefono.getText());
+            control.getDao().setCliente(cli);//mete el cliente en la base de datos
+
+            SaludCliente sc = new SaludCliente(combo_lesion_osea.getSelectedIndex(), osea_desc.getText(),
+                    combo_lesion_musc.getSelectedIndex(), muscular_desc.getText(),
+                    combo_enfer_cardio.getSelectedIndex(), cardio_desc.getText(),
+                    combo_asfixia.getSelectedIndex(), combo_asmatico.getSelectedIndex(),
+                    combo_hipertenso.getSelectedIndex(), combo_diabetico.getSelectedIndex(),
+                    combo_fumador.getSelectedIndex(), combo_epileptico.getSelectedIndex(),
+                    combo_embarazo.getSelectedIndex(), combo_anemia.getSelectedIndex(),
+                    combo_mareos.getSelectedIndex(), combo_desmayos.getSelectedIndex(),
+                    combo_nauseas.getSelectedIndex(), combo_dif_respirar.getSelectedIndex(),
+                    combo_practica_act_deport.getSelectedIndex(), combo_gimnasio.getSelectedIndex(),
+                    textarea_otro_padecimiento.getText(), cli.getId_cliente()
+            );
+            control.getDao().setSaludCliente(sc);
+            this.limpiarCamposRegistro();
+            JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
+
+        }
+
+//        RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
+//        rf.setVisible(true);
+//        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
     }//GEN-LAST:event_jBAddClienteActionPerformed
 
     private void cedClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedClienteActionPerformed
@@ -2811,15 +2839,15 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void combo_nombre_cliente_seguimiento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_nombre_cliente_seguimiento1ActionPerformed
-              // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_combo_nombre_cliente_seguimiento1ActionPerformed
 
     private void jb_salvar_en_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_salvar_en_archivoActionPerformed
         String name = "";
-                control.getDao().getCliente(
-                combo_filtro_cliente2.getSelectedItem().toString(), 
+        control.getDao().getCliente(
+                combo_filtro_cliente2.getSelectedItem().toString(),
                 combo_nombre_cliente_seguimiento1.getSelectedItem().toString());
-              
+
         FileWriter fw;
         try {
             fw = new FileWriter(new File(name + ".txt"));
@@ -2967,21 +2995,22 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_edadActionPerformed
 
     private void nacimientoOnCommit(datechooser.events.CommitEvent evt) {//GEN-FIRST:event_nacimientoOnCommit
-         Date fechaNac=null;
+        Date fechaNac = null;
         try {
             fechaNac = new SimpleDateFormat("dd/MM/yyyy").parse(nacimiento.getText());
             Calendar fecha = Calendar.getInstance();
             Calendar fechaActual = Calendar.getInstance();
             fecha.setTime(fechaNac);
-            int año = fechaActual.get(Calendar.YEAR)- fecha.get(Calendar.YEAR);
-            int mes = fechaActual.get(Calendar.MONTH)- fecha.get(Calendar.MONTH);
-            int dia = fechaActual.get(Calendar.DATE)- fecha.get(Calendar.DATE);
-            if(mes<0 || (mes==0 && dia<0)){
-                    año--;
+            int año = fechaActual.get(Calendar.YEAR) - fecha.get(Calendar.YEAR);
+            int mes = fechaActual.get(Calendar.MONTH) - fecha.get(Calendar.MONTH);
+            int dia = fechaActual.get(Calendar.DATE) - fecha.get(Calendar.DATE);
+            if (mes < 0 || (mes == 0 && dia < 0)) {
+                año--;
             }
-            edad.setText(""+año);
+            edad.setText("" + año);
+            
         } catch (Exception e) {
-            System.out.println("Error de conversion de fecha Nacimiento: "+ nacimiento.getText());
+            System.out.println("Error de conversion de fecha Nacimiento: " + nacimiento.getText());
         }
     }//GEN-LAST:event_nacimientoOnCommit
 
@@ -2995,7 +3024,7 @@ public class Vista extends javax.swing.JFrame {
             Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLFoto.getWidth(), jLFoto.getHeight(), Image.SCALE_DEFAULT));
             jLFoto.setIcon(icono);
             this.repaint();
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error en la subida de fotografia.");
         }
     }//GEN-LAST:event_jLFotoMouseClicked
@@ -3290,9 +3319,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JTextArea textarea_otro_padecimiento;
     // End of variables declaration//GEN-END:variables
-     
+
     private JPopupMenu popupMenu;
-     private JTable replace;
+    private JTable replace;
 
     private void buildPopupMenus() {
         JMenuItem item1 = new JMenuItem("AÃ±adir fila al final");
@@ -3302,7 +3331,7 @@ public class Vista extends javax.swing.JFrame {
             @Override
             public void mousePressed(MouseEvent ev) {
                 if (ev.isPopupTrigger()) {
-                    replace=(JTable)ev.getComponent();
+                    replace = (JTable) ev.getComponent();
                     popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
                 }
             }
@@ -3310,7 +3339,7 @@ public class Vista extends javax.swing.JFrame {
             @Override
             public void mouseReleased(MouseEvent ev) {
                 if (ev.isPopupTrigger()) {
-                    replace=(JTable)ev.getComponent();
+                    replace = (JTable) ev.getComponent();
                     popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
                 }
             }
@@ -3340,11 +3369,10 @@ public class Vista extends javax.swing.JFrame {
         tablePiernas.addMouseListener(ml);
         tableTrapecio.addMouseListener(ml);
         tableTriceps.addMouseListener(ml);
-                
-        
+
         item1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
+
                 System.out.println("item1 click");
                 ((DefaultTableModel) replace.getModel()).addRow(new Object[]{"", "", "", ""});
             }
@@ -3352,26 +3380,64 @@ public class Vista extends javax.swing.JFrame {
         item2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("item2 click");
-                
+
                 ((DefaultTableModel) replace.getModel()).removeRow(((DefaultTableModel) replace.getModel()).getRowCount() - 1);
             }
         });
         popupMenu.add(item1);
         popupMenu.add(item2);
-        
-        
+
     }
 
-    private void cargarDatosPersonalesCliente(String editarCedula) {
+    private void cargarDatosCliente(String editarCedula) {
         Cliente c = this.control.getDao().getCliente("Cedula", editarCedula);
-        if(c != null){
-            nombre.setText(c.getNombre());
-            cedula.setText(c.getId_cliente());
-            telefono.setText(c.getTelefono());
+        SaludCliente sc = this.control.getDao().getSaludCliente(editarCedula);
+        if (c != null && sc != null) {
+            try {
+                nombre.setText(c.getNombre());
+                apellidos.setText(c.getApellidos());
+                System.out.println(c.getApellidos());
+                cedula.setText(c.getId_cliente());
+                telefono.setText(c.getTelefono());
+                direccion.setText(c.getDireccion());
+                email.setText(c.getEmail());
+                
+                Date d = new SimpleDateFormat("MMM d, yyyy").parse(c.getFechaNacimiento());
+                Calendar calaux = Calendar.getInstance(); calaux.setTime(d);
+                System.out.println(calaux.getTime().toString());
+                nacimiento.setCurrent(calaux);//no setea el campo
+                
+                sexo.setSelectedIndex(c.getSexo());
+                telefono.setText(c.getTelefono());
+                
+                combo_lesion_osea.setSelectedIndex(sc.getLesion_osea());
+                osea_desc.setText(sc.getDesc_lesion_osea());
+                combo_lesion_musc.setSelectedIndex(sc.getLesion_muscular());
+                muscular_desc.setText(sc.getDesc_lesion_muscular());
+                combo_enfer_cardio.setSelectedIndex(sc.getEnfermedad_cardiovascular());
+                cardio_desc.setText(sc.getDesc_enfermedad_cardiovascular());
+                combo_asfixia.setSelectedIndex(sc.getAsfixia_por_ejercicio());
+                combo_asmatico.setSelectedIndex(sc.getAsmatico());
+                combo_hipertenso.setSelectedIndex(sc.getHipertenso());
+                combo_diabetico.setSelectedIndex(sc.getDiabetico());
+                combo_fumador.setSelectedIndex(sc.getFumador());
+                combo_epileptico.setSelectedIndex(sc.getEpileptico());
+                combo_embarazo.setSelectedIndex(sc.getEmbarazo());
+                combo_anemia.setSelectedIndex(sc.getAnemia());
+                combo_mareos.setSelectedIndex(sc.getMareos());
+                combo_desmayos.setSelectedIndex(sc.getDesmayo());
+                combo_nauseas.setSelectedIndex(sc.getNauseas());
+                combo_dif_respirar.setSelectedIndex(sc.getDificul_respirar());
+                combo_practica_act_deport.setSelectedIndex(sc.getPract_act_deportiva());
+                combo_gimnasio.setSelectedIndex(sc.getEstuvo_otro_gym());
+                textarea_otro_padecimiento.setText(sc.getOtro_padecimiento());
+            } catch (ParseException ex) {
+                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-    
-    private void limpiarCamposRegistro(){
+
+    private void limpiarCamposRegistro() {
         nombre.setText("");
         apellidos.setText("");
         cedula.setText("");
@@ -3382,8 +3448,50 @@ public class Vista extends javax.swing.JFrame {
         sexo.setSelectedIndex(0);
         nacimiento.setCurrent(null);
         combo_lesion_musc.setSelectedIndex(0);
-        
+
+        combo_lesion_osea.setSelectedIndex(-1);
+        osea_desc.setText("");
+        combo_lesion_musc.setSelectedIndex(-1);
+        muscular_desc.setText("");
+        combo_enfer_cardio.setSelectedIndex(-1);
+        cardio_desc.setText("");
+        combo_asfixia.setSelectedIndex(-1);
+        combo_asmatico.setSelectedIndex(-1);
+        combo_hipertenso.setSelectedIndex(-1);
+        combo_diabetico.setSelectedIndex(-1);
+        combo_fumador.setSelectedIndex(-1);
+        combo_epileptico.setSelectedIndex(-1);
+        combo_embarazo.setSelectedIndex(-1);
+        combo_anemia.setSelectedIndex(-1);
+        combo_mareos.setSelectedIndex(-1);
+        combo_desmayos.setSelectedIndex(-1);
+        combo_nauseas.setSelectedIndex(-1);
+        combo_dif_respirar.setSelectedIndex(-1);
+        combo_practica_act_deport.setSelectedIndex(-1);
+        combo_gimnasio.setSelectedIndex(-1);
+        textarea_otro_padecimiento.setText("");
+
         this.panel_reg_fisico.repaint();
+    }
+
+    private boolean valida_datos_personales() {
+        return cedula.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty()
+                || direccion.getText().isEmpty() || email.getText().isEmpty() || nacimiento.getText().isEmpty()
+                || sexo.getSelectedIndex() == 0 || telefono.getText().isEmpty();
+    }
+
+    private boolean valida_datos_salud() {
+        return combo_lesion_osea.getSelectedIndex() == 0 || combo_lesion_musc.getSelectedIndex() == 0 || combo_enfer_cardio.getSelectedIndex() == 0
+                || combo_asfixia.getSelectedIndex() == 0 || combo_anemia.getSelectedIndex() == 0 || combo_asmatico.getSelectedIndex() == 0
+                || combo_hipertenso.getSelectedIndex() == 0 || combo_diabetico.getSelectedIndex() == 0 || combo_fumador.getSelectedIndex() == 0
+                || combo_epileptico.getSelectedIndex() == 0 || combo_mareos.getSelectedIndex() == 0 || combo_desmayos.getSelectedIndex() == 0
+                || combo_nauseas.getSelectedIndex() == 0 || combo_dif_respirar.getSelectedIndex() == 0 || combo_embarazo.getSelectedIndex() == 0
+                || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
+
+    }
+
+    private boolean notNull(Object o) {
+        return o != null;
     }
 
 }

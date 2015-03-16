@@ -27,7 +27,7 @@ public class DAO extends Observable {
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
-        tipo_unidad= "cm";
+        tipo_unidad = "cm";
     }
 
     public String getTipo_unidad() {
@@ -41,7 +41,7 @@ public class DAO extends Observable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public void setSaludCliente(SaludCliente saludC) {
         try {
             daoSaludCliente.createOrUpdate(saludC);
@@ -88,6 +88,16 @@ public class DAO extends Observable {
         return c;
     }
 
+    public SaludCliente getSaludCliente(String att) {
+        SaludCliente c = null;
+        try {
+            c = daoSaludCliente.queryForEq("cliente", att).get(0);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+
     public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
         List<Seguimiento> s = getSeguimientos(c.getId_cliente());
         System.out.println(s.isEmpty());
@@ -98,37 +108,42 @@ public class DAO extends Observable {
                     double f = (a.getPierna_derecha() + a.getPierna_izquierda()) / 2;
                     m.put(a.getFecha(), f);
                 });
-                 tipo_unidad= "cm";
+                tipo_unidad = "cm";
                 break;
             case "Brazos":
                 s.stream().forEach((a) -> {
                     double f = (a.getBrazo_derecho() + a.getBrazo_izquierdo()) / 2;
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Pantorrillas":
                 s.stream().forEach((a) -> {
                     double f = (a.getPantorrilla_derecha() + a.getPantorrilla_izquierda()) / 2;
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Antebrazos":
                 s.stream().forEach((a) -> {
                     double f = (a.getAntebrazo_derecho() + a.getAntebrazo_izquierdo()) / 2;
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Cintura":
                 s.stream().forEach((a) -> {
                     double f = (a.getCintura());
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Gluteos":
                 s.stream().forEach((a) -> {
                     double f = (a.getGluteos());
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Cadera":
                 s.stream().forEach((a) -> {
@@ -140,13 +155,15 @@ public class DAO extends Observable {
                 s.stream().forEach((a) -> {
                     double f = (a.getEspalda());
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Pecho":
                 s.stream().forEach((a) -> {
                     double f = (a.getPecho());
                     m.put(a.getFecha(), f);
-                }); tipo_unidad= "cm";
+                });
+                tipo_unidad = "cm";
                 break;
             case "Grasa":
                 s.stream().forEach((a) -> {
@@ -159,19 +176,19 @@ public class DAO extends Observable {
                     double f = (a.getPeso());
                     m.put(a.getFecha(), f);
                 });
-                tipo_unidad= "kg";
+                tipo_unidad = "kg";
                 break;
             case "IMC":
                 s.stream().forEach((a) -> {
                     double f = (a.getImc());
                     m.put(a.getFecha(), f);
                 });
-                tipo_unidad= "imc";
+                tipo_unidad = "imc";
                 break;
             default:
                 break;
         }
-        System.out.println("m: "+m.isEmpty());
+        System.out.println("m: " + m.isEmpty());
         return m;
     }
 
@@ -184,7 +201,7 @@ public class DAO extends Observable {
         }
         return list;
     }
-    
+
     public String[] RecuperaAtributosCliente(String at) {//recupera datos como strings para llenar combobox
         String[] hash = null;
         try {

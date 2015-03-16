@@ -28,7 +28,7 @@ public class Cliente {
     @DatabaseField
     private String fechaNacimiento;
     @DatabaseField
-    private String sexo;
+    private int sexo;
     @DatabaseField
     private String telefono;
     
@@ -36,9 +36,10 @@ public class Cliente {
     }
     
     public Cliente(String id_cliente, String nombre, String apellidos, String direccion,
-            String email, String fechaNacimiento, String sexo, String telefono) {
+            String email, String fechaNacimiento, int sexo, String telefono) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.direccion = direccion;
         this.email = email;
         this.fechaNacimiento = fechaNacimiento;
@@ -66,7 +67,7 @@ public class Cliente {
         return fechaNacimiento;
     }
 
-    public String getSexo() {
+    public int getSexo() {
         return sexo;
     }
 
