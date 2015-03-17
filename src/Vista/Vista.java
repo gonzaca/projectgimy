@@ -2996,7 +2996,6 @@ public class Vista extends javax.swing.JFrame {
 
         try {
             calcEdad();
-
         } catch (Exception e) {
             System.out.println("Error de conversion de fecha Nacimiento: " + nacimiento.getText());
         }
@@ -3022,10 +3021,6 @@ public class Vista extends javax.swing.JFrame {
 
             System.out.println(año);
             edad.setEditable(false);
-        } catch (ParseException ex) {
-            Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-
-
         } catch (Exception e) {
             System.out.println("Error de conversion de fecha Nacimiento: " + nacimiento.getText());
 
