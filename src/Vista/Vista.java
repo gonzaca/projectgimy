@@ -139,7 +139,7 @@ public class Vista extends javax.swing.JFrame {
         combo_practica_act_deport = new javax.swing.JComboBox();
         desactivar_Cliente = new javax.swing.JPanel();
         cedCliente = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        jBDesactivarCliente = new javax.swing.JButton();
         jLabel51 = new javax.swing.JLabel();
         panel_registro_rutinas = new javax.swing.JPanel();
         panel_menu1 = new javax.swing.JPanel();
@@ -1011,10 +1011,11 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
-            jButton10.setText("Desactivar Cliente");
-            jButton10.addActionListener(new java.awt.event.ActionListener() {
+            jBDesactivarCliente.setText("Desactivar Cliente");
+            jBDesactivarCliente.setMultiClickThreshhold(1L);
+            jBDesactivarCliente.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton10ActionPerformed(evt);
+                    jBDesactivarClienteActionPerformed(evt);
                 }
             });
 
@@ -1025,27 +1026,26 @@ public class Vista extends javax.swing.JFrame {
             desactivar_ClienteLayout.setHorizontalGroup(
                 desactivar_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desactivar_ClienteLayout.createSequentialGroup()
-                    .addGroup(desactivar_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(desactivar_ClienteLayout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel51)
-                            .addGap(18, 18, 18)
-                            .addComponent(cedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(desactivar_ClienteLayout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(jButton10)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(39, 39, 39)
+                    .addComponent(jLabel51)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cedCliente)
+                    .addContainerGap())
+                .addGroup(desactivar_ClienteLayout.createSequentialGroup()
+                    .addGap(73, 73, 73)
+                    .addComponent(jBDesactivarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(78, Short.MAX_VALUE))
             );
             desactivar_ClienteLayout.setVerticalGroup(
                 desactivar_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(desactivar_ClienteLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(23, Short.MAX_VALUE)
                     .addGroup(desactivar_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel51)
                         .addComponent(cedCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(26, 26, 26)
-                    .addComponent(jButton10)
-                    .addGap(48, 48, 48))
+                    .addGap(18, 18, 18)
+                    .addComponent(jBDesactivarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(42, 42, 42))
             );
 
             javax.swing.GroupLayout panel_registro_clienteLayout = new javax.swing.GroupLayout(panel_registro_cliente);
@@ -1055,22 +1055,22 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE))
+                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_registro_clienteLayout.createSequentialGroup()
-                        .addGap(602, 602, 602)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
+                        .addContainerGap(316, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(317, Short.MAX_VALUE)))
             );
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_registro_clienteLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
+                        .addContainerGap(183, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(693, Short.MAX_VALUE)))
+                        .addContainerGap(708, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Registro del Cliente", panel_registro_cliente);
@@ -2741,6 +2741,9 @@ public class Vista extends javax.swing.JFrame {
                 }// </editor-fold>//GEN-END:initComponents
 
     private void jbRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarClienteActionPerformed
+        jBAddCliente.setText("Agregar Cliente");
+        this.limpiarCamposRegistro();
+        panel_datos.setVisible(true);
         if (!panel_reg_fisico.isVisible()) {
             desactivar_Cliente.setVisible(false);
             desactivar_Cliente.validate();
@@ -2755,25 +2758,33 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRegistrarClienteActionPerformed
 
     private void jbEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarClienteActionPerformed
+        jBAddCliente.setText("Editar Cliente");
+        this.limpiarCamposRegistro();
+        panel_datos.setVisible(true);
+        String editarCedula = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente a editar: \n", "Cedula de Cliente", JOptionPane.QUESTION_MESSAGE);
         if (!panel_reg_fisico.isVisible()) {
             desactivar_Cliente.setVisible(false);
             desactivar_Cliente.validate();
             desactivar_Cliente.paintComponents(desactivar_Cliente.getGraphics());
-
-            String editarCedula = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente a editar: \n", "Cedula de Cliente", JOptionPane.QUESTION_MESSAGE);
             if (editarCedula != null) {
-                cargarDatosCliente(editarCedula);
-                panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-                panel_reg_fisico.setVisible(true);
-                panel_reg_fisico.validate();
-                panel_reg_fisico.paintComponents(panel_reg_fisico.getGraphics());
+                if (!editarCedula.equals("")) {
+                    cargarDatosCliente(editarCedula);
+                    panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+                    panel_reg_fisico.setVisible(true);
+                    panel_reg_fisico.validate();
+                    panel_reg_fisico.paintComponents(panel_reg_fisico.getGraphics());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe digitar un usuario valido");
+                }
             }
         } else {
-            this.limpiarCamposRegistro();
-            String editarCedula = JOptionPane.showInputDialog(this, "Ingrese la cedula del cliente a editar: \n", "Cedula de Cliente", JOptionPane.QUESTION_MESSAGE);
             if (editarCedula != null) {
-                cargarDatosCliente(editarCedula);
-                panel_reg_fisico.repaint();
+                if (!editarCedula.equals("")) {
+                    cargarDatosCliente(editarCedula);
+                    panel_reg_fisico.repaint();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe digitar un usuario valido");
+                }
             }
         }
     }//GEN-LAST:event_jbEditarClienteActionPerformed
@@ -2782,14 +2793,16 @@ public class Vista extends javax.swing.JFrame {
         if (!desactivar_Cliente.isVisible()) {
             panel_reg_fisico.setVisible(false);
             panel_reg_fisico.validate();
-            panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-            panel_datos.validate();
+            panel_reg_fisico.paintComponents(panel_reg_fisico.getGraphics());
+            panel_datos.setVisible(false);
+//            panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+//            panel_datos.validate();
+//            panel_datos.paintComponents(panel_datos.getGraphics());
             desactivar_Cliente.setVisible(true);
             desactivar_Cliente.validate();
             desactivar_Cliente.paintComponents(desactivar_Cliente.getGraphics());
         } else {
             desactivar_Cliente.repaint();
-            desactivar_Cliente.paintComponents(desactivar_Cliente.getGraphics());
         }
     }//GEN-LAST:event_jbDesactivarClienteActionPerformed
 
@@ -2800,7 +2813,7 @@ public class Vista extends javax.swing.JFrame {
     private void jBAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddClienteActionPerformed
 
         if (valida_datos_personales() || valida_datos_salud()) {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos!\rO seleccionar todas las opciones");
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos!\nO seleccionar todas las opciones");
         } else {
             Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
                     email.getText(), nacimiento.getText(), sexo.getSelectedIndex(), telefono.getText());
@@ -2820,21 +2833,15 @@ public class Vista extends javax.swing.JFrame {
             );
             control.getDao().setSaludCliente(sc);
             this.limpiarCamposRegistro();
-            JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
+            if (jBAddCliente.getText().equals("Agregar Cliente")) {
+                JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
+                RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
+                rf.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ha sido editado");
+            }
         }
-
-//        RegistroFisicoCliente rf = new RegistroFisicoCliente(control, cli);
-//        rf.setVisible(true);
-//        JOptionPane.showMessageDialog(null, "Usuario creado e ingresado");
     }//GEN-LAST:event_jBAddClienteActionPerformed
-
-    private void cedClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cedClienteActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void combo_nombre_cliente_seguimiento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_nombre_cliente_seguimiento1ActionPerformed
         // TODO add your handling code here:
@@ -3006,7 +3013,7 @@ public class Vista extends javax.swing.JFrame {
             String dateStr = nacimiento.getText();
             DateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
             Date fechaNac = (Date) formatter.parse(dateStr);
-            
+
             Calendar fecha = Calendar.getInstance();
             Calendar fechaActual = Calendar.getInstance();
             fecha.setTime(fechaNac);
@@ -3066,7 +3073,7 @@ public class Vista extends javax.swing.JFrame {
         Cliente cliente = control.getDao().getCliente(combo_filtro_cobro.getSelectedItem().toString(),
                 combo_cobro_valor.getSelectedItem().toString());
         Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), cliente);
-       control.getDao().setPago(pago);
+        control.getDao().setPago(pago);
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
@@ -3084,6 +3091,25 @@ public class Vista extends javax.swing.JFrame {
                 Double.parseDouble(antebrazo_izquierdo.getText()), cliente);
         control.getDao().setSeguimiento(seg);//añade el seguimiento en la base de datos
     }//GEN-LAST:event_boton_añadir_seguimientoActionPerformed
+
+    private void jBDesactivarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesactivarClienteActionPerformed
+        if (!cedCliente.getText().isEmpty()) {
+            if (control.getDao().getCliente("Cedula", cedCliente.getText()) != null) {
+                control.getDao().deleteCliente(cedCliente.getText());
+                JOptionPane.showMessageDialog(null, "Usuario Desactivado con exito!");
+                cedCliente.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "El usuario no existe.");
+                cedCliente.setText("");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe digitar un usuario valido.");
+        }
+    }//GEN-LAST:event_jBDesactivarClienteActionPerformed
+
+    private void cedClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cedClienteActionPerformed
 
     public static void look() {
         try {//com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
@@ -3151,8 +3177,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jBAddCliente;
     private javax.swing.JButton jBAsignarRutina;
     private javax.swing.JButton jBCrearRutina;
+    private javax.swing.JButton jBDesactivarCliente;
     private javax.swing.JButton jBEditarRutina;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -3474,6 +3500,8 @@ public class Vista extends javax.swing.JFrame {
             } catch (ParseException ex) {
                 Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no existente!");
         }
     }
 

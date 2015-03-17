@@ -79,20 +79,25 @@ public class DAO extends Observable {
 
     public Cliente getCliente(String type, String att) {
         Cliente c = null;
+        List<Cliente> l = null;
         try {
             switch (type) {
                 case "E-mail":
-                    c = daoCliente.queryForEq("email", att).get(0);
+                    l = daoCliente.queryForEq("email", att);
+                    c = !l.isEmpty()?l.get(0):null;
                     break;
                 case "Nombre":
-                    c = daoCliente.queryForEq("nombre", att).get(0);
+                    l = daoCliente.queryForEq("nombre", att);
+                    c = !l.isEmpty()?l.get(0):null;
                     break;
                 case "Cedula":
-                    c = daoCliente.queryForEq("id_cliente", att).get(0);
+                    l = daoCliente.queryForEq("id_cliente", att);
+                    c = !l.isEmpty()?l.get(0):null;
                     break;
                 default:
                     break;
             }
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -101,8 +106,10 @@ public class DAO extends Observable {
 
     public SaludCliente getSaludCliente(String att) {
         SaludCliente c = null;
+        List<SaludCliente> l = null;
         try {
-            c = daoSaludCliente.queryForEq("cliente", att).get(0);
+            l = daoSaludCliente.queryForEq("cliente", att);
+            c = !l.isEmpty()?l.get(0):null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
