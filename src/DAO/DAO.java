@@ -22,8 +22,8 @@ public class DAO extends Observable {
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("gym");
-        connection.setPassword("gym");
+        connection.setUsername("pablogon");
+        connection.setPassword("20dejulio");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
@@ -208,23 +208,22 @@ public class DAO extends Observable {
             switch (at) {
                 case "E-mail":
                     hash = daoCliente.query(
-                            daoCliente.queryBuilder().where().isNotNull("email").prepare()
-                    ).stream().
-                            map((a) -> {
+                            daoCliente.queryBuilder().where().isNotNull("email").prepare())
+                            .stream().map((a) -> {
                                 return a.getEmail();
                             }).
                             toArray(String[]::new);
                     break;
                 case "Nombre":
-                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("nombre").prepare()).stream().
-                            map((a) -> {
+                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("nombre").prepare())
+                            .stream().map((a) -> {
                                 return a.getNombre();
                             }).
                             toArray(String[]::new);
                     break;
                 case "Cedula":
-                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("id_cliente").prepare()).stream().
-                            map((a) -> {
+                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("id_cliente").prepare())
+                            .stream().map((a) -> {
                                 return a.getId_cliente();
                             }).
                             toArray(String[]::new);
