@@ -2621,7 +2621,7 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="combo_nombre_cobro_valor" pref="320" max="32767" attributes="0"/>
+                                          <Component id="combo_cobro_valor" pref="320" max="32767" attributes="0"/>
                                           <Component id="combo_filtro_cobro" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
@@ -2667,7 +2667,7 @@
                                       <EmptySpace type="separate" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="combo_nombre_cobro_valor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="combo_cobro_valor" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="monto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -2695,7 +2695,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_filtro_cobroActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cobro.addActionListener(&#xa;e -&gt; combo_nombre_cobro_valor.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cobro.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
+                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cobro.addActionListener(&#xa;e -&gt; combo_cobro_valor.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cobro.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel77">
@@ -2703,14 +2703,14 @@
                         <Property name="text" type="java.lang.String" value="Valor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="combo_nombre_cobro_valor">
+                    <Component class="javax.swing.JComboBox" name="combo_cobro_valor">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;        new String[]{&quot;valor de b&#xfa;squeda no seleccionado&quot;})&#xa;    " type="code"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_nombre_cobro_valorActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_cobro_valorActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="label_fecha_seguimiento1">

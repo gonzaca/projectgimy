@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controlador.Controlador;
 import Modelo.Cliente;
+import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
 import java.awt.Font;
@@ -233,7 +234,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel76 = new javax.swing.JLabel();
         combo_filtro_cobro = new javax.swing.JComboBox();
         jLabel77 = new javax.swing.JLabel();
-        combo_nombre_cobro_valor = new javax.swing.JComboBox();
+        combo_cobro_valor = new javax.swing.JComboBox();
         label_fecha_seguimiento1 = new javax.swing.JLabel();
         dateChooserCobro = new datechooser.beans.DateChooserCombo();
         jLabel63 = new javax.swing.JLabel();
@@ -2013,7 +2014,7 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
             combo_filtro_cobro.addActionListener(
-                e -> combo_nombre_cobro_valor.setModel(
+                e -> combo_cobro_valor.setModel(
                     new DefaultComboBoxModel(
                         control.getDao().RecuperaAtributosCliente(
                             combo_filtro_cobro.getSelectedItem().toString()))
@@ -2022,13 +2023,13 @@ public class Vista extends javax.swing.JFrame {
 
             jLabel77.setText("Valor:");
 
-            combo_nombre_cobro_valor.setModel(
+            combo_cobro_valor.setModel(
                 new DefaultComboBoxModel(
                     new String[]{"valor de búsqueda no seleccionado"})
             );
-            combo_nombre_cobro_valor.addActionListener(new java.awt.event.ActionListener() {
+            combo_cobro_valor.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    combo_nombre_cobro_valorActionPerformed(evt);
+                    combo_cobro_valorActionPerformed(evt);
                 }
             });
 
@@ -2075,7 +2076,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(combo_nombre_cobro_valor, 0, 320, Short.MAX_VALUE)
+                                .addComponent(combo_cobro_valor, 0, 320, Short.MAX_VALUE)
                                 .addComponent(combo_filtro_cobro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(45, 45, 45)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2111,7 +2112,7 @@ public class Vista extends javax.swing.JFrame {
                             .addGap(18, 18, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel77)
-                                .addComponent(combo_nombre_cobro_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(combo_cobro_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel63)
                                 .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(boton_cancelar_cobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2989,9 +2990,9 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_filtro_cobroActionPerformed
 
-    private void combo_nombre_cobro_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_nombre_cobro_valorActionPerformed
+    private void combo_cobro_valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_cobro_valorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_nombre_cobro_valorActionPerformed
+    }//GEN-LAST:event_combo_cobro_valorActionPerformed
 
     private void montoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoActionPerformed
         // TODO add your handling code here:
@@ -3015,7 +3016,7 @@ public class Vista extends javax.swing.JFrame {
                 año--;
             }
             edad.setText("" + año);
-            
+
         } catch (Exception e) {
             System.out.println("Error de conversion de fecha Nacimiento: " + nacimiento.getText());
         }
@@ -3057,25 +3058,25 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidosActionPerformed
 
     private void boton_cancelar_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelar_cobroActionPerformed
-                      
+        Cliente cliente = control.getDao().getCliente(combo_filtro_cobro.getSelectedItem().toString(),
+                combo_cobro_valor.getSelectedItem().toString());
+        Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), cliente);
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
-          
-       Cliente cliente=  control.getDao().getCliente(combo_busqueda_seguimiento.getSelectedItem().toString(), 
+        Cliente cliente = control.getDao().getCliente(combo_busqueda_seguimiento.getSelectedItem().toString(),
                 combo_filtro_seguimiento_valor.getSelectedItem().toString());
-       
-        Seguimiento seg= new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
-        combo_fecha_seguimiento.getText(), Double.parseDouble(grasa.getText()),
-           Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
+
+        Seguimiento seg = new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
+                combo_fecha_seguimiento.getText(), Double.parseDouble(grasa.getText()),
+                Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
                 Double.parseDouble(cadera.getText()), Double.parseDouble(gluteos.getText()),
                 Double.parseDouble(cintura.getText()), Double.parseDouble(pierna_izquierda.getText()),
-           Double.parseDouble(pierna_derecha.getText()), Double.parseDouble(pantorrilla_izquierda.getText()),
-           Double.parseDouble(pantorrilla_derecha.getText()), Double.parseDouble(brazo_izquierdo.getText()),
-             Double.parseDouble(brazo_derecho.getText()), Double.parseDouble(antebrazo_derecho.getText()),
-             Double.parseDouble(antebrazo_izquierdo.getText()), cliente) ;  
+                Double.parseDouble(pierna_derecha.getText()), Double.parseDouble(pantorrilla_izquierda.getText()),
+                Double.parseDouble(pantorrilla_derecha.getText()), Double.parseDouble(brazo_izquierdo.getText()),
+                Double.parseDouble(brazo_derecho.getText()), Double.parseDouble(antebrazo_derecho.getText()),
+                Double.parseDouble(antebrazo_izquierdo.getText()), cliente);
         control.getDao().setSeguimiento(seg);//añade el seguimiento en la base de datos
-        
     }//GEN-LAST:event_boton_añadir_seguimientoActionPerformed
 
     public static void look() {
@@ -3109,6 +3110,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_asfixia;
     private javax.swing.JComboBox combo_asmatico;
     private javax.swing.JComboBox combo_busqueda_seguimiento;
+    private javax.swing.JComboBox combo_cobro_valor;
     private javax.swing.JComboBox combo_desmayos;
     private javax.swing.JComboBox combo_diabetico;
     private javax.swing.JComboBox combo_dif_respirar;
@@ -3129,7 +3131,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_nauseas;
     private javax.swing.JComboBox combo_nombre_cliente_seguimiento1;
     private javax.swing.JComboBox combo_nombre_cliente_seguimiento2;
-    private javax.swing.JComboBox combo_nombre_cobro_valor;
     private javax.swing.JComboBox combo_practica_act_deport;
     private datechooser.beans.DateChooserCombo dateChooserCobro;
     private javax.swing.JPanel desactivar_Cliente;
@@ -3430,15 +3431,16 @@ public class Vista extends javax.swing.JFrame {
                 telefono.setText(c.getTelefono());
                 direccion.setText(c.getDireccion());
                 email.setText(c.getEmail());
-                
+
                 Date d = new SimpleDateFormat("MMM d, yyyy").parse(c.getFechaNacimiento());
-                Calendar calaux = Calendar.getInstance(); calaux.setTime(d);
+                Calendar calaux = Calendar.getInstance();
+                calaux.setTime(d);
                 System.out.println(calaux.getTime().toString());
                 nacimiento.setCurrent(calaux);//no setea el campo
-                
+
                 sexo.setSelectedIndex(c.getSexo());
                 telefono.setText(c.getTelefono());
-                
+
                 combo_lesion_osea.setSelectedIndex(sc.getLesion_osea());
                 osea_desc.setText(sc.getDesc_lesion_osea());
                 combo_lesion_musc.setSelectedIndex(sc.getLesion_muscular());
