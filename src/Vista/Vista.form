@@ -2559,12 +2559,12 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="49" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2575,7 +2575,7 @@
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="483" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2605,25 +2605,25 @@
                                           <Component id="jLabel76" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="combo_filtro_cliente4" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
-                                          <Component id="combo_nombre_cliente_seguimiento3" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="combo_cobro_valor" pref="320" max="32767" attributes="0"/>
+                                          <Component id="combo_filtro_cobro" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jTextField17" min="-2" pref="178" max="-2" attributes="0"/>
+                                              <Component id="monto" min="-2" pref="178" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="label_fecha_seguimiento1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                              <Component id="dateChooserCombo3" min="-2" pref="178" max="-2" attributes="0"/>
+                                              <Component id="dateChooserCobro" min="-2" pref="178" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                      <Component id="jButton5" min="-2" pref="66" max="-2" attributes="0"/>
+                                      <Component id="boton_cancelar_cobro" min="-2" pref="66" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel78" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
                               </Group>
@@ -2638,32 +2638,28 @@
                               <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="jLabel78" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="dateChooserCombo3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="dateChooserCobro" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                              <Component id="combo_filtro_cliente4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="combo_filtro_cobro" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel76" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="label_fecha_seguimiento1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel77" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="combo_nombre_cliente_seguimiento3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="combo_cobro_valor" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel63" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextField17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="monto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="boton_cancelar_cobro" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2674,17 +2670,17 @@
                         <Property name="text" type="java.lang.String" value="Par&#xe1;metro:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="combo_filtro_cliente4">
+                    <Component class="javax.swing.JComboBox" name="combo_filtro_cobro">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Nombre&quot;, &quot;Cedula&quot;, &quot;E-mail&quot; })" type="code"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_filtro_cliente4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_filtro_cobroActionPerformed"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cliente4.addActionListener(&#xa;e -&gt; combo_nombre_cliente_seguimiento3.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cliente4.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
+                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cobro.addActionListener(&#xa;e -&gt; combo_cobro_valor.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cobro.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel77">
@@ -2692,14 +2688,14 @@
                         <Property name="text" type="java.lang.String" value="Valor:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="combo_nombre_cliente_seguimiento3">
+                    <Component class="javax.swing.JComboBox" name="combo_cobro_valor">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;        new String[]{&quot;valor de b&#xfa;squeda no seleccionado&quot;})&#xa;    " type="code"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_nombre_cliente_seguimiento3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_cobro_valorActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="label_fecha_seguimiento1">
@@ -2707,19 +2703,19 @@
                         <Property name="text" type="java.lang.String" value="Fecha"/>
                       </Properties>
                     </Component>
-                    <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo3">
+                    <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCobro">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel63">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Monto:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField17">
+                    <Component class="javax.swing.JTextField" name="monto">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField17ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="montoActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton5">
+                    <Component class="javax.swing.JButton" name="boton_cancelar_cobro">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                         <Property name="toolTipText" type="java.lang.String" value="cancelar monto"/>
@@ -2729,6 +2725,9 @@
                           </Border>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_cancelar_cobroActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel31">
                       <Properties>
@@ -2899,24 +2898,24 @@
                                           <Component id="label_fecha_seguimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="combo_nombre_cliente_seguimiento" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="combo_filtro_cliente1" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
-                                          <Component id="dateChooserCombo2" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="combo_filtro_seguimiento_valor" alignment="0" pref="178" max="32767" attributes="0"/>
+                                          <Component id="combo_fecha_seguimiento" alignment="0" pref="178" max="32767" attributes="0"/>
+                                          <Component id="combo_busqueda_seguimiento" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <EmptySpace pref="82" max="32767" attributes="0"/>
                               <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="186" max="-2" attributes="0"/>
+                      <Component id="boton_añadir_seguimiento" min="-2" pref="186" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -2929,22 +2928,22 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="combo_filtro_cliente1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_busqueda_seguimiento" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="combo_nombre_cliente_seguimiento" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_filtro_seguimiento_valor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_fecha_seguimiento" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dateChooserCombo2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_fecha_seguimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="boton_añadir_seguimiento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -2962,7 +2961,7 @@
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="combo_nombre_cliente_seguimiento">
+            <Component class="javax.swing.JComboBox" name="combo_filtro_seguimiento_valor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;        new String[]{&quot;&quot;})&#xa;        " type="code"/>
@@ -2995,8 +2994,8 @@
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField6" alignment="1" pref="184" max="32767" attributes="0"/>
-                                  <Component id="jTextField8" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="cadera" alignment="1" pref="184" max="32767" attributes="0"/>
+                                  <Component id="cintura" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -3015,16 +3014,16 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTextField2" alignment="0" pref="184" max="32767" attributes="0"/>
-                                              <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="imc" alignment="0" pref="184" max="32767" attributes="0"/>
+                                              <Component id="peso" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="grasa" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="pecho" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="espalda" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                          <Component id="jTextField7" min="-2" pref="184" max="-2" attributes="0"/>
+                                          <Component id="gluteos" min="-2" pref="184" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -3045,9 +3044,9 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jTextField10" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField11" alignment="1" pref="181" max="32767" attributes="0"/>
-                                              <Component id="jTextField12" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="pierna_derecha" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="pantorrilla_izquierda" alignment="1" pref="181" max="32767" attributes="0"/>
+                                              <Component id="pierna_izquierda" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -3060,12 +3059,12 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextField16" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                              <Component id="jTextField15" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                                              <Component id="jTextField14" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                                              <Component id="antebrazo_izquierdo" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                                              <Component id="antebrazo_derecho" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                                              <Component id="brazo_izquierdo" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
                                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jTextField13" alignment="0" pref="181" max="32767" attributes="0"/>
+                                                  <Component id="pantorrilla_derecha" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="brazo_derecho" alignment="0" pref="181" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -3082,9 +3081,9 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="peso" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pierna_izquierda" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -3092,19 +3091,19 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="imc" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pierna_derecha" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="grasa" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pecho" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3115,11 +3114,11 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pantorrilla_izquierda" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pantorrilla_derecha" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -3128,22 +3127,22 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="brazo_derecho" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="brazo_izquierdo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="espalda" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cadera" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3151,15 +3150,15 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="antebrazo_derecho" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="gluteos" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="antebrazo_izquierdo" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -3167,7 +3166,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cintura" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -3222,26 +3221,26 @@
                     <Property name="text" type="java.lang.String" value="Gl&#xfa;teos"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="peso">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel10">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pierna Derecha"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="imc">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="grasa">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField4">
+                <Component class="javax.swing.JTextField" name="pecho">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField5">
+                <Component class="javax.swing.JTextField" name="espalda">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField6">
+                <Component class="javax.swing.JTextField" name="cadera">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField7">
+                <Component class="javax.swing.JTextField" name="gluteos">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField8">
+                <Component class="javax.swing.JTextField" name="cintura">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
                   <Properties>
@@ -3273,34 +3272,34 @@
                     <Property name="text" type="java.lang.String" value="IMC"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField9">
+                <Component class="javax.swing.JTextField" name="pantorrilla_derecha">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField10">
+                <Component class="javax.swing.JTextField" name="pierna_derecha">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField11">
+                <Component class="javax.swing.JTextField" name="pantorrilla_izquierda">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField12">
+                <Component class="javax.swing.JTextField" name="pierna_izquierda">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField13">
+                <Component class="javax.swing.JTextField" name="brazo_derecho">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField14">
+                <Component class="javax.swing.JTextField" name="brazo_izquierdo">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField15">
+                <Component class="javax.swing.JTextField" name="antebrazo_derecho">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField16">
+                <Component class="javax.swing.JTextField" name="antebrazo_izquierdo">
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="datechooser.beans.DateChooserCombo" name="dateChooserCombo2">
+            <Component class="datechooser.beans.DateChooserCombo" name="combo_fecha_seguimiento">
             </Component>
-            <Component class="javax.swing.JComboBox" name="combo_filtro_cliente1">
+            <Component class="javax.swing.JComboBox" name="combo_busqueda_seguimiento">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Nombre&quot;, &quot;Cedula&quot;, &quot;E-mail&quot; })" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="combo_filtro_cliente1.addActionListener(&#xa;e -&gt; combo_nombre_cliente_seguimiento.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cliente1.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="combo_busqueda_seguimiento.addActionListener(&#xa;e -&gt; combo_filtro_seguimiento_valor.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_busqueda_seguimiento.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel25">
@@ -3313,11 +3312,14 @@
                 <Property name="text" type="java.lang.String" value="Valor"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="boton_a&#xf1;adir_seguimiento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir Seguimiento"/>
                 <Property name="toolTipText" type="java.lang.String" value="haga click para a&#xf1;adir un nuevo seguimiento"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_a&#xf1;adir_seguimientoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

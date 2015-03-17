@@ -5,21 +5,19 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Pago")
 public class Pago {
-
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField
     private String fecha;
     @DatabaseField
     private double monto;
-    @DatabaseField(foreign = true, columnName = "cliente")
+    @DatabaseField(foreign = true, columnName = "pago")
     private Cliente cliente;
 
     public Pago(){
     }
     
-    public Pago(int id, String fecha, double monto, Cliente cliente) {
-        this.id = id;
+    public Pago(String fecha, double monto, Cliente cliente) {
         this.fecha = fecha;
         this.monto = monto;
         this.cliente = cliente;

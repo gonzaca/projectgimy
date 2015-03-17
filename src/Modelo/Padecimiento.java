@@ -57,7 +57,14 @@ public class Padecimiento {
     public Padecimiento() {
     }
 
-    public Padecimiento(String lesion_osea, String desc_lesion_osea, String lesion_muscular, String desc_lesion_muscular, String enfermedad_cardiovascular, String desc_enfermedad_cardiovascular, String asfixia_por_ejercicio, String asmatico, String hipertenso, String diabetico, String fumador, String epileptico, String embarazo, String anemia, String mareos, String desmayo, String nauseas, String dificul_respirar, String pract_act_deportiva, String estuvo_otro_gym, String otro_padecimiento, String id, Cliente cliente) {
+    public Padecimiento(String lesion_osea, String desc_lesion_osea, String lesion_muscular,
+            String desc_lesion_muscular, String enfermedad_cardiovascular,
+            String desc_enfermedad_cardiovascular, String asfixia_por_ejercicio,
+            String asmatico, String hipertenso, String diabetico, String fumador,
+            String epileptico, String embarazo, String anemia, String mareos,
+            String desmayo, String nauseas, String dificul_respirar,
+            String pract_act_deportiva, String estuvo_otro_gym, String otro_padecimiento,
+            String id, Cliente cliente) {
         this.lesion_osea = lesion_osea;
         this.desc_lesion_osea = desc_lesion_osea;
         this.lesion_muscular = lesion_muscular;

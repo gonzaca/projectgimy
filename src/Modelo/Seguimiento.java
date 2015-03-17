@@ -52,8 +52,7 @@ public class Seguimiento {
             double pecho, double espalda, double cadera, double gluteos,
             double cintura, double pierna_izquierda, double pierna_derecha,
             double pantorrilla_izquierda, double pantorrilla_derecha, double brazo_izquierdo,
-            double brazo_derecho, double antebrazo_derecho, double antebrazo_izquierdo, int seg_id,
-            Cliente cliente) {
+            double brazo_derecho, double antebrazo_derecho, double antebrazo_izquierdo, Cliente cliente) {
         this.peso = peso;
         this.imc = imc;
         this.fecha = fecha;
@@ -71,7 +70,6 @@ public class Seguimiento {
         this.brazo_derecho = brazo_derecho;
         this.antebrazo_derecho = antebrazo_derecho;
         this.antebrazo_izquierdo = antebrazo_izquierdo;
-        this.seg_id = seg_id;
         this.cliente = cliente;
     }
 

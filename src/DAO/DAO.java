@@ -1,6 +1,7 @@
 package DAO;
 
 import Modelo.Cliente;
+import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
 import com.j256.ormlite.dao.Dao;
@@ -16,17 +17,19 @@ public class DAO extends Observable {
     private Dao<Cliente, String> daoCliente;
     private Dao<SaludCliente, String> daoSaludCliente;
     private Dao<Seguimiento, String> daoSeguimiento;
+    private Dao<Pago, String> daoPago;
     private JdbcConnectionSource connection;
     private static String databaseUrl = "jdbc:mysql://localhost:3306/gym";
     private String tipo_unidad;
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("gym");
-        connection.setPassword("gym");
+        connection.setUsername("pablogon");
+        connection.setPassword("20dejulio");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
+        daoPago = DaoManager.createDao(connection, Pago.class);
         tipo_unidad = "cm";
     }
 
@@ -37,6 +40,14 @@ public class DAO extends Observable {
     public void setCliente(Cliente c) {
         try {
             daoCliente.createOrUpdate(c);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void setPago(Pago p){
+     try {
+            daoPago.createOrUpdate(p);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -208,23 +219,22 @@ public class DAO extends Observable {
             switch (at) {
                 case "E-mail":
                     hash = daoCliente.query(
-                            daoCliente.queryBuilder().where().isNotNull("email").prepare()
-                    ).stream().
-                            map((a) -> {
+                            daoCliente.queryBuilder().where().isNotNull("email").prepare())
+                            .stream().map((a) -> {
                                 return a.getEmail();
                             }).
                             toArray(String[]::new);
                     break;
                 case "Nombre":
-                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("nombre").prepare()).stream().
-                            map((a) -> {
+                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("nombre").prepare())
+                            .stream().map((a) -> {
                                 return a.getNombre();
                             }).
                             toArray(String[]::new);
                     break;
                 case "Cedula":
-                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("id_cliente").prepare()).stream().
-                            map((a) -> {
+                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("id_cliente").prepare())
+                            .stream().map((a) -> {
                                 return a.getId_cliente();
                             }).
                             toArray(String[]::new);
