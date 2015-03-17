@@ -3061,6 +3061,7 @@ public class Vista extends javax.swing.JFrame {
         Cliente cliente = control.getDao().getCliente(combo_filtro_cobro.getSelectedItem().toString(),
                 combo_cobro_valor.getSelectedItem().toString());
         Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), cliente);
+       control.getDao().setPago(pago);
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
