@@ -3019,16 +3019,16 @@ public class Vista extends javax.swing.JFrame {
             }
             edad.setEditable(true);
             edad.setText("" + año);
-<<<<<<< HEAD
+
             System.out.println(año);
             edad.setEditable(false);
         } catch (ParseException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-=======
+
 
         } catch (Exception e) {
             System.out.println("Error de conversion de fecha Nacimiento: " + nacimiento.getText());
->>>>>>> 5bcc6cd33d6983401de8473b16caae65805826e2
+
         }
     }
 
@@ -3445,14 +3445,13 @@ public class Vista extends javax.swing.JFrame {
                 Date d = new SimpleDateFormat("MMM d, yyyy").parse(c.getFechaNacimiento());
                 Calendar calaux = Calendar.getInstance();
                 calaux.setTime(d);
-<<<<<<< HEAD
+
                 nacimiento.setSelectedDate(calaux);
                 calcEdad();
-=======
+
                 System.out.println(calaux.getTime().toString());
                 nacimiento.setCurrent(calaux);//no setea el campo
 
->>>>>>> 5bcc6cd33d6983401de8473b16caae65805826e2
                 sexo.setSelectedIndex(c.getSexo());
                 telefono.setText(c.getTelefono());
 
