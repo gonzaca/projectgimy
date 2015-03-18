@@ -12,6 +12,18 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Observable;
 
+/*import Modelo.Cliente;
+import Modelo.Pago;
+import Modelo.SaludCliente;
+import Modelo.Seguimiento;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import java.util.List;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Observable;*/
+
 public class DAO extends Observable {
 
     private Dao<Cliente, String> daoCliente;
@@ -250,7 +262,7 @@ public class DAO extends Observable {
                     break;
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("RecuperaAtributosCliente: "+ex.getMessage());
         }
         return hash;
     }

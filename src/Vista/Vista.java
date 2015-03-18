@@ -341,12 +341,12 @@ public class Vista extends javax.swing.JFrame {
             panel_inicioLayout.setHorizontalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(175, Short.MAX_VALUE)
+                    .addContainerGap(254, Short.MAX_VALUE)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jL_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(174, Short.MAX_VALUE))
+                    .addContainerGap(254, Short.MAX_VALUE))
             );
             panel_inicioLayout.setVerticalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1058,12 +1058,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
+                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(316, Short.MAX_VALUE)
+                        .addContainerGap(326, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(317, Short.MAX_VALUE)))
+                        .addContainerGap(327, Short.MAX_VALUE)))
             );
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1676,13 +1676,13 @@ public class Vista extends javax.swing.JFrame {
                     .addGap(674, 674, 674))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
-                        .addContainerGap(108, Short.MAX_VALUE)
+                        .addContainerGap(128, Short.MAX_VALUE)
                         .addComponent(panel_asignar_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(524, 524, 524)))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addGap(256, 256, 256)
-                        .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+                        .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
                         .addContainerGap()))
             );
             panel_registro_rutinasLayout.setVerticalGroup(
@@ -2177,11 +2177,11 @@ public class Vista extends javax.swing.JFrame {
                 jPanel1Layout.setHorizontalGroup(
                     jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(48, Short.MAX_VALUE)
+                        .addContainerGap(58, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(49, Short.MAX_VALUE))
+                        .addContainerGap(59, Short.MAX_VALUE))
                 );
                 jPanel1Layout.setVerticalGroup(
                     jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2434,9 +2434,9 @@ public class Vista extends javax.swing.JFrame {
                                             .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                             .addComponent(combo_busqueda_seguimiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addContainerGap(82, Short.MAX_VALUE)
+                                .addContainerGap(92, Short.MAX_VALUE)
                                 .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(82, Short.MAX_VALUE))
+                        .addContainerGap(92, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2551,7 +2551,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_busquedaLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(134, Short.MAX_VALUE))
                 );
                 panel_busquedaLayout.setVerticalGroup(
                     panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2733,11 +2733,11 @@ public class Vista extends javax.swing.JFrame {
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 922, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
                     );
                     layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
                     );
 
                     pack();
@@ -3077,6 +3077,7 @@ public class Vista extends javax.swing.JFrame {
                 combo_cobro_valor.getSelectedItem().toString());
         Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), cliente);
         control.getDao().setPago(pago);
+        JOptionPane.showMessageDialog(null, "pago efectuado de forma exitosa");
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
@@ -3120,6 +3121,183 @@ public class Vista extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException |
                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
+    }
+    
+     private void buildPopupMenus() {
+        JMenuItem item1 = new JMenuItem("AÃ±adir fila al final");
+        JMenuItem item2 = new JMenuItem("Quitar fila al final");
+
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mousePressed(MouseEvent ev) {
+                if (ev.isPopupTrigger()) {
+                    replace = (JTable) ev.getComponent();
+                    popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+                }
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent ev) {
+                if (ev.isPopupTrigger()) {
+                    replace = (JTable) ev.getComponent();
+                    popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                System.out.println("Exited!");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println("Entered!");
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Clicked!");
+            }
+        };
+
+        tableAntebraso.addMouseListener(ml);
+        tableBiceps1.addMouseListener(ml);
+        tableEspalda.addMouseListener(ml);
+        tableHombros.addMouseListener(ml);
+        tablePantorrilla.addMouseListener(ml);
+        tablePecho.addMouseListener(ml);
+        tablePiernas.addMouseListener(ml);
+        tableTrapecio.addMouseListener(ml);
+        tableTriceps.addMouseListener(ml);
+
+        item1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                System.out.println("item1 click");
+                ((DefaultTableModel) replace.getModel()).addRow(new Object[]{"", "", "", ""});
+            }
+        });
+        item2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("item2 click");
+
+                ((DefaultTableModel) replace.getModel()).removeRow(((DefaultTableModel) replace.getModel()).getRowCount() - 1);
+            }
+        });
+        popupMenu.add(item1);
+        popupMenu.add(item2);
+
+    }
+
+    private void cargarDatosCliente(String editarCedula) {
+        Cliente c = this.control.getDao().getCliente("Cedula", editarCedula);
+        SaludCliente sc = this.control.getDao().getSaludCliente(editarCedula);
+        if (c != null && sc != null) {
+            try {
+                nombre.setText(c.getNombre());
+                apellidos.setText(c.getApellidos());
+                cedula.setText(c.getId_cliente());
+                telefono.setText(c.getTelefono());
+                direccion.setText(c.getDireccion());
+                email.setText(c.getEmail());
+
+                Date d = new SimpleDateFormat("dd/MM/yyyy").parse(c.getFechaNacimiento());
+                Calendar calaux = Calendar.getInstance();
+                calaux.setTime(d);
+
+                nacimiento.setSelectedDate(calaux);
+                calcEdad();
+
+                System.out.println(calaux.getTime().toString());
+                nacimiento.setCurrent(calaux);//no setea el campo
+
+                sexo.setSelectedIndex(c.getSexo());
+                telefono.setText(c.getTelefono());
+
+                combo_lesion_osea.setSelectedIndex(sc.getLesion_osea());
+                osea_desc.setText(sc.getDesc_lesion_osea());
+                combo_lesion_musc.setSelectedIndex(sc.getLesion_muscular());
+                muscular_desc.setText(sc.getDesc_lesion_muscular());
+                combo_enfer_cardio.setSelectedIndex(sc.getEnfermedad_cardiovascular());
+                cardio_desc.setText(sc.getDesc_enfermedad_cardiovascular());
+                combo_asfixia.setSelectedIndex(sc.getAsfixia_por_ejercicio());
+                combo_asmatico.setSelectedIndex(sc.getAsmatico());
+                combo_hipertenso.setSelectedIndex(sc.getHipertenso());
+                combo_diabetico.setSelectedIndex(sc.getDiabetico());
+                combo_fumador.setSelectedIndex(sc.getFumador());
+                combo_epileptico.setSelectedIndex(sc.getEpileptico());
+                combo_embarazo.setSelectedIndex(sc.getEmbarazo());
+                combo_anemia.setSelectedIndex(sc.getAnemia());
+                combo_mareos.setSelectedIndex(sc.getMareos());
+                combo_desmayos.setSelectedIndex(sc.getDesmayo());
+                combo_nauseas.setSelectedIndex(sc.getNauseas());
+                combo_dif_respirar.setSelectedIndex(sc.getDificul_respirar());
+                combo_practica_act_deport.setSelectedIndex(sc.getPract_act_deportiva());
+                combo_gimnasio.setSelectedIndex(sc.getEstuvo_otro_gym());
+                textarea_otro_padecimiento.setText(sc.getOtro_padecimiento());
+            } catch (ParseException ex) {
+                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario no existente!");
+        }
+    }
+
+    private void limpiarCamposRegistro() {
+        nombre.setText("");
+        apellidos.setText("");
+        cedula.setText("");
+        edad.setText("");
+        telefono.setText("");
+        email.setText("");
+        direccion.setText("");
+        sexo.setSelectedIndex(0);
+        nacimiento.setCurrent(null);
+        combo_lesion_musc.setSelectedIndex(0);
+
+        combo_lesion_osea.setSelectedIndex(-1);
+        osea_desc.setText("");
+        combo_lesion_musc.setSelectedIndex(-1);
+        muscular_desc.setText("");
+        combo_enfer_cardio.setSelectedIndex(-1);
+        cardio_desc.setText("");
+        combo_asfixia.setSelectedIndex(-1);
+        combo_asmatico.setSelectedIndex(-1);
+        combo_hipertenso.setSelectedIndex(-1);
+        combo_diabetico.setSelectedIndex(-1);
+        combo_fumador.setSelectedIndex(-1);
+        combo_epileptico.setSelectedIndex(-1);
+        combo_embarazo.setSelectedIndex(-1);
+        combo_anemia.setSelectedIndex(-1);
+        combo_mareos.setSelectedIndex(-1);
+        combo_desmayos.setSelectedIndex(-1);
+        combo_nauseas.setSelectedIndex(-1);
+        combo_dif_respirar.setSelectedIndex(-1);
+        combo_practica_act_deport.setSelectedIndex(-1);
+        combo_gimnasio.setSelectedIndex(-1);
+        textarea_otro_padecimiento.setText("");
+
+        this.panel_reg_fisico.repaint();
+    }
+
+    private boolean valida_datos_personales() {
+        return cedula.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty()
+                || direccion.getText().isEmpty() || email.getText().isEmpty() || nacimiento.getText().isEmpty()
+                || sexo.getSelectedIndex() == 0 || telefono.getText().isEmpty();
+    }
+
+    private boolean valida_datos_salud() {
+        return combo_lesion_osea.getSelectedIndex() == 0 || combo_lesion_musc.getSelectedIndex() == 0 || combo_enfer_cardio.getSelectedIndex() == 0
+                || combo_asfixia.getSelectedIndex() == 0 || combo_anemia.getSelectedIndex() == 0 || combo_asmatico.getSelectedIndex() == 0
+                || combo_hipertenso.getSelectedIndex() == 0 || combo_diabetico.getSelectedIndex() == 0 || combo_fumador.getSelectedIndex() == 0
+                || combo_epileptico.getSelectedIndex() == 0 || combo_mareos.getSelectedIndex() == 0 || combo_desmayos.getSelectedIndex() == 0
+                || combo_nauseas.getSelectedIndex() == 0 || combo_dif_respirar.getSelectedIndex() == 0 || combo_embarazo.getSelectedIndex() == 0
+                || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
+
+    }
+
+    private boolean notNull(Object o) {
+        return o != null;
     }
 
     private RegistroFisicoCliente registro_fisico;
@@ -3384,185 +3562,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JTextArea textarea_otro_padecimiento;
     // End of variables declaration//GEN-END:variables
-
     private JPopupMenu popupMenu;
     private JTable replace;
-
-    private void buildPopupMenus() {
-        JMenuItem item1 = new JMenuItem("AÃ±adir fila al final");
-        JMenuItem item2 = new JMenuItem("Quitar fila al final");
-
-        MouseListener ml = new MouseListener() {
-            @Override
-            public void mousePressed(MouseEvent ev) {
-                if (ev.isPopupTrigger()) {
-                    replace = (JTable) ev.getComponent();
-                    popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
-                }
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent ev) {
-                if (ev.isPopupTrigger()) {
-                    replace = (JTable) ev.getComponent();
-                    popupMenu.show(ev.getComponent(), ev.getX(), ev.getY());
-                }
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                System.out.println("Exited!");
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                System.out.println("Entered!");
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("Clicked!");
-            }
-        };
-
-        tableAntebraso.addMouseListener(ml);
-        tableBiceps1.addMouseListener(ml);
-        tableEspalda.addMouseListener(ml);
-        tableHombros.addMouseListener(ml);
-        tablePantorrilla.addMouseListener(ml);
-        tablePecho.addMouseListener(ml);
-        tablePiernas.addMouseListener(ml);
-        tableTrapecio.addMouseListener(ml);
-        tableTriceps.addMouseListener(ml);
-
-        item1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                System.out.println("item1 click");
-                ((DefaultTableModel) replace.getModel()).addRow(new Object[]{"", "", "", ""});
-            }
-        });
-        item2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("item2 click");
-
-                ((DefaultTableModel) replace.getModel()).removeRow(((DefaultTableModel) replace.getModel()).getRowCount() - 1);
-            }
-        });
-        popupMenu.add(item1);
-        popupMenu.add(item2);
-
-    }
-
-    private void cargarDatosCliente(String editarCedula) {
-        Cliente c = this.control.getDao().getCliente("Cedula", editarCedula);
-        SaludCliente sc = this.control.getDao().getSaludCliente(editarCedula);
-        if (c != null && sc != null) {
-            try {
-                nombre.setText(c.getNombre());
-                apellidos.setText(c.getApellidos());
-                cedula.setText(c.getId_cliente());
-                telefono.setText(c.getTelefono());
-                direccion.setText(c.getDireccion());
-                email.setText(c.getEmail());
-
-                Date d = new SimpleDateFormat("dd/MM/yyyy").parse(c.getFechaNacimiento());
-                Calendar calaux = Calendar.getInstance();
-                calaux.setTime(d);
-
-                nacimiento.setSelectedDate(calaux);
-                calcEdad();
-
-                System.out.println(calaux.getTime().toString());
-                nacimiento.setCurrent(calaux);//no setea el campo
-
-                sexo.setSelectedIndex(c.getSexo());
-                telefono.setText(c.getTelefono());
-
-                combo_lesion_osea.setSelectedIndex(sc.getLesion_osea());
-                osea_desc.setText(sc.getDesc_lesion_osea());
-                combo_lesion_musc.setSelectedIndex(sc.getLesion_muscular());
-                muscular_desc.setText(sc.getDesc_lesion_muscular());
-                combo_enfer_cardio.setSelectedIndex(sc.getEnfermedad_cardiovascular());
-                cardio_desc.setText(sc.getDesc_enfermedad_cardiovascular());
-                combo_asfixia.setSelectedIndex(sc.getAsfixia_por_ejercicio());
-                combo_asmatico.setSelectedIndex(sc.getAsmatico());
-                combo_hipertenso.setSelectedIndex(sc.getHipertenso());
-                combo_diabetico.setSelectedIndex(sc.getDiabetico());
-                combo_fumador.setSelectedIndex(sc.getFumador());
-                combo_epileptico.setSelectedIndex(sc.getEpileptico());
-                combo_embarazo.setSelectedIndex(sc.getEmbarazo());
-                combo_anemia.setSelectedIndex(sc.getAnemia());
-                combo_mareos.setSelectedIndex(sc.getMareos());
-                combo_desmayos.setSelectedIndex(sc.getDesmayo());
-                combo_nauseas.setSelectedIndex(sc.getNauseas());
-                combo_dif_respirar.setSelectedIndex(sc.getDificul_respirar());
-                combo_practica_act_deport.setSelectedIndex(sc.getPract_act_deportiva());
-                combo_gimnasio.setSelectedIndex(sc.getEstuvo_otro_gym());
-                textarea_otro_padecimiento.setText(sc.getOtro_padecimiento());
-            } catch (ParseException ex) {
-                Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario no existente!");
-        }
-    }
-
-    private void limpiarCamposRegistro() {
-        nombre.setText("");
-        apellidos.setText("");
-        cedula.setText("");
-        edad.setText("");
-        telefono.setText("");
-        email.setText("");
-        direccion.setText("");
-        sexo.setSelectedIndex(0);
-        nacimiento.setCurrent(null);
-        combo_lesion_musc.setSelectedIndex(0);
-
-        combo_lesion_osea.setSelectedIndex(-1);
-        osea_desc.setText("");
-        combo_lesion_musc.setSelectedIndex(-1);
-        muscular_desc.setText("");
-        combo_enfer_cardio.setSelectedIndex(-1);
-        cardio_desc.setText("");
-        combo_asfixia.setSelectedIndex(-1);
-        combo_asmatico.setSelectedIndex(-1);
-        combo_hipertenso.setSelectedIndex(-1);
-        combo_diabetico.setSelectedIndex(-1);
-        combo_fumador.setSelectedIndex(-1);
-        combo_epileptico.setSelectedIndex(-1);
-        combo_embarazo.setSelectedIndex(-1);
-        combo_anemia.setSelectedIndex(-1);
-        combo_mareos.setSelectedIndex(-1);
-        combo_desmayos.setSelectedIndex(-1);
-        combo_nauseas.setSelectedIndex(-1);
-        combo_dif_respirar.setSelectedIndex(-1);
-        combo_practica_act_deport.setSelectedIndex(-1);
-        combo_gimnasio.setSelectedIndex(-1);
-        textarea_otro_padecimiento.setText("");
-
-        this.panel_reg_fisico.repaint();
-    }
-
-    private boolean valida_datos_personales() {
-        return cedula.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty()
-                || direccion.getText().isEmpty() || email.getText().isEmpty() || nacimiento.getText().isEmpty()
-                || sexo.getSelectedIndex() == 0 || telefono.getText().isEmpty();
-    }
-
-    private boolean valida_datos_salud() {
-        return combo_lesion_osea.getSelectedIndex() == 0 || combo_lesion_musc.getSelectedIndex() == 0 || combo_enfer_cardio.getSelectedIndex() == 0
-                || combo_asfixia.getSelectedIndex() == 0 || combo_anemia.getSelectedIndex() == 0 || combo_asmatico.getSelectedIndex() == 0
-                || combo_hipertenso.getSelectedIndex() == 0 || combo_diabetico.getSelectedIndex() == 0 || combo_fumador.getSelectedIndex() == 0
-                || combo_epileptico.getSelectedIndex() == 0 || combo_mareos.getSelectedIndex() == 0 || combo_desmayos.getSelectedIndex() == 0
-                || combo_nauseas.getSelectedIndex() == 0 || combo_dif_respirar.getSelectedIndex() == 0 || combo_embarazo.getSelectedIndex() == 0
-                || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
-
-    }
-
-    private boolean notNull(Object o) {
-        return o != null;
-    }
-
 }

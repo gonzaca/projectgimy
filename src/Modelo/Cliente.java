@@ -15,8 +15,6 @@ public class Cliente {
     private ForeignCollection<Pago> pagos;
     @ForeignCollectionField
     private ForeignCollection<Rutina> rutinas;
-    @ForeignCollectionField
-    private ForeignCollection<Padecimiento> padecimientos;
     @DatabaseField
     private String nombre;
     @DatabaseField
@@ -89,10 +87,6 @@ public class Cliente {
 
     public ForeignCollection<Rutina> getRutinas() {
         return rutinas;
-    }
-
-    public ForeignCollection<Padecimiento> getPadecimientos() {
-        return padecimientos;
     }
 
 }

@@ -11,7 +11,7 @@ public class Pago {
     private String fecha;
     @DatabaseField
     private double monto;
-    @DatabaseField(foreign = true, columnName = "pago")
+    @DatabaseField(foreign = true, columnName = "cliente")
     private Cliente cliente;
 
     public Pago(){
