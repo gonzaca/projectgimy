@@ -24,8 +24,8 @@ public class DAO extends Observable {
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("gym");
-        connection.setPassword("gym");
+        connection.setUsername("pablo");
+        connection.setPassword("20dejulio");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
@@ -250,7 +250,7 @@ public class DAO extends Observable {
                     break;
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("RecuperaAtributosCliente: "+ex.getMessage());
         }
         return hash;
     }
