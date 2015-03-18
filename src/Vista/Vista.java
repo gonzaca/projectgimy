@@ -25,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -162,7 +163,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        jBCreateRutina = new javax.swing.JButton();
         jScrollPane16 = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablePiernas = new javax.swing.JTable();
@@ -768,6 +769,8 @@ public class Vista extends javax.swing.JFrame {
             } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
                 e1.printStackTrace();
             }
+            nacimiento.setLocale(Locale.forLanguageTag("es-CR")
+            );
             nacimiento.setCurrentNavigateIndex(0);
             nacimiento.addCommitListener(new datechooser.events.CommitListener() {
                 public void onCommit(datechooser.events.CommitEvent evt) {
@@ -1195,10 +1198,10 @@ public class Vista extends javax.swing.JFrame {
             jLabel50.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
             jLabel50.setText("Trapecios");
 
-            jButton8.setText("Crear Rutina");
-            jButton8.addActionListener(new java.awt.event.ActionListener() {
+            jBCreateRutina.setText("Crear Rutina");
+            jBCreateRutina.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton8ActionPerformed(evt);
+                    jBCreateRutinaActionPerformed(evt);
                 }
             });
 
@@ -1540,7 +1543,7 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jLabel50)
                         .addComponent(jLabel49)
                         .addComponent(jLabel48)
-                        .addComponent(jButton8)
+                        .addComponent(jBCreateRutina)
                         .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_crear_rutinaLayout.createSequentialGroup()
                                 .addComponent(jLabel44)
@@ -1600,7 +1603,7 @@ public class Vista extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8)
+                    .addComponent(jBCreateRutina)
                     .addGap(49, 49, 49))
             );
 
@@ -3011,7 +3014,7 @@ public class Vista extends javax.swing.JFrame {
     private void calcEdad() {
         try {
             String dateStr = nacimiento.getText();
-            DateFormat formatter = new SimpleDateFormat("MMM dd, yyyy");
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date fechaNac = (Date) formatter.parse(dateStr);
 
             Calendar fecha = Calendar.getInstance();
@@ -3061,9 +3064,9 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_diabeticoActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jBCreateRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jBCreateRutinaActionPerformed
 
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
         // TODO add your handling code here:
@@ -3177,13 +3180,13 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jBAddCliente;
     private javax.swing.JButton jBAsignarRutina;
     private javax.swing.JButton jBCrearRutina;
+    private javax.swing.JButton jBCreateRutina;
     private javax.swing.JButton jBDesactivarCliente;
     private javax.swing.JButton jBEditarRutina;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -3463,7 +3466,7 @@ public class Vista extends javax.swing.JFrame {
                 direccion.setText(c.getDireccion());
                 email.setText(c.getEmail());
 
-                Date d = new SimpleDateFormat("MMM d, yyyy").parse(c.getFechaNacimiento());
+                Date d = new SimpleDateFormat("dd/MM/yyyy").parse(c.getFechaNacimiento());
                 Calendar calaux = Calendar.getInstance();
                 calaux.setTime(d);
 
