@@ -47,7 +47,7 @@ public class Chart {
         plot.setRangeCrosshairVisible(true);
   
         DateAxis axis = (DateAxis) plot.getDomainAxis();
-        axis.setDateFormatOverride(new SimpleDateFormat("dd-MM-yyyy"));
+        axis.setDateFormatOverride(new SimpleDateFormat("dd-MM-yy"));
         return ch;
     }
 

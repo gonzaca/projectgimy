@@ -40,7 +40,7 @@ public class Seguimiento {
     private double antebrazo_derecho;
     @DatabaseField
     private double antebrazo_izquierdo;
-    @DatabaseField(generatedId = true, columnName = "id")
+    @DatabaseField(generatedId = true)
     private int seg_id;
     @DatabaseField(foreign = true, columnName = "cliente")
     private Cliente cliente;

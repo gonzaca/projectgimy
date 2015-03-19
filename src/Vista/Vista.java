@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controlador.Controlador;
+import DAO.DAO;
 import Modelo.Cliente;
 import Modelo.Pago;
 import Modelo.SaludCliente;
@@ -23,8 +24,10 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -249,7 +252,7 @@ public class Vista extends javax.swing.JFrame {
         jTable10 = new javax.swing.JTable();
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox();
+        jcombo_projec_cobros = new javax.swing.JComboBox();
         panel_seguimientos = new javax.swing.JPanel();
         label_cliente_seguimiento = new javax.swing.JLabel();
         combo_filtro_seguimiento_valor = new javax.swing.JComboBox();
@@ -2116,13 +2119,9 @@ public class Vista extends javax.swing.JFrame {
 
             jTable10.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null}
                 },
                 new String [] {
-                    "Title 1", "Title 2", "Title 3", "Title 4"
+                    "Cliente", "Ultimo pago", "Próximo pago", "Días entre pagos"
                 }
             ));
             jScrollPane15.setViewportView(jTable10);
@@ -2134,11 +2133,16 @@ public class Vista extends javax.swing.JFrame {
 
             jLabel80.setText("Proyectar");
 
-            jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(
+            jcombo_projec_cobros.setModel(new javax.swing.DefaultComboBoxModel(
                 new String[] {
                     "Clientes morosos", "Cancelan durante la semana",
                     "Clientes que están al día"
                 }));
+                jcombo_projec_cobros.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jcombo_projec_cobrosActionPerformed(evt);
+                    }
+                });
 
                 javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
                 jPanel6.setLayout(jPanel6Layout);
@@ -2154,7 +2158,7 @@ public class Vista extends javax.swing.JFrame {
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addComponent(jLabel80)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jcombo_projec_cobros, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                 );
@@ -2166,7 +2170,7 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel80)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcombo_projec_cobros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -3069,7 +3073,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCreateRutinaActionPerformed
 
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_apellidosActionPerformed
 
     private void boton_cancelar_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_cancelar_cobroActionPerformed
@@ -3077,13 +3081,12 @@ public class Vista extends javax.swing.JFrame {
                 combo_cobro_valor.getSelectedItem().toString());
         Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), cliente);
         control.getDao().setPago(pago);
-        JOptionPane.showMessageDialog(null, "pago efectuado de forma exitosa");
+
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
         Cliente cliente = control.getDao().getCliente(combo_busqueda_seguimiento.getSelectedItem().toString(),
                 combo_filtro_seguimiento_valor.getSelectedItem().toString());
-
         Seguimiento seg = new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
                 combo_fecha_seguimiento.getText(), Double.parseDouble(grasa.getText()),
                 Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
@@ -3115,6 +3118,27 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cedClienteActionPerformed
 
+    private void jcombo_projec_cobrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_projec_cobrosActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable10.getModel();
+        List<Cliente> list = control.getDao().
+                getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString());
+        list.stream().forEach(
+                a -> model.addRow(new Object[]{
+                    a.getNombre() + " " + a.getApellidos(),//nombre y apellidos
+                    a.getPagos().stream().
+                            reduce((current, previous) -> previous).get().getFecha(),//  ultima fecha de pago 
+                    DAO.fromStringToDate(a.getPagos().stream().reduce((current, previous) -> previous).
+                            get().getFecha() ).plusDays(30).toString(),//proxima fecha de pago
+                    ChronoUnit.DAYS.between(
+                            DAO.fromStringToDate(a.getPagos().stream().
+                                    reduce((current, previous) -> previous).get().getFecha()),
+                            DAO.fromStringToDate(
+                                    a.getPagos().stream().reduce((current, previous) -> previous).get().getFecha()
+                            ).plusDays(30)
+                    ) //dias entre el ultimo pago y el siguiente
+                }));
+    }//GEN-LAST:event_jcombo_projec_cobrosActionPerformed
+
     public static void look() {
         try {//com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
             javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
@@ -3122,8 +3146,8 @@ public class Vista extends javax.swing.JFrame {
                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
     }
-    
-     private void buildPopupMenus() {
+
+    private void buildPopupMenus() {
         JMenuItem item1 = new JMenuItem("AÃ±adir fila al final");
         JMenuItem item2 = new JMenuItem("Quitar fila al final");
 
@@ -3367,7 +3391,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLDatosPersonales;
     private javax.swing.JLabel jLDatosPersonales2;
@@ -3512,6 +3535,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jbRegistrarCliente;
     private javax.swing.JButton jb_salvar_en_archivo;
     private javax.swing.JComboBox jcb_proyec;
+    private javax.swing.JComboBox jcombo_projec_cobros;
     private javax.swing.JLabel jl_PGS;
     private javax.swing.JPanel jp_chart;
     private javax.swing.JTextArea jta_info_busqueda_cliente;

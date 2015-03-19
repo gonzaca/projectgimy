@@ -9,21 +9,29 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import java.util.List;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Observable;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 
 /*import Modelo.Cliente;
-import Modelo.Pago;
-import Modelo.SaludCliente;
-import Modelo.Seguimiento;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import java.util.List;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Observable;*/
-
+ import Modelo.Pago;
+ import Modelo.SaludCliente;
+ import Modelo.Seguimiento;
+ import com.j256.ormlite.dao.Dao;
+ import com.j256.ormlite.dao.DaoManager;
+ import com.j256.ormlite.jdbc.JdbcConnectionSource;
+ import java.util.List;
+ import java.sql.SQLException;
+ import java.util.HashMap;
+ import java.util.Observable;*/
 public class DAO extends Observable {
 
     private Dao<Cliente, String> daoCliente;
@@ -36,8 +44,8 @@ public class DAO extends Observable {
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("gym");
-        connection.setPassword("gym");
+        connection.setUsername("pablo");
+        connection.setPassword("20dejulio");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
@@ -56,13 +64,14 @@ public class DAO extends Observable {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public void setPago(Pago p){
-     try {
+
+    public void setPago(Pago p) {
+        try {
             daoPago.createOrUpdate(p);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        JOptionPane.showMessageDialog(null, "pago efectuado de forma exitosa");
     }
 
     public void setSaludCliente(SaludCliente saludC) {
@@ -96,20 +105,20 @@ public class DAO extends Observable {
             switch (type) {
                 case "E-mail":
                     l = daoCliente.queryForEq("email", att);
-                    c = !l.isEmpty()?l.get(0):null;
+                    c = !l.isEmpty() ? l.get(0) : null;
                     break;
                 case "Nombre":
                     l = daoCliente.queryForEq("nombre", att);
-                    c = !l.isEmpty()?l.get(0):null;
+                    c = !l.isEmpty() ? l.get(0) : null;
                     break;
                 case "Cedula":
                     l = daoCliente.queryForEq("id_cliente", att);
-                    c = !l.isEmpty()?l.get(0):null;
+                    c = !l.isEmpty() ? l.get(0) : null;
                     break;
                 default:
                     break;
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -121,7 +130,7 @@ public class DAO extends Observable {
         List<SaludCliente> l = null;
         try {
             l = daoSaludCliente.queryForEq("cliente", att);
-            c = !l.isEmpty()?l.get(0):null;
+            c = !l.isEmpty() ? l.get(0) : null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -262,9 +271,36 @@ public class DAO extends Observable {
                     break;
             }
         } catch (SQLException ex) {
-            System.out.println("RecuperaAtributosCliente: "+ex.getMessage());
+            System.out.println("RecuperaAtributosCliente: " + ex.getMessage());
         }
         return hash;
+    }
+
+    public List<Cliente> getClientesSegunPagos(String segun) {
+        List<Cliente> clientes = new ArrayList();
+        try {
+            switch (segun) {
+                case "Clientes morosos":
+                    clientes = daoCliente.queryForAll().stream().
+                            filter(a -> {
+                                System.out.println(getDiasEntreFechas(a.getPagos().stream().
+                                        reduce((current, previous) -> previous).get().getFecha()));
+                                return getDiasEntreFechas(a.getPagos().stream().
+                                        reduce((current, previous) -> previous).get().getFecha()) > 30;
+                            }).collect(Collectors.toList());
+                    break;
+                case "Cancelan durante la semana":
+                    break;
+                case "Clientes que están al día":
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("getClientesSegunPagos: " + ex.getMessage());
+        }
+        return clientes;
     }
 
     public void cerrarConexion() {
@@ -273,6 +309,17 @@ public class DAO extends Observable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public long getDiasEntreFechas(String fecha2) {
+        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+         return  ChronoUnit.DAYS.between(fromStringToDate(fecha2), LocalDate.now());
+    }
+
+    public static LocalDate fromStringToDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+        LocalDate newDate = LocalDate.parse(date, formatter);
+        return newDate;
     }
 
 }

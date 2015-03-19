@@ -11,7 +11,7 @@ public class Cliente {
     private String id_cliente;
     @ForeignCollectionField
     private ForeignCollection<Seguimiento> seguimientos;
-    @ForeignCollectionField
+    @ForeignCollectionField(eager = true)
     private ForeignCollection<Pago> pagos;
     @ForeignCollectionField
     private ForeignCollection<Rutina> rutinas;
