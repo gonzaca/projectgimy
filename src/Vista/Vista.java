@@ -3127,13 +3127,15 @@ public class Vista extends javax.swing.JFrame {
                     a.getNombre() + " " + a.getApellidos(),//nombre y apellidos
                     a.getPagos().stream().
                             reduce((current, previous) -> previous).get().getFecha(),//  ultima fecha de pago 
-                    DAO.fromStringToDate(a.getPagos().stream().reduce((current, previous) -> previous).
+                    DAO.fromStringToDate(a.getPagos().stream().
+                            reduce((current, previous) -> previous).
                             get().getFecha() ).plusDays(30).toString(),//proxima fecha de pago
                     ChronoUnit.DAYS.between(
                             DAO.fromStringToDate(a.getPagos().stream().
                                     reduce((current, previous) -> previous).get().getFecha()),
                             DAO.fromStringToDate(
-                                    a.getPagos().stream().reduce((current, previous) -> previous).get().getFecha()
+                                    a.getPagos().stream().
+                                            reduce((current, previous) -> previous).get().getFecha()
                             ).plusDays(30)
                     ) //dias entre el ultimo pago y el siguiente
                 }));

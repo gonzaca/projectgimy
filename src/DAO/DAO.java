@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
@@ -278,28 +280,36 @@ public class DAO extends Observable {
 
     public List<Cliente> getClientesSegunPagos(String segun) {
         List<Cliente> clientes = new ArrayList();
+        List<Cliente> aux = new ArrayList();
         try {
-            switch (segun) {
-                case "Clientes morosos":
-                    clientes = daoCliente.queryForAll().stream().
-                            filter(a -> {
-                                System.out.println(getDiasEntreFechas(a.getPagos().stream().
-                                        reduce((current, previous) -> previous).get().getFecha()));
-                                return getDiasEntreFechas(a.getPagos().stream().
-                                        reduce((current, previous) -> previous).get().getFecha()) > 30;
-                            }).collect(Collectors.toList());
-                    break;
-                case "Cancelan durante la semana":
-                    break;
-                case "Clientes que están al día":
-                    break;
-                default:
-                    break;
-            }
-
+            aux = daoCliente.queryForAll().stream().
+                    filter(a -> {
+                        return !a.getPagos().isEmpty();
+                    }).collect(Collectors.toList());
         } catch (SQLException ex) {
-            System.out.println("getClientesSegunPagos: " + ex.getMessage());
+            System.out.println("segun pagos: " + ex.getMessage());
         }
+        switch (segun) {
+            case "Clientes morosos":
+                clientes = aux.stream().
+                        filter(a -> {
+
+                            Pago conFechaMasActual = a.getPagos().stream()
+                            .reduce((current, previous)
+                                    -> fromStringToDate(current.getFecha()).compareTo(
+                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                            ).get();
+                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;
+                        }).collect(Collectors.toList());
+                break;
+            case "Cancelan durante la semana":
+                break;
+            case "Clientes que están al día":
+                break;
+            default:
+                break;
+        }
+
         return clientes;
     }
 
@@ -312,14 +322,14 @@ public class DAO extends Observable {
     }
 
     public long getDiasEntreFechas(String fecha2) {
-        SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
-         return  ChronoUnit.DAYS.between(fromStringToDate(fecha2), LocalDate.now());
+        return ChronoUnit.DAYS.between(fromStringToDate(fecha2), LocalDate.now());
     }
 
     public static LocalDate fromStringToDate(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
         LocalDate newDate = LocalDate.parse(date, formatter);
+             System.out.println(newDate.toString());
         return newDate;
     }
-
+    
 }
