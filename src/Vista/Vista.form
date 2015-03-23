@@ -2859,7 +2859,7 @@
                     <Component class="javax.swing.JComboBox" name="jcombo_projec_cobros">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;new String[] { &#xa;&quot;Clientes morosos&quot;, &quot;Cancelan durante la semana&quot;,&#xa;&quot;Clientes que est&#xe1;n al d&#xed;a&quot;&#xa;})" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;Clientes morosos&quot;, &quot;Cancelan en los pr&#xf3;ximos 7 d&#xed;as&quot;,&#xa;        &quot;Clientes que est&#xe1;n al d&#xed;a&quot;&#xa;    })" type="code"/>
                         </Property>
                       </Properties>
                       <Events>

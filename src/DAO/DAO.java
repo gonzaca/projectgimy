@@ -282,8 +282,7 @@ public class DAO extends Observable {
         List<Cliente> clientes = new ArrayList();
         List<Cliente> aux = new ArrayList();
         try {
-            aux = daoCliente.queryForAll().stream().
-                    filter(a -> {
+            aux = daoCliente.queryForAll().stream().filter(a -> {
                         return !a.getPagos().isEmpty();
                     }).collect(Collectors.toList());
         } catch (SQLException ex) {
@@ -291,25 +290,35 @@ public class DAO extends Observable {
         }
         switch (segun) {
             case "Clientes morosos":
-                clientes = aux.stream().
-                        filter(a -> {
-
-                            Pago conFechaMasActual = a.getPagos().stream()
-                            .reduce((current, previous)
+                clientes = aux.stream().filter(a -> {
+                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
                                     -> fromStringToDate(current.getFecha()).compareTo(
                                             fromStringToDate(previous.getFecha())) > 0 ? current : previous
-                            ).get();
+                            ).get(); //saca el pago mas reciente
                             return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;
                         }).collect(Collectors.toList());
                 break;
-            case "Cancelan durante la semana":
+            case "Cancelan en los próximos 7 días":
+                clientes = aux.stream().filter(a -> {
+                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
+                                    -> fromStringToDate(current.getFecha()).compareTo(
+                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                            ).get();//saca el pago mas reciente
+                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > (LocalDate.now().lengthOfMonth()-7);
+                        }).collect(Collectors.toList());
                 break;
             case "Clientes que están al día":
+                 clientes = aux.stream().filter(a -> {
+                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
+                                    -> fromStringToDate(current.getFecha()).compareTo(
+                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                            ).get();//saca el pago mas reciente
+                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) < (LocalDate.now().lengthOfMonth()-7);
+                        }).collect(Collectors.toList());
                 break;
             default:
                 break;
         }
-
         return clientes;
     }
 
