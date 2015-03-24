@@ -304,7 +304,8 @@ public class DAO extends Observable {
                                     -> fromStringToDate(current.getFecha()).compareTo(
                                             fromStringToDate(previous.getFecha())) > 0 ? current : previous
                             ).get();//saca el pago mas reciente
-                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > (LocalDate.now().lengthOfMonth()-7);
+                            return (this.getDiasEntreFechas(conFechaMasActual.getFecha())) > ((LocalDate.now().lengthOfMonth()-7) ) &&
+                                   (this.getDiasEntreFechas(conFechaMasActual.getFecha())) < 30;
                         }).collect(Collectors.toList());
                 break;
             case "Clientes que están al día":

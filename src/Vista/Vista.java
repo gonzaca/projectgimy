@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -2121,7 +2122,7 @@ public class Vista extends javax.swing.JFrame {
                 new Object [][] {
                 },
                 new String [] {
-                    "Cliente", "Ultimo pago", "Próximo pago", "Días entre pagos"
+                    "Cliente", "Ultimo pago", "Días que han pasado desde el último pago"
                 }
             ));
             jScrollPane15.setViewportView(jTable10);
@@ -3119,6 +3120,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_cedClienteActionPerformed
 
     private void jcombo_projec_cobrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_projec_cobrosActionPerformed
+        jTable10.removeAll();
         DefaultTableModel model = (DefaultTableModel) jTable10.getModel();
         List<Cliente> list = control.getDao().
                 getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString());
@@ -3127,13 +3129,10 @@ public class Vista extends javax.swing.JFrame {
                     a.getNombre() + " " + a.getApellidos(),//nombre y apellidos
                     a.getPagos().stream().reduce((current, previous) -> previous).get().getFecha(),
                     //  ultima fecha de pago 
-                    DAO.fromStringToDate( a.getPagos().stream().reduce((current, previous) -> previous).
-                            get().getFecha() ).plusDays(30).toString(),//proxima fecha de pago
                     ChronoUnit.DAYS.between(
                             DAO.fromStringToDate(a.getPagos().stream().
                              reduce((current, previous) -> previous).get().getFecha()),
-                            DAO.fromStringToDate( a.getPagos().stream().
-                            reduce((current, previous) -> previous).get().getFecha() ).plusDays(30)
+                            LocalDate.now()
                     ) //dias que han pasado entre hoy y el ultimo pago
                 }));
     }//GEN-LAST:event_jcombo_projec_cobrosActionPerformed
