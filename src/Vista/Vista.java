@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controlador.Controlador;
 import DAO.DAO;
+import static DAO.DAO.fromStringToDate;
 import Modelo.Cliente;
 import Modelo.Pago;
 import Modelo.SaludCliente;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
@@ -254,6 +256,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel79 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
         jcombo_projec_cobros = new javax.swing.JComboBox();
+        jbutton_enviar_correo = new javax.swing.JButton();
         panel_seguimientos = new javax.swing.JPanel();
         label_cliente_seguimiento = new javax.swing.JLabel();
         combo_filtro_seguimiento_valor = new javax.swing.JComboBox();
@@ -2145,6 +2148,14 @@ public class Vista extends javax.swing.JFrame {
                     }
                 });
 
+                jbutton_enviar_correo.setVisible(false);
+                jbutton_enviar_correo.setText("Enviar correo a clientes");
+                jbutton_enviar_correo.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        jbutton_enviar_correoActionPerformed(evt);
+                    }
+                });
+
                 javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
                 jPanel6.setLayout(jPanel6Layout);
                 jPanel6Layout.setHorizontalGroup(
@@ -2152,7 +2163,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane15, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel79)
@@ -2160,7 +2171,8 @@ public class Vista extends javax.swing.JFrame {
                                         .addComponent(jLabel80)
                                         .addGap(18, 18, 18)
                                         .addComponent(jcombo_projec_cobros, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jbutton_enviar_correo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                 );
                 jPanel6Layout.setVerticalGroup(
@@ -2174,6 +2186,8 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jcombo_projec_cobros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbutton_enviar_correo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
@@ -2195,7 +2209,7 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(483, Short.MAX_VALUE))
+                        .addContainerGap(449, Short.MAX_VALUE))
                 );
 
                 javax.swing.GroupLayout panel_control_pagosLayout = new javax.swing.GroupLayout(panel_control_pagos);
@@ -3135,7 +3149,36 @@ public class Vista extends javax.swing.JFrame {
                             LocalDate.now()
                     ) //dias que han pasado entre hoy y el ultimo pago
                 }));
+        
     }//GEN-LAST:event_jcombo_projec_cobrosActionPerformed
+
+    private void jbutton_enviar_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_enviar_correoActionPerformed
+           switch ( jcombo_projec_cobros.getSelectedItem().toString()) {
+            case "Clientes morosos":
+                 jbutton_enviar_correo.setVisible(true);
+                control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
+                        .stream().forEach( a -> control.sendEmail(a.getEmail(),
+                                "Aviso de cobro por morosidad gimnasio Power Gym", 
+                                "Estimado cliente: "+a.getNombre()+" "+ a.getApellidos()+
+                                        "le informamos que usted está moroso con la cancelación mensual del gimnasio"));
+                break;
+            case "Cancelan en los próximos 7 días":
+                jbutton_enviar_correo.setVisible(true);
+                 control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
+                        .stream().forEach( a -> control.sendEmail(a.getEmail(),
+                                "Aviso de cobro gimnasio Power Gym", 
+                                "Estimado cliente: "+a.getNombre()+" "+ a.getApellidos()+
+                                        "le informamos que usted debe cancelar su mensualidad en los próximos 7 días,"+"/n"+
+                                        " gracias por ser parte de Power Gym! "));
+                break;
+            case "Clientes que están al día":
+                 jbutton_enviar_correo.setVisible(false);
+                break;
+            default:
+                jbutton_enviar_correo.setVisible(false);
+                break;
+        }
+    }//GEN-LAST:event_jbutton_enviar_correoActionPerformed
 
     public static void look() {
         try {//com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
@@ -3532,6 +3575,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jbEditarCliente;
     private javax.swing.JButton jbRegistrarCliente;
     private javax.swing.JButton jb_salvar_en_archivo;
+    private javax.swing.JButton jbutton_enviar_correo;
     private javax.swing.JComboBox jcb_proyec;
     private javax.swing.JComboBox jcombo_projec_cobros;
     private javax.swing.JLabel jl_PGS;

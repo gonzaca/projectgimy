@@ -295,7 +295,7 @@ public class DAO extends Observable {
                                     -> fromStringToDate(current.getFecha()).compareTo(
                                             fromStringToDate(previous.getFecha())) > 0 ? current : previous
                             ).get(); //saca el pago mas reciente
-                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;
+                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;// se haya pasado de 30 días
                         }).collect(Collectors.toList());
                 break;
             case "Cancelan en los próximos 7 días":
@@ -304,8 +304,9 @@ public class DAO extends Observable {
                                     -> fromStringToDate(current.getFecha()).compareTo(
                                             fromStringToDate(previous.getFecha())) > 0 ? current : previous
                             ).get();//saca el pago mas reciente
-                            return (this.getDiasEntreFechas(conFechaMasActual.getFecha())) > ((LocalDate.now().lengthOfMonth()-7) ) &&
-                                   (this.getDiasEntreFechas(conFechaMasActual.getFecha())) < 30;
+                            return (this.getDiasEntreFechas(conFechaMasActual.getFecha())) > // sea haya pasado de 23 dias
+                                    (LocalDate.now().lengthOfMonth()-7) 
+                                    &&  (this.getDiasEntreFechas(conFechaMasActual.getFecha())) < 30;// pero no se haya pasado de 30 
                         }).collect(Collectors.toList());
                 break;
             case "Clientes que están al día":
@@ -315,6 +316,7 @@ public class DAO extends Observable {
                                             fromStringToDate(previous.getFecha())) > 0 ? current : previous
                             ).get();//saca el pago mas reciente
                             return this.getDiasEntreFechas(conFechaMasActual.getFecha()) < (LocalDate.now().lengthOfMonth()-7);
+                            //no tengan menos de 23 días de haber cancelado
                         }).collect(Collectors.toList());
                 break;
             default:
