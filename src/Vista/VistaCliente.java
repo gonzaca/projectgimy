@@ -116,6 +116,8 @@ public class VistaCliente extends javax.swing.JFrame {
         jl_PGS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jl_PGS.setText("Power Gym System");
 
+        lb_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/login_icon_user.png"))); // NOI18N
+
         lb_nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lb_nombre.setText("Nombre:");
 
