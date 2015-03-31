@@ -11,3 +11,4 @@ Para bajar los cambios de git:
 	
 Nota: SI les da conflictos al bajar borran manualmente el private.xml en la carpeta nbcproject 
       y vueven a hacer el git fetch y git merge origin/master.
+	  
