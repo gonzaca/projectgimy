@@ -9,16 +9,20 @@ import javax.swing.JFrame;
 import javax.swing.UnsupportedLookAndFeelException;
 import Controlador.Controlador;
 import DAO.DAO;
-import static DAO.DAO.fromStringToDate;
 import Modelo.Cliente;
 import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,7 +37,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
@@ -155,48 +158,50 @@ public class Vista extends javax.swing.JFrame {
         jBCrearRutina = new javax.swing.JButton();
         jLabel83 = new javax.swing.JLabel();
         panel_datos1 = new javax.swing.JScrollPane();
+        panel_imp_rutinas = new javax.swing.JPanel();
         panel_crear_rutina = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jTextPane1 = new javax.swing.JTextPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jBCreateRutina = new javax.swing.JButton();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
+        jTextPane3 = new javax.swing.JTextPane();
+        jTextPane4 = new javax.swing.JTextPane();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        jBCreateRutina1 = new javax.swing.JButton();
+        jScrollPane32 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         tablePiernas = new javax.swing.JTable();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        jScrollPane18 = new javax.swing.JScrollPane();
+        jScrollPane33 = new javax.swing.JScrollPane();
+        jScrollPane34 = new javax.swing.JScrollPane();
         tableTrapecio = new javax.swing.JTable();
-        jScrollPane19 = new javax.swing.JScrollPane();
-        jScrollPane14 = new javax.swing.JScrollPane();
+        jScrollPane35 = new javax.swing.JScrollPane();
+        jScrollPane36 = new javax.swing.JScrollPane();
         tablePantorrilla = new javax.swing.JTable();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        jScrollPane21 = new javax.swing.JScrollPane();
+        jScrollPane37 = new javax.swing.JScrollPane();
+        jScrollPane38 = new javax.swing.JScrollPane();
         tableAntebraso = new javax.swing.JTable();
-        jScrollPane22 = new javax.swing.JScrollPane();
-        jScrollPane23 = new javax.swing.JScrollPane();
+        jScrollPane39 = new javax.swing.JScrollPane();
+        jScrollPane40 = new javax.swing.JScrollPane();
         tableBiceps1 = new javax.swing.JTable();
-        jScrollPane24 = new javax.swing.JScrollPane();
-        jScrollPane25 = new javax.swing.JScrollPane();
+        jScrollPane41 = new javax.swing.JScrollPane();
+        jScrollPane42 = new javax.swing.JScrollPane();
         tableTriceps = new javax.swing.JTable();
-        jScrollPane26 = new javax.swing.JScrollPane();
-        jScrollPane27 = new javax.swing.JScrollPane();
+        jScrollPane43 = new javax.swing.JScrollPane();
+        jScrollPane44 = new javax.swing.JScrollPane();
         tableHombros = new javax.swing.JTable();
-        jScrollPane28 = new javax.swing.JScrollPane();
-        jScrollPane29 = new javax.swing.JScrollPane();
+        jScrollPane45 = new javax.swing.JScrollPane();
+        jScrollPane46 = new javax.swing.JScrollPane();
         tablePecho = new javax.swing.JTable();
-        jScrollPane30 = new javax.swing.JScrollPane();
-        jScrollPane31 = new javax.swing.JScrollPane();
+        jScrollPane47 = new javax.swing.JScrollPane();
+        jScrollPane48 = new javax.swing.JScrollPane();
         tableEspalda = new javax.swing.JTable();
+        bt_Print = new javax.swing.JButton();
         panel_asignar_rutina = new javax.swing.JPanel();
         cedCliente1 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
@@ -348,12 +353,12 @@ public class Vista extends javax.swing.JFrame {
             panel_inicioLayout.setHorizontalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(254, Short.MAX_VALUE)
+                    .addContainerGap(175, Short.MAX_VALUE)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jL_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(254, Short.MAX_VALUE))
+                    .addContainerGap(174, Short.MAX_VALUE))
             );
             panel_inicioLayout.setVerticalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1065,12 +1070,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE))
+                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(326, Short.MAX_VALUE)
+                        .addContainerGap(247, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(327, Short.MAX_VALUE)))
+                        .addContainerGap(247, Short.MAX_VALUE)))
             );
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1078,9 +1083,9 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(183, Short.MAX_VALUE)
+                        .addContainerGap(185, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(708, Short.MAX_VALUE)))
+                        .addContainerGap(706, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Registro del Cliente", panel_registro_cliente);
@@ -1163,56 +1168,56 @@ public class Vista extends javax.swing.JFrame {
             );
 
             panel_datos1.setBorder(null);
+            panel_datos1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
             panel_datos1.setAutoscrolls(true);
             panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             panel_crear_rutina.setVisible(false);
-            panel_crear_rutina.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
 
-            jLabel28.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel28.setText("Piernas");
+            jLabel39.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel39.setText("Piernas");
 
-            jLabel29.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel29.setText("Pantorillas");
+            jLabel40.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel40.setText("Pantorillas");
 
-            jLabel42.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel42.setText("Biceps");
+            jLabel52.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel52.setText("Biceps");
 
-            jLabel43.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel43.setText("Triceps");
+            jLabel74.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel74.setText("Triceps");
 
-            jLabel44.setText("Nombre de la Rutina:");
+            jLabel75.setText("Nombre de la Rutina:");
 
-            jLabel45.setText("Codigo de la Rutina:");
+            jLabel92.setText("Codigo de la Rutina:");
 
-            jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+            jTextPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-            jTextPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+            jTextPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-            jLabel46.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel46.setText("Antebrazo");
+            jLabel93.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel93.setText("Antebrazo");
 
-            jLabel47.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel47.setText("Hombros");
+            jLabel94.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel94.setText("Hombros");
 
-            jLabel48.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel48.setText("Pecho");
+            jLabel95.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel95.setText("Pecho");
 
-            jLabel49.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel49.setText("Espalda");
+            jLabel96.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel96.setText("Espalda");
 
-            jLabel50.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-            jLabel50.setText("Trapecios");
+            jLabel97.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+            jLabel97.setText("Trapecios");
 
-            jBCreateRutina.setText("Crear Rutina");
-            jBCreateRutina.addActionListener(new java.awt.event.ActionListener() {
+            jBCreateRutina1.setText("Crear Rutina");
+            jBCreateRutina1.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jBCreateRutinaActionPerformed(evt);
+                    jBCreateRutina1ActionPerformed(evt);
                 }
             });
 
-            jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tablePiernas.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1244,11 +1249,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane3.setViewportView(tablePiernas);
+            jScrollPane4.setViewportView(tablePiernas);
 
-            jScrollPane16.setViewportView(jScrollPane3);
+            jScrollPane32.setViewportView(jScrollPane4);
 
-            jScrollPane18.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane34.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableTrapecio.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1276,11 +1281,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane18.setViewportView(tableTrapecio);
+            jScrollPane34.setViewportView(tableTrapecio);
 
-            jScrollPane17.setViewportView(jScrollPane18);
+            jScrollPane33.setViewportView(jScrollPane34);
 
-            jScrollPane14.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane36.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tablePantorrilla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1308,11 +1313,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane14.setViewportView(tablePantorrilla);
+            jScrollPane36.setViewportView(tablePantorrilla);
 
-            jScrollPane19.setViewportView(jScrollPane14);
+            jScrollPane35.setViewportView(jScrollPane36);
 
-            jScrollPane21.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane38.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableAntebraso.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1340,11 +1345,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane21.setViewportView(tableAntebraso);
+            jScrollPane38.setViewportView(tableAntebraso);
 
-            jScrollPane20.setViewportView(jScrollPane21);
+            jScrollPane37.setViewportView(jScrollPane38);
 
-            jScrollPane23.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane40.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableBiceps1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1375,11 +1380,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane23.setViewportView(tableBiceps1);
+            jScrollPane40.setViewportView(tableBiceps1);
 
-            jScrollPane22.setViewportView(jScrollPane23);
+            jScrollPane39.setViewportView(jScrollPane40);
 
-            jScrollPane25.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane42.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableTriceps.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1409,11 +1414,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane25.setViewportView(tableTriceps);
+            jScrollPane42.setViewportView(tableTriceps);
 
-            jScrollPane24.setViewportView(jScrollPane25);
+            jScrollPane41.setViewportView(jScrollPane42);
 
-            jScrollPane27.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane44.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableHombros.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1447,11 +1452,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane27.setViewportView(tableHombros);
+            jScrollPane44.setViewportView(tableHombros);
 
-            jScrollPane26.setViewportView(jScrollPane27);
+            jScrollPane43.setViewportView(jScrollPane44);
 
-            jScrollPane29.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane46.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tablePecho.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1484,11 +1489,11 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane29.setViewportView(tablePecho);
+            jScrollPane46.setViewportView(tablePecho);
 
-            jScrollPane28.setViewportView(jScrollPane29);
+            jScrollPane45.setViewportView(jScrollPane46);
 
-            jScrollPane31.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+            jScrollPane48.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
             tableEspalda.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -1521,100 +1526,138 @@ public class Vista extends javax.swing.JFrame {
                     return canEdit [columnIndex];
                 }
             });
-            jScrollPane31.setViewportView(tableEspalda);
+            jScrollPane48.setViewportView(tableEspalda);
 
-            jScrollPane30.setViewportView(jScrollPane31);
+            jScrollPane47.setViewportView(jScrollPane48);
 
             javax.swing.GroupLayout panel_crear_rutinaLayout = new javax.swing.GroupLayout(panel_crear_rutina);
             panel_crear_rutina.setLayout(panel_crear_rutinaLayout);
             panel_crear_rutinaLayout.setHorizontalGroup(
                 panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_crear_rutinaLayout.createSequentialGroup()
-                    .addContainerGap(48, Short.MAX_VALUE)
                     .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane28, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel29)
-                        .addComponent(jLabel28)
-                        .addComponent(jLabel42)
-                        .addComponent(jLabel43)
-                        .addComponent(jLabel46)
-                        .addComponent(jLabel47)
-                        .addComponent(jLabel50)
-                        .addComponent(jLabel49)
-                        .addComponent(jLabel48)
-                        .addComponent(jBCreateRutina)
-                        .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_crear_rutinaLayout.createSequentialGroup()
-                                .addComponent(jLabel44)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextPane1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_crear_rutinaLayout.createSequentialGroup()
-                                .addComponent(jLabel45)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 171, Short.MAX_VALUE))
+                        .addGroup(panel_crear_rutinaLayout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane47, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane45, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane37, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane41, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane39, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane35, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel40)
+                                .addComponent(jLabel39)
+                                .addComponent(jLabel52)
+                                .addComponent(jLabel74)
+                                .addComponent(jLabel93)
+                                .addComponent(jLabel94)
+                                .addComponent(jLabel97)
+                                .addComponent(jLabel96)
+                                .addComponent(jLabel95)
+                                .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_crear_rutinaLayout.createSequentialGroup()
+                                        .addComponent(jLabel75)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextPane3))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_crear_rutinaLayout.createSequentialGroup()
+                                        .addComponent(jLabel92)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crear_rutinaLayout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBCreateRutina1)
+                            .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(10, 10, 10))
             );
             panel_crear_rutinaLayout.setVerticalGroup(
                 panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_crear_rutinaLayout.createSequentialGroup()
-                    .addGap(17, 17, 17)
+                    .addGap(25, 25, 25)
                     .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel44)
-                        .addComponent(jTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel75)
+                        .addComponent(jTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel45)
-                        .addComponent(jTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel92)
+                        .addComponent(jTextPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
-                    .addComponent(jLabel28)
+                    .addComponent(jLabel39)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)
-                    .addComponent(jLabel29)
+                    .addComponent(jLabel40)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane35, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(16, 16, 16)
-                    .addComponent(jLabel42)
+                    .addComponent(jLabel52)
                     .addGap(4, 4, 4)
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane39, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
-                    .addComponent(jLabel43)
+                    .addComponent(jLabel74)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane41, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jLabel46)
+                    .addComponent(jLabel93)
                     .addGap(4, 4, 4)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane37, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)
-                    .addComponent(jLabel47)
+                    .addComponent(jLabel94)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(12, 12, 12)
-                    .addComponent(jLabel48)
+                    .addComponent(jLabel95)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane28, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane45, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(21, 21, 21)
-                    .addComponent(jLabel49)
+                    .addComponent(jLabel96)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane47, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(21, 21, 21)
-                    .addComponent(jLabel50)
+                    .addComponent(jLabel97)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBCreateRutina)
-                    .addGap(49, 49, 49))
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jBCreateRutina1)
+                    .addContainerGap())
             );
 
-            panel_datos1.setViewportView(panel_crear_rutina);
+            bt_Print.setBackground(new java.awt.Color(255, 255, 255));
+            bt_Print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/printer.png"))); // NOI18N
+            bt_Print.setBorder(null);
+            bt_Print.setBorderPainted(false);
+            bt_Print.setVisible(false);
+            bt_Print.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    bt_PrintActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout panel_imp_rutinasLayout = new javax.swing.GroupLayout(panel_imp_rutinas);
+            panel_imp_rutinas.setLayout(panel_imp_rutinasLayout);
+            panel_imp_rutinasLayout.setHorizontalGroup(
+                panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_imp_rutinasLayout.createSequentialGroup()
+                    .addContainerGap(57, Short.MAX_VALUE)
+                    .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(12, Short.MAX_VALUE))
+            );
+            panel_imp_rutinasLayout.setVerticalGroup(
+                panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                    .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 24, Short.MAX_VALUE))
+                .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            panel_datos1.setViewportView(panel_imp_rutinas);
 
             panel_asignar_rutina.setVisible(false);
 
@@ -1680,31 +1723,25 @@ public class Vista extends javax.swing.JFrame {
                 panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
                     .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(674, 674, 674))
+                    .addGap(0, 0, 0)
+                    .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
-                        .addContainerGap(128, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_asignar_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(524, 524, 524)))
-                .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
-                        .addGap(256, 256, 256)
-                        .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
-                        .addContainerGap()))
             );
             panel_registro_rutinasLayout.setVerticalGroup(
                 panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 1031, Short.MAX_VALUE)
+                .addComponent(panel_menu1, javax.swing.GroupLayout.DEFAULT_SIZE, 979, Short.MAX_VALUE)
+                .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
+                    .addComponent(panel_datos1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
-                        .addContainerGap(63, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_asignar_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(720, 720, 720)))
-                .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panel_datos1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(360, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Registro de Rutinas", panel_registro_rutinas);
@@ -1992,13 +2029,13 @@ public class Vista extends javax.swing.JFrame {
             );
             panel_registro_nutricionalLayout.setVerticalGroup(
                 panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 1031, Short.MAX_VALUE)
+                .addComponent(panel_menu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panel_datos4, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
                         .addGap(262, 262, 262)
                         .addComponent(panel_asignar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(552, Short.MAX_VALUE)))
+                        .addContainerGap(563, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Registro Nutricional", panel_registro_nutricional);
@@ -2196,11 +2233,11 @@ public class Vista extends javax.swing.JFrame {
                 jPanel1Layout.setHorizontalGroup(
                     jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(58, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(59, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 jPanel1Layout.setVerticalGroup(
                     jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2209,7 +2246,7 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(449, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 javax.swing.GroupLayout panel_control_pagosLayout = new javax.swing.GroupLayout(panel_control_pagos);
@@ -2453,9 +2490,9 @@ public class Vista extends javax.swing.JFrame {
                                             .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                             .addComponent(combo_busqueda_seguimiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addContainerGap(92, Short.MAX_VALUE)
+                                .addContainerGap(13, Short.MAX_VALUE)
                                 .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(92, Short.MAX_VALUE))
+                        .addContainerGap(12, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2570,7 +2607,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_busquedaLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(134, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                 );
                 panel_busquedaLayout.setVerticalGroup(
                     panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2752,7 +2789,7 @@ public class Vista extends javax.swing.JFrame {
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
                     );
                     layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2890,13 +2927,14 @@ public class Vista extends javax.swing.JFrame {
     private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
         panel_asignar_rutina.setVisible(false);
         panel_crear_rutina.setVisible(true);
+        bt_Print.setVisible(true);
         panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel_crear_rutina.paintComponents(panel_crear_rutina.getGraphics());
     }//GEN-LAST:event_jBEditarRutinaActionPerformed
 
     private void jBAsignarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsignarRutinaActionPerformed
         if (!panel_asignar_rutina.isVisible()) {
-
+            bt_Print.setVisible(false);
             panel_crear_rutina.setVisible(false);
             panel_asignar_rutina.setVisible(true);
             panel_asignar_rutina.validate();
@@ -2911,6 +2949,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void jBCrearRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearRutinaActionPerformed
         panel_asignar_rutina.setVisible(false);
+        bt_Print.setVisible(true);
         panel_crear_rutina.setVisible(true);
         panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel_crear_rutina.paintComponents(panel_crear_rutina.getGraphics());
@@ -3083,10 +3122,6 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_diabeticoActionPerformed
 
-    private void jBCreateRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutinaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBCreateRutinaActionPerformed
-
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
 
     }//GEN-LAST:event_apellidosActionPerformed
@@ -3179,6 +3214,36 @@ public class Vista extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_jbutton_enviar_correoActionPerformed
+
+    private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCreateRutina1ActionPerformed
+
+    private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setJobName("Print Java Component");
+ 
+        job.setPrintable (new Printable() {    
+            public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
+                if (pageIndex > 0) {
+                    return(NO_SUCH_PAGE);
+                } else {
+                    Graphics2D g2d = (Graphics2D)g;
+                    g2d.translate(pageFormat.getImageableX(), 
+                    pageFormat.getImageableY());
+                    panel_crear_rutina.paint(g2d);
+                    return(PAGE_EXISTS); 
+                }
+            }
+        });
+        if (job.printDialog()) {
+            try {
+                job.print();
+            } catch (Exception e) {
+                System.out.println("Error en el Printing de Rutinas");
+            }
+        }
+    }//GEN-LAST:event_bt_PrintActionPerformed
 
     public static void look() {
         try {//com.jtattoo.plaf.aluminium.AluminiumLookAndFeel
@@ -3375,6 +3440,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton boton_cancelar_cobro;
     private javax.swing.JTextField brazo_derecho;
     private javax.swing.JTextField brazo_izquierdo;
+    private javax.swing.JButton bt_Print;
     private javax.swing.JButton btn_asignar_pNutricional;
     private javax.swing.JButton btn_crear_perfil_Nutricional;
     private javax.swing.JTextField cadera;
@@ -3423,7 +3489,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jBAddCliente;
     private javax.swing.JButton jBAsignarRutina;
     private javax.swing.JButton jBCrearRutina;
-    private javax.swing.JButton jBCreateRutina;
+    private javax.swing.JButton jBCreateRutina1;
     private javax.swing.JButton jBDesactivarCliente;
     private javax.swing.JButton jBEditarRutina;
     private javax.swing.JButton jButton11;
@@ -3466,8 +3532,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -3478,18 +3542,12 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
@@ -3513,6 +3571,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
@@ -3531,6 +3591,12 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
@@ -3542,25 +3608,25 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
-    private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane17;
-    private javax.swing.JScrollPane jScrollPane18;
-    private javax.swing.JScrollPane jScrollPane19;
-    private javax.swing.JScrollPane jScrollPane20;
-    private javax.swing.JScrollPane jScrollPane21;
-    private javax.swing.JScrollPane jScrollPane22;
-    private javax.swing.JScrollPane jScrollPane23;
-    private javax.swing.JScrollPane jScrollPane24;
-    private javax.swing.JScrollPane jScrollPane25;
-    private javax.swing.JScrollPane jScrollPane26;
-    private javax.swing.JScrollPane jScrollPane27;
-    private javax.swing.JScrollPane jScrollPane28;
-    private javax.swing.JScrollPane jScrollPane29;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane30;
-    private javax.swing.JScrollPane jScrollPane31;
+    private javax.swing.JScrollPane jScrollPane32;
+    private javax.swing.JScrollPane jScrollPane33;
+    private javax.swing.JScrollPane jScrollPane34;
+    private javax.swing.JScrollPane jScrollPane35;
+    private javax.swing.JScrollPane jScrollPane36;
+    private javax.swing.JScrollPane jScrollPane37;
+    private javax.swing.JScrollPane jScrollPane38;
+    private javax.swing.JScrollPane jScrollPane39;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane40;
+    private javax.swing.JScrollPane jScrollPane41;
+    private javax.swing.JScrollPane jScrollPane42;
+    private javax.swing.JScrollPane jScrollPane43;
+    private javax.swing.JScrollPane jScrollPane44;
+    private javax.swing.JScrollPane jScrollPane45;
+    private javax.swing.JScrollPane jScrollPane46;
+    private javax.swing.JScrollPane jScrollPane47;
+    private javax.swing.JScrollPane jScrollPane48;
     private javax.swing.JTextField jTFNombre2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable10;
@@ -3569,8 +3635,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
+    private javax.swing.JTextPane jTextPane4;
     private javax.swing.JButton jbDesactivarCliente;
     private javax.swing.JButton jbEditarCliente;
     private javax.swing.JButton jbRegistrarCliente;
@@ -3600,6 +3666,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane panel_datos1;
     private javax.swing.JScrollPane panel_datos4;
     private javax.swing.JPanel panel_datos_seg;
+    private javax.swing.JPanel panel_imp_rutinas;
     private javax.swing.JPanel panel_inicio;
     private javax.swing.JPanel panel_menu;
     private javax.swing.JPanel panel_menu1;
