@@ -4,8 +4,13 @@ import Controlador.Controlador;
 import Modelo.Cliente;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterJob;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -84,11 +89,49 @@ public class VistaCliente extends javax.swing.JFrame {
         lb_apellidos = new javax.swing.JLabel();
         lb_cedula = new javax.swing.JLabel();
         panel_rutina = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jButton1 = new javax.swing.JButton();
+        panel_datos1 = new javax.swing.JScrollPane();
+        panel_imp_rutinas = new javax.swing.JPanel();
+        panel_crear_rutina = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        jLabel95 = new javax.swing.JLabel();
+        jLabel96 = new javax.swing.JLabel();
+        jLabel97 = new javax.swing.JLabel();
+        jBCreateRutina1 = new javax.swing.JButton();
+        jScrollPane32 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tablePiernas = new javax.swing.JTable();
+        jScrollPane33 = new javax.swing.JScrollPane();
+        jScrollPane34 = new javax.swing.JScrollPane();
+        tableTrapecio = new javax.swing.JTable();
+        jScrollPane35 = new javax.swing.JScrollPane();
+        jScrollPane36 = new javax.swing.JScrollPane();
+        tablePantorrilla = new javax.swing.JTable();
+        jScrollPane37 = new javax.swing.JScrollPane();
+        jScrollPane38 = new javax.swing.JScrollPane();
+        tableAntebraso = new javax.swing.JTable();
+        jScrollPane39 = new javax.swing.JScrollPane();
+        jScrollPane40 = new javax.swing.JScrollPane();
+        tableBiceps1 = new javax.swing.JTable();
+        jScrollPane41 = new javax.swing.JScrollPane();
+        jScrollPane42 = new javax.swing.JScrollPane();
+        tableTriceps = new javax.swing.JTable();
+        jScrollPane43 = new javax.swing.JScrollPane();
+        jScrollPane44 = new javax.swing.JScrollPane();
+        tableHombros = new javax.swing.JTable();
+        jScrollPane45 = new javax.swing.JScrollPane();
+        jScrollPane46 = new javax.swing.JScrollPane();
+        tablePecho = new javax.swing.JTable();
+        jScrollPane47 = new javax.swing.JScrollPane();
+        jScrollPane48 = new javax.swing.JScrollPane();
+        tableEspalda = new javax.swing.JTable();
+        bt_Print = new javax.swing.JButton();
         panel_proyeccion = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jLabel77 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
@@ -96,11 +139,11 @@ public class VistaCliente extends javax.swing.JFrame {
         jp_chart1 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         panel_cobro = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        lb_proximo_cobro = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,89 +175,522 @@ public class VistaCliente extends javax.swing.JFrame {
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(296, Short.MAX_VALUE)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jL_bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_PGS))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lb_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lb_apellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                    .addComponent(lb_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(152, Short.MAX_VALUE))
+                    .addComponent(jl_PGS)
+                    .addGroup(panel_inicioLayout.createSequentialGroup()
+                        .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lb_apellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(lb_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addContainerGap(149, Short.MAX_VALUE)
                 .addComponent(jl_PGS)
                 .addGap(18, 18, 18)
                 .addComponent(jL_bienvenido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_inicioLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_inicioLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
                         .addComponent(lb_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel2.setText("Detalle de su rutina actual");
+        panel_datos1.setBorder(null);
+        panel_datos1.setAutoscrolls(true);
 
-        jScrollPane1.setViewportView(jEditorPane1);
+        jLabel39.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel39.setText("Piernas");
 
-        jButton1.setText("Salvar");
+        jLabel40.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel40.setText("Pantorillas");
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel52.setText("Biceps");
+
+        jLabel74.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel74.setText("Triceps");
+
+        jLabel93.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel93.setText("Antebrazo");
+
+        jLabel94.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel94.setText("Hombros");
+
+        jLabel95.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel95.setText("Pecho");
+
+        jLabel96.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel96.setText("Espalda");
+
+        jLabel97.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel97.setText("Trapecios");
+
+        jBCreateRutina1.setText("Crear Rutina");
+        jBCreateRutina1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCreateRutina1ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tablePiernas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Extension de piernas", null, null, null},
+                {"Sentadillas", null, null, null},
+                {"Hat Squat", null, null, null},
+                {"Flexion de Piernas", null, null, null},
+                {"Buenos dias barra", null, null, null},
+                {"Sentadillas por delante", null, null, null},
+                {"Desplante", null, null, null},
+                {"Abductores", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tablePiernas);
+
+        jScrollPane32.setViewportView(jScrollPane4);
+
+        jScrollPane34.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableTrapecio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Robin", null, null, null},
+                {"Encogimientos barra por delante", null, null, null},
+                {"Encogimientos con mancuernas", null, null, null},
+                {"Encogimientos barra por detrás", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane34.setViewportView(tableTrapecio);
+
+        jScrollPane33.setViewportView(jScrollPane34);
+
+        jScrollPane36.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tablePantorrilla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Elevacion de Talones", null, null, null},
+                {"Pantorillas de Sentado", null, null, null},
+                {"Pantorillas en Maquina Press", null, null, null},
+                {"Pantorilla con Mancuerna", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane36.setViewportView(tablePantorrilla);
+
+        jScrollPane35.setViewportView(jScrollPane36);
+
+        jScrollPane38.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableAntebraso.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Curl de Muñeca con Barra", null, null, null},
+                {"Curl Dorsal con Barra", null, null, null},
+                {"Curl de Muñecas por detras con barra", null, null, null},
+                {"Rollos", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane38.setViewportView(tableAntebraso);
+
+        jScrollPane37.setViewportView(jScrollPane38);
+
+        jScrollPane40.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableBiceps1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Curl con barra", null, null, null},
+                {"Curl con Mancuerna", null, null, null},
+                {"Curl Scott", null, null, null},
+                {"Curl Scott Mancuerna", null, null, null},
+                {"Curl Concentrado", null, null, null},
+                {"Curl Estilo 21", null, null, null},
+                {"Curl con Cable", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane40.setViewportView(tableBiceps1);
+
+        jScrollPane39.setViewportView(jScrollPane40);
+
+        jScrollPane42.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableTriceps.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Flexion con Barra", null, null, null},
+                {"Flexion con Mancuerna", null, null, null},
+                {"Flexion estilo Copa", null, null, null},
+                {"Press francés con barra", null, null, null},
+                {"Patada Tricep", null, null, null},
+                {"Polea Tricep", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane42.setViewportView(tableTriceps);
+
+        jScrollPane41.setViewportView(jScrollPane42);
+
+        jScrollPane44.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableHombros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Press militar por delante", null, null, null},
+                {"Press militar por detras", null, null, null},
+                {"Press militar barra", null, null, null},
+                {"Press militar estilo Arnold", null, null, null},
+                {"Laterales con mancuernas", null, null, null},
+                {"Lateral inclinados", null, null, null},
+                {"Lateral a una mano con mancuerna", null, null, null},
+                {"Mancuernas al frente", null, null, null},
+                {"Barra al frente", null, null, null},
+                {"Mancuernas atras", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane44.setViewportView(tableHombros);
+
+        jScrollPane43.setViewportView(jScrollPane44);
+
+        jScrollPane46.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tablePecho.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Press de banca", null, null, null},
+                {"Press inclinado con barra", null, null, null},
+                {"Press declinado con barra", null, null, null},
+                {"Press declinado con mancuernas", null, null, null},
+                {"Voladoras", null, null, null},
+                {"Voladoras Inclinadas", null, null, null},
+                {"Pull Over con Barra", null, null, null},
+                {"Pull Over con mancuernas", null, null, null},
+                {"Fondos Disco", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane46.setViewportView(tablePecho);
+
+        jScrollPane45.setViewportView(jScrollPane46);
+
+        jScrollPane48.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        tableEspalda.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Polea por detrás", null, null, null},
+                {"Polea por delante", null, null, null},
+                {"Remo sentado con cable", null, null, null},
+                {"Remo Fijo", null, null, null},
+                {"Remo con barra fija", null, null, null},
+                {"Buenos dias con barra", null, null, null},
+                {"Remo con mancuernas", null, null, null},
+                {"Barra fija", null, null, null},
+                {"Rotaciones Olimpicas", null, null, null}
+            },
+            new String [] {
+                "Ejercicio", "Serie", "Repeticion", "Peso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane48.setViewportView(tableEspalda);
+
+        jScrollPane47.setViewportView(jScrollPane48);
+
+        javax.swing.GroupLayout panel_crear_rutinaLayout = new javax.swing.GroupLayout(panel_crear_rutina);
+        panel_crear_rutina.setLayout(panel_crear_rutinaLayout);
+        panel_crear_rutinaLayout.setHorizontalGroup(
+            panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crear_rutinaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBCreateRutina1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panel_crear_rutinaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane47, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane45, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane37, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane41, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane39, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane35, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel52)
+                    .addComponent(jLabel74)
+                    .addComponent(jLabel93)
+                    .addComponent(jLabel94)
+                    .addComponent(jLabel97)
+                    .addComponent(jLabel96)
+                    .addComponent(jLabel95))
+                .addGap(10, 10, 10))
+        );
+        panel_crear_rutinaLayout.setVerticalGroup(
+            panel_crear_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_crear_rutinaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane35, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(jLabel52)
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane39, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel74)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane41, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel93)
+                .addGap(4, 4, 4)
+                .addComponent(jScrollPane37, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel94)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane43, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel95)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane45, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel96)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane47, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel97)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane33, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jBCreateRutina1)
+                .addContainerGap())
+        );
+
+        bt_Print.setBackground(new java.awt.Color(255, 255, 255));
+        bt_Print.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/printer.png"))); // NOI18N
+        bt_Print.setBorder(null);
+        bt_Print.setBorderPainted(false);
+        bt_Print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_PrintActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_imp_rutinasLayout = new javax.swing.GroupLayout(panel_imp_rutinas);
+        panel_imp_rutinas.setLayout(panel_imp_rutinasLayout);
+        panel_imp_rutinasLayout.setHorizontalGroup(
+            panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_imp_rutinasLayout.createSequentialGroup()
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+        panel_imp_rutinasLayout.setVerticalGroup(
+            panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
+            .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panel_datos1.setViewportView(panel_imp_rutinas);
 
         javax.swing.GroupLayout panel_rutinaLayout = new javax.swing.GroupLayout(panel_rutina);
         panel_rutina.setLayout(panel_rutinaLayout);
         panel_rutinaLayout.setHorizontalGroup(
             panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_rutinaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(347, 347, 347))
-            .addGroup(panel_rutinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE))
         );
         panel_rutinaLayout.setVerticalGroup(
             panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_rutinaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Rutina(s) actual(es)", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pesa.png")), panel_rutina); // NOI18N
+        jTabbedPane1.addTab("Rutina actual", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pesa.png")), panel_rutina); // NOI18N
 
         jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(102, 102, 0)));
 
-        jLabel77.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel77.setForeground(new java.awt.Color(204, 0, 51));
-        jLabel77.setText(" Proyección de los cambios en medidas físicas y corporales del cliente");
+        jLabel77.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel77.setText(" Proyección de los cambios en medidas físicas y corporales");
         jLabel77.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 204)));
 
-        jLabel78.setText("Atributo a proyectar del cliente ");
+        jLabel78.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel78.setText("Atributo a proyectar del cliente: ");
 
         jcb_proyec1.setModel(new javax.swing.DefaultComboBoxModel(
             new String[] {
@@ -269,11 +745,11 @@ public class VistaCliente extends javax.swing.JFrame {
             jp_chart1.setLayout(jp_chart1Layout);
             jp_chart1Layout.setHorizontalGroup(
                 jp_chart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 698, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
             );
             jp_chart1Layout.setVerticalGroup(
                 jp_chart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 523, Short.MAX_VALUE)
             );
 
             jButton8.setText("Exportar gráfico");
@@ -283,79 +759,120 @@ public class VistaCliente extends javax.swing.JFrame {
                 }
             });
 
-            javax.swing.GroupLayout panel_proyeccionLayout = new javax.swing.GroupLayout(panel_proyeccion);
-            panel_proyeccion.setLayout(panel_proyeccionLayout);
-            panel_proyeccionLayout.setHorizontalGroup(
-                panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                    .addGroup(panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addGap(340, 340, 340)
-                            .addComponent(jButton8))
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jp_chart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jp_chart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton8)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
-            panel_proyeccionLayout.setVerticalGroup(
-                panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_proyeccionLayout.createSequentialGroup()
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jp_chart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGap(18, 18, 18)
                     .addComponent(jButton8)
-                    .addContainerGap())
+                    .addGap(26, 26, 26))
             );
 
-            jTabbedPane1.addTab("Proyección del cliente", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_proyeccion); // NOI18N
+            javax.swing.GroupLayout panel_proyeccionLayout = new javax.swing.GroupLayout(panel_proyeccion);
+            panel_proyeccion.setLayout(panel_proyeccionLayout);
+            panel_proyeccionLayout.setHorizontalGroup(
+                panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
+                    .addContainerGap(69, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(152, Short.MAX_VALUE))
+            );
+            panel_proyeccionLayout.setVerticalGroup(
+                panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
 
-            jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-            jLabel3.setForeground(new java.awt.Color(102, 0, 0));
-            jLabel3.setText("Próximo cobro");
+            jTabbedPane1.addTab("Proyección", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_proyeccion); // NOI18N
 
-            jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+            lb_proximo_cobro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+            lb_proximo_cobro.setForeground(new java.awt.Color(102, 0, 0));
+            lb_proximo_cobro.setText("Próximo Pago :");
+
+            jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jLabel4.setForeground(new java.awt.Color(102, 0, 0));
-            jLabel4.setText("Pagos efectuados");
+            jLabel4.setText("Pagos efectuados: ");
 
-            jTextArea1.setColumns(20);
-            jTextArea1.setRows(5);
-            jScrollPane2.setViewportView(jTextArea1);
+            jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null},
+                    {null, null, null}
+                },
+                new String [] {
+                    "Fecha", "Monto Cancelado", "Detalle"
+                }
+            ) {
+                Class[] types = new Class [] {
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class
+                };
+                boolean[] canEdit = new boolean [] {
+                    false, true, false
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types [columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit [columnIndex];
+                }
+            });
+            jScrollPane2.setViewportView(jTable1);
+
+            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+            jLabel1.setText("....");
 
             javax.swing.GroupLayout panel_cobroLayout = new javax.swing.GroupLayout(panel_cobro);
             panel_cobro.setLayout(panel_cobroLayout);
             panel_cobroLayout.setHorizontalGroup(
                 panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_cobroLayout.createSequentialGroup()
-                    .addContainerGap()
+                    .addContainerGap(128, Short.MAX_VALUE)
                     .addGroup(panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panel_cobroLayout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lb_proximo_cobro)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel4)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18))
+                    .addContainerGap(180, Short.MAX_VALUE))
             );
             panel_cobroLayout.setVerticalGroup(
                 panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_cobroLayout.createSequentialGroup()
-                    .addContainerGap()
+                    .addGap(61, 61, 61)
                     .addGroup(panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
+                        .addComponent(lb_proximo_cobro)
+                        .addComponent(jLabel1))
+                    .addGap(43, 43, 43)
                     .addComponent(jLabel4)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(392, Short.MAX_VALUE))
             );
 
-            jTabbedPane1.addTab("Información de cobros", new javax.swing.ImageIcon(getClass().getResource("/Imagen/cobro.png")), panel_cobro); // NOI18N
+            jTabbedPane1.addTab("Pagos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/cobro.png")), panel_cobro); // NOI18N
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -398,23 +915,78 @@ public class VistaCliente extends javax.swing.JFrame {
          control.useChooser(Chart.getJChart());
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCreateRutina1ActionPerformed
+
+    private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
+        PrinterJob job = PrinterJob.getPrinterJob();
+        job.setJobName("Print Java Component");
+
+        job.setPrintable (new Printable() {
+            public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
+                if (pageIndex > 0) {
+                    return(NO_SUCH_PAGE);
+                } else {
+                    Graphics2D g2d = (Graphics2D)g;
+                    g2d.translate(pageFormat.getImageableX(),
+                        pageFormat.getImageableY());
+                    panel_crear_rutina.paint(g2d);
+                    return(PAGE_EXISTS);
+                }
+            }
+        });
+        if (job.printDialog()) {
+            try {
+                job.print();
+            } catch (Exception e) {
+                System.out.println("Error en el Printing de Rutinas");
+            }
+        }
+    }//GEN-LAST:event_bt_PrintActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bt_Print;
+    private javax.swing.JButton jBCreateRutina1;
     private javax.swing.JButton jButton8;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jL_bienvenido;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane32;
+    private javax.swing.JScrollPane jScrollPane33;
+    private javax.swing.JScrollPane jScrollPane34;
+    private javax.swing.JScrollPane jScrollPane35;
+    private javax.swing.JScrollPane jScrollPane36;
+    private javax.swing.JScrollPane jScrollPane37;
+    private javax.swing.JScrollPane jScrollPane38;
+    private javax.swing.JScrollPane jScrollPane39;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane40;
+    private javax.swing.JScrollPane jScrollPane41;
+    private javax.swing.JScrollPane jScrollPane42;
+    private javax.swing.JScrollPane jScrollPane43;
+    private javax.swing.JScrollPane jScrollPane44;
+    private javax.swing.JScrollPane jScrollPane45;
+    private javax.swing.JScrollPane jScrollPane46;
+    private javax.swing.JScrollPane jScrollPane47;
+    private javax.swing.JScrollPane jScrollPane48;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox jcb_proyec1;
     private javax.swing.JLabel jl_PGS;
     private javax.swing.JPanel jp_chart1;
@@ -422,9 +994,22 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lb_cedula;
     private javax.swing.JLabel lb_foto;
     private javax.swing.JLabel lb_nombre;
+    private javax.swing.JLabel lb_proximo_cobro;
     private javax.swing.JPanel panel_cobro;
+    private javax.swing.JPanel panel_crear_rutina;
+    private javax.swing.JScrollPane panel_datos1;
+    private javax.swing.JPanel panel_imp_rutinas;
     private javax.swing.JPanel panel_inicio;
     private javax.swing.JPanel panel_proyeccion;
     private javax.swing.JPanel panel_rutina;
+    private javax.swing.JTable tableAntebraso;
+    private javax.swing.JTable tableBiceps1;
+    private javax.swing.JTable tableEspalda;
+    private javax.swing.JTable tableHombros;
+    private javax.swing.JTable tablePantorrilla;
+    private javax.swing.JTable tablePecho;
+    private javax.swing.JTable tablePiernas;
+    private javax.swing.JTable tableTrapecio;
+    private javax.swing.JTable tableTriceps;
     // End of variables declaration//GEN-END:variables
 }
