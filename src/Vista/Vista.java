@@ -71,6 +71,7 @@ public class Vista extends javax.swing.JFrame {
         jl_PGS = new javax.swing.JLabel();
         jL_imagen = new javax.swing.JLabel();
         jL_bienvenido = new javax.swing.JLabel();
+        jL_bienvenido2 = new javax.swing.JLabel();
         panel_registro_cliente = new javax.swing.JPanel();
         panel_menu = new javax.swing.JPanel();
         jbRegistrarCliente = new javax.swing.JButton();
@@ -147,6 +148,8 @@ public class Vista extends javax.swing.JFrame {
         jLFoto = new javax.swing.JLabel();
         combo_gimnasio = new javax.swing.JComboBox();
         combo_practica_act_deport = new javax.swing.JComboBox();
+        jLabel41 = new javax.swing.JLabel();
+        combo_practica_act_deport1 = new javax.swing.JComboBox();
         desactivar_Cliente = new javax.swing.JPanel();
         cedCliente = new javax.swing.JTextField();
         jBDesactivarCliente = new javax.swing.JButton();
@@ -338,7 +341,7 @@ public class Vista extends javax.swing.JFrame {
             jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jTabbedPane1.setPreferredSize(new java.awt.Dimension(783, 399));
 
-            jl_PGS.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+            jl_PGS.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
             jl_PGS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             jl_PGS.setText("Power Gym System");
 
@@ -348,6 +351,8 @@ public class Vista extends javax.swing.JFrame {
             jL_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             jL_bienvenido.setText("Bienvenido");
 
+            jL_bienvenido2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGS.jpg"))); // NOI18N
+
             javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
             panel_inicio.setLayout(panel_inicioLayout);
             panel_inicioLayout.setHorizontalGroup(
@@ -355,10 +360,15 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_inicioLayout.createSequentialGroup()
                     .addContainerGap(175, Short.MAX_VALUE)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jL_imagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                         .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(174, Short.MAX_VALUE))
+                .addGroup(panel_inicioLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jL_imagen)
+                    .addGap(103, 103, 103)
+                    .addComponent(jL_bienvenido2)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panel_inicioLayout.setVerticalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,8 +377,12 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jl_PGS)
                     .addGap(31, 31, 31)
                     .addComponent(jL_bienvenido)
-                    .addGap(44, 44, 44)
-                    .addComponent(jL_imagen)
+                    .addGap(62, 62, 62)
+                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jL_imagen)
+                        .addGroup(panel_inicioLayout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(jL_bienvenido2)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -928,6 +942,10 @@ public class Vista extends javax.swing.JFrame {
 
             combo_practica_act_deport.setModel(new javax.swing.DefaultComboBoxModel(new String[] {" ", "NO", "SI"}));
 
+            jLabel41.setText("Inscripcion en:");
+
+            combo_practica_act_deport1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Gimnasio", "Artes Marciales", "Gimnasio y Artes Marciales"}));
+
             javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
             jPanel5.setLayout(jPanel5Layout);
             jPanel5Layout.setHorizontalGroup(
@@ -940,12 +958,17 @@ public class Vista extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel37)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(combo_practica_act_deport, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel36)
-                                .addGap(26, 26, 26)
-                                .addComponent(combo_gimnasio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(combo_practica_act_deport1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(combo_practica_act_deport, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel36)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(combo_gimnasio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -960,9 +983,6 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jBAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
-
-            jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {combo_gimnasio, combo_practica_act_deport});
-
             jPanel5Layout.setVerticalGroup(
                 jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
@@ -974,7 +994,11 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel37)
                         .addComponent(combo_practica_act_deport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel41)
+                        .addComponent(combo_practica_act_deport1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel33)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -989,7 +1013,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGap(46, 46, 46))
             );
 
-            jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combo_gimnasio, combo_practica_act_deport});
+            jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combo_gimnasio, combo_practica_act_deport, combo_practica_act_deport1});
 
             javax.swing.GroupLayout panel_reg_fisicoLayout = new javax.swing.GroupLayout(panel_reg_fisico);
             panel_reg_fisico.setLayout(panel_reg_fisicoLayout);
@@ -997,11 +1021,13 @@ public class Vista extends javax.swing.JFrame {
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panel_reg_fisicoLayout.setVerticalGroup(
@@ -3476,6 +3502,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_nombre_cliente_seguimiento1;
     private javax.swing.JComboBox combo_nombre_cliente_seguimiento2;
     private javax.swing.JComboBox combo_practica_act_deport;
+    private javax.swing.JComboBox combo_practica_act_deport1;
     private datechooser.beans.DateChooserCombo dateChooserCobro;
     private javax.swing.JPanel desactivar_Cliente;
     private javax.swing.JTextField direccion;
@@ -3512,6 +3539,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLSexo;
     private javax.swing.JLabel jLTel;
     private javax.swing.JLabel jL_bienvenido;
+    private javax.swing.JLabel jL_bienvenido2;
     private javax.swing.JLabel jL_imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -3545,6 +3573,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
