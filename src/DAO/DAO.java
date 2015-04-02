@@ -69,7 +69,6 @@ public class DAO extends Observable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        JOptionPane.showMessageDialog(null, "pago efectuado de forma exitosa");
     }
 
     public void setSaludCliente(SaludCliente saludC) {
@@ -334,9 +333,8 @@ public class DAO extends Observable {
     }
 
     public static LocalDate fromStringToDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.forLanguageTag("es-CR"));
         LocalDate newDate = LocalDate.parse(date, formatter);
-             System.out.println(newDate.toString());
         return newDate;
     }
     

@@ -12,6 +12,10 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -68,8 +72,25 @@ public class VistaCliente extends javax.swing.JFrame {
                 }
             } catch(Exception e){
                 System.err.println("Error al cargar imagen.");
-            } 
+            }
+            lb_proximo_pago.setText(getProximoPago());
         }
+    }
+    
+    private String getProximoPago() {
+        String prox = "";
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        // Fecha Actual y fecha de Inscripcion del Cliente
+        try {
+            Date current_date = cal.getTime();
+            Date inscripcion = df.parse(c.getFechaInscripcion());
+            int m = (inscripcion.getDate() >= current_date.getDate())? current_date.getMonth()+2 :  current_date.getMonth()+1;
+            prox = inscripcion.getDate() + " de " + mes(m);
+        } catch(Exception e){
+            System.out.println("Error en obtener proximo pago.");
+        }
+        return prox;
     }
 
     @SuppressWarnings("unchecked")
@@ -139,7 +160,7 @@ public class VistaCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lb_proximo_pago = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -834,8 +855,8 @@ public class VistaCliente extends javax.swing.JFrame {
             });
             jScrollPane2.setViewportView(jTable1);
 
-            jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-            jLabel1.setText("....");
+            lb_proximo_pago.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+            lb_proximo_pago.setText("....");
 
             javax.swing.GroupLayout panel_cobroLayout = new javax.swing.GroupLayout(panel_cobro);
             panel_cobro.setLayout(panel_cobroLayout);
@@ -847,7 +868,7 @@ public class VistaCliente extends javax.swing.JFrame {
                         .addGroup(panel_cobroLayout.createSequentialGroup()
                             .addComponent(lb_proximo_cobro)
                             .addGap(18, 18, 18)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lb_proximo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel4)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(180, Short.MAX_VALUE))
@@ -858,7 +879,7 @@ public class VistaCliente extends javax.swing.JFrame {
                     .addGap(61, 61, 61)
                     .addGroup(panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lb_proximo_cobro)
-                        .addComponent(jLabel1))
+                        .addComponent(lb_proximo_pago))
                     .addGap(43, 43, 43)
                     .addComponent(jLabel4)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -945,7 +966,6 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JButton jBCreateRutina1;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jL_bienvenido;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -989,6 +1009,7 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lb_foto;
     private javax.swing.JLabel lb_nombre;
     private javax.swing.JLabel lb_proximo_cobro;
+    private javax.swing.JLabel lb_proximo_pago;
     private javax.swing.JPanel panel_cobro;
     private javax.swing.JPanel panel_crear_rutina;
     private javax.swing.JScrollPane panel_datos1;
@@ -1007,4 +1028,21 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JTable tableTriceps;
     // End of variables declaration//GEN-END:variables
 
+    private String mes(int m){
+        switch(m){
+            case 1: return "Enero";
+            case 2: return "Febrero";
+            case 3: return "Marzo";
+            case 4: return "Abril";
+            case 5: return "Mayo";
+            case 6: return "Junio";
+            case 7: return "Julio";
+            case 8: return "Agosto";
+            case 9: return "Septiembre";
+            case 10: return "Octubre";
+            case 11: return "Nomviembre";
+            case 12: return "Diciembre";
+        }
+        return "";
+    }
 }

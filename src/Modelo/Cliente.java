@@ -4,6 +4,9 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 @DatabaseTable(tableName = "Cliente")
@@ -31,7 +34,7 @@ public class Cliente {
     @DatabaseField
     private String telefono;
     @DatabaseField
-    private Date fechaInscripcion;
+    private String fechaInscripcion;
     
     public Cliente(){    
     }
@@ -46,6 +49,13 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.telefono = telefono;
+        this.fechaInscripcion = currenDate();
+    }
+    
+    private String currenDate(){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar cal = Calendar.getInstance();
+        return dateFormat.format(cal.getTime());
     }
 
     public String getId_cliente() {
@@ -90,5 +100,9 @@ public class Cliente {
 
     public ForeignCollection<Rutina> getRutinas() {
         return rutinas;
+    }
+
+    public String getFechaInscripcion() {
+        return fechaInscripcion;
     }
 }

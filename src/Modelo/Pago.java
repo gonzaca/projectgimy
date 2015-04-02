@@ -11,15 +11,18 @@ public class Pago {
     private String fecha;
     @DatabaseField
     private double monto;
+    @DatabaseField
+    private int detalle;
     @DatabaseField(foreign = true, columnName = "cliente")
     private Cliente cliente;
 
     public Pago(){
     }
     
-    public Pago(String fecha, double monto, Cliente cliente) {
+    public Pago(String fecha, double monto, int detalle, Cliente cliente) {
         this.fecha = fecha;
         this.monto = monto;
+        this.detalle = detalle;
         this.cliente = cliente;
     }
 
@@ -53,6 +56,14 @@ public class Pago {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public int getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(int detalle) {
+        this.detalle = detalle;
     }
 
 }
