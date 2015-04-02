@@ -3,10 +3,7 @@ package pgs;
 import Controlador.Controlador;
 import Vista.SelectUser;
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
-import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -19,7 +16,7 @@ public class PGS {
           prop.put("backgroundColor", "255 255 255");
           prop.put("backgroundPattern", "off");
           McWinLookAndFeel.setTheme(prop);
-          UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");          
+          UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");  
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.out.println(e.getMessage());
         }

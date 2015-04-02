@@ -13,9 +13,11 @@ import Modelo.Cliente;
 import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -39,6 +41,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -54,13 +57,29 @@ public class Vista extends javax.swing.JFrame {
         buildPopupMenus();
         Image icon = new ImageIcon(getClass().getResource("/Imagen/pgs-logo.png")).getImage();
         setIconImage(icon);
+        setIconTab();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setSize(screenSize);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+
     }
 
+    private void setIconTab(){
+        JLabel lab = new JLabel();
+        lab.setPreferredSize(new Dimension(120, 70));
+        ImageIcon i = new ImageIcon("src/Imagen/pgs-logo_ico.png");
+        lab.setText("Inicio");
+        lab.setHorizontalTextPosition(JLabel.RIGHT);
+        Font font=jTabbedPane1.getFont();
+        Font boldFont = new Font(font.getName(), font.getStyle(), font.getSize());
+        lab.setFont(boldFont);
+        lab.setIcon(i);
+        jTabbedPane1.setTabComponentAt(0, lab);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -360,17 +379,19 @@ public class Vista extends javax.swing.JFrame {
             panel_inicioLayout.setHorizontalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(47, Short.MAX_VALUE)
-                    .addComponent(jL_imagen)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                    .addComponent(jL_bienvenido2)
-                    .addContainerGap(46, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(101, Short.MAX_VALUE)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panel_inicioLayout.createSequentialGroup()
+                            .addComponent(jL_imagen)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                            .addComponent(jL_bienvenido2))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(112, Short.MAX_VALUE))
             );
 
             panel_inicioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jL_bienvenido, jl_PGS});
@@ -378,15 +399,15 @@ public class Vista extends javax.swing.JFrame {
             panel_inicioLayout.setVerticalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(123, Short.MAX_VALUE)
                     .addComponent(jl_PGS)
-                    .addGap(29, 29, 29)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                     .addComponent(jL_bienvenido)
-                    .addGap(60, 60, 60)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jL_imagen)
                         .addComponent(jL_bienvenido2))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(305, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
@@ -1011,13 +1032,11 @@ public class Vista extends javax.swing.JFrame {
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panel_reg_fisicoLayout.setVerticalGroup(
@@ -1086,12 +1105,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE))
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(247, Short.MAX_VALUE)
+                        .addContainerGap(336, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(247, Short.MAX_VALUE)))
+                        .addContainerGap(336, Short.MAX_VALUE)))
             );
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1099,9 +1118,9 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(191, Short.MAX_VALUE)
+                        .addContainerGap(194, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(700, Short.MAX_VALUE)))
+                        .addContainerGap(697, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Clientes", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AsignarIcon.png")), panel_registro_cliente); // NOI18N
@@ -1740,7 +1759,7 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
                     .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
+                    .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2520,9 +2539,9 @@ public class Vista extends javax.swing.JFrame {
                                             .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                             .addComponent(combo_busqueda_seguimiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                             .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addContainerGap(13, Short.MAX_VALUE)
+                                .addContainerGap(102, Short.MAX_VALUE)
                                 .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(101, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2804,7 +2823,7 @@ public class Vista extends javax.swing.JFrame {
                     panel_busqueda.setLayout(panel_busquedaLayout);
                     panel_busquedaLayout.setHorizontalGroup(
                         panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
                     );
                     panel_busquedaLayout.setVerticalGroup(
                         panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2817,7 +2836,7 @@ public class Vista extends javax.swing.JFrame {
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 966, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
                     );
                     layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2826,6 +2845,7 @@ public class Vista extends javax.swing.JFrame {
 
                     pack();
                 }// </editor-fold>//GEN-END:initComponents
+
 
     private void jbRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarClienteActionPerformed
         jBAddCliente.setText("Agregar Cliente");
@@ -3158,34 +3178,34 @@ public class Vista extends javax.swing.JFrame {
                     //  ultima fecha de pago 
                     ChronoUnit.DAYS.between(
                             DAO.fromStringToDate(a.getPagos().stream().
-                             reduce((current, previous) -> previous).get().getFecha()),
+                                    reduce((current, previous) -> previous).get().getFecha()),
                             LocalDate.now()
                     ) //dias que han pasado entre hoy y el ultimo pago
                 }));
-        
+
     }//GEN-LAST:event_jcombo_projec_cobrosActionPerformed
 
     private void jbutton_enviar_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_enviar_correoActionPerformed
-           switch ( jcombo_projec_cobros.getSelectedItem().toString()) {
+        switch (jcombo_projec_cobros.getSelectedItem().toString()) {
             case "Clientes morosos":
-                 jbutton_enviar_correo.setVisible(true);
+                jbutton_enviar_correo.setVisible(true);
                 control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
-                        .stream().forEach( a -> control.sendEmail(a.getEmail(),
-                                "Aviso de cobro por morosidad gimnasio Power Gym", 
-                                "Estimado cliente: "+a.getNombre()+" "+ a.getApellidos()+
-                                        "le informamos que usted está moroso con la cancelación mensual del gimnasio"));
+                        .stream().forEach(a -> control.sendEmail(a.getEmail(),
+                                        "Aviso de cobro por morosidad gimnasio Power Gym",
+                                        "Estimado cliente: " + a.getNombre() + " " + a.getApellidos()
+                                        + "le informamos que usted está moroso con la cancelación mensual del gimnasio"));
                 break;
             case "Cancelan en los próximos 7 días":
                 jbutton_enviar_correo.setVisible(true);
-                 control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
-                        .stream().forEach( a -> control.sendEmail(a.getEmail(),
-                                "Aviso de cobro gimnasio Power Gym", 
-                                "Estimado cliente: "+a.getNombre()+" "+ a.getApellidos()+
-                                        "le informamos que usted debe cancelar su mensualidad en los próximos 7 días,"+"/n"+
-                                        " gracias por ser parte de Power Gym! "));
+                control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
+                        .stream().forEach(a -> control.sendEmail(a.getEmail(),
+                                        "Aviso de cobro gimnasio Power Gym",
+                                        "Estimado cliente: " + a.getNombre() + " " + a.getApellidos()
+                                        + "le informamos que usted debe cancelar su mensualidad en los próximos 7 días," + "/n"
+                                        + " gracias por ser parte de Power Gym! "));
                 break;
             case "Clientes que están al día":
-                 jbutton_enviar_correo.setVisible(false);
+                jbutton_enviar_correo.setVisible(false);
                 break;
             default:
                 jbutton_enviar_correo.setVisible(false);
@@ -3200,17 +3220,17 @@ public class Vista extends javax.swing.JFrame {
     private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Java Component");
- 
-        job.setPrintable (new Printable() {    
+
+        job.setPrintable(new Printable() {
             public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
                 if (pageIndex > 0) {
-                    return(NO_SUCH_PAGE);
+                    return (NO_SUCH_PAGE);
                 } else {
-                    Graphics2D g2d = (Graphics2D)g;
-                    g2d.translate(pageFormat.getImageableX(), 
-                    pageFormat.getImageableY());
+                    Graphics2D g2d = (Graphics2D) g;
+                    g2d.translate(pageFormat.getImageableX(),
+                            pageFormat.getImageableY());
                     panel_crear_rutina.paint(g2d);
-                    return(PAGE_EXISTS); 
+                    return (PAGE_EXISTS);
                 }
             }
         });
@@ -3440,9 +3460,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_enfer_cardio;
     private javax.swing.JComboBox combo_epileptico;
     private datechooser.beans.DateChooserCombo combo_fecha_seguimiento;
-    private javax.swing.JComboBox combo_filtro_cliente2;
     private javax.swing.JComboBox combo_filtro_cliente3;
-    private javax.swing.JComboBox combo_filtro_cliente4;
     private javax.swing.JComboBox combo_filtro_cobro;
     private javax.swing.JComboBox combo_filtro_seguimiento_valor;
     private javax.swing.JComboBox combo_fumador;
@@ -3452,9 +3470,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_lesion_osea;
     private javax.swing.JComboBox combo_mareos;
     private javax.swing.JComboBox combo_nauseas;
-    private javax.swing.JComboBox combo_nombre_cliente_seguimiento1;
     private javax.swing.JComboBox combo_nombre_cliente_seguimiento2;
-    private javax.swing.JComboBox combo_nombre_cliente_seguimiento3;
     private javax.swing.JComboBox combo_practica_act_deport;
     private datechooser.beans.DateChooserCombo dateChooserCobro;
     private javax.swing.JPanel desactivar_Cliente;
@@ -3546,8 +3562,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
@@ -3580,20 +3594,14 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane32;
@@ -3627,15 +3635,11 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jbDesactivarCliente;
     private javax.swing.JButton jbEditarCliente;
     private javax.swing.JButton jbRegistrarCliente;
-    private javax.swing.JButton jb_salvar_en_archivo;
-    private javax.swing.JButton jb_salvar_en_archivo1;
     private javax.swing.JButton jbutton_enviar_correo;
     private javax.swing.JComboBox jcb_proyec;
     private javax.swing.JComboBox jcombo_projec_cobros;
     private javax.swing.JLabel jl_PGS;
     private javax.swing.JPanel jp_chart;
-    private javax.swing.JTextArea jta_info_busqueda_cliente;
-    private javax.swing.JTextArea jta_info_busqueda_cliente1;
     private javax.swing.JLabel label_cliente_seguimiento;
     private javax.swing.JLabel label_fecha_seguimiento;
     private javax.swing.JLabel label_fecha_seguimiento1;
