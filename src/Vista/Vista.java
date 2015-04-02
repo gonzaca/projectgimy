@@ -13,11 +13,9 @@ import Modelo.Cliente;
 import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -26,8 +24,8 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -52,6 +50,7 @@ public class Vista extends javax.swing.JFrame {
 
     public Vista(Controlador c) {
         this.control = c;
+        photoLocation = "C:\\PGS\\photos\\";
         popupMenu = new JPopupMenu();
         initComponents();
         buildPopupMenus();
@@ -63,8 +62,6 @@ public class Vista extends javax.swing.JFrame {
         this.setSize(screenSize);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
-
     }
 
     private void setIconTab(){
@@ -380,18 +377,16 @@ public class Vista extends javax.swing.JFrame {
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
                     .addContainerGap(101, Short.MAX_VALUE)
-                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_inicioLayout.createSequentialGroup()
-                            .addComponent(jL_imagen)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                            .addComponent(jL_bienvenido2))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jL_imagen)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                    .addComponent(jL_bienvenido2)
                     .addContainerGap(112, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                        .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
             panel_inicioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jL_bienvenido, jl_PGS});
@@ -399,15 +394,15 @@ public class Vista extends javax.swing.JFrame {
             panel_inicioLayout.setVerticalGroup(
                 panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(123, Short.MAX_VALUE)
+                    .addGap(104, 104, 104)
                     .addComponent(jl_PGS)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                    .addGap(18, 18, 18)
                     .addComponent(jL_bienvenido)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                    .addGap(53, 53, 53)
                     .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jL_imagen)
                         .addComponent(jL_bienvenido2))
-                    .addContainerGap(305, Short.MAX_VALUE))
+                    .addContainerGap(551, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
@@ -1032,11 +1027,13 @@ public class Vista extends javax.swing.JFrame {
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             panel_reg_fisicoLayout.setVerticalGroup(
@@ -1118,9 +1115,9 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(194, Short.MAX_VALUE)
+                        .addContainerGap(200, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(697, Short.MAX_VALUE)))
+                        .addContainerGap(702, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Clientes", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AsignarIcon.png")), panel_registro_cliente); // NOI18N
@@ -2918,10 +2915,17 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jBAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddClienteActionPerformed
-
         if (valida_datos_personales() || valida_datos_salud()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos!\nO seleccionar todas las opciones");
         } else {
+            try {
+                File f = new File(pathFotos);
+                String nl = photoLocation + cedula.getText() +".jpg";
+                Files.move(Paths.get(pathFotos), Paths.get(nl));
+                pathFotos = "";
+            } catch(Exception e){
+                System.err.println("Error en move de file.");
+            }
             Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
                     email.getText(), nacimiento.getText(), sexo.getSelectedIndex(), telefono.getText());
             control.getDao().setCliente(cli);//mete el cliente en la base de datos
@@ -3098,8 +3102,8 @@ public class Vista extends javax.swing.JFrame {
             fotoChooser = new JFileChooser();
             fotoChooser.showOpenDialog(null);
             File archivo = fotoChooser.getSelectedFile();
-            String pathArchivo = archivo.getAbsolutePath();
-            ImageIcon imagen = new ImageIcon(pathArchivo);
+            pathFotos = archivo.getAbsolutePath();
+            ImageIcon imagen = new ImageIcon(pathFotos);
             Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLFoto.getWidth(), jLFoto.getHeight(), Image.SCALE_DEFAULT));
             jLFoto.setIcon(icono);
             this.repaint();
@@ -3363,6 +3367,18 @@ public class Vista extends javax.swing.JFrame {
                 combo_practica_act_deport.setSelectedIndex(sc.getPract_act_deportiva());
                 combo_gimnasio.setSelectedIndex(sc.getEstuvo_otro_gym());
                 textarea_otro_padecimiento.setText(sc.getOtro_padecimiento());
+                
+                try {
+                    String location = photoLocation + c.getId_cliente() +".jpg";
+                    File f = new File(location);
+                    String p = f.getAbsolutePath();
+                    ImageIcon imagen = new ImageIcon(p);
+                    Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLFoto.getWidth(), jLFoto.getHeight(), Image.SCALE_DEFAULT));
+                    jLFoto.setIcon(icono);
+                } catch(Exception e){
+                    System.err.println("Error al cargar imagen.");
+                    jLFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/login_icon_user.png")));
+                } 
             } catch (ParseException ex) {
                 Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3423,11 +3439,7 @@ public class Vista extends javax.swing.JFrame {
                 || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
 
     }
-
-    private boolean notNull(Object o) {
-        return o != null;
-    }
-
+       
     private RegistroFisicoCliente registro_fisico;
     private Controlador control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3697,4 +3709,6 @@ public class Vista extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private JPopupMenu popupMenu;
     private JTable replace;
+    private String pathFotos;
+    final private String photoLocation;
 }

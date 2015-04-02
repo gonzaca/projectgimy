@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import java.util.Date;
 
 @DatabaseTable(tableName = "Cliente")
 public class Cliente {
@@ -29,6 +30,8 @@ public class Cliente {
     private int sexo;
     @DatabaseField
     private String telefono;
+    @DatabaseField
+    private Date fechaInscripcion;
     
     public Cliente(){    
     }
@@ -88,5 +91,4 @@ public class Cliente {
     public ForeignCollection<Rutina> getRutinas() {
         return rutinas;
     }
-
 }
