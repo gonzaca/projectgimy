@@ -1,0 +1,9 @@
+Las librerias estan en el dropbox se llama IcePDF
+Agregan solo las librerias
+
+Icepdf-viewer.jar
+Icepdf-core.jar
+
+se agregan normalmente 
+
+	  

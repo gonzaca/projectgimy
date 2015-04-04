@@ -17,11 +17,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.icepdf.ri.common.SwingController;
+import org.icepdf.ri.common.SwingViewBuilder;
+import org.icepdf.ri.util.PropertiesManager;
 import org.jfree.chart.ChartPanel;
 
 public class VistaCliente extends javax.swing.JFrame {
@@ -31,7 +35,7 @@ public class VistaCliente extends javax.swing.JFrame {
 
     public VistaCliente(Cliente c, Controlador control) {
         super("Cliente");
-        this.control= control;
+        this.control = control;
         this.c = c;
         photoLocation = "C:\\PGS\\photos\\";
         initComponents();
@@ -53,16 +57,16 @@ public class VistaCliente extends javax.swing.JFrame {
                 IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
     }
-    
+
     private void cargarDatos() {
-        if(c != null){
+        if (c != null) {
             lb_nombre.setText(c.getNombre());
             lb_cedula.setText(c.getId_cliente());
             lb_apellidos.setText(c.getApellidos());
             try {
-                String location = photoLocation + c.getId_cliente() +".jpg";
+                String location = photoLocation + c.getId_cliente() + ".jpg";
                 File f = new File(location);
-                if(f.exists()){
+                if (f.exists()) {
                     String p = f.getAbsolutePath();
                     ImageIcon imagen = new ImageIcon(p);
                     Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lb_foto.getWidth(), lb_foto.getHeight(), Image.SCALE_DEFAULT));
@@ -70,13 +74,13 @@ public class VistaCliente extends javax.swing.JFrame {
                 } else {
                     lb_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/login_icon_user.png")));
                 }
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.err.println("Error al cargar imagen.");
             }
             lb_proximo_pago.setText(getProximoPago());
         }
     }
-    
+
     private String getProximoPago() {
         String prox = "";
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -85,9 +89,9 @@ public class VistaCliente extends javax.swing.JFrame {
         try {
             Date current_date = cal.getTime();
             Date inscripcion = df.parse(c.getFechaInscripcion());
-            int m = (inscripcion.getDate() >= current_date.getDate())? current_date.getMonth()+2 :  current_date.getMonth()+1;
+            int m = (inscripcion.getDate() >= current_date.getDate()) ? current_date.getMonth() + 2 : current_date.getMonth() + 1;
             prox = inscripcion.getDate() + " de " + mes(m);
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error en obtener proximo pago.");
         }
         return prox;
@@ -147,6 +151,10 @@ public class VistaCliente extends javax.swing.JFrame {
         jScrollPane48 = new javax.swing.JScrollPane();
         tableEspalda = new javax.swing.JTable();
         bt_Print = new javax.swing.JButton();
+        panel_Nutricion = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jLabel1 = new javax.swing.JLabel();
+        btn_ver_nutricion_actual = new javax.swing.JButton();
         panel_proyeccion = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -192,7 +200,7 @@ public class VistaCliente extends javax.swing.JFrame {
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(296, Short.MAX_VALUE)
+                .addContainerGap(292, Short.MAX_VALUE)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jL_bienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_PGS)
@@ -203,7 +211,7 @@ public class VistaCliente extends javax.swing.JFrame {
                             .addComponent(lb_apellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                             .addComponent(lb_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lb_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -691,7 +699,7 @@ public class VistaCliente extends javax.swing.JFrame {
             panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_rutinaLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE))
+                .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
         );
         panel_rutinaLayout.setVerticalGroup(
             panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -699,6 +707,64 @@ public class VistaCliente extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Rutina actual", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pesa.png")), panel_rutina); // NOI18N
+
+        PropertiesManager properties = new PropertiesManager(
+            System.getProperties(),
+            ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
+
+        properties.setInt(PropertiesManager.PROPERTY_DEFAULT_PAGEFIT, 2);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.FALSE);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_FIT, Boolean.FALSE);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ROTATE, Boolean.FALSE);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_TOOL, Boolean.FALSE);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_UPANE, Boolean.FALSE);
+        properties.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_SEARCH, Boolean.FALSE);
+
+        SwingViewBuilder factory = new SwingViewBuilder(controller, properties);
+
+        // add interactive mouse link annotation support via callback
+        controller.getDocumentViewController().setAnnotationCallback(
+            new org.icepdf.ri.common.MyAnnotationCallback(controller.getDocumentViewController()));
+        javax.swing.JPanel viewerComponentPanel = factory.buildViewerPanel();
+        jTabbedPane2.addTab("Plan Actual", viewerComponentPanel);
+
+        jLabel1.setText("Perfil Nutricional actual");
+
+        btn_ver_nutricion_actual.setText("Ver");
+        btn_ver_nutricion_actual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ver_nutricion_actualActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_NutricionLayout = new javax.swing.GroupLayout(panel_Nutricion);
+        panel_Nutricion.setLayout(panel_NutricionLayout);
+        panel_NutricionLayout.setHorizontalGroup(
+            panel_NutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_NutricionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
+            .addGroup(panel_NutricionLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(btn_ver_nutricion_actual)
+                .addContainerGap(803, Short.MAX_VALUE))
+        );
+        panel_NutricionLayout.setVerticalGroup(
+            panel_NutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_NutricionLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(panel_NutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(btn_ver_nutricion_actual))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Perfil Nutricional", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AgregarPN.png")), panel_Nutricion); // NOI18N
 
         jPanel8.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(102, 102, 0)));
 
@@ -806,9 +872,9 @@ public class VistaCliente extends javax.swing.JFrame {
             panel_proyeccionLayout.setHorizontalGroup(
                 panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
-                    .addContainerGap(69, Short.MAX_VALUE)
+                    .addContainerGap(85, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(152, Short.MAX_VALUE))
+                    .addContainerGap(168, Short.MAX_VALUE))
             );
             panel_proyeccionLayout.setVerticalGroup(
                 panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -863,7 +929,7 @@ public class VistaCliente extends javax.swing.JFrame {
             panel_cobroLayout.setHorizontalGroup(
                 panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_cobroLayout.createSequentialGroup()
-                    .addContainerGap(128, Short.MAX_VALUE)
+                    .addContainerGap(124, Short.MAX_VALUE)
                     .addGroup(panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panel_cobroLayout.createSequentialGroup()
                             .addComponent(lb_proximo_cobro)
@@ -871,7 +937,7 @@ public class VistaCliente extends javax.swing.JFrame {
                             .addComponent(lb_proximo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel4)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(180, Short.MAX_VALUE))
+                    .addContainerGap(176, Short.MAX_VALUE))
             );
             panel_cobroLayout.setVerticalGroup(
                 panel_cobroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -927,7 +993,7 @@ public class VistaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jcb_proyec1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         control.useChooser(Chart.getJChart());
+        control.useChooser(Chart.getJChart());
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
@@ -938,16 +1004,16 @@ public class VistaCliente extends javax.swing.JFrame {
         PrinterJob job = PrinterJob.getPrinterJob();
         job.setJobName("Print Java Component");
 
-        job.setPrintable (new Printable() {
+        job.setPrintable(new Printable() {
             public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
                 if (pageIndex > 0) {
-                    return(NO_SUCH_PAGE);
+                    return (NO_SUCH_PAGE);
                 } else {
-                    Graphics2D g2d = (Graphics2D)g;
+                    Graphics2D g2d = (Graphics2D) g;
                     g2d.translate(pageFormat.getImageableX(),
-                        pageFormat.getImageableY());
+                            pageFormat.getImageableY());
                     panel_crear_rutina.paint(g2d);
-                    return(PAGE_EXISTS);
+                    return (PAGE_EXISTS);
                 }
             }
         });
@@ -960,12 +1026,20 @@ public class VistaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_PrintActionPerformed
 
+    private void btn_ver_nutricion_actualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_nutricion_actualActionPerformed
+        // TODO add your handling code here:
+        filePath = "C:\\PGS\\nutricion\\" + this.control.getDao().getNutricionCliente(c.getId_cliente()).getNombre_plan();
+        controller.openDocument(filePath);
+    }//GEN-LAST:event_btn_ver_nutricion_actualActionPerformed
+
     final private String photoLocation;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Print;
+    private javax.swing.JButton btn_ver_nutricion_actual;
     private javax.swing.JButton jBCreateRutina1;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jL_bienvenido;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -1000,6 +1074,7 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane47;
     private javax.swing.JScrollPane jScrollPane48;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox jcb_proyec1;
     private javax.swing.JLabel jl_PGS;
@@ -1010,6 +1085,7 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lb_nombre;
     private javax.swing.JLabel lb_proximo_cobro;
     private javax.swing.JLabel lb_proximo_pago;
+    private javax.swing.JPanel panel_Nutricion;
     private javax.swing.JPanel panel_cobro;
     private javax.swing.JPanel panel_crear_rutina;
     private javax.swing.JScrollPane panel_datos1;
@@ -1028,21 +1104,42 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JTable tableTriceps;
     // End of variables declaration//GEN-END:variables
 
-    private String mes(int m){
-        switch(m){
-            case 1: return "Enero";
-            case 2: return "Febrero";
-            case 3: return "Marzo";
-            case 4: return "Abril";
-            case 5: return "Mayo";
-            case 6: return "Junio";
-            case 7: return "Julio";
-            case 8: return "Agosto";
-            case 9: return "Septiembre";
-            case 10: return "Octubre";
-            case 11: return "Nomviembre";
-            case 12: return "Diciembre";
+    private String mes(int m) {
+        switch (m) {
+            case 1:
+                return "Enero";
+            case 2:
+                return "Febrero";
+            case 3:
+                return "Marzo";
+            case 4:
+                return "Abril";
+            case 5:
+                return "Mayo";
+            case 6:
+                return "Junio";
+            case 7:
+                return "Julio";
+            case 8:
+                return "Agosto";
+            case 9:
+                return "Septiembre";
+            case 10:
+                return "Octubre";
+            case 11:
+                return "Nomviembre";
+            case 12:
+                return "Diciembre";
         }
         return "";
     }
+
+    private String filePath = "";
+    private SwingController controller = new SwingController();
+    private PropertiesManager properties = new PropertiesManager(
+            System.getProperties(),
+            ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
+
+    private SwingViewBuilder factory = new SwingViewBuilder(controller, properties);
+
 }

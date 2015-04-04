@@ -7,7 +7,6 @@ import com.j256.ormlite.table.DatabaseTable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 @DatabaseTable(tableName = "Cliente")
 public class Cliente {
@@ -19,6 +18,8 @@ public class Cliente {
     private ForeignCollection<Pago> pagos;
     @ForeignCollectionField
     private ForeignCollection<Rutina> rutinas;
+    @ForeignCollectionField
+    private ForeignCollection<Nutricion> planes_nutricionales;
     @DatabaseField
     private String nombre;
     @DatabaseField
@@ -104,5 +105,14 @@ public class Cliente {
 
     public String getFechaInscripcion() {
         return fechaInscripcion;
+    }
+
+
+    public ForeignCollection<Nutricion> getPlanes_nutricionales() {
+        return planes_nutricionales;
+    }
+
+    public void setPlanes_nutricionales(ForeignCollection<Nutricion> planes_nutricionales) {
+        this.planes_nutricionales = planes_nutricionales;
     }
 }

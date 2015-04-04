@@ -1,6 +1,7 @@
 package DAO;
 
 import Modelo.Cliente;
+import Modelo.Nutricion;
 import Modelo.Pago;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
@@ -17,7 +18,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Observable;
 import java.util.stream.Collectors;
-import javax.swing.JOptionPane;
 
 /*import Modelo.Cliente;
  import Modelo.Pago;
@@ -36,18 +36,20 @@ public class DAO extends Observable {
     private Dao<SaludCliente, String> daoSaludCliente;
     private Dao<Seguimiento, String> daoSeguimiento;
     private Dao<Pago, String> daoPago;
+    private Dao<Nutricion, String> daoNutricion;
     private JdbcConnectionSource connection;
     private static String databaseUrl = "jdbc:mysql://localhost:3306/gym";
     private String tipo_unidad;
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("pablo");
-        connection.setPassword("20dejulio");
+        connection.setUsername("gym");
+        connection.setPassword("gym");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
         daoPago = DaoManager.createDao(connection, Pago.class);
+        daoNutricion = DaoManager.createDao(connection, Nutricion.class);
         tipo_unidad = "cm";
     }
 
@@ -74,6 +76,14 @@ public class DAO extends Observable {
     public void setSaludCliente(SaludCliente saludC) {
         try {
             daoSaludCliente.createOrUpdate(saludC);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void setNutricionCliente(Nutricion NutricionC) {
+        try {
+            daoNutricion.createOrUpdate(NutricionC);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -127,6 +137,18 @@ public class DAO extends Observable {
         List<SaludCliente> l = null;
         try {
             l = daoSaludCliente.queryForEq("cliente", att);
+            c = !l.isEmpty() ? l.get(0) : null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+    
+    public Nutricion getNutricionCliente(String att) {
+        Nutricion c = null;
+        List<Nutricion> l = null;
+        try {
+            l = daoNutricion.queryForEq("cliente", att);
             c = !l.isEmpty() ? l.get(0) : null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
