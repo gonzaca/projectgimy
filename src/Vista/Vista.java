@@ -537,7 +537,7 @@ public class Vista extends javax.swing.JFrame {
             jLabel91.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
             jLabel91.setText("Dificultada para respirar:");
 
-            combo_embarazo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "NA", "SI", "NO"}));
+            combo_embarazo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "SI", "NO"}));
             combo_embarazo.setSelectedIndex(-1);
             combo_embarazo.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3286,6 +3286,8 @@ public class Vista extends javax.swing.JFrame {
         if (indx == 1) {
             combo_embarazo.setSelectedIndex(-1);
             combo_embarazo.disable();
+        }else if(indx == 0){
+            combo_embarazo.enable();
         }
     }//GEN-LAST:event_cb_sexoActionPerformed
 
@@ -3675,22 +3677,13 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane33;
-    private javax.swing.JScrollPane jScrollPane34;
     private javax.swing.JScrollPane jScrollPane35;
-    private javax.swing.JScrollPane jScrollPane36;
     private javax.swing.JScrollPane jScrollPane37;
-    private javax.swing.JScrollPane jScrollPane38;
     private javax.swing.JScrollPane jScrollPane39;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane40;
     private javax.swing.JScrollPane jScrollPane41;
-    private javax.swing.JScrollPane jScrollPane42;
     private javax.swing.JScrollPane jScrollPane43;
-    private javax.swing.JScrollPane jScrollPane44;
     private javax.swing.JScrollPane jScrollPane45;
-    private javax.swing.JScrollPane jScrollPane46;
     private javax.swing.JScrollPane jScrollPane47;
-    private javax.swing.JScrollPane jScrollPane48;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable10;

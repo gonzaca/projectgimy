@@ -5,9 +5,7 @@
         <group>
             <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Vista/Vista.java</file>
             <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Vista/VistaCliente.java</file>
-            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Modelo/Nutricion.java</file>
-            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/pgs/PGS.java</file>
-            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Vista/SelectUser.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/DAO/DAO.java</file>
         </group>
     </open-files>
 </project-private>

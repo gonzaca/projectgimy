@@ -751,7 +751,7 @@
                         <Component class="javax.swing.JComboBox" name="combo_embarazo">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;NA&quot;, &quot;SI&quot;, &quot;NO&quot;})" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;SI&quot;, &quot;NO&quot;})" type="code"/>
                             </Property>
                           </Properties>
                           <Events>

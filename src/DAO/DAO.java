@@ -32,8 +32,8 @@ public class DAO extends Observable {
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("pablo");
-        connection.setPassword("20dejulio");
+        connection.setUsername("gym");
+        connection.setPassword("gym");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
