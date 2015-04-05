@@ -19,17 +19,6 @@ import java.util.Locale;
 import java.util.Observable;
 import java.util.stream.Collectors;
 
-/*import Modelo.Cliente;
- import Modelo.Pago;
- import Modelo.SaludCliente;
- import Modelo.Seguimiento;
- import com.j256.ormlite.dao.Dao;
- import com.j256.ormlite.dao.DaoManager;
- import com.j256.ormlite.jdbc.JdbcConnectionSource;
- import java.util.List;
- import java.sql.SQLException;
- import java.util.HashMap;
- import java.util.Observable;*/
 public class DAO extends Observable {
 
     private Dao<Cliente, String> daoCliente;
@@ -43,8 +32,8 @@ public class DAO extends Observable {
 
     public DAO() throws Exception {
         connection = new JdbcConnectionSource(databaseUrl);
-        connection.setUsername("gym");
-        connection.setPassword("gym");
+        connection.setUsername("pablo");
+        connection.setPassword("20dejulio");
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
@@ -253,7 +242,7 @@ public class DAO extends Observable {
     public List<Seguimiento> getSeguimientos(String id_cliente) {
         List<Seguimiento> list = null;
         try {
-            list = daoSeguimiento.queryForEq("id_cliente", id_cliente);
+            list = daoSeguimiento.queryForEq("cliente", id_cliente);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
