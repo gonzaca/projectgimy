@@ -57,7 +57,7 @@ public class Chart {
                     System.out.println("key: "+a.getKey());
             int day = Integer.parseInt(a.getKey().substring(0, 2));
             int month =  Integer.parseInt(a.getKey().substring(3, 5));
-            String y= "20"+a.getKey().substring(6);
+            String y= a.getKey().substring(6);
             int year =  Integer.parseInt(y);
             System.out.println("to add: "+day+"/"+month+"/"+year);
             s1.add(new Day(day, month, year), a.getValue());
