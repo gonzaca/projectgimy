@@ -124,31 +124,22 @@ public class VistaCliente extends javax.swing.JFrame {
         jLabel97 = new javax.swing.JLabel();
         jBCreateRutina1 = new javax.swing.JButton();
         jScrollPane32 = new javax.swing.JScrollPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
         tablePiernas = new javax.swing.JTable();
         jScrollPane33 = new javax.swing.JScrollPane();
-        jScrollPane34 = new javax.swing.JScrollPane();
         tableTrapecio = new javax.swing.JTable();
         jScrollPane35 = new javax.swing.JScrollPane();
-        jScrollPane36 = new javax.swing.JScrollPane();
         tablePantorrilla = new javax.swing.JTable();
         jScrollPane37 = new javax.swing.JScrollPane();
-        jScrollPane38 = new javax.swing.JScrollPane();
         tableAntebraso = new javax.swing.JTable();
         jScrollPane39 = new javax.swing.JScrollPane();
-        jScrollPane40 = new javax.swing.JScrollPane();
         tableBiceps1 = new javax.swing.JTable();
         jScrollPane41 = new javax.swing.JScrollPane();
-        jScrollPane42 = new javax.swing.JScrollPane();
         tableTriceps = new javax.swing.JTable();
         jScrollPane43 = new javax.swing.JScrollPane();
-        jScrollPane44 = new javax.swing.JScrollPane();
         tableHombros = new javax.swing.JTable();
         jScrollPane45 = new javax.swing.JScrollPane();
-        jScrollPane46 = new javax.swing.JScrollPane();
         tablePecho = new javax.swing.JTable();
         jScrollPane47 = new javax.swing.JScrollPane();
-        jScrollPane48 = new javax.swing.JScrollPane();
         tableEspalda = new javax.swing.JTable();
         bt_Print = new javax.swing.JButton();
         panel_Nutricion = new javax.swing.JPanel();
@@ -235,6 +226,7 @@ public class VistaCliente extends javax.swing.JFrame {
         jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
 
         panel_datos1.setBorder(null);
+        panel_datos1.getVerticalScrollBar().setUnitIncrement(20);
         panel_datos1.setAutoscrolls(true);
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -271,7 +263,8 @@ public class VistaCliente extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane32.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane32.setAutoscrolls(true);
 
         tablePiernas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -303,11 +296,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(tablePiernas);
+        jScrollPane32.setViewportView(tablePiernas);
 
-        jScrollPane32.setViewportView(jScrollPane4);
-
-        jScrollPane34.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane33.setAutoscrolls(true);
 
         tableTrapecio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -335,11 +327,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane34.setViewportView(tableTrapecio);
+        jScrollPane33.setViewportView(tableTrapecio);
 
-        jScrollPane33.setViewportView(jScrollPane34);
-
-        jScrollPane36.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane35.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane35.setAutoscrolls(true);
 
         tablePantorrilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,11 +358,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane36.setViewportView(tablePantorrilla);
+        jScrollPane35.setViewportView(tablePantorrilla);
 
-        jScrollPane35.setViewportView(jScrollPane36);
-
-        jScrollPane38.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane37.setAutoscrolls(true);
 
         tableAntebraso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -399,11 +389,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane38.setViewportView(tableAntebraso);
+        jScrollPane37.setViewportView(tableAntebraso);
 
-        jScrollPane37.setViewportView(jScrollPane38);
-
-        jScrollPane40.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane39.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane39.setAutoscrolls(true);
 
         tableBiceps1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -434,11 +423,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane40.setViewportView(tableBiceps1);
+        jScrollPane39.setViewportView(tableBiceps1);
 
-        jScrollPane39.setViewportView(jScrollPane40);
-
-        jScrollPane42.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane41.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane41.setAutoscrolls(true);
 
         tableTriceps.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -468,11 +456,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane42.setViewportView(tableTriceps);
+        jScrollPane41.setViewportView(tableTriceps);
 
-        jScrollPane41.setViewportView(jScrollPane42);
-
-        jScrollPane44.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane43.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane43.setAutoscrolls(true);
 
         tableHombros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -506,11 +493,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane44.setViewportView(tableHombros);
+        jScrollPane43.setViewportView(tableHombros);
 
-        jScrollPane43.setViewportView(jScrollPane44);
-
-        jScrollPane46.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane45.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane45.setAutoscrolls(true);
 
         tablePecho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -543,11 +529,10 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane46.setViewportView(tablePecho);
+        jScrollPane45.setViewportView(tablePecho);
 
-        jScrollPane45.setViewportView(jScrollPane46);
-
-        jScrollPane48.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane47.getVerticalScrollBar().setUnitIncrement(20);
+        jScrollPane47.setAutoscrolls(true);
 
         tableEspalda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -580,9 +565,7 @@ public class VistaCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane48.setViewportView(tableEspalda);
-
-        jScrollPane47.setViewportView(jScrollPane48);
+        jScrollPane47.setViewportView(tableEspalda);
 
         javax.swing.GroupLayout panel_crear_rutinaLayout = new javax.swing.GroupLayout(panel_crear_rutina);
         panel_crear_rutina.setLayout(panel_crear_rutinaLayout);
