@@ -1,6 +1,7 @@
 package DAO;
 
 import Modelo.Cliente;
+import Modelo.ClienteRutina;
 import Modelo.Nutricion;
 import Modelo.Pago;
 import Modelo.SaludCliente;
@@ -25,6 +26,7 @@ public class DAO extends Observable {
     private Dao<SaludCliente, String> daoSaludCliente;
     private Dao<Seguimiento, String> daoSeguimiento;
     private Dao<Pago, String> daoPago;
+     private Dao<ClienteRutina, String> daoClienteRutina;
     private Dao<Nutricion, String> daoNutricion;
     private JdbcConnectionSource connection;
     private static String databaseUrl = "jdbc:mysql://localhost:3306/gym";
@@ -39,6 +41,7 @@ public class DAO extends Observable {
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
         daoPago = DaoManager.createDao(connection, Pago.class);
         daoNutricion = DaoManager.createDao(connection, Nutricion.class);
+        daoClienteRutina =DaoManager.createDao(connection, ClienteRutina.class);
         tipo_unidad = "cm";
     }
 
