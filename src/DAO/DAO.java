@@ -221,6 +221,16 @@ public class DAO extends Observable {
         }
         return list;
     }
+    
+    public List<Pago> getPagos(String id_cliente) {
+        List<Pago> list = null;
+        try {
+            list = daoPago.queryForEq("cliente", id_cliente);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
 
     public String[] RecuperaAtributosCliente(String at) {//recupera datos como strings para llenar combobox
         String[] hash = null;

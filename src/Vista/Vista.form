@@ -35,7 +35,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="961" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="1088" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -78,11 +78,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
+                      <EmptySpace pref="144" max="32767" attributes="0"/>
                       <Component id="jL_imagen" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="102" max="32767" attributes="0"/>
+                      <EmptySpace pref="145" max="32767" attributes="0"/>
                       <Component id="jL_bienvenido2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="110" max="32767" attributes="0"/>
+                      <EmptySpace pref="152" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -164,13 +164,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panel_menu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panel_datos" pref="707" max="32767" attributes="0"/>
+                      <Component id="panel_datos" pref="834" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="336" max="32767" attributes="0"/>
+                          <EmptySpace pref="399" max="32767" attributes="0"/>
                           <Component id="desactivar_Cliente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="336" max="32767" attributes="0"/>
+                          <EmptySpace pref="400" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -1375,7 +1375,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panel_menu1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="panel_datos1" pref="713" max="32767" attributes="0"/>
+                      <Component id="panel_datos1" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -1543,11 +1543,11 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace pref="116" max="32767" attributes="0"/>
                               <Component id="panel_crear_rutina" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="bt_Print" min="-2" pref="56" max="-2" attributes="0"/>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace pref="71" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2088,7 +2088,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panel_menu2" min="-2" pref="239" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panel_datos4" pref="701" max="32767" attributes="0"/>
+                      <Component id="panel_datos4" pref="828" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -2449,11 +2449,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel2" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -2466,7 +2467,9 @@
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2497,11 +2500,13 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel76" min="-2" pref="68" max="-2" attributes="0"/>
                                           <Component id="jLabel77" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="combo_filtro_cobro" pref="250" max="32767" attributes="0"/>
                                           <Component id="combo_cobro_valor" max="32767" attributes="0"/>
+                                          <Component id="jComboBox5" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -2509,7 +2514,7 @@
                                           <Component id="jLabel63" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="148" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="monto" linkSize="10" alignment="1" min="-2" pref="184" max="-2" attributes="0"/>
                                           <Component id="dateChooserCobro" linkSize="10" alignment="1" min="-2" pref="178" max="-2" attributes="0"/>
@@ -2519,7 +2524,7 @@
                                       <Component id="boton_cancelar_cobro" min="-2" pref="66" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="74" max="32767" attributes="0"/>
+                              <EmptySpace pref="154" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2552,9 +2557,15 @@
                                   <Component id="boton_cancelar_cobro" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="detalle" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="detalle" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
@@ -2564,31 +2575,28 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel76">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Par&#xe1;metro:"/>
+                        <Property name="text" type="java.lang.String" value="Nombre"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="combo_filtro_cobro">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Nombre&quot;, &quot;Cedula&quot;, &quot;E-mail&quot; })" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    control.getDao().RecuperaAtributosCliente(&quot;Nombre&quot;)&#xa;)" type="code"/>
                         </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_filtro_cobroActionPerformed"/>
                       </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cobro.addActionListener(&#xa;e -&gt; combo_cobro_valor.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cobro.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
-                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel77">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Valor:"/>
+                        <Property name="text" type="java.lang.String" value="Apellidos"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="combo_cobro_valor">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;        new String[]{&quot;valor de b&#xfa;squeda no seleccionado&quot;})&#xa;    " type="code"/>
+                          <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Apellidos&quot;)&#xa;        )&#xa;    " type="code"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -2682,6 +2690,18 @@
                         </Property>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel44">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cedula"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox5">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Cedula&quot;)&#xa;)" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel6">
@@ -2701,7 +2721,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane15" alignment="1" pref="817" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane15" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel79" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2730,10 +2750,10 @@
                                   <Component id="jcombo_projec_cobros" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane15" min="-2" pref="121" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jScrollPane15" pref="138" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jbutton_enviar_correo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2798,6 +2818,160 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Container class="javax.swing.JPanel" name="jPanel2">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                        <MatteColorBorder bottom="2" left="2" right="2" top="2">
+                          <Color PropertyName="color" blue="66" green="0" red="0" type="rgb"/>
+                        </MatteColorBorder>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBox2" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBox3" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jComboBox4" min="-2" pref="160" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" pref="179" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel41">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Nombre"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel42">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Apellidos"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel43">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Cedula"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox2">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa; control.getDao().RecuperaAtributosCliente(&quot;Cedula&quot;))" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Apellidos&quot;))" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Cedula&quot;))" type="code"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                          <AuxValues>
+                            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="jTable1">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;     new Object [][] {&#xa;    },&#xa;    new String [] {&#xa;        &quot;Fecha&quot;, &quot;Monto&quot;, &quot;Detalle&quot;&#xa;    }&#xa;)" type="code"/>
+                                </Property>
+                                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                  <TableColumnModel selectionModel="0">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                      <Title/>
+                                      <Editor/>
+                                      <Renderer/>
+                                    </Column>
+                                  </TableColumnModel>
+                                </Property>
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JButton" name="jButton1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Listar Pagos"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -2827,7 +3001,7 @@
                                       <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="367" max="32767" attributes="0"/>
                                       <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jcombobox_seguimiento_apellidos" min="-2" pref="186" max="-2" attributes="0"/>
@@ -2839,7 +3013,7 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="102" max="32767" attributes="0"/>
+                              <EmptySpace pref="165" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -2856,7 +3030,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="101" max="32767" attributes="0"/>
+                      <EmptySpace pref="165" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2888,7 +3062,7 @@
                       <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="boton_añadir_seguimiento" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="360" max="32767" attributes="0"/>
+                      <EmptySpace pref="432" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3294,7 +3468,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane2" alignment="0" pref="956" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="0" pref="1083" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -3318,12 +3492,12 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                              <EmptySpace pref="100" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="panel_proyeccion" linkSize="12" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="panel_busqueda_cliente" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <EmptySpace pref="107" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -3354,15 +3528,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="62" max="32767" attributes="0"/>
-                                  <Component id="panel_parametros" max="32767" attributes="0"/>
-                                  <EmptySpace pref="63" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="panel_muestra_datos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="panel_parametros" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="106" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3396,18 +3570,22 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel71" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel69" min="-2" pref="68" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="combo_filtro_cliente3" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <Component id="jLabel71" min="-2" pref="141" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                              <Component id="combo_filtro_cliente3" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel70" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="combo_nombre_cliente_seguimiento2" min="-2" pref="320" max="-2" attributes="0"/>
+                                              <Component id="combo_nombre_cliente_seguimiento2" min="-2" pref="180" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jComboBox6" min="-2" pref="160" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                                      <EmptySpace pref="45" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3421,6 +3599,8 @@
                                           <Component id="combo_filtro_cliente3" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="combo_nombre_cliente_seguimiento2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jComboBox6" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   </Group>
@@ -3430,26 +3610,23 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel69">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Par&#xe1;metro:"/>
+                                <Property name="text" type="java.lang.String" value="Nombre"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel70">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Valor:"/>
+                                <Property name="text" type="java.lang.String" value="Apellidos"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="combo_filtro_cliente3">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot;Nombre&quot;, &quot;Cedula&quot;, &quot;E-mail&quot; })" type="code"/>
+                                  <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Nombre&quot;)&#xa;)" type="code"/>
                                 </Property>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_filtro_cliente3ActionPerformed"/>
                               </Events>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="combo_filtro_cliente3.addActionListener(&#xa;e -&gt; combo_nombre_cliente_seguimiento2.setModel(&#xa;    new DefaultComboBoxModel(&#xa;        control.getDao().RecuperaAtributosCliente(&#xa;            combo_filtro_cliente3.getSelectedItem().toString()))&#xa;    )&#xa;);"/>
-                              </AuxValues>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel71">
                               <Properties>
@@ -3465,11 +3642,26 @@
                             <Component class="javax.swing.JComboBox" name="combo_nombre_cliente_seguimiento2">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;        new String[]{&quot;valor de b&#xfa;squeda no seleccionado&quot;})&#xa;    " type="code"/>
+                                  <Connection code="&#xa;    new DefaultComboBoxModel(&#xa;      control.getDao().RecuperaAtributosCliente(&quot;Apellidos&quot;)&#xa;)&#xa;    " type="code"/>
                                 </Property>
                               </Properties>
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_nombre_cliente_seguimiento2ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel45">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Cedula"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="jComboBox6">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;control.getDao().RecuperaAtributosCliente(&quot;Cedula&quot;)&#xa;)" type="code"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox6ActionPerformed"/>
                               </Events>
                             </Component>
                           </SubComponents>
@@ -3502,7 +3694,7 @@
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="lb_nombre" min="-2" pref="29" max="-2" attributes="0"/>
@@ -3513,7 +3705,7 @@
                                           </Group>
                                           <Component id="lb_foto" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3577,7 +3769,7 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="421" max="32767" attributes="0"/>
+                                          <EmptySpace pref="443" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -3629,7 +3821,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <EmptySpace min="0" pref="832" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="854" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
@@ -3676,6 +3868,9 @@
                               <Connection code="new javax.swing.DefaultComboBoxModel(&#xa;    new String[] {&#xa;        &quot;Piernas&quot;,&#xa;        &quot;Brazos&quot;,&#xa;        &quot;Pantorrillas&quot;,&#xa;        &quot;Antebrazos&quot;,&#xa;        &quot;Cintura&quot;,&#xa;        &quot;Gluteos&quot;,&#xa;        &quot;Cadera&quot;,&#xa;        &quot;Espalda&quot;,&#xa;        &quot;Pecho&quot;,&#xa;        &quot;Grasa&quot;,&#xa;        &quot;Peso&quot;,&#xa;        &quot;IMC&quot;&#xa;    })" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcb_proyecActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
