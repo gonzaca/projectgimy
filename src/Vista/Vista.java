@@ -279,7 +279,7 @@ public class Vista extends javax.swing.JFrame {
         jbutton_enviar_correo = new javax.swing.JButton();
         panel_seguimientos = new javax.swing.JPanel();
         label_cliente_seguimiento = new javax.swing.JLabel();
-        combo_filtro_seguimiento_valor = new javax.swing.JComboBox();
+        jcombobox_seguimiento_apellidos = new javax.swing.JComboBox();
         label_fecha_seguimiento = new javax.swing.JLabel();
         panel_datos_seg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -315,10 +315,12 @@ public class Vista extends javax.swing.JFrame {
         antebrazo_derecho = new javax.swing.JTextField();
         antebrazo_izquierdo = new javax.swing.JTextField();
         combo_fecha_seguimiento = new datechooser.beans.DateChooserCombo();
-        combo_busqueda_seguimiento = new javax.swing.JComboBox();
+        jcombobox_seguimiento_nombre = new javax.swing.JComboBox();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         boton_añadir_seguimiento = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        jComboBoxSeguimientoCedula = new javax.swing.JComboBox();
         panel_busqueda = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
@@ -2261,9 +2263,9 @@ public class Vista extends javax.swing.JFrame {
                 label_cliente_seguimiento.setForeground(new java.awt.Color(0, 0, 153));
                 label_cliente_seguimiento.setText("Cliente");
 
-                combo_filtro_seguimiento_valor.setModel(
+                jcombobox_seguimiento_apellidos.setModel(
                     new DefaultComboBoxModel(
-                        new String[]{""})
+                        control.getDao().RecuperaAtributosCliente("Apellidos"))
                 );
 
                 label_fecha_seguimiento.setText("Fecha");
@@ -2443,354 +2445,369 @@ public class Vista extends javax.swing.JFrame {
                         .addContainerGap(25, Short.MAX_VALUE))
                 );
 
-                combo_busqueda_seguimiento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "Cedula", "E-mail" }));
-                combo_busqueda_seguimiento.addActionListener(
-                    e -> combo_filtro_seguimiento_valor.setModel(
-                        new DefaultComboBoxModel(
-                            control.getDao().RecuperaAtributosCliente(
-                                combo_busqueda_seguimiento.getSelectedItem().toString()))
-                    )
-                );
+                jcombobox_seguimiento_nombre.setModel( new DefaultComboBoxModel(
+                    control.getDao().RecuperaAtributosCliente("Cedula")));
 
-                jLabel25.setText("Búsqueda");
+            jLabel25.setText("Nombre");
 
-                jLabel26.setText("Valor");
+            jLabel26.setText("Apellidos");
 
-                boton_añadir_seguimiento.setText("Añadir Seguimiento");
-                boton_añadir_seguimiento.setToolTipText("haga click para añadir un nuevo seguimiento");
-                boton_añadir_seguimiento.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        boton_añadir_seguimientoActionPerformed(evt);
-                    }
-                });
+            boton_añadir_seguimiento.setText("Añadir Seguimiento");
+            boton_añadir_seguimiento.setToolTipText("haga click para añadir un nuevo seguimiento");
+            boton_añadir_seguimiento.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    boton_añadir_seguimientoActionPerformed(evt);
+                }
+            });
 
-                javax.swing.GroupLayout panel_seguimientosLayout = new javax.swing.GroupLayout(panel_seguimientos);
-                panel_seguimientos.setLayout(panel_seguimientosLayout);
-                panel_seguimientosLayout.setHorizontalGroup(
-                    panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jLabel29.setText("Cédula");
+
+            jComboBoxSeguimientoCedula.setModel(new DefaultComboBoxModel(
+                control.getDao().RecuperaAtributosCliente("Cedula")
+            ));
+            jComboBoxSeguimientoCedula.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jComboBoxSeguimientoCedulaActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout panel_seguimientosLayout = new javax.swing.GroupLayout(panel_seguimientos);
+            panel_seguimientos.setLayout(panel_seguimientosLayout);
+            panel_seguimientosLayout.setHorizontalGroup(
+                panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                    .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                            .addGap(58, 58, 58)
+                            .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panel_seguimientosLayout.createSequentialGroup()
                                     .addComponent(label_cliente_seguimiento)
-                                    .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel25)
-                                            .addComponent(jLabel26)
-                                            .addComponent(label_fecha_seguimiento))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(combo_filtro_seguimiento_valor, 0, 178, Short.MAX_VALUE)
-                                            .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                            .addComponent(combo_busqueda_seguimiento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addContainerGap(102, Short.MAX_VALUE)
-                                .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(101, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                panel_seguimientosLayout.setVerticalGroup(
-                    panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label_cliente_seguimiento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(combo_busqueda_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel26)
-                            .addComponent(combo_filtro_seguimiento_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_fecha_seguimiento)
-                            .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(boton_añadir_seguimiento)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
+                                    .addGap(196, 196, 196))
+                                .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                                    .addGap(0, 304, Short.MAX_VALUE)
+                                    .addComponent(jLabel26)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jcombobox_seguimiento_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel29)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jComboBoxSeguimientoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
+                            .addContainerGap(102, Short.MAX_VALUE)
+                            .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                                    .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel25)
+                                        .addComponent(label_fecha_seguimiento))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jcombobox_seguimiento_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addContainerGap(101, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            panel_seguimientosLayout.setVerticalGroup(
+                panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(label_cliente_seguimiento)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel25)
+                        .addComponent(jcombobox_seguimiento_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel26)
+                        .addComponent(jcombobox_seguimiento_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel29)
+                        .addComponent(jComboBoxSeguimientoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(label_fecha_seguimiento)
+                        .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(48, 48, 48)
+                    .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(17, 17, 17)
+                    .addComponent(boton_añadir_seguimiento)
+                    .addContainerGap(360, Short.MAX_VALUE))
+            );
 
-                jTabbedPane1.addTab("Seguimientos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon_1.jpg")), panel_seguimientos); // NOI18N
+            jTabbedPane1.addTab("Seguimientos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon_1.jpg")), panel_seguimientos); // NOI18N
 
-                jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-                jScrollPane2.setAutoscrolls(true);
+            jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+            jScrollPane2.setAutoscrolls(true);
 
-                panel_busqueda_cliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 0, 102), 1, true));
+            panel_busqueda_cliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 0, 102), 1, true));
 
-                panel_parametros.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(102, 102, 0)));
+            panel_parametros.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(102, 102, 0)));
 
-                jLabel69.setText("Parámetro:");
+            jLabel69.setText("Parámetro:");
 
-                jLabel70.setText("Valor:");
+            jLabel70.setText("Valor:");
 
-                combo_filtro_cliente3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "Cedula", "E-mail" }));
-                combo_filtro_cliente3.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        combo_filtro_cliente3ActionPerformed(evt);
-                    }
-                });
-                combo_filtro_cliente3.addActionListener(
-                    e -> combo_nombre_cliente_seguimiento2.setModel(
-                        new DefaultComboBoxModel(
-                            control.getDao().RecuperaAtributosCliente(
-                                combo_filtro_cliente3.getSelectedItem().toString()))
-                    )
-                );
-
-                jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-                jLabel71.setForeground(new java.awt.Color(102, 102, 0));
-                jLabel71.setText("Búsqueda del cliente ");
-
-                combo_nombre_cliente_seguimiento2.setModel(
+            combo_filtro_cliente3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "Cedula", "E-mail" }));
+            combo_filtro_cliente3.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    combo_filtro_cliente3ActionPerformed(evt);
+                }
+            });
+            combo_filtro_cliente3.addActionListener(
+                e -> combo_nombre_cliente_seguimiento2.setModel(
                     new DefaultComboBoxModel(
-                        new String[]{"valor de búsqueda no seleccionado"})
-                );
-                combo_nombre_cliente_seguimiento2.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        combo_nombre_cliente_seguimiento2ActionPerformed(evt);
-                    }
-                });
+                        control.getDao().RecuperaAtributosCliente(
+                            combo_filtro_cliente3.getSelectedItem().toString()))
+                )
+            );
 
-                javax.swing.GroupLayout panel_parametrosLayout = new javax.swing.GroupLayout(panel_parametros);
-                panel_parametros.setLayout(panel_parametrosLayout);
-                panel_parametrosLayout.setHorizontalGroup(
-                    panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_parametrosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_parametrosLayout.createSequentialGroup()
-                                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(combo_filtro_cliente3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel70)
-                                .addGap(18, 18, 18)
-                                .addComponent(combo_nombre_cliente_seguimiento2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(28, Short.MAX_VALUE))
-                );
-                panel_parametrosLayout.setVerticalGroup(
-                    panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_parametrosLayout.createSequentialGroup()
-                        .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel69)
-                            .addComponent(combo_filtro_cliente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            jLabel71.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+            jLabel71.setForeground(new java.awt.Color(102, 102, 0));
+            jLabel71.setText("Búsqueda del cliente ");
+
+            combo_nombre_cliente_seguimiento2.setModel(
+                new DefaultComboBoxModel(
+                    new String[]{"valor de búsqueda no seleccionado"})
+            );
+            combo_nombre_cliente_seguimiento2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    combo_nombre_cliente_seguimiento2ActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout panel_parametrosLayout = new javax.swing.GroupLayout(panel_parametros);
+            panel_parametros.setLayout(panel_parametrosLayout);
+            panel_parametrosLayout.setHorizontalGroup(
+                panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_parametrosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_parametrosLayout.createSequentialGroup()
+                            .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(combo_filtro_cliente3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(36, 36, 36)
                             .addComponent(jLabel70)
-                            .addComponent(combo_nombre_cliente_seguimiento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26))
-                );
+                            .addGap(18, 18, 18)
+                            .addComponent(combo_nombre_cliente_seguimiento2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(28, Short.MAX_VALUE))
+            );
+            panel_parametrosLayout.setVerticalGroup(
+                panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_parametrosLayout.createSequentialGroup()
+                    .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(panel_parametrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel69)
+                        .addComponent(combo_filtro_cliente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel70)
+                        .addComponent(combo_nombre_cliente_seguimiento2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(26, 26, 26))
+            );
 
-                panel_muestra_datos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+            panel_muestra_datos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-                lb_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/login_icon_user.png"))); // NOI18N
+            lb_foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/login_icon_user.png"))); // NOI18N
 
-                lb_nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-                lb_nombre.setText("Nombre:");
+            lb_nombre.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            lb_nombre.setText("Nombre:");
 
-                lb_apellidos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-                lb_apellidos.setText("Apellidos:");
+            lb_apellidos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            lb_apellidos.setText("Apellidos:");
 
-                lb_cedula.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-                lb_cedula.setText("Cedula:");
+            lb_cedula.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            lb_cedula.setText("Cedula:");
 
-                javax.swing.GroupLayout panel_muestra_datosLayout = new javax.swing.GroupLayout(panel_muestra_datos);
-                panel_muestra_datos.setLayout(panel_muestra_datosLayout);
-                panel_muestra_datosLayout.setHorizontalGroup(
-                    panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_muestra_datosLayout.createSequentialGroup()
-                        .addContainerGap(129, Short.MAX_VALUE)
-                        .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addGroup(panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lb_apellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lb_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(147, Short.MAX_VALUE))
-                );
-                panel_muestra_datosLayout.setVerticalGroup(
-                    panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_muestra_datosLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_muestra_datosLayout.createSequentialGroup()
-                                .addComponent(lb_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(58, 58, 58))
-                );
+            javax.swing.GroupLayout panel_muestra_datosLayout = new javax.swing.GroupLayout(panel_muestra_datos);
+            panel_muestra_datos.setLayout(panel_muestra_datosLayout);
+            panel_muestra_datosLayout.setHorizontalGroup(
+                panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_muestra_datosLayout.createSequentialGroup()
+                    .addContainerGap(129, Short.MAX_VALUE)
+                    .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(28, 28, 28)
+                    .addGroup(panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(lb_apellidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(147, Short.MAX_VALUE))
+            );
+            panel_muestra_datosLayout.setVerticalGroup(
+                panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_muestra_datosLayout.createSequentialGroup()
+                    .addGap(53, 53, 53)
+                    .addGroup(panel_muestra_datosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_muestra_datosLayout.createSequentialGroup()
+                            .addComponent(lb_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lb_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(58, 58, 58))
+            );
 
-                javax.swing.GroupLayout panel_busqueda_clienteLayout = new javax.swing.GroupLayout(panel_busqueda_cliente);
-                panel_busqueda_cliente.setLayout(panel_busqueda_clienteLayout);
-                panel_busqueda_clienteLayout.setHorizontalGroup(
-                    panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
-                        .addContainerGap(62, Short.MAX_VALUE)
-                        .addComponent(panel_parametros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(63, Short.MAX_VALUE))
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
+            javax.swing.GroupLayout panel_busqueda_clienteLayout = new javax.swing.GroupLayout(panel_busqueda_cliente);
+            panel_busqueda_cliente.setLayout(panel_busqueda_clienteLayout);
+            panel_busqueda_clienteLayout.setHorizontalGroup(
+                panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
+                    .addContainerGap(62, Short.MAX_VALUE)
+                    .addComponent(panel_parametros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(63, Short.MAX_VALUE))
+                .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+            panel_busqueda_clienteLayout.setVerticalGroup(
+                panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+            );
+
+            panel_proyeccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 153, 0), 1, true));
+
+            jp_chart.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 102, 0)));
+
+            javax.swing.GroupLayout jp_chartLayout = new javax.swing.GroupLayout(jp_chart);
+            jp_chart.setLayout(jp_chartLayout);
+            jp_chartLayout.setHorizontalGroup(
+                jp_chartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 832, Short.MAX_VALUE)
+            );
+            jp_chartLayout.setVerticalGroup(
+                jp_chartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 228, Short.MAX_VALUE)
+            );
+
+            jButton7.setText("Exportar gráfico");
+            jButton7.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton7ActionPerformed(evt);
+                }
+            });
+
+            jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+            jLabel72.setForeground(new java.awt.Color(204, 0, 51));
+            jLabel72.setText(" Proyección de los cambios en medidas físicas y corporales del cliente");
+            jLabel72.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 204)));
+
+            jLabel73.setText("Atributo a proyectar del cliente: ");
+
+            jcb_proyec.setModel(new javax.swing.DefaultComboBoxModel(
+                new String[] {
+                    "Piernas",
+                    "Brazos",
+                    "Pantorrillas",
+                    "Antebrazos",
+                    "Cintura",
+                    "Gluteos",
+                    "Cadera",
+                    "Espalda",
+                    "Pecho",
+                    "Grasa",
+                    "Peso",
+                    "IMC"
+                }));
+
+                javax.swing.GroupLayout panel_proyeccionLayout = new javax.swing.GroupLayout(panel_proyeccion);
+                panel_proyeccion.setLayout(panel_proyeccionLayout);
+                panel_proyeccionLayout.setHorizontalGroup(
+                    panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_proyeccionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
+                                .addComponent(jp_chart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panel_proyeccionLayout.createSequentialGroup()
+                                .addComponent(jLabel72)
+                                .addContainerGap(421, Short.MAX_VALUE))))
+                    .addGroup(panel_proyeccionLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcb_proyec, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton7)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
-                panel_busqueda_clienteLayout.setVerticalGroup(
-                    panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                panel_proyeccionLayout.setVerticalGroup(
+                    panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_proyeccionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel72)
+                        .addGap(24, 24, 24)
+                        .addGroup(panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel73)
+                            .addComponent(jcb_proyec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jp_chart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7)
                         .addContainerGap())
                 );
 
-                panel_proyeccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 153, 0), 1, true));
-
-                jp_chart.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 102, 0)));
-
-                javax.swing.GroupLayout jp_chartLayout = new javax.swing.GroupLayout(jp_chart);
-                jp_chart.setLayout(jp_chartLayout);
-                jp_chartLayout.setHorizontalGroup(
-                    jp_chartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGap(0, 832, Short.MAX_VALUE)
-                );
-                jp_chartLayout.setVerticalGroup(
-                    jp_chartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGap(0, 228, Short.MAX_VALUE)
-                );
-
-                jButton7.setText("Exportar gráfico");
-                jButton7.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        jButton7ActionPerformed(evt);
-                    }
-                });
-
-                jLabel72.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-                jLabel72.setForeground(new java.awt.Color(204, 0, 51));
-                jLabel72.setText(" Proyección de los cambios en medidas físicas y corporales del cliente");
-                jLabel72.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 204)));
-
-                jLabel73.setText("Atributo a proyectar del cliente: ");
-
-                jcb_proyec.setModel(new javax.swing.DefaultComboBoxModel(
-                    new String[] {
-                        "Piernas",
-                        "Brazos",
-                        "Pantorrillas",
-                        "Antebrazos",
-                        "Cintura",
-                        "Gluteos",
-                        "Cadera",
-                        "Espalda",
-                        "Pecho",
-                        "Grasa",
-                        "Peso",
-                        "IMC"
-                    }));
-
-                    javax.swing.GroupLayout panel_proyeccionLayout = new javax.swing.GroupLayout(panel_proyeccion);
-                    panel_proyeccion.setLayout(panel_proyeccionLayout);
-                    panel_proyeccionLayout.setHorizontalGroup(
-                        panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
-                                    .addComponent(jp_chart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                                    .addComponent(jLabel72)
-                                    .addContainerGap(421, Short.MAX_VALUE))))
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addGap(41, 41, 41)
-                            .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jcb_proyec, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_proyeccionLayout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton7)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    );
-                    panel_proyeccionLayout.setVerticalGroup(
-                        panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_proyeccionLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel72)
-                            .addGap(24, 24, 24)
-                            .addGroup(panel_proyeccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel73)
-                                .addComponent(jcb_proyec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(jp_chart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton7)
-                            .addContainerGap())
-                    );
-
-                    javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-                    jPanel8.setLayout(jPanel8Layout);
-                    jPanel8Layout.setHorizontalGroup(
-                        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addContainerGap(57, Short.MAX_VALUE)
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(panel_proyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(panel_busqueda_cliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(64, Short.MAX_VALUE))
-                    );
-
-                    jPanel8Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panel_busqueda_cliente, panel_proyeccion});
-
-                    jPanel8Layout.setVerticalGroup(
-                        jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel8Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(panel_busqueda_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+                jPanel8.setLayout(jPanel8Layout);
+                jPanel8Layout.setHorizontalGroup(
+                    jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap(57, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(panel_proyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap())
-                    );
+                            .addComponent(panel_busqueda_cliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(64, Short.MAX_VALUE))
+                );
 
-                    jScrollPane2.setViewportView(jPanel8);
+                jPanel8Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panel_busqueda_cliente, panel_proyeccion});
 
-                    javax.swing.GroupLayout panel_busquedaLayout = new javax.swing.GroupLayout(panel_busqueda);
-                    panel_busqueda.setLayout(panel_busquedaLayout);
-                    panel_busquedaLayout.setHorizontalGroup(
-                        panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
-                    );
-                    panel_busquedaLayout.setVerticalGroup(
-                        panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    );
+                jPanel8Layout.setVerticalGroup(
+                    jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel_busqueda_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panel_proyeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                );
 
-                    jTabbedPane1.addTab("Búsqueda y Proyección", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_busqueda); // NOI18N
+                jScrollPane2.setViewportView(jPanel8);
 
-                    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                    getContentPane().setLayout(layout);
-                    layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
-                    );
-                    layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    );
+                javax.swing.GroupLayout panel_busquedaLayout = new javax.swing.GroupLayout(panel_busqueda);
+                panel_busqueda.setLayout(panel_busquedaLayout);
+                panel_busquedaLayout.setHorizontalGroup(
+                    panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 956, Short.MAX_VALUE)
+                );
+                panel_busquedaLayout.setVerticalGroup(
+                    panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
 
-                    pack();
-                }// </editor-fold>//GEN-END:initComponents
+                jTabbedPane1.addTab("Búsqueda y Proyección", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_busqueda); // NOI18N
+
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
+                );
+                layout.setVerticalGroup(
+                    layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 987, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
+
+                pack();
+            }// </editor-fold>//GEN-END:initComponents
 
 
     private void jbRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRegistrarClienteActionPerformed
@@ -3086,8 +3103,10 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_cancelar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
-        Cliente cliente = control.getDao().getCliente(combo_busqueda_seguimiento.getSelectedItem().toString(),
-                combo_filtro_seguimiento_valor.getSelectedItem().toString());
+        Cliente cliente = control.getDao().getCliente(
+                jcombobox_seguimiento_apellidos.getSelectedItem().toString(),
+                jcombobox_seguimiento_nombre.getSelectedItem().toString(), 
+                jComboBoxSeguimientoCedula.getSelectedItem().toString()); 
         Seguimiento seg = new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
                 combo_fecha_seguimiento.getText(), Double.parseDouble(grasa.getText()),
                 Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
@@ -3290,6 +3309,10 @@ public class Vista extends javax.swing.JFrame {
             combo_embarazo.enable();
         }
     }//GEN-LAST:event_cb_sexoActionPerformed
+
+    private void jComboBoxSeguimientoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeguimientoCedulaActionPerformed
+      
+    }//GEN-LAST:event_jComboBoxSeguimientoCedulaActionPerformed
 
     private void listarArchivos(javax.swing.JComboBox c) {
         File[] files = new File("C:\\PGS\\nutricion").listFiles();
@@ -3533,7 +3556,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_anemia;
     private javax.swing.JComboBox combo_asfixia;
     private javax.swing.JComboBox combo_asmatico;
-    private javax.swing.JComboBox combo_busqueda_seguimiento;
     private javax.swing.JComboBox combo_cobro_valor;
     private javax.swing.JComboBox combo_desmayos;
     private javax.swing.JComboBox combo_diabetico;
@@ -3544,7 +3566,6 @@ public class Vista extends javax.swing.JFrame {
     private datechooser.beans.DateChooserCombo combo_fecha_seguimiento;
     private javax.swing.JComboBox combo_filtro_cliente3;
     private javax.swing.JComboBox combo_filtro_cobro;
-    private javax.swing.JComboBox combo_filtro_seguimiento_valor;
     private javax.swing.JComboBox combo_fumador;
     private javax.swing.JComboBox combo_gimnasio;
     private javax.swing.JComboBox combo_hipertenso;
@@ -3576,6 +3597,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox jCBListFood;
     private javax.swing.JComboBox jCBListFood2;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBoxSeguimientoCedula;
     private javax.swing.JLabel jLApellidos;
     private javax.swing.JLabel jLDatosPersonales;
     private javax.swing.JLabel jLDatosPersonales2;
@@ -3613,6 +3635,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -3695,6 +3718,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jbutton_enviar_correo;
     private javax.swing.JComboBox jcb_proyec;
     private javax.swing.JComboBox jcombo_projec_cobros;
+    private javax.swing.JComboBox jcombobox_seguimiento_apellidos;
+    private javax.swing.JComboBox jcombobox_seguimiento_nombre;
     private javax.swing.JLabel jl_PGS;
     private javax.swing.JPanel jp_chart;
     private javax.swing.JLabel label_cliente_seguimiento;

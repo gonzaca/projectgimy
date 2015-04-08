@@ -94,33 +94,6 @@ public class DAO extends Observable {
         }
     }
 
-    public Cliente getCliente(String type, String att) {
-        Cliente c = null;
-        List<Cliente> l = null;
-        try {
-            switch (type) {
-                case "E-mail":
-                    l = daoCliente.queryForEq("email", att);
-                    c = !l.isEmpty() ? l.get(0) : null;
-                    break;
-                case "Nombre":
-                    l = daoCliente.queryForEq("nombre", att);
-                    c = !l.isEmpty() ? l.get(0) : null;
-                    break;
-                case "Cedula":
-                    l = daoCliente.queryForEq("id_cliente", att);
-                    c = !l.isEmpty() ? l.get(0) : null;
-                    break;
-                default:
-                    break;
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return c;
-    }
-
     public SaludCliente getSaludCliente(String att) {
         SaludCliente c = null;
         List<SaludCliente> l = null;
@@ -253,11 +226,10 @@ public class DAO extends Observable {
         String[] hash = null;
         try {
             switch (at) {
-                case "E-mail":
-                    hash = daoCliente.query(
-                            daoCliente.queryBuilder().where().isNotNull("email").prepare())
+                case "Apellidos":
+                    hash = daoCliente.query(daoCliente.queryBuilder().where().isNotNull("apellidos").prepare())
                             .stream().map((a) -> {
-                                return a.getEmail();
+                                return a.getApellidos();
                             }).
                             toArray(String[]::new);
                     break;
@@ -282,6 +254,48 @@ public class DAO extends Observable {
             System.out.println("RecuperaAtributosCliente: " + ex.getMessage());
         }
         return hash;
+    }
+    
+     public Cliente getCliente(String type, String att) {
+        Cliente c = null;
+        List<Cliente> l = null;
+        try {
+            switch (type) {
+                case "Apellidos":
+                    l = daoCliente.queryForEq("apellidos", att);
+                    c = !l.isEmpty() ? l.get(0) : null;
+                    break;
+                case "Nombre":
+                    l = daoCliente.queryForEq("nombre", att);
+                    c = !l.isEmpty() ? l.get(0) : null;
+                    break;
+                case "Cedula":
+                    l = daoCliente.queryForEq("id_cliente", att);
+                    c = !l.isEmpty() ? l.get(0) : null;
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+     
+      public Cliente getCliente(String apellidos, String nombre, String cedula) {
+        Cliente c = null;
+        List<Cliente> l = null;
+        try {
+           c=  daoCliente.queryForAll().stream().filter(
+                     a -> { return a.getApellidos().equals(apellidos) && a.getNombre().equals(nombre) 
+                                 && a.getId_cliente().equals(cedula);
+                     }
+             ).findFirst().get();  
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
     }
 
     public List<Cliente> getClientesSegunPagos(String segun) {

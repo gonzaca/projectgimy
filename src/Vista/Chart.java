@@ -53,13 +53,13 @@ public class Chart {
 
     private static XYDataset createDataset(HashMap<String, Double> m, String title) {// 08/07/14
         TimeSeries s1 = new TimeSeries(title, Day.class);
-        m.entrySet().stream().forEach((a) -> {
-                    System.out.println("key: "+a.getKey());
+       m.entrySet().stream().forEach((a) -> { 
+            //System.out.println("key: "+a.getKey());
             int day = Integer.parseInt(a.getKey().substring(0, 2));
             int month =  Integer.parseInt(a.getKey().substring(3, 5));
             String y= a.getKey().substring(6);
             int year =  Integer.parseInt(y);
-            System.out.println("to add: "+day+"/"+month+"/"+year);
+           // System.out.println("to add: "+day+"/"+month+"/"+year);
             s1.add(new Day(day, month, year), a.getValue());
         });  
         TimeSeriesCollection dataset = new TimeSeriesCollection();
