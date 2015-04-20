@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/Vista/Chart.java</file>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/Modelo/Pago.java</file>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/Vista/VistaCliente.java</file>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/Vista/Vista.java</file>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/DAO/DAO.java</file>
-            <file>file:/C:/Users/pablo/Dropbox/PGS/projectgimy/projectgimy/src/Vista/LogCliente.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Modelo/Rutina.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Vista/Vista.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Modelo/EjerciciosRutina.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/DAO/DAO.java</file>
+            <file>file:/C:/Users/Alonso/Documents/NetBeansProjects/projectgimy/src/Modelo/ClienteRutina.java</file>
         </group>
     </open-files>
 </project-private>

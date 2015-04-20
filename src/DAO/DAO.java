@@ -1,14 +1,11 @@
 package DAO;
 
-import Modelo.Cliente;
-import Modelo.ClienteRutina;
-import Modelo.Nutricion;
-import Modelo.Pago;
-import Modelo.SaludCliente;
-import Modelo.Seguimiento;
+import Modelo.*;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.Where;
 import java.util.List;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -24,9 +21,11 @@ public class DAO extends Observable {
 
     private Dao<Cliente, String> daoCliente;
     private Dao<SaludCliente, String> daoSaludCliente;
+    private Dao<Rutina, String> daoRutina;
+    private Dao<EjerciciosRutina, String> daoEjerciciosRutina;
+    private Dao<ClienteRutina, String> daoClienteRutina;
     private Dao<Seguimiento, String> daoSeguimiento;
     private Dao<Pago, String> daoPago;
-     private Dao<ClienteRutina, String> daoClienteRutina;
     private Dao<Nutricion, String> daoNutricion;
     private JdbcConnectionSource connection;
     private static String databaseUrl = "jdbc:mysql://localhost:3306/gym";
@@ -39,9 +38,11 @@ public class DAO extends Observable {
         daoCliente = DaoManager.createDao(connection, Cliente.class);
         daoSeguimiento = DaoManager.createDao(connection, Seguimiento.class);
         daoSaludCliente = DaoManager.createDao(connection, SaludCliente.class);
+        daoRutina = DaoManager.createDao(connection, Rutina.class);
+        daoEjerciciosRutina = DaoManager.createDao(connection, EjerciciosRutina.class);
+        daoClienteRutina = DaoManager.createDao(connection, ClienteRutina.class);
         daoPago = DaoManager.createDao(connection, Pago.class);
         daoNutricion = DaoManager.createDao(connection, Nutricion.class);
-        daoClienteRutina =DaoManager.createDao(connection, ClienteRutina.class);
         tipo_unidad = "cm";
     }
 
@@ -72,7 +73,7 @@ public class DAO extends Observable {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public void setNutricionCliente(Nutricion NutricionC) {
         try {
             daoNutricion.createOrUpdate(NutricionC);
@@ -89,12 +90,56 @@ public class DAO extends Observable {
         }
     }
 
+    public void setRutina(Rutina r) {
+        try {
+            daoRutina.createOrUpdate(r);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setEjerciciosRutina(EjerciciosRutina r) {
+        try {
+            daoEjerciciosRutina.createOrUpdate(r);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void setClienteRutina(ClienteRutina r) {
+        try {
+            daoClienteRutina.createOrUpdate(r);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void deleteCliente(String id_cliente) {
         try {
             daoCliente.deleteById(id_cliente);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public List<Cliente> todoClientes() throws SQLException {
+        return daoCliente.queryForAll();
+    }
+
+    public List<Rutina> todoRutina() throws SQLException {
+        return daoRutina.queryForAll();
+    }
+
+    public Rutina getRutina(int att) {
+        Rutina r = null;
+        List<Rutina> l = null;
+        try {
+            l = daoRutina.queryForEq("id", att);
+            r = !l.isEmpty() ? l.get(0) : null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return r;
     }
 
     public SaludCliente getSaludCliente(String att) {
@@ -108,7 +153,7 @@ public class DAO extends Observable {
         }
         return c;
     }
-    
+
     public Nutricion getNutricionCliente(String att) {
         Nutricion c = null;
         List<Nutricion> l = null;
@@ -120,6 +165,33 @@ public class DAO extends Observable {
         }
         return c;
     }
+
+    public List<EjerciciosRutina> getEjeRutina(int att) {
+        List<EjerciciosRutina> l = null;
+        try {
+            l = daoEjerciciosRutina.queryForEq("rutina", att);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return l;
+    }
+
+    public int getSizeParte(int att,String part) {
+        List<EjerciciosRutina> l = null;
+        try {
+        QueryBuilder<EjerciciosRutina, String> qb = daoEjerciciosRutina.queryBuilder();
+        Where where = qb.where();
+        where.eq("rutina", att);
+        where.and();
+        where.eq("parteCuerpo", part);
+            l = qb.query();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return l.size();
+    }
+    
+    
 
     public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
         List<Seguimiento> s = getSeguimientos(c.getId_cliente());
@@ -224,7 +296,7 @@ public class DAO extends Observable {
         }
         return list;
     }
-    
+
     public List<Pago> getPagos(String id_cliente) {
         List<Pago> list = null;
         try {
@@ -268,8 +340,8 @@ public class DAO extends Observable {
         }
         return hash;
     }
-    
-     public Cliente getCliente(String type, String att) {
+
+    public Cliente getCliente(String type, String att) {
         Cliente c = null;
         List<Cliente> l = null;
         try {
@@ -295,16 +367,17 @@ public class DAO extends Observable {
         }
         return c;
     }
-     
-      public Cliente getCliente(String apellidos, String nombre, String cedula) {
+
+    public Cliente getCliente(String apellidos, String nombre, String cedula) {
         Cliente c = null;
         List<Cliente> l = null;
         try {
-           c=  daoCliente.queryForAll().stream().filter(
-                     a -> { return a.getApellidos().equals(apellidos) && a.getNombre().equals(nombre) 
-                                 && a.getId_cliente().equals(cedula);
-                     }
-             ).findFirst().get();  
+            c = daoCliente.queryForAll().stream().filter(
+                    a -> {
+                        return a.getApellidos().equals(apellidos) && a.getNombre().equals(nombre)
+                        && a.getId_cliente().equals(cedula);
+                    }
+            ).findFirst().get();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -316,41 +389,41 @@ public class DAO extends Observable {
         List<Cliente> aux = new ArrayList();
         try {
             aux = daoCliente.queryForAll().stream().filter(a -> {
-                        return !a.getPagos().isEmpty();
-                    }).collect(Collectors.toList());
+                return !a.getPagos().isEmpty();
+            }).collect(Collectors.toList());
         } catch (SQLException ex) {
             System.out.println("segun pagos: " + ex.getMessage());
         }
         switch (segun) {
             case "Clientes morosos":
                 clientes = aux.stream().filter(a -> {
-                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
-                                    -> fromStringToDate(current.getFecha()).compareTo(
-                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
-                            ).get(); //saca el pago mas reciente
-                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;// se haya pasado de 30 días
-                        }).collect(Collectors.toList());
+                    Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
+                            -> fromStringToDate(current.getFecha()).compareTo(
+                                    fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                    ).get(); //saca el pago mas reciente
+                    return this.getDiasEntreFechas(conFechaMasActual.getFecha()) > 30;// se haya pasado de 30 días
+                }).collect(Collectors.toList());
                 break;
             case "Cancelan en los próximos 7 días":
                 clientes = aux.stream().filter(a -> {
-                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
-                                    -> fromStringToDate(current.getFecha()).compareTo(
-                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
-                            ).get();//saca el pago mas reciente
-                            return (this.getDiasEntreFechas(conFechaMasActual.getFecha())) > // sea haya pasado de 23 dias
-                                    (LocalDate.now().lengthOfMonth()-7) 
-                                    &&  (this.getDiasEntreFechas(conFechaMasActual.getFecha())) < 30;// pero no se haya pasado de 30 
-                        }).collect(Collectors.toList());
+                    Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
+                            -> fromStringToDate(current.getFecha()).compareTo(
+                                    fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                    ).get();//saca el pago mas reciente
+                    return (this.getDiasEntreFechas(conFechaMasActual.getFecha())) > // sea haya pasado de 23 dias
+                            (LocalDate.now().lengthOfMonth() - 7)
+                            && (this.getDiasEntreFechas(conFechaMasActual.getFecha())) < 30;// pero no se haya pasado de 30 
+                }).collect(Collectors.toList());
                 break;
             case "Clientes que están al día":
-                 clientes = aux.stream().filter(a -> {
-                            Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
-                                    -> fromStringToDate(current.getFecha()).compareTo(
-                                            fromStringToDate(previous.getFecha())) > 0 ? current : previous
-                            ).get();//saca el pago mas reciente
-                            return this.getDiasEntreFechas(conFechaMasActual.getFecha()) < (LocalDate.now().lengthOfMonth()-7);
-                            //no tengan menos de 23 días de haber cancelado
-                        }).collect(Collectors.toList());
+                clientes = aux.stream().filter(a -> {
+                    Pago conFechaMasActual = a.getPagos().stream().reduce((current, previous)
+                            -> fromStringToDate(current.getFecha()).compareTo(
+                                    fromStringToDate(previous.getFecha())) > 0 ? current : previous
+                    ).get();//saca el pago mas reciente
+                    return this.getDiasEntreFechas(conFechaMasActual.getFecha()) < (LocalDate.now().lengthOfMonth() - 7);
+                    //no tengan menos de 23 días de haber cancelado
+                }).collect(Collectors.toList());
                 break;
             default:
                 break;
@@ -375,5 +448,5 @@ public class DAO extends Observable {
         LocalDate newDate = LocalDate.parse(date, formatter);
         return newDate;
     }
-    
+
 }

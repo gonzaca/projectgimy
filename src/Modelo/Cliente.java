@@ -17,8 +17,6 @@ public class Cliente {
     @ForeignCollectionField(eager = true)
     private ForeignCollection<Pago> pagos;
     @ForeignCollectionField
-    private ForeignCollection<Rutina> rutinas;
-    @ForeignCollectionField
     private ForeignCollection<Nutricion> planes_nutricionales;
     @DatabaseField
     private String nombre;
@@ -99,10 +97,6 @@ public class Cliente {
         return pagos;
     }
 
-    public ForeignCollection<Rutina> getRutinas() {
-        return rutinas;
-    }
-
     public String getFechaInscripcion() {
         return fechaInscripcion;
     }
@@ -114,5 +108,9 @@ public class Cliente {
 
     public void setPlanes_nutricionales(ForeignCollection<Nutricion> planes_nutricionales) {
         this.planes_nutricionales = planes_nutricionales;
+    }
+
+    public void setId_cliente(String id_cliente) {
+        this.id_cliente = id_cliente;
     }
 }
