@@ -39,9 +39,9 @@ public class Chart {
         );
         ch.setBackgroundPaint(Color.WHITE);
         XYPlot plot = (XYPlot) ch.getPlot();
-        plot.setBackgroundPaint(Color.getHSBColor(100, 204, 200));
-        plot.setDomainGridlinePaint(Color.white);
-        plot.setRangeGridlinePaint(Color.white);
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setDomainGridlinePaint(Color.WHITE);
+        plot.setRangeGridlinePaint(Color.WHITE);
         plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
         plot.setDomainCrosshairVisible(true);
         plot.setRangeCrosshairVisible(true);
