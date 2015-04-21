@@ -305,7 +305,6 @@ public class Vista extends javax.swing.JFrame {
         btn_buscar_cliente_pago = new javax.swing.JButton();
         panel_seguimientos = new javax.swing.JPanel();
         label_cliente_seguimiento = new javax.swing.JLabel();
-        label_fecha_seguimiento = new javax.swing.JLabel();
         panel_datos_seg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -339,15 +338,17 @@ public class Vista extends javax.swing.JFrame {
         brazo_izquierdo = new javax.swing.JTextField();
         antebrazo_derecho = new javax.swing.JTextField();
         antebrazo_izquierdo = new javax.swing.JTextField();
-        combo_fecha_seguimiento = new datechooser.beans.DateChooserCombo();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         boton_añadir_seguimiento = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
-        text_cedula_seguimiento = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        label_fecha_seguimiento = new javax.swing.JLabel();
         text_nombre_seguimiento = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
         text_apellidos_seguimiento = new javax.swing.JTextField();
         btn_busca_cliente_seg = new javax.swing.JButton();
+        combo_fecha_seguimiento = new datechooser.beans.DateChooserCombo();
+        jLabel26 = new javax.swing.JLabel();
+        text_cedula_seguimiento = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
         panel_busqueda = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
@@ -864,7 +865,6 @@ public class Vista extends javax.swing.JFrame {
             jLDatosPersonales.setText("Datos Personales");
 
             nacimiento.setCalendarPreferredSize(new java.awt.Dimension(300, 180));
-            nacimiento.setFormat(2);
             try {
                 nacimiento.setDefaultPeriods(new datechooser.model.multiple.PeriodSet());
             } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
@@ -2421,8 +2421,6 @@ public class Vista extends javax.swing.JFrame {
                 label_cliente_seguimiento.setForeground(new java.awt.Color(0, 0, 153));
                 label_cliente_seguimiento.setText("Cliente");
 
-                label_fecha_seguimiento.setText("Fecha");
-
                 panel_datos_seg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(5, 100, 152), new java.awt.Color(0, 102, 153), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 153, 153)));
 
                 jLabel1.setText("Brazo derecho");
@@ -2598,10 +2596,6 @@ public class Vista extends javax.swing.JFrame {
                         .addContainerGap(25, Short.MAX_VALUE))
                 );
 
-                jLabel25.setText("Cedula");
-
-                jLabel26.setText("Nombre");
-
                 boton_añadir_seguimiento.setText("Añadir Seguimiento");
                 boton_añadir_seguimiento.setToolTipText("haga click para añadir un nuevo seguimiento");
                 boton_añadir_seguimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -2610,16 +2604,11 @@ public class Vista extends javax.swing.JFrame {
                     }
                 });
 
-                jLabel29.setText("Apellidos");
-
-                text_cedula_seguimiento.setEditable(false);
-                text_cedula_seguimiento.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        text_cedula_seguimientoActionPerformed(evt);
-                    }
-                });
+                label_fecha_seguimiento.setText("Fecha");
 
                 text_nombre_seguimiento.setEditable(false);
+
+                jLabel29.setText("Apellidos");
 
                 text_apellidos_seguimiento.setEditable(false);
 
@@ -2630,19 +2619,25 @@ public class Vista extends javax.swing.JFrame {
                     }
                 });
 
-                javax.swing.GroupLayout panel_seguimientosLayout = new javax.swing.GroupLayout(panel_seguimientos);
-                panel_seguimientos.setLayout(panel_seguimientosLayout);
-                panel_seguimientosLayout.setHorizontalGroup(
-                    panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(label_cliente_seguimiento)
-                        .addGap(42, 42, 42)
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addComponent(btn_busca_cliente_seg)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                jLabel26.setText("Nombre");
+
+                text_cedula_seguimiento.setEditable(false);
+                text_cedula_seguimiento.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        text_cedula_seguimientoActionPerformed(evt);
+                    }
+                });
+
+                jLabel25.setText("Cedula");
+
+                javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+                jPanel3.setLayout(jPanel3Layout);
+                jPanel3Layout.setHorizontalGroup(
+                    jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(text_cedula_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2653,49 +2648,66 @@ public class Vista extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel29)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(text_apellidos_seguimiento)))
-                        .addGap(241, 241, 241))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
-                        .addContainerGap(167, Short.MAX_VALUE)
-                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addComponent(label_fecha_seguimiento)
-                                .addGap(318, 318, 318)
-                                .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(163, 163, 163))
+                                .addComponent(text_apellidos_seguimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(label_fecha_seguimiento)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn_busca_cliente_seg))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                );
+                jPanel3Layout.setVerticalGroup(
+                    jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_busca_cliente_seg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(text_nombre_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel26)
+                            .addComponent(text_cedula_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel29)
+                            .addComponent(text_apellidos_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_fecha_seguimiento)
+                            .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                );
+
+                javax.swing.GroupLayout panel_seguimientosLayout = new javax.swing.GroupLayout(panel_seguimientos);
+                panel_seguimientos.setLayout(panel_seguimientosLayout);
+                panel_seguimientosLayout.setHorizontalGroup(
+                    panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(label_cliente_seguimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                        .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(panel_datos_seg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(163, 163, 163))
                 );
                 panel_seguimientosLayout.setVerticalGroup(
                     panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(label_cliente_seguimiento))
-                            .addGroup(panel_seguimientosLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(btn_busca_cliente_seg)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(text_nombre_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel26)
-                                    .addComponent(text_cedula_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel29)
-                                    .addComponent(text_apellidos_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label_fecha_seguimiento)
-                                    .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                            .addComponent(label_cliente_seguimiento)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(17, 17, 17)
                         .addComponent(boton_añadir_seguimiento)
-                        .addContainerGap(505, Short.MAX_VALUE))
+                        .addContainerGap(424, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("Seguimientos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon_1.jpg")), panel_seguimientos); // NOI18N
@@ -4075,6 +4087,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
