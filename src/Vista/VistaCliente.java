@@ -21,8 +21,10 @@ import java.util.ResourceBundle;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableModel;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 import org.icepdf.ri.util.PropertiesManager;
@@ -78,9 +80,23 @@ public class VistaCliente extends javax.swing.JFrame {
                 System.err.println("Error al cargar imagen.");
             }
             lb_proximo_pago.setText(getProximoPago());
+            cargaPagos();
         }
     }
-
+    
+    private void cargaPagos(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        while (model.getRowCount() > 0) {
+            for (int i = 0; i < model.getRowCount(); ++i) {
+                model.removeRow(i);
+            }
+        }
+        control.getDao().getPagos(c.getId_cliente()).forEach(a
+                -> model.addRow(new Object[]{a.getFecha(), String.valueOf(a.getMonto()), a.getDetalle()}
+                )
+        );
+    }
+    
     private String getProximoPago() {
         String prox = "";
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -1011,8 +1027,16 @@ public class VistaCliente extends javax.swing.JFrame {
 
     private void btn_ver_nutricion_actualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_nutricion_actualActionPerformed
         // TODO add your handling code here:
-        filePath = "C:\\PGS\\nutricion\\" + this.control.getDao().getNutricionCliente(c.getId_cliente()).getNombre_plan();
-        controller.openDocument(filePath);
+        try {
+            String plan = this.control.getDao().getNutricionCliente(c.getId_cliente()).getNombre_plan();
+            if(plan != null){
+                filePath = "C:\\PGS\\nutricion\\" + plan;
+                controller.openDocument(filePath);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No tiene un Plan Nutricional Asignado Actualmente.");
+            System.err.println("Error, no hay rutina asignada al cliente");
+        }
     }//GEN-LAST:event_btn_ver_nutricion_actualActionPerformed
 
     final private String photoLocation;
