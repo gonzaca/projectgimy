@@ -3112,7 +3112,6 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAddClienteActionPerformed
 
     private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
-
         seleccionaRutina();
         if (rutinaSelected != null) {
 

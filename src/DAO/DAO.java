@@ -141,6 +141,21 @@ public class DAO extends Observable {
         }
         return r;
     }
+    
+    public Rutina getRutinaCliente(String att) {
+        Rutina r = null;
+        ClienteRutina cr = null;
+        List<ClienteRutina> l = null;
+        try {
+            l = daoClienteRutina.queryForEq("cliente", att);
+            cr = !l.isEmpty() ? l.get(l.size()-1) : null;
+            r= getRutina(cr.getRutina());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return r;
+    }
+    
 
     public SaludCliente getSaludCliente(String att) {
         SaludCliente c = null;
@@ -191,8 +206,6 @@ public class DAO extends Observable {
         return l.size();
     }
     
-    
-
     public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
         List<Seguimiento> s = getSeguimientos(c.getId_cliente());
         System.out.println(s.isEmpty());
@@ -283,7 +296,6 @@ public class DAO extends Observable {
             default:
                 break;
         }
-        System.out.println("m: " + m.isEmpty());
         return m;
     }
 
@@ -383,6 +395,8 @@ public class DAO extends Observable {
         }
         return c;
     }
+    
+    
 
     public List<Cliente> getClientesSegunPagos(String segun) {
         List<Cliente> clientes = new ArrayList();

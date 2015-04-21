@@ -2,6 +2,8 @@ package Vista;
 
 import Controlador.Controlador;
 import Modelo.Cliente;
+import Modelo.EjerciciosRutina;
+import Modelo.Rutina;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -17,11 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
@@ -81,6 +85,7 @@ public class VistaCliente extends javax.swing.JFrame {
             }
             lb_proximo_pago.setText(getProximoPago());
             cargaPagos();
+            cargarRutina();
         }
     }
     
@@ -95,6 +100,11 @@ public class VistaCliente extends javax.swing.JFrame {
                 -> model.addRow(new Object[]{a.getFecha(), String.valueOf(a.getMonto()), a.getDetalle()}
                 )
         );
+    }
+    
+    private void cargarRutina(){
+        Rutina r = control.getDao().getRutinaCliente(c.getId_cliente());
+        cargarTablas(r);
     }
     
     private String getProximoPago() {
@@ -1140,6 +1150,70 @@ public class VistaCliente extends javax.swing.JFrame {
         }
         return "";
     }
+    
+    private void cargarTablas(Rutina r) {
+        List<EjerciciosRutina> er = control.getDao().getEjeRutina(r.getId());
+
+        int piernas = control.getDao().getSizeParte(r.getId(), "Piernas");
+        cargaTabla(tablePiernas, er.subList(0, piernas));
+
+        int pantorrillas = piernas + control.getDao().getSizeParte(r.getId(), "Pantorillas");
+        cargaTabla(tablePantorrilla, er.subList(piernas + 1, pantorrillas));
+
+        int biceps = pantorrillas + control.getDao().getSizeParte(r.getId(), "Biceps");
+        cargaTabla(tableBiceps1, er.subList(pantorrillas + 1, biceps));
+
+        int tricep = biceps + control.getDao().getSizeParte(r.getId(), "Triceps");
+        cargaTabla(tableTriceps, er.subList(biceps + 1, tricep));
+
+        int antebrazo = tricep + control.getDao().getSizeParte(r.getId(), "Antebrazo");
+        cargaTabla(tableAntebraso, er.subList(tricep + 1, antebrazo));
+
+        int hombro = antebrazo + control.getDao().getSizeParte(r.getId(), "Hombros");
+        cargaTabla(tableHombros, er.subList(antebrazo + 1, hombro));
+
+        int pecho_c = hombro + control.getDao().getSizeParte(r.getId(), "Pecho");
+        cargaTabla(tablePecho, er.subList(hombro + 1, pecho_c));
+
+        int espalda_c = pecho_c + control.getDao().getSizeParte(r.getId(), "Espalda");
+        cargaTabla(tableEspalda, er.subList(pecho_c + 1, espalda_c));
+
+        int trapecio = espalda_c + control.getDao().getSizeParte(r.getId(), "Trapecio");
+        cargaTabla(tableTrapecio, er.subList(espalda_c + 1, trapecio));
+    }
+
+    private void cargaTabla(JTable t, List<EjerciciosRutina> er) {
+        String[] headTabla = {"Ejercicio", "Serie", "Repeticion", "Peso", "Codigo"};
+        Object[][] o = new Object[er.size()][5];
+        for (int i = 0; i < er.size(); i++) {
+            o[i][0] = er.get(i).getEjercicio().equals("null") ? null : er.get(i).getEjercicio();
+            o[i][1] = er.get(i).getSerie().equals("null") ? null : er.get(i).getSerie();
+            o[i][2] = er.get(i).getRepeticion().equals("null") ? null : er.get(i).getRepeticion();
+            o[i][3] = er.get(i).getPeso().equals("null") ? null : er.get(i).getPeso();
+            o[i][4] = er.get(i).getId();
+        }
+        t.setModel(new DefaultTableModel(o, headTabla) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean[]{
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        }
+        );
+        t.getColumnModel().getColumn(4).setMinWidth(0);
+        t.getColumnModel().getColumn(4).setMaxWidth(0);
+        t.getColumnModel().getColumn(4).setWidth(0);
+    }
+    
 
     private String filePath = "";
     private SwingController controller = new SwingController();
