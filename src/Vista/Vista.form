@@ -1103,7 +1103,6 @@
                             <Property name="dch_calSize" type="java.awt.Dimension" editor="datechooser.beans.editor.dimension.SimpleDimensionEditor">
                               <SerializedValue value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-76,0,0,1,44"/>
                             </Property>
-                            <Property name="dch_combo_dateFormat" type="int" value="2"/>
                             <Property name="dch_defaultDates" type="datechooser.model.multiple.PeriodSet" editor="datechooser.beans.editor.dates.PeriodsEditor">
                               <SerializedValue value="-84,-19,0,5,115,114,0,36,100,97,116,101,99,104,111,111,115,101,114,46,109,111,100,101,108,46,109,117,108,116,105,112,108,101,46,80,101,114,105,111,100,83,101,116,-104,-44,-96,42,-91,51,-90,42,2,0,3,76,0,4,100,97,116,97,116,0,22,76,106,97,118,97,47,117,116,105,108,47,76,105,110,107,101,100,76,105,115,116,59,76,0,9,108,97,115,116,65,100,100,101,100,116,0,35,76,100,97,116,101,99,104,111,111,115,101,114,47,109,111,100,101,108,47,109,117,108,116,105,112,108,101,47,80,101,114,105,111,100,59,76,0,10,112,101,114,105,111,100,67,97,115,104,113,0,126,0,2,120,112,115,114,0,20,106,97,118,97,46,117,116,105,108,46,76,105,110,107,101,100,76,105,115,116,12,41,83,93,74,96,-120,34,3,0,0,120,112,119,4,0,0,0,0,120,112,112"/>
                             </Property>
@@ -1487,6 +1486,13 @@
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
+                              <Component id="jBVerRutina" min="-2" pref="136" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -1502,12 +1508,20 @@
                           <Component id="jBAsignarRutina" min="-2" pref="58" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jBEditarRutina" min="-2" pref="51" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="726" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel83" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
+                              <Component id="jBVerRutina" min="-2" pref="67" max="-2" attributes="0"/>
+                              <EmptySpace pref="645" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel83" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1578,6 +1592,28 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCrearRutinaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jBVerRutina">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="1"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Imagen/verImg.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Ver Rutina"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVerRutinaActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel83">
@@ -1829,7 +1865,7 @@
                             <Component class="javax.swing.JTable" name="tablePiernas">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Extension de piernas&quot;, null, null, null},&#xa;        {&quot;Sentadillas&quot;, null, null, null},&#xa;        {&quot;Hat Squat&quot;, null, null, null},&#xa;        {&quot;Flexion de Piernas&quot;, null, null, null},&#xa;        {&quot;Buenos dias barra&quot;, null, null, null},&#xa;        {&quot;Sentadillas por delante&quot;, null, null, null},&#xa;        {&quot;Desplante&quot;, null, null, null},&#xa;        {&quot;Abductores&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;pi&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1848,7 +1884,7 @@
                             <Component class="javax.swing.JTable" name="tableTrapecio">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Robin&quot;, null, null, null},&#xa;        {&quot;Encogimientos barra por delante&quot;, null, null, null},&#xa;        {&quot;Encogimientos con mancuernas&quot;, null, null, null},&#xa;        {&quot;Encogimientos barra por detr&#xe1;s&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;tra&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1867,7 +1903,7 @@
                             <Component class="javax.swing.JTable" name="tablePantorrilla">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Elevacion de Talones&quot;, null, null, null},&#xa;        {&quot;Pantorillas de Sentado&quot;, null, null, null},&#xa;        {&quot;Pantorillas en Maquina Press&quot;, null, null, null},&#xa;        {&quot;Pantorilla con Mancuerna&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;pa&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1886,7 +1922,7 @@
                             <Component class="javax.swing.JTable" name="tableAntebraso">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Curl de Mu&#xf1;eca con Barra&quot;, null, null, null},&#xa;        {&quot;Curl Dorsal con Barra&quot;, null, null, null},&#xa;        {&quot;Curl de Mu&#xf1;ecas por detras con barra&quot;, null, null, null},&#xa;        {&quot;Rollos&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;an&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1905,7 +1941,7 @@
                             <Component class="javax.swing.JTable" name="tableBiceps1">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Curl con barra&quot;, null, null, null},&#xa;        {&quot;Curl con Mancuerna&quot;, null, null, null},&#xa;        {&quot;Curl Scott&quot;, null, null, null},&#xa;        {&quot;Curl Scott Mancuerna&quot;, null, null, null},&#xa;        {&quot;Curl Concentrado&quot;, null, null, null},&#xa;        {&quot;Curl Estilo 21&quot;, null, null, null},&#xa;        {&quot;Curl con Cable&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;bi&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1924,7 +1960,7 @@
                             <Component class="javax.swing.JTable" name="tableTriceps">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Flexion con Barra&quot;, null, null, null},&#xa;        {&quot;Flexion con Mancuerna&quot;, null, null, null},&#xa;        {&quot;Flexion estilo Copa&quot;, null, null, null},&#xa;        {&quot;Press franc&#xe9;s con barra&quot;, null, null, null},&#xa;        {&quot;Patada Tricep&quot;, null, null, null},&#xa;        {&quot;Polea Tricep&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;tri&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1943,7 +1979,7 @@
                             <Component class="javax.swing.JTable" name="tableHombros">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Press militar por delante&quot;, null, null, null},&#xa;        {&quot;Press militar por detras&quot;, null, null, null},&#xa;        {&quot;Press militar barra&quot;, null, null, null},&#xa;        {&quot;Press militar estilo Arnold&quot;, null, null, null},&#xa;        {&quot;Laterales con mancuernas&quot;, null, null, null},&#xa;        {&quot;Lateral inclinados&quot;, null, null, null},&#xa;        {&quot;Lateral a una mano con mancuerna&quot;, null, null, null},&#xa;        {&quot;Mancuernas al frente&quot;, null, null, null},&#xa;        {&quot;Barra al frente&quot;, null, null, null},&#xa;        {&quot;Mancuernas atras&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;hom&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1962,7 +1998,7 @@
                             <Component class="javax.swing.JTable" name="tablePecho">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Press de banca&quot;, null, null, null},&#xa;        {&quot;Press inclinado con barra&quot;, null, null, null},&#xa;        {&quot;Press declinado con barra&quot;, null, null, null},&#xa;        {&quot;Press declinado con mancuernas&quot;, null, null, null},&#xa;        {&quot;Voladoras&quot;, null, null, null},&#xa;        {&quot;Voladoras Inclinadas&quot;, null, null, null},&#xa;        {&quot;Pull Over con Barra&quot;, null, null, null},&#xa;        {&quot;Pull Over con mancuernas&quot;, null, null, null},&#xa;        {&quot;Fondos Disco&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;pe&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -1981,7 +2017,7 @@
                             <Component class="javax.swing.JTable" name="tableEspalda">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {&quot;Polea por detr&#xe1;s&quot;, null, null, null},&#xa;        {&quot;Polea por delante&quot;, null, null, null},&#xa;        {&quot;Remo sentado con cable&quot;, null, null, null},&#xa;        {&quot;Remo Fijo&quot;, null, null, null},&#xa;        {&quot;Remo con barra fija&quot;, null, null, null},&#xa;        {&quot;Buenos dias con barra&quot;, null, null, null},&#xa;        {&quot;Remo con mancuernas&quot;, null, null, null},&#xa;        {&quot;Barra fija&quot;, null, null, null},&#xa;        {&quot;Rotaciones Olimpicas&quot;, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Ejercicio&quot;, &quot;Serie&quot;, &quot;Repeticion&quot;, &quot;Peso&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        true, true, true, true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;}" type="code"/>
+                                  <Connection code="setModelo(&quot;es&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -3092,15 +3128,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jPanel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="panel_datos_seg" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3675,13 +3706,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace pref="57" max="32767" attributes="0"/>
-                                  <Component id="panel_parametros" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="panel_parametros" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="panel_muestra_datos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace pref="67" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="panel_muestra_datos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Observable;
 import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 
 public class DAO extends Observable {
 
@@ -109,7 +110,9 @@ public class DAO extends Observable {
     public void setClienteRutina(ClienteRutina r) {
         try {
             daoClienteRutina.createOrUpdate(r);
+            JOptionPane.showMessageDialog(null, "Rutina Asignada correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Rutina No se pudo asignar.", "Exito", JOptionPane.INFORMATION_MESSAGE);
             System.out.println(ex.getMessage());
         }
     }
@@ -117,6 +120,7 @@ public class DAO extends Observable {
     public void deleteCliente(String id_cliente) {
         try {
             daoCliente.deleteById(id_cliente);
+            JOptionPane.showMessageDialog(null, "Usuario Desactivado con exito!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

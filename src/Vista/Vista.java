@@ -1,8 +1,8 @@
 package Vista;
 
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.Image;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,7 +17,13 @@ import Modelo.Pago;
 import Modelo.Rutina;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
+import com.itextpdf.awt.DefaultFontMapper;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfTemplate;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -25,13 +31,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,7 +50,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -205,6 +211,7 @@ public class Vista extends javax.swing.JFrame {
         jBEditarRutina = new javax.swing.JButton();
         jBAsignarRutina = new javax.swing.JButton();
         jBCrearRutina = new javax.swing.JButton();
+        jBVerRutina = new javax.swing.JButton();
         jLabel83 = new javax.swing.JLabel();
         panel_datos1 = new javax.swing.JScrollPane();
         panel_imp_rutinas = new javax.swing.JPanel();
@@ -866,7 +873,6 @@ public class Vista extends javax.swing.JFrame {
             jLDatosPersonales.setText("Datos Personales");
 
             nacimiento.setCalendarPreferredSize(new java.awt.Dimension(300, 180));
-            nacimiento.setFormat(2);
             try {
                 nacimiento.setDefaultPeriods(new datechooser.model.multiple.PeriodSet());
             } catch (datechooser.model.exeptions.IncompatibleDataExeption e1) {
@@ -1234,6 +1240,19 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jBVerRutina.setBackground(new java.awt.Color(255, 255, 255));
+            jBVerRutina.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            jBVerRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/verImg.png"))); // NOI18N
+            jBVerRutina.setText("Ver Rutina");
+            jBVerRutina.setBorder(null);
+            jBVerRutina.setBorderPainted(false);
+            jBVerRutina.setContentAreaFilled(false);
+            jBVerRutina.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jBVerRutinaActionPerformed(evt);
+                }
+            });
+
             jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/left_panel.png"))); // NOI18N
 
@@ -1249,6 +1268,11 @@ public class Vista extends javax.swing.JFrame {
                     .addGap(0, 84, Short.MAX_VALUE))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
+                        .addComponent(jBVerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 107, Short.MAX_VALUE)))
+                .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_menu1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel83)
                         .addGap(0, 0, Short.MAX_VALUE)))
             );
@@ -1261,11 +1285,17 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jBAsignarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(31, 31, 31)
                     .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(726, Short.MAX_VALUE))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_menu1Layout.createSequentialGroup()
-                        .addComponent(jLabel83, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap()))
+                    .addGroup(panel_menu1Layout.createSequentialGroup()
+                        .addGap(330, 330, 330)
+                        .addComponent(jBVerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(645, Short.MAX_VALUE)))
+                .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_menu1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel83)
+                        .addGap(0, 0, Short.MAX_VALUE)))
             );
 
             panel_datos1.setBorder(null);
@@ -1315,305 +1345,55 @@ public class Vista extends javax.swing.JFrame {
 
             jScrollPane32.getVerticalScrollBar().setUnitIncrement(20);
 
-            tablePiernas.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Extension de piernas", null, null, null},
-                    {"Sentadillas", null, null, null},
-                    {"Hat Squat", null, null, null},
-                    {"Flexion de Piernas", null, null, null},
-                    {"Buenos dias barra", null, null, null},
-                    {"Sentadillas por delante", null, null, null},
-                    {"Desplante", null, null, null},
-                    {"Abductores", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tablePiernas.setModel(setModelo("pi"));
             jScrollPane32.setViewportView(tablePiernas);
 
             jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane33.setAutoscrolls(true);
 
-            tableTrapecio.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Robin", null, null, null},
-                    {"Encogimientos barra por delante", null, null, null},
-                    {"Encogimientos con mancuernas", null, null, null},
-                    {"Encogimientos barra por detrás", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableTrapecio.setModel(setModelo("tra"));
             jScrollPane33.setViewportView(tableTrapecio);
 
             jScrollPane35.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane35.setAutoscrolls(true);
 
-            tablePantorrilla.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Elevacion de Talones", null, null, null},
-                    {"Pantorillas de Sentado", null, null, null},
-                    {"Pantorillas en Maquina Press", null, null, null},
-                    {"Pantorilla con Mancuerna", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tablePantorrilla.setModel(setModelo("pa"));
             jScrollPane35.setViewportView(tablePantorrilla);
 
             jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane37.setAutoscrolls(true);
 
-            tableAntebraso.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Curl de Muñeca con Barra", null, null, null},
-                    {"Curl Dorsal con Barra", null, null, null},
-                    {"Curl de Muñecas por detras con barra", null, null, null},
-                    {"Rollos", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableAntebraso.setModel(setModelo("an"));
             jScrollPane37.setViewportView(tableAntebraso);
 
             jScrollPane39.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane39.setAutoscrolls(true);
 
-            tableBiceps1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Curl con barra", null, null, null},
-                    {"Curl con Mancuerna", null, null, null},
-                    {"Curl Scott", null, null, null},
-                    {"Curl Scott Mancuerna", null, null, null},
-                    {"Curl Concentrado", null, null, null},
-                    {"Curl Estilo 21", null, null, null},
-                    {"Curl con Cable", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableBiceps1.setModel(setModelo("bi"));
             jScrollPane39.setViewportView(tableBiceps1);
 
             jScrollPane41.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane41.setAutoscrolls(true);
 
-            tableTriceps.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Flexion con Barra", null, null, null},
-                    {"Flexion con Mancuerna", null, null, null},
-                    {"Flexion estilo Copa", null, null, null},
-                    {"Press francés con barra", null, null, null},
-                    {"Patada Tricep", null, null, null},
-                    {"Polea Tricep", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableTriceps.setModel(setModelo("tri"));
             jScrollPane41.setViewportView(tableTriceps);
 
             jScrollPane43.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane43.setAutoscrolls(true);
 
-            tableHombros.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Press militar por delante", null, null, null},
-                    {"Press militar por detras", null, null, null},
-                    {"Press militar barra", null, null, null},
-                    {"Press militar estilo Arnold", null, null, null},
-                    {"Laterales con mancuernas", null, null, null},
-                    {"Lateral inclinados", null, null, null},
-                    {"Lateral a una mano con mancuerna", null, null, null},
-                    {"Mancuernas al frente", null, null, null},
-                    {"Barra al frente", null, null, null},
-                    {"Mancuernas atras", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableHombros.setModel(setModelo("hom"));
             jScrollPane43.setViewportView(tableHombros);
 
             jScrollPane45.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane45.setAutoscrolls(true);
 
-            tablePecho.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Press de banca", null, null, null},
-                    {"Press inclinado con barra", null, null, null},
-                    {"Press declinado con barra", null, null, null},
-                    {"Press declinado con mancuernas", null, null, null},
-                    {"Voladoras", null, null, null},
-                    {"Voladoras Inclinadas", null, null, null},
-                    {"Pull Over con Barra", null, null, null},
-                    {"Pull Over con mancuernas", null, null, null},
-                    {"Fondos Disco", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tablePecho.setModel(setModelo("pe"));
             jScrollPane45.setViewportView(tablePecho);
 
             jScrollPane47.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane47.setAutoscrolls(true);
 
-            tableEspalda.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {"Polea por detrás", null, null, null},
-                    {"Polea por delante", null, null, null},
-                    {"Remo sentado con cable", null, null, null},
-                    {"Remo Fijo", null, null, null},
-                    {"Remo con barra fija", null, null, null},
-                    {"Buenos dias con barra", null, null, null},
-                    {"Remo con mancuernas", null, null, null},
-                    {"Barra fija", null, null, null},
-                    {"Rotaciones Olimpicas", null, null, null}
-                },
-                new String [] {
-                    "Ejercicio", "Serie", "Repeticion", "Peso"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    true, true, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
+            tableEspalda.setModel(setModelo("es"));
             jScrollPane47.setViewportView(tableEspalda);
 
             javax.swing.GroupLayout panel_crear_rutinaLayout = new javax.swing.GroupLayout(panel_crear_rutina);
@@ -2723,12 +2503,9 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
-                                .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel_seguimientosLayout.setVerticalGroup(
                     panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2833,12 +2610,10 @@ public class Vista extends javax.swing.JFrame {
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addContainerGap(57, Short.MAX_VALUE)
-                        .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_busqueda_clienteLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel_busqueda_clienteLayout.setVerticalGroup(
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3111,7 +2886,6 @@ public class Vista extends javax.swing.JFrame {
     private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
         seleccionaRutina();
         if (rutinaSelected != null) {
-
             text_nombre_rutina.setText(rutinaSelected.getNombre());
             jBCreateRutina1.setText("Modificar");
             cargarTablas(rutinaSelected);
@@ -3131,28 +2905,28 @@ public class Vista extends javax.swing.JFrame {
         cargaTabla(tablePiernas, er.subList(0, piernas));
 
         int pantorrillas = piernas + control.getDao().getSizeParte(r.getId(), "Pantorillas");
-        cargaTabla(tablePantorrilla, er.subList(piernas + 1, pantorrillas));
+        cargaTabla(tablePantorrilla, er.subList(piernas, pantorrillas));
 
         int biceps = pantorrillas + control.getDao().getSizeParte(r.getId(), "Biceps");
-        cargaTabla(tableBiceps1, er.subList(pantorrillas + 1, biceps));
+        cargaTabla(tableBiceps1, er.subList(pantorrillas, biceps));
 
         int tricep = biceps + control.getDao().getSizeParte(r.getId(), "Triceps");
-        cargaTabla(tableTriceps, er.subList(biceps + 1, tricep));
+        cargaTabla(tableTriceps, er.subList(biceps, tricep));
 
         int antebrazo = tricep + control.getDao().getSizeParte(r.getId(), "Antebrazo");
-        cargaTabla(tableAntebraso, er.subList(tricep + 1, antebrazo));
+        cargaTabla(tableAntebraso, er.subList(tricep, antebrazo));
 
         int hombro = antebrazo + control.getDao().getSizeParte(r.getId(), "Hombros");
-        cargaTabla(tableHombros, er.subList(antebrazo + 1, hombro));
+        cargaTabla(tableHombros, er.subList(antebrazo, hombro));
 
         int pecho_c = hombro + control.getDao().getSizeParte(r.getId(), "Pecho");
-        cargaTabla(tablePecho, er.subList(hombro + 1, pecho_c));
+        cargaTabla(tablePecho, er.subList(hombro, pecho_c));
 
         int espalda_c = pecho_c + control.getDao().getSizeParte(r.getId(), "Espalda");
-        cargaTabla(tableEspalda, er.subList(pecho_c + 1, espalda_c));
+        cargaTabla(tableEspalda, er.subList(pecho_c, espalda_c));
 
         int trapecio = espalda_c + control.getDao().getSizeParte(r.getId(), "Trapecio");
-        cargaTabla(tableTrapecio, er.subList(espalda_c + 1, trapecio));
+        cargaTabla(tableTrapecio, er.subList(espalda_c, trapecio));
     }
 
     private void cargaTabla(JTable t, List<EjerciciosRutina> er) {
@@ -3213,6 +2987,8 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAsignarRutinaActionPerformed
 
     private void jBCrearRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearRutinaActionPerformed
+        limpiaTablas();
+        text_nombre_rutina.setText(null);
         jBCreateRutina1.setText("Crear");
         panel_datos1.setVisible(true);
         panel_asignar_rutina.setVisible(false);
@@ -3225,7 +3001,9 @@ public class Vista extends javax.swing.JFrame {
     private void asigna_rutina_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asigna_rutina_clienteActionPerformed
         ClienteRutina cr = new ClienteRutina(clienteSelected.getId_cliente(), combo_rutinas_creadas.getSelectedIndex() + 1);
         control.getDao().setClienteRutina(cr);
-        JOptionPane.showMessageDialog(this, "Rutina Asignada correctamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        clienteSelected = null;
+        text_cliente_rutina.setText(null);
+        combo_rutinas_creadas.setSelectedIndex(-1);
     }//GEN-LAST:event_asigna_rutina_clienteActionPerformed
 
     private void combo_rutinas_creadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_rutinas_creadasActionPerformed
@@ -3261,6 +3039,8 @@ public class Vista extends javax.swing.JFrame {
         if (c != null) {
             Nutricion n = new Nutricion(jCBListFood2.getSelectedItem().toString(), c);
             this.control.getDao().setNutricionCliente(n);
+            text_cliente_nutricion.setText(null);
+            jCBListFood2.setSelectedIndex(-1);
             JOptionPane.showMessageDialog(null, "Al Usuario: " + c.getNombre() + " " + c.getApellidos() + "\n Se le ha asignado la rutina: " + jCBListFood2.getSelectedItem(),
                     "Alert", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -3373,23 +3153,28 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_añadir_seguimientoActionPerformed
 
     private void jBDesactivarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDesactivarClienteActionPerformed
-
-        String cedCliente = clienteSelected.getId_cliente();
-        if (!cedCliente.isEmpty()) {
-            int codigoCliente = JOptionPane.showConfirmDialog(this, "Esta seguro que desea \neliinar a este cliente?", "Eliminar Cliente", JOptionPane.OK_CANCEL_OPTION);
-            if (codigoCliente == JOptionPane.OK_OPTION) {
-                control.getDao().deleteCliente(cedCliente);
-                JOptionPane.showMessageDialog(null, "Usuario Desactivado con exito!");
+        if (clienteSelected != null) {
+            String cedCliente = clienteSelected.getId_cliente();
+            if (!cedCliente.isEmpty()) {
+                int codigoCliente = JOptionPane.showConfirmDialog(this, "Esta seguro que desea \neliinar a este cliente?", "Eliminar Cliente", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoCliente == JOptionPane.OK_OPTION) {
+                    control.getDao().deleteCliente(cedCliente);
+                    text_cliente_desactivar.setText(null);
+                    clienteSelected = null;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario no valido.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no valido.");
+            JOptionPane.showMessageDialog(null, "No se selecciono ningun cliente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_jBDesactivarClienteActionPerformed
 
     private void jcombo_projec_cobrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcombo_projec_cobrosActionPerformed
-        if(jcombo_projec_cobros.getSelectedIndex()== 0){
+        if (jcombo_projec_cobros.getSelectedIndex() == 0) {
             jbutton_enviar_correo.setVisible(true);
-        } else  if(jcombo_projec_cobros.getSelectedIndex()== 1){
+        } else if (jcombo_projec_cobros.getSelectedIndex() == 1) {
             jbutton_enviar_correo.setVisible(true);
         } else {
             jbutton_enviar_correo.setVisible(false);
@@ -3445,11 +3230,21 @@ public class Vista extends javax.swing.JFrame {
 
     private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
         String nom = text_nombre_rutina.getText();
+        String msj = "agregado";
         Rutina r = new Rutina(0, nom);
-        if(jBCreateRutina1.getText().equals("Modificar")){
-                r.setId(rutinaSelected.getId());
-            }
+        if (jBCreateRutina1.getText().equals("Modificar")) {
+            r.setId(rutinaSelected.getId());
+            msj = "modificado";
+        }
         control.getDao().setRutina(r);
+        creaER(r);
+        limpiaTablas();
+        text_nombre_rutina.setText(null);
+        JOptionPane.showMessageDialog(this, "Se ha " + msj + " la rutina con exito.", "Exito", JOptionPane.INFORMATION_MESSAGE);
+
+    }//GEN-LAST:event_jBCreateRutina1ActionPerformed
+
+    private void creaER(Rutina r) {
         insertaEjercicios(tablePiernas, "Piernas", r);
         insertaEjercicios(tablePantorrilla, "Pantorillas", r);
         insertaEjercicios(tableBiceps1, "Biceps", r);
@@ -3459,8 +3254,7 @@ public class Vista extends javax.swing.JFrame {
         insertaEjercicios(tablePecho, "Pecho", r);
         insertaEjercicios(tableEspalda, "Espalda", r);
         insertaEjercicios(tableTrapecio, "Trapecio", r);
-
-    }//GEN-LAST:event_jBCreateRutina1ActionPerformed
+    }
 
     private void insertaEjercicios(JTable t, String parte, Rutina r) {
         for (int i = 0; i < t.getRowCount(); i++) {
@@ -3469,39 +3263,76 @@ public class Vista extends javax.swing.JFrame {
             String repeticion = String.valueOf(t.getValueAt(i, 2));
             String peso_Ejercicio = String.valueOf(t.getValueAt(i, 3));
             EjerciciosRutina er = new EjerciciosRutina(parte, ejercicio, serie, repeticion, peso_Ejercicio, r);
-            if(jBCreateRutina1.getText().equals("Modificar")){
-                er.setId((int)t.getValueAt(i, 4));
+            if (jBCreateRutina1.getText().equals("Modificar")) {
+                if (t.getValueAt(i, 4) != null) {
+                    er.setId((int) t.getValueAt(i, 4));
+                }
             }
             control.getDao().setEjerciciosRutina(er);
         }
     }
 
     private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
-        PrinterJob job = PrinterJob.getPrinterJob();
-        job.setJobName("Print Java Component");
+        /*PrinterJob job = PrinterJob.getPrinterJob();
+         job.setJobName("Print Java Component");
 
-        job.setPrintable(new Printable() {
-            public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
-                if (pageIndex > 0) {
-                    return (NO_SUCH_PAGE);
-                } else {
-                    Graphics2D g2d = (Graphics2D) g;
-                    g2d.translate(pageFormat.getImageableX(),
-                            pageFormat.getImageableY());
-                    panel_crear_rutina.paint(g2d);
-                    return (PAGE_EXISTS);
-                }
-            }
-        });
-        if (job.printDialog()) {
-            try {
-                job.print();
-            } catch (Exception e) {
-                System.out.println("Error en el Printing de Rutinas");
-            }
-        }
+         job.setPrintable(new Printable() {
+         public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
+         if (pageIndex > 0) {
+         return (NO_SUCH_PAGE);
+         } else {
+         Graphics2D g2d = (Graphics2D) g;
+         g2d.translate(pageFormat.getImageableX(),
+         pageFormat.getImageableY());
+         panel_crear_rutina.paint(g2d);
+         return (PAGE_EXISTS);
+         }
+         }
+         });
+         if (job.printDialog()) {
+         try {
+         job.print();
+         } catch (Exception e) {
+         System.out.println("Error en el Printing de Rutinas");
+         }
+         }
+
+        final java.awt.Image image = getImageFromPanel(panel_crear_rutina);
+        String fileName = "newfile.pdf";
+        printToPDF(image, fileName);*/
     }//GEN-LAST:event_bt_PrintActionPerformed
 
+    
+    public void printToPDF(java.awt.Image awtImage, String fileName) {
+        try {
+            Document d = new Document();
+            PdfWriter writer = PdfWriter.getInstance(d, new FileOutputStream(
+                    fileName));
+            d.open();
+
+
+            com.itextpdf.text.Image iTextImage = com.itextpdf.text.Image.getInstance(writer, awtImage, 1);
+            iTextImage.setAbsolutePosition(10, 10);
+            iTextImage.scalePercent(60);
+            d.add(iTextImage);
+
+            d.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
+    }
+
+    public static java.awt.Image getImageFromPanel(Component component) {
+
+        BufferedImage image = new BufferedImage(component.getWidth(),
+                component.getHeight(), BufferedImage.TYPE_INT_RGB);
+        component.paint(image.getGraphics());
+        return image;
+    }
+    
+    
+    
     private void btn_add_plan_nutricionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_plan_nutricionalActionPerformed
         // TODO add your handling code here:
         JFrame parentFrame = new JFrame();
@@ -3691,6 +3522,10 @@ public class Vista extends javax.swing.JFrame {
     private void jcombo_projec_cobrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcombo_projec_cobrosMouseClicked
 
     }//GEN-LAST:event_jcombo_projec_cobrosMouseClicked
+
+    private void jBVerRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerRutinaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBVerRutinaActionPerformed
 
     private void seleccionaCliente() {
         clienteSelected = null;
@@ -3952,6 +3787,131 @@ public class Vista extends javax.swing.JFrame {
         detalle.setSelectedIndex(-1);
     }
 
+    private void limpiaTablas() {
+        tablePiernas.setModel(setModelo("pi"));
+        tablePantorrilla.setModel(setModelo("pa"));
+        tableAntebraso.setModel(setModelo("an"));
+        tableBiceps1.setModel(setModelo("bi"));
+        tableEspalda.setModel(setModelo("es"));
+        tableHombros.setModel(setModelo("hom"));
+        tablePecho.setModel(setModelo("pe"));
+        tableTrapecio.setModel(setModelo("tra"));
+        tableTriceps.setModel(setModelo("tri"));
+    }
+
+    private javax.swing.table.DefaultTableModel setModelo(String id) {
+        Object[][] o = {};
+        String[] head = {"Ejercicio", "Serie", "Repeticion", "Peso"};
+        if (id.equals("pi")) {
+            o = new Object[][]{
+                {"Extension de piernas", null, null, null},
+                {"Sentadillas", null, null, null},
+                {"Hat Squat", null, null, null},
+                {"Flexion de Piernas", null, null, null},
+                {"Buenos dias barra", null, null, null},
+                {"Sentadillas por delante", null, null, null},
+                {"Desplante", null, null, null},
+                {"Abductores", null, null, null}
+            };
+        } else if (id.equals("pa")) {
+            o = new Object[][]{
+                {"Elevacion de Talones", null, null, null},
+                {"Pantorillas de Sentado", null, null, null},
+                {"Pantorillas en Maquina Press", null, null, null},
+                {"Pantorilla con Mancuerna", null, null, null}
+            };
+        } else if (id.equals("bi")) {
+            o = new Object[][]{
+                {"Curl con barra", null, null, null},
+                {"Curl con Mancuerna", null, null, null},
+                {"Curl Scott", null, null, null},
+                {"Curl Scott Mancuerna", null, null, null},
+                {"Curl Concentrado", null, null, null},
+                {"Curl Estilo 21", null, null, null},
+                {"Curl con Cable", null, null, null}
+            };
+        } else if (id.equals("tri")) {
+            o = new Object[][]{
+                {"Flexion con Barra", null, null, null},
+                {"Flexion con Mancuerna", null, null, null},
+                {"Flexion estilo Copa", null, null, null},
+                {"Press francés con barra", null, null, null},
+                {"Patada Tricep", null, null, null},
+                {"Polea Tricep", null, null, null}
+            };
+        } else if (id.equals("an")) {
+            o = new Object[][]{
+                {"Curl de Muñeca con Barra", null, null, null},
+                {"Curl Dorsal con Barra", null, null, null},
+                {"Curl de Muñecas por detras con barra", null, null, null},
+                {"Rollos", null, null, null}
+            };
+        } else if (id.equals("hom")) {
+            o = new Object[][]{
+                {"Press militar por delante", null, null, null},
+                {"Press militar por detras", null, null, null},
+                {"Press militar barra", null, null, null},
+                {"Press militar estilo Arnold", null, null, null},
+                {"Laterales con mancuernas", null, null, null},
+                {"Lateral inclinados", null, null, null},
+                {"Lateral a una mano con mancuerna", null, null, null},
+                {"Mancuernas al frente", null, null, null},
+                {"Barra al frente", null, null, null},
+                {"Mancuernas atras", null, null, null}
+            };
+        } else if (id.equals("pe")) {
+            o = new Object[][]{
+                {"Press de banca", null, null, null},
+                {"Press inclinado con barra", null, null, null},
+                {"Press declinado con barra", null, null, null},
+                {"Press declinado con mancuernas", null, null, null},
+                {"Voladoras", null, null, null},
+                {"Voladoras Inclinadas", null, null, null},
+                {"Pull Over con Barra", null, null, null},
+                {"Pull Over con mancuernas", null, null, null},
+                {"Fondos Disco", null, null, null}
+            };
+        } else if (id.equals("es")) {
+            o = new Object[][]{
+                {"Polea por detrás", null, null, null},
+                {"Polea por delante", null, null, null},
+                {"Remo sentado con cable", null, null, null},
+                {"Remo Fijo", null, null, null},
+                {"Remo con barra fija", null, null, null},
+                {"Buenos dias con barra", null, null, null},
+                {"Remo con mancuernas", null, null, null},
+                {"Barra fija", null, null, null},
+                {"Rotaciones Olimpicas", null, null, null}
+            };
+        } else if (id.equals("tra")) {
+            o = new Object[][]{
+                {"Robin", null, null, null},
+                {"Encogimientos barra por delante", null, null, null},
+                {"Encogimientos con mancuernas", null, null, null},
+                {"Encogimientos barra por detrás", null, null, null}
+            };
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al intentar crear el modelo");
+        }
+
+        return (new javax.swing.table.DefaultTableModel(o, head) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean[]{
+                true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+    }
+
     private boolean valida_datos_personales() {
         return cedula.getText().isEmpty() || nombre.getText().isEmpty() || apellidos.getText().isEmpty()
                 || direccion.getText().isEmpty() || email.getText().isEmpty() || nacimiento.getText().isEmpty()
@@ -4030,6 +3990,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jBCreateRutina1;
     private javax.swing.JButton jBDesactivarCliente;
     private javax.swing.JButton jBEditarRutina;
+    private javax.swing.JButton jBVerRutina;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox jCBListFood;
@@ -4250,17 +4211,17 @@ public class Vista extends javax.swing.JFrame {
         imc.setText("");
         combo_fecha_seguimiento.setText("");
         grasa.setText("");
-        pecho.setText(""); 
+        pecho.setText("");
         espalda.setText("");
-        cadera.setText(""); 
+        cadera.setText("");
         gluteos.setText("");
-        cintura.setText(""); 
+        cintura.setText("");
         pierna_izquierda.setText("");
-        pierna_derecha.setText(""); 
+        pierna_derecha.setText("");
         pantorrilla_izquierda.setText("");
-        pantorrilla_derecha.setText(""); 
+        pantorrilla_derecha.setText("");
         brazo_izquierdo.setText("");
-        brazo_derecho.setText(""); 
+        brazo_derecho.setText("");
         antebrazo_derecho.setText("");
         antebrazo_izquierdo.setText("");
     }
