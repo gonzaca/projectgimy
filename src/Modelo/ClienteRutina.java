@@ -5,12 +5,9 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "ClienteRutina")
 public class ClienteRutina {
-
-    @DatabaseField(generatedId = true)
-    private int id;
-    @DatabaseField
+    @DatabaseField(uniqueCombo = true)
     private String cliente;
-    @DatabaseField
+    @DatabaseField(uniqueCombo = true)
     private int rutina;
 
     public ClienteRutina() {
@@ -36,13 +33,13 @@ public class ClienteRutina {
     public void setRutina(int rutina) {
         this.rutina = rutina;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
     
 }

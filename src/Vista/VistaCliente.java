@@ -857,13 +857,11 @@ public class VistaCliente extends javax.swing.JFrame {
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jp_chart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jp_chart1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton8))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             jPanel1Layout.setVerticalGroup(
@@ -985,22 +983,26 @@ public class VistaCliente extends javax.swing.JFrame {
         HashMap<String, Double> h
                 = control.getDao().getFechasYValores(c,
                         jcb_proyec1.getSelectedItem().toString());
-        String n = c.getNombre();
-        ChartPanel ch = Chart.getChartPanel(jcb_proyec1.getSelectedItem().toString(),
-                control.getDao().getTipo_unidad(), h,
-                n.indexOf(' ') != -1 ? n.substring(0, n.indexOf(' ')) : n);
-        ch.setSize(jp_chart1.getSize());
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                jp_chart1.removeAll();
-                jp_chart1.revalidate(); // This removes the old chart
-                jp_chart1.setLayout(new BorderLayout());
-                jp_chart1.add(ch);
-                jp_chart1.repaint();
+        if( h != null){
+            String n = c.getNombre();
+            ChartPanel ch = Chart.getChartPanel(jcb_proyec1.getSelectedItem().toString(),
+                    control.getDao().getTipo_unidad(), h,
+                    n.indexOf(' ') != -1 ? n.substring(0, n.indexOf(' ')) : n);
+            ch.setSize(jp_chart1.getSize());
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    jp_chart1.removeAll();
+                    jp_chart1.revalidate(); // This removes the old chart
+                    jp_chart1.setLayout(new BorderLayout());
+                    jp_chart1.add(ch);
+                    jp_chart1.repaint();
+                }
             }
+            );
+        } else {
+            JOptionPane.showMessageDialog(this, "Solo existe un seguimiento para este Cliente, no se puede hacer una proeccion de los datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        );
     }//GEN-LAST:event_jcb_proyec1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1144,35 +1146,35 @@ public class VistaCliente extends javax.swing.JFrame {
         return "";
     }
     
-    private void cargarTablas(Rutina r) {
+        private void cargarTablas(Rutina r) {
         List<EjerciciosRutina> er = control.getDao().getEjeRutina(r.getId());
 
-        int piernas = control.getDao().getSizeParte(r.getId(), "Piernas");
-        cargaTabla(tablePiernas, er.subList(0, piernas));
+        List<EjerciciosRutina> piernas = control.getDao().getSizeParte(r.getId(), "Piernas");
+        cargaTabla(tablePiernas, piernas);
 
-        int pantorrillas = piernas + control.getDao().getSizeParte(r.getId(), "Pantorillas");
-        cargaTabla(tablePantorrilla, er.subList(piernas + 1, pantorrillas));
+        List<EjerciciosRutina> pantorrillas = control.getDao().getSizeParte(r.getId(), "Pantorillas");
+        cargaTabla(tablePantorrilla, pantorrillas);
 
-        int biceps = pantorrillas + control.getDao().getSizeParte(r.getId(), "Biceps");
-        cargaTabla(tableBiceps1, er.subList(pantorrillas + 1, biceps));
+        List<EjerciciosRutina> biceps = control.getDao().getSizeParte(r.getId(), "Biceps");
+        cargaTabla(tableBiceps1, biceps);
 
-        int tricep = biceps + control.getDao().getSizeParte(r.getId(), "Triceps");
-        cargaTabla(tableTriceps, er.subList(biceps + 1, tricep));
+        List<EjerciciosRutina> tricep = control.getDao().getSizeParte(r.getId(), "Triceps");
+        cargaTabla(tableTriceps, tricep);
 
-        int antebrazo = tricep + control.getDao().getSizeParte(r.getId(), "Antebrazo");
-        cargaTabla(tableAntebraso, er.subList(tricep + 1, antebrazo));
+        List<EjerciciosRutina> antebrazo = control.getDao().getSizeParte(r.getId(), "Antebrazo");
+        cargaTabla(tableAntebraso, antebrazo);
 
-        int hombro = antebrazo + control.getDao().getSizeParte(r.getId(), "Hombros");
-        cargaTabla(tableHombros, er.subList(antebrazo + 1, hombro));
+        List<EjerciciosRutina> hombro = control.getDao().getSizeParte(r.getId(), "Hombros");
+        cargaTabla(tableHombros, hombro);
 
-        int pecho_c = hombro + control.getDao().getSizeParte(r.getId(), "Pecho");
-        cargaTabla(tablePecho, er.subList(hombro + 1, pecho_c));
+        List<EjerciciosRutina> pecho_c = control.getDao().getSizeParte(r.getId(), "Pecho");
+        cargaTabla(tablePecho, pecho_c);
 
-        int espalda_c = pecho_c + control.getDao().getSizeParte(r.getId(), "Espalda");
-        cargaTabla(tableEspalda, er.subList(pecho_c + 1, espalda_c));
+        List<EjerciciosRutina> espalda_c = control.getDao().getSizeParte(r.getId(), "Espalda");
+        cargaTabla(tableEspalda, espalda_c);
 
-        int trapecio = espalda_c + control.getDao().getSizeParte(r.getId(), "Trapecio");
-        cargaTabla(tableTrapecio, er.subList(espalda_c + 1, trapecio));
+        List<EjerciciosRutina> trapecio = control.getDao().getSizeParte(r.getId(), "Trapecio");
+        cargaTabla(tableTrapecio, trapecio);
     }
 
     private void cargaTabla(JTable t, List<EjerciciosRutina> er) {
