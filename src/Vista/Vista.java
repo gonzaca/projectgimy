@@ -101,7 +101,7 @@ public class Vista extends javax.swing.JFrame {
     private void setIconTab() {
         JLabel lab = new JLabel();
         lab.setPreferredSize(new Dimension(120, 70));
-        ImageIcon i = new ImageIcon("src/Imagen/pgs-logo_ico.png");
+        ImageIcon i = new ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png"));
         lab.setText("Inicio");
         lab.setHorizontalTextPosition(JLabel.RIGHT);
         Font font = jTabbedPane1.getFont();
@@ -121,6 +121,11 @@ public class Vista extends javax.swing.JFrame {
         lb_user = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        panel_inicio = new javax.swing.JPanel();
+        jl_PGS = new javax.swing.JLabel();
+        jL_imagen = new javax.swing.JLabel();
+        jL_bienvenido = new javax.swing.JLabel();
+        jL_bienvenido2 = new javax.swing.JLabel();
         panel_registro_cliente = new javax.swing.JPanel();
         panel_menu = new javax.swing.JPanel();
         jbRegistrarCliente = new javax.swing.JButton();
@@ -128,6 +133,7 @@ public class Vista extends javax.swing.JFrame {
         jbEditarCliente = new javax.swing.JButton();
         jLabel82 = new javax.swing.JLabel();
         panel_datos = new javax.swing.JScrollPane();
+        panel_fisico = new javax.swing.JPanel();
         panel_reg_fisico = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
@@ -197,15 +203,11 @@ public class Vista extends javax.swing.JFrame {
         jLFoto = new javax.swing.JLabel();
         combo_gimnasio = new javax.swing.JComboBox();
         combo_practica_act_deport = new javax.swing.JComboBox();
+        jLabel49 = new javax.swing.JLabel();
         desactivar_Cliente = new javax.swing.JPanel();
         jBDesactivarCliente = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
         text_cliente_desactivar = new javax.swing.JTextField();
-        panel_inicio = new javax.swing.JPanel();
-        jl_PGS = new javax.swing.JLabel();
-        jL_imagen = new javax.swing.JLabel();
-        jL_bienvenido = new javax.swing.JLabel();
-        jL_bienvenido2 = new javax.swing.JLabel();
         panel_registro_rutinas = new javax.swing.JPanel();
         panel_menu1 = new javax.swing.JPanel();
         jBEditarRutina = new javax.swing.JButton();
@@ -247,18 +249,21 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane47 = new javax.swing.JScrollPane();
         tableEspalda = new javax.swing.JTable();
         bt_Print = new javax.swing.JButton();
+        jLabel48 = new javax.swing.JLabel();
         panel_asignar_rutina = new javax.swing.JPanel();
         text_cliente_rutina = new javax.swing.JTextField();
         asigna_rutina_cliente = new javax.swing.JButton();
         jLabel61 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         combo_rutinas_creadas = new javax.swing.JComboBox();
+        jLabel50 = new javax.swing.JLabel();
         panel_registro_nutricional = new javax.swing.JPanel();
         panel_menu2 = new javax.swing.JPanel();
         btn_perfiles_Nutricionales = new javax.swing.JButton();
         btn_asignar_pNutricional = new javax.swing.JButton();
         jLabel84 = new javax.swing.JLabel();
         panel_datos4 = new javax.swing.JScrollPane();
+        panel_nutricion = new javax.swing.JPanel();
         panel_crear_perfil_nutricional = new javax.swing.JPanel();
         jLNombre2 = new javax.swing.JLabel();
         jLDatosPersonales2 = new javax.swing.JLabel();
@@ -266,12 +271,14 @@ public class Vista extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jLabel28 = new javax.swing.JLabel();
         btn_add_plan_nutricional = new javax.swing.JButton();
+        jLabel51 = new javax.swing.JLabel();
         panel_asignar_perfil = new javax.swing.JPanel();
         text_cliente_nutricion = new javax.swing.JTextField();
         btn_Asigna_Nutricion = new javax.swing.JButton();
         jLabel62 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jCBListFood2 = new javax.swing.JComboBox();
+        jLabel53 = new javax.swing.JLabel();
         panel_control_pagos = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -415,6 +422,56 @@ public class Vista extends javax.swing.JFrame {
             jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jTabbedPane1.setPreferredSize(new java.awt.Dimension(783, 399));
 
+            panel_inicio.setAutoscrolls(true);
+
+            jl_PGS.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+            jl_PGS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jl_PGS.setText("Power Gym System");
+
+            jL_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBienvenida.png"))); // NOI18N
+
+            jL_bienvenido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+            jL_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            jL_bienvenido.setText("Bienvenido");
+
+            jL_bienvenido2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGS.jpg"))); // NOI18N
+
+            javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
+            panel_inicio.setLayout(panel_inicioLayout);
+            panel_inicioLayout.setHorizontalGroup(
+                panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_inicioLayout.createSequentialGroup()
+                    .addContainerGap(146, Short.MAX_VALUE)
+                    .addComponent(jL_imagen)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                    .addComponent(jL_bienvenido2)
+                    .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                        .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            panel_inicioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jL_bienvenido, jl_PGS});
+
+            panel_inicioLayout.setVerticalGroup(
+                panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_inicioLayout.createSequentialGroup()
+                    .addGap(104, 104, 104)
+                    .addComponent(jl_PGS)
+                    .addGap(18, 18, 18)
+                    .addComponent(jL_bienvenido)
+                    .addGap(53, 53, 53)
+                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jL_imagen)
+                        .addComponent(jL_bienvenido2))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            );
+
+            jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
+
             jbRegistrarCliente.setBackground(new java.awt.Color(0, 0, 0));
             jbRegistrarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jbRegistrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/registro.jpg"))); // NOI18N
@@ -428,6 +485,7 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jbDesactivarCliente.setVisible(false);
             jbDesactivarCliente.setBackground(new java.awt.Color(0, 0, 0));
             jbDesactivarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jbDesactivarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/desacivar.png"))); // NOI18N
@@ -487,13 +545,16 @@ public class Vista extends javax.swing.JFrame {
 
             panel_datos.setBackground(new java.awt.Color(255, 255, 255));
             panel_datos.setBorder(null);
+            panel_datos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
             panel_datos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
             panel_datos.getVerticalScrollBar().setUnitIncrement(20);
             panel_datos.setPreferredSize(new java.awt.Dimension(972, 600));
 
             panel_reg_fisico.setVisible(false);
+            panel_reg_fisico.setOpaque(false);
 
             jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(204, 0, 0)));
+            jPanel12.setOpaque(false);
 
             jLabel30.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
             jLabel30.setText("Esta ud. embarazada o sospecha estarlo (Solo Mujeres):");
@@ -697,7 +758,7 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createSequentialGroup()
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel12Layout.createSequentialGroup()
-                            .addContainerGap()
+                            .addGap(31, 31, 31)
                             .addComponent(jLPadecimientos)
                             .addGap(18, 18, 18)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -785,6 +846,7 @@ public class Vista extends javax.swing.JFrame {
             jPanel12Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {combo_desmayos, combo_dif_respirar, combo_mareos, combo_nauseas});
 
             jPanel13.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(153, 153, 0)));
+            jPanel13.setOpaque(false);
 
             jLMail.setText("E-Mail:");
 
@@ -861,7 +923,7 @@ public class Vista extends javax.swing.JFrame {
             jPanel13Layout.setHorizontalGroup(
                 jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addContainerGap(100, Short.MAX_VALUE)
+                    .addContainerGap(70, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLNombre)
                         .addComponent(jLApellidos)
@@ -892,7 +954,7 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(telefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                         .addComponent(cb_sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(70, Short.MAX_VALUE))
                 .addGroup(jPanel13Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLDatosPersonales)
@@ -941,6 +1003,7 @@ public class Vista extends javax.swing.JFrame {
             jLDatosPersonales.setFont(new Font("Serif", Font.PLAIN, 18));
 
             jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 2, 1, 2, new java.awt.Color(153, 153, 0)));
+            jPanel5.setOpaque(false);
 
             jLabel37.setText("Ha practicado o practica actividad deportiva:");
 
@@ -1046,30 +1109,66 @@ public class Vista extends javax.swing.JFrame {
             panel_reg_fisico.setLayout(panel_reg_fisicoLayout);
             panel_reg_fisicoLayout.setHorizontalGroup(
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(93, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-            panel_reg_fisicoLayout.setVerticalGroup(
-                panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(20, 20, 20)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    .addContainerGap(61, Short.MAX_VALUE))
+                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
 
-            panel_datos.setViewportView(panel_reg_fisico);
+            panel_reg_fisicoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel12, jPanel13});
+
+            panel_reg_fisicoLayout.setVerticalGroup(
+                panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
+                    .addContainerGap(735, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
+                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(242, 242, 242)))
+            );
+
+            jLabel49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
+            javax.swing.GroupLayout panel_fisicoLayout = new javax.swing.GroupLayout(panel_fisico);
+            panel_fisico.setLayout(panel_fisicoLayout);
+            panel_fisicoLayout.setHorizontalGroup(
+                panel_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_fisicoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel_reg_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panel_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_fisicoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel49)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+            );
+            panel_fisicoLayout.setVerticalGroup(
+                panel_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_fisicoLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel_reg_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panel_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_fisicoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel49)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+            );
+
+            panel_datos.setViewportView(panel_fisico);
 
             desactivar_Cliente.setVisible(false);
 
@@ -1129,12 +1228,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_clienteLayout.createSequentialGroup()
                     .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                    .addComponent(panel_datos, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE))
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
-                        .addContainerGap(247, Short.MAX_VALUE)
+                        .addContainerGap(399, Short.MAX_VALUE)
                         .addComponent(desactivar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(247, Short.MAX_VALUE)))
+                        .addContainerGap(400, Short.MAX_VALUE)))
             );
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1148,56 +1247,6 @@ public class Vista extends javax.swing.JFrame {
             );
 
             jTabbedPane1.addTab("Clientes", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AsignarIcon.png")), panel_registro_cliente); // NOI18N
-
-            panel_inicio.setAutoscrolls(true);
-
-            jl_PGS.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
-            jl_PGS.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jl_PGS.setText("Power Gym System");
-
-            jL_imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBienvenida.png"))); // NOI18N
-
-            jL_bienvenido.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-            jL_bienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jL_bienvenido.setText("Bienvenido");
-
-            jL_bienvenido2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGS.jpg"))); // NOI18N
-
-            javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
-            panel_inicio.setLayout(panel_inicioLayout);
-            panel_inicioLayout.setHorizontalGroup(
-                panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(45, Short.MAX_VALUE)
-                    .addComponent(jL_imagen)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                    .addComponent(jL_bienvenido2)
-                    .addContainerGap(47, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jl_PGS, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-                        .addComponent(jL_bienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            panel_inicioLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jL_bienvenido, jl_PGS});
-
-            panel_inicioLayout.setVerticalGroup(
-                panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_inicioLayout.createSequentialGroup()
-                    .addGap(104, 104, 104)
-                    .addComponent(jl_PGS)
-                    .addGap(18, 18, 18)
-                    .addComponent(jL_bienvenido)
-                    .addGap(53, 53, 53)
-                    .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jL_imagen)
-                        .addComponent(jL_bienvenido2))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-
-            jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
 
             panel_registro_rutinas.setVisible(false);
 
@@ -1267,16 +1316,15 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jBCrearRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBAsignarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 84, Short.MAX_VALUE))
+                    .addGap(0, 104, Short.MAX_VALUE))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
                         .addComponent(jBVerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 107, Short.MAX_VALUE)))
+                        .addGap(0, 127, Short.MAX_VALUE)))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel83)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
             );
             panel_menu1Layout.setVerticalGroup(
                 panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1287,7 +1335,7 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jBAsignarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(31, 31, 31)
                     .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(726, Short.MAX_VALUE))
+                    .addContainerGap(948, Short.MAX_VALUE))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
                         .addGap(330, 330, 330)
@@ -1295,9 +1343,8 @@ public class Vista extends javax.swing.JFrame {
                         .addContainerGap(645, Short.MAX_VALUE)))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel83)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 351, Short.MAX_VALUE)))
             );
 
             panel_datos1.setBorder(null);
@@ -1306,6 +1353,7 @@ public class Vista extends javax.swing.JFrame {
             panel_datos1.getVerticalScrollBar().setUnitIncrement(20);
 
             panel_crear_rutina.setVisible(false);
+            panel_crear_rutina.setOpaque(false);
 
             jLabel39.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
             jLabel39.setText("Piernas");
@@ -1492,31 +1540,44 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
             javax.swing.GroupLayout panel_imp_rutinasLayout = new javax.swing.GroupLayout(panel_imp_rutinas);
             panel_imp_rutinas.setLayout(panel_imp_rutinasLayout);
             panel_imp_rutinasLayout.setHorizontalGroup(
                 panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_imp_rutinasLayout.createSequentialGroup()
-                    .addContainerGap(116, Short.MAX_VALUE)
+                    .addContainerGap(160, Short.MAX_VALUE)
                     .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(71, Short.MAX_VALUE))
+                    .addContainerGap(210, Short.MAX_VALUE))
+                .addGroup(panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel48)
+                        .addGap(0, 0, Short.MAX_VALUE)))
             );
             panel_imp_rutinasLayout.setVerticalGroup(
                 panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
                     .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 24, Short.MAX_VALUE))
+                    .addGap(0, 58, Short.MAX_VALUE))
                 .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
                     .addGap(20, 20, 20)
                     .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel48)
+                        .addGap(0, 0, Short.MAX_VALUE)))
             );
 
             panel_datos1.setViewportView(panel_imp_rutinas);
 
             panel_asignar_rutina.setVisible(false);
+            panel_asignar_rutina.setOpaque(false);
 
             text_cliente_rutina.setEditable(false);
             text_cliente_rutina.addActionListener(new java.awt.event.ActionListener() {
@@ -1543,31 +1604,36 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jLabel50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
             javax.swing.GroupLayout panel_asignar_rutinaLayout = new javax.swing.GroupLayout(panel_asignar_rutina);
             panel_asignar_rutina.setLayout(panel_asignar_rutinaLayout);
             panel_asignar_rutinaLayout.setHorizontalGroup(
                 panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
-                    .addGap(22, 22, 22)
+                    .addContainerGap(259, Short.MAX_VALUE)
                     .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel61)
                         .addComponent(jLabel17))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(text_cliente_rutina)
-                        .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
-                            .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 185, Short.MAX_VALUE)))
-                    .addContainerGap())
+                        .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(259, Short.MAX_VALUE))
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_rutinaLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(asigna_rutina_cliente)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_rutinaLayout.createSequentialGroup()
+                        .addContainerGap(25, Short.MAX_VALUE)
+                        .addComponent(jLabel50)
+                        .addContainerGap(26, Short.MAX_VALUE)))
             );
             panel_asignar_rutinaLayout.setVerticalGroup(
                 panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
-                    .addGap(24, 24, 24)
+                    .addGap(250, 250, 250)
                     .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel61)
                         .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1575,9 +1641,14 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel17)
                         .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(27, 27, 27)
+                    .addGap(18, 18, 18)
                     .addComponent(asigna_rutina_cliente)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(270, Short.MAX_VALUE))
+                .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(105, Short.MAX_VALUE)))
             );
 
             javax.swing.GroupLayout panel_registro_rutinasLayout = new javax.swing.GroupLayout(panel_registro_rutinas);
@@ -1587,12 +1658,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
                     .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
+                    .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_asignar_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(524, 524, 524)))
+                        .addGap(181, 181, 181)))
             );
             panel_registro_rutinasLayout.setVerticalGroup(
                 panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1604,7 +1675,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_asignar_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(720, 720, 720)))
+                        .addGap(623, 623, 623)))
             );
 
             jTabbedPane1.addTab("Rutinas", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pesa.png")), panel_registro_rutinas); // NOI18N
@@ -1719,46 +1790,77 @@ public class Vista extends javax.swing.JFrame {
             panel_crear_perfil_nutricional.setLayout(panel_crear_perfil_nutricionalLayout);
             panel_crear_perfil_nutricionalLayout.setHorizontalGroup(
                 panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane2)
-                        .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
-                            .addComponent(jLDatosPersonales2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLNombre2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jCBListFood, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel28)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_add_plan_nutricional)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addContainerGap())
+                .addGap(0, 783, Short.MAX_VALUE)
+                .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTabbedPane2)
+                            .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
+                                .addComponent(jLDatosPersonales2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLNombre2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCBListFood, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_add_plan_nutricional)
+                                .addGap(0, 99, Short.MAX_VALUE)))
+                        .addContainerGap()))
             );
             panel_crear_perfil_nutricionalLayout.setVerticalGroup(
                 panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
-                    .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(jLDatosPersonales2)
-                            .addGap(32, 32, 32))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crear_perfil_nutricionalLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(0, 579, Short.MAX_VALUE)
+                .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
+                                .addComponent(jLDatosPersonales2)
+                                .addGap(32, 32, 32))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLNombre2)
                                 .addComponent(jCBListFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel28)
-                                .addComponent(btn_add_plan_nutricional))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                                .addComponent(btn_add_plan_nutricional)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
 
             jLDatosPersonales.setFont(new Font("Serif", Font.PLAIN, 18));
 
-            panel_datos4.setViewportView(panel_crear_perfil_nutricional);
+            jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
+            javax.swing.GroupLayout panel_nutricionLayout = new javax.swing.GroupLayout(panel_nutricion);
+            panel_nutricion.setLayout(panel_nutricionLayout);
+            panel_nutricionLayout.setHorizontalGroup(
+                panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_nutricionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel_crear_perfil_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_nutricionLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel51)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+            );
+            panel_nutricionLayout.setVerticalGroup(
+                panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_nutricionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(panel_crear_perfil_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_nutricionLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel51)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+            );
+
+            panel_datos4.setViewportView(panel_nutricion);
 
             panel_asignar_perfil.setVisible(false);
 
@@ -1789,28 +1891,36 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
             javax.swing.GroupLayout panel_asignar_perfilLayout = new javax.swing.GroupLayout(panel_asignar_perfil);
             panel_asignar_perfil.setLayout(panel_asignar_perfilLayout);
             panel_asignar_perfilLayout.setHorizontalGroup(
                 panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                    .addContainerGap(65, Short.MAX_VALUE)
+                    .addContainerGap(311, Short.MAX_VALUE)
+                    .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel62)
+                        .addComponent(jLabel18))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel62)
-                                .addComponent(jLabel18))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(btn_Asigna_Nutricion))
-                    .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(306, Short.MAX_VALUE))
+                .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Asigna_Nutricion)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_perfilLayout.createSequentialGroup()
+                        .addContainerGap(118, Short.MAX_VALUE)
+                        .addComponent(jLabel53)
+                        .addContainerGap()))
             );
             panel_asignar_perfilLayout.setVerticalGroup(
                 panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
+                    .addGap(100, 100, 100)
                     .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel62)
                         .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1818,9 +1928,11 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel18)
                         .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
+                    .addGap(32, 32, 32)
                     .addComponent(btn_Asigna_Nutricion)
-                    .addContainerGap(191, Short.MAX_VALUE))
+                    .addContainerGap(273, Short.MAX_VALUE))
+                .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))
             );
 
             javax.swing.GroupLayout panel_registro_nutricionalLayout = new javax.swing.GroupLayout(panel_registro_nutricional);
@@ -1830,11 +1942,11 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
                     .addComponent(panel_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panel_datos4, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                    .addComponent(panel_datos4, javax.swing.GroupLayout.DEFAULT_SIZE, 944, Short.MAX_VALUE)
                     .addContainerGap())
                 .addGroup(panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
-                        .addGap(496, 496, 496)
+                        .addGap(277, 277, 277)
                         .addComponent(panel_asignar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             );
@@ -1846,9 +1958,9 @@ public class Vista extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
+                        .addGap(63, 63, 63)
                         .addComponent(panel_asignar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(575, Short.MAX_VALUE)))
+                        .addContainerGap(493, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Nutrición", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AgregarPN.png")), panel_registro_nutricional); // NOI18N
@@ -2095,6 +2207,7 @@ public class Vista extends javax.swing.JFrame {
                 ));
                 jScrollPane3.setViewportView(jTable1);
 
+                jButton1.setVisible(false);
                 jButton1.setText("Listar Pagos");
                 jButton1.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2127,7 +2240,7 @@ public class Vista extends javax.swing.JFrame {
                 });
 
                 jLabel46.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-                jLabel46.setText("Seleccionar Cliente: ");
+                jLabel46.setText("Lista de pagos de un Cliente: ");
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
@@ -2212,7 +2325,7 @@ public class Vista extends javax.swing.JFrame {
                 panel_control_pagos.setLayout(panel_control_pagosLayout);
                 panel_control_pagosLayout.setHorizontalGroup(
                     panel_control_pagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                 );
                 panel_control_pagosLayout.setVerticalGroup(
                     panel_control_pagosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2616,7 +2729,7 @@ public class Vista extends javax.swing.JFrame {
                         .addContainerGap(57, Short.MAX_VALUE)
                         .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_busqueda_clienteLayout.createSequentialGroup()
+                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2626,7 +2739,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                 );
@@ -2750,7 +2863,7 @@ public class Vista extends javax.swing.JFrame {
                     panel_busqueda.setLayout(panel_busquedaLayout);
                     panel_busquedaLayout.setHorizontalGroup(
                         panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1083, Short.MAX_VALUE)
                     );
                     panel_busquedaLayout.setVerticalGroup(
                         panel_busquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2763,7 +2876,7 @@ public class Vista extends javax.swing.JFrame {
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1088, Short.MAX_VALUE)
                     );
                     layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2832,9 +2945,9 @@ public class Vista extends javax.swing.JFrame {
             text_cliente_desactivar.setText(clienteSelected.getId_cliente() + " " + clienteSelected.getNombre() + " " + clienteSelected.getApellidos());
             if (!desactivar_Cliente.isVisible()) {
                 panel_datos.setVisible(false);
-                panel_reg_fisico.setVisible(false);
-                panel_reg_fisico.validate();
-                panel_reg_fisico.paintComponents(panel_reg_fisico.getGraphics());
+                panel_fisico.setVisible(false);
+                panel_fisico.validate();
+                panel_fisico.paintComponents(panel_fisico.getGraphics());
                 desactivar_Cliente.setVisible(true);
                 desactivar_Cliente.validate();
                 desactivar_Cliente.paintComponents(desactivar_Cliente.getGraphics());
@@ -2905,8 +3018,6 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jBEditarRutinaActionPerformed
 
     private void cargarTablas(Rutina r) {
-        List<EjerciciosRutina> er = control.getDao().getEjeRutina(r.getId());
-
         List<EjerciciosRutina> piernas = control.getDao().getSizeParte(r.getId(), "Piernas");
         cargaTabla(tablePiernas, piernas);
 
@@ -2974,10 +3085,11 @@ public class Vista extends javax.swing.JFrame {
                 cargaCombo(combo_rutinas_creadas, control.getDao().todoRutina(), true);
                 text_cliente_rutina.setText(clienteSelected.getId_cliente() + " " + clienteSelected.getNombre() + " " + clienteSelected.getApellidos());
                 if (!panel_asignar_rutina.isVisible()) {
+                    panel_registro_rutinas.setVisible(false);
                     panel_asignar_rutina.setVisible(true);
                     panel_asignar_rutina.validate();
                     panel_asignar_rutina.paintComponents(panel_asignar_rutina.getGraphics());
-                    panel_registro_rutinas.setVisible(false);
+                    panel_asignar_rutina.repaint();
                     bt_Print.setVisible(false);
                     panel_datos1.setVisible(false);
                 } else {
@@ -3018,6 +3130,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void btn_perfiles_NutricionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_perfiles_NutricionalesActionPerformed
         panel_asignar_perfil.setVisible(false);
+        jTabbedPane2.setVisible(true);
         panel_crear_perfil_nutricional.paintComponents(panel_crear_perfil_nutricional.getGraphics());
         panel_crear_perfil_nutricional.setVisible(true);
         panel_datos4.setVisible(true);
@@ -3123,14 +3236,6 @@ public class Vista extends javax.swing.JFrame {
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
-
-    private void combo_lesion_oseaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_oseaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo_lesion_oseaActionPerformed
-
-    private void combo_diabeticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_diabeticoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_combo_diabeticoActionPerformed
 
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
 
@@ -3413,11 +3518,6 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBListFoodActionPerformed
 
-    private void combo_embarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_embarazoActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_combo_embarazoActionPerformed
-
     private void cb_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_sexoActionPerformed
         // TODO add your handling code here:
         int indx = cb_sexo.getSelectedIndex();
@@ -3430,6 +3530,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_sexoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         Cliente c = clienteSelected;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         while (model.getRowCount() > 0) {
@@ -3494,6 +3595,7 @@ public class Vista extends javax.swing.JFrame {
         text_cedula_pago.setText(clienteSelected.getId_cliente());
         text_nombre_pago.setText(clienteSelected.getNombre());
         text_apellidos_pago.setText(clienteSelected.getApellidos());
+        jButton1.doClick();
     }//GEN-LAST:event_btn_buscar_cliente_pagoActionPerformed
 
     private void btn_busca_cliente_segActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_busca_cliente_segActionPerformed
@@ -3536,6 +3638,18 @@ public class Vista extends javax.swing.JFrame {
     private void jBVerRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerRutinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBVerRutinaActionPerformed
+
+    private void combo_diabeticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_diabeticoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_diabeticoActionPerformed
+
+    private void combo_lesion_oseaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_oseaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_lesion_oseaActionPerformed
+
+    private void combo_embarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_embarazoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_embarazoActionPerformed
 
     private void seleccionaCliente() {
         clienteSelected = null;
@@ -3785,7 +3899,7 @@ public class Vista extends javax.swing.JFrame {
         combo_gimnasio.setSelectedIndex(-1);
         textarea_otro_padecimiento.setText("");
         jLFoto.setIcon(null);
-        this.panel_reg_fisico.repaint();
+        this.panel_fisico.repaint();
     }
 
     private void clearCamposCobro() {
@@ -4063,8 +4177,13 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -4158,12 +4277,14 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane panel_datos1;
     private javax.swing.JScrollPane panel_datos4;
     private javax.swing.JPanel panel_datos_seg;
+    private javax.swing.JPanel panel_fisico;
     private javax.swing.JPanel panel_imp_rutinas;
     private javax.swing.JPanel panel_inicio;
     private javax.swing.JPanel panel_menu;
     private javax.swing.JPanel panel_menu1;
     private javax.swing.JPanel panel_menu2;
     private javax.swing.JPanel panel_muestra_datos;
+    private javax.swing.JPanel panel_nutricion;
     private javax.swing.JPanel panel_parametros;
     private javax.swing.JPanel panel_proyeccion;
     private javax.swing.JPanel panel_reg_fisico;
