@@ -23,21 +23,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
               <Component id="nombre_reg_fisico" min="-2" pref="317" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="109" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="panel_datos_seg" max="32767" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -51,8 +51,8 @@
                   <Component id="nombre_reg_fisico" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="panel_datos_seg" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -60,7 +60,31 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Registro Fisico del Cliente"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nombre_reg_fisico">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="panel_datos_seg">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -80,87 +104,84 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jtf_cadera" alignment="1" pref="184" max="32767" attributes="0"/>
-                          <Component id="jtf_cintura" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtf_imc" alignment="0" pref="184" max="32767" attributes="0"/>
-                                  <Component id="jtf_peso" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_grasa" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_pecho" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_espalda" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jtf_gluteos" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jtf_pant_izq" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jtf_pier_izq" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jtf_pier_der" alignment="1" min="-2" pref="181" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtf_antebra_izq" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                              <Component id="jtf_antebra_der" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Component id="jtf_bra_izq" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jtf_pant_der" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jtf_bra_der" alignment="0" pref="181" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="gluteos" linkSize="1" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                      <Component id="cadera" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="espalda" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="pecho" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="grasa" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="imc" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="peso" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="cintura" linkSize="1" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel54" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel92" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel55" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel56" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel57" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel58" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel59" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="pierna_izquierda" linkSize="2" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="pierna_derecha" linkSize="2" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="pantorrilla_izquierda" linkSize="2" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="pantorrilla_derecha" linkSize="2" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="brazo_derecho" linkSize="2" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                      <Component id="brazo_izquierdo" linkSize="2" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="antebrazo_derecho" linkSize="2" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                      <Component id="antebrazo_izquierdo" linkSize="2" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel60" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel64" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel65" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel67" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel68" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel69" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel70" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="jtf_peso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="peso" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtf_pier_izq" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pierna_izquierda" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel60" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -168,20 +189,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_imc" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="imc" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="pierna_derecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtf_pier_der" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_grasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="grasa" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel92" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_pecho" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="pecho" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -191,11 +215,15 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jtf_pant_izq" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pantorrilla_izquierda" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel65" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jtf_pant_der" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pantorrilla_derecha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -204,50 +232,58 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtf_bra_der" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="brazo_derecho" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel67" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtf_bra_izq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="brazo_izquierdo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_espalda" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="espalda" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_cadera" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cadera" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtf_antebra_der" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="antebrazo_derecho" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtf_gluteos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="gluteos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jtf_antebra_izq" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="antebrazo_izquierdo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtf_cintura" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cintura" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel59" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -298,26 +334,50 @@
             <Property name="text" type="java.lang.String" value="Gl&#xfa;teos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_peso">
+        <Component class="javax.swing.JTextField" name="peso">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pesoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pierna Derecha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_imc">
+        <Component class="javax.swing.JTextField" name="imc">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="imcKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_grasa">
+        <Component class="javax.swing.JTextField" name="grasa">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="grasaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_pecho">
+        <Component class="javax.swing.JTextField" name="pecho">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pechoKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_espalda">
+        <Component class="javax.swing.JTextField" name="espalda">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="espaldaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_cadera">
+        <Component class="javax.swing.JTextField" name="cadera">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="caderaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_gluteos">
+        <Component class="javax.swing.JTextField" name="gluteos">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="gluteosKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_cintura">
+        <Component class="javax.swing.JTextField" name="cintura">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cinturaKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -349,47 +409,167 @@
             <Property name="text" type="java.lang.String" value="IMC"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_pant_der">
+        <Component class="javax.swing.JTextField" name="pantorrilla_derecha">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pantorrilla_derechaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_pier_der">
+        <Component class="javax.swing.JTextField" name="pierna_derecha">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pierna_derechaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_pant_izq">
+        <Component class="javax.swing.JTextField" name="pantorrilla_izquierda">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pantorrilla_izquierdaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_pier_izq">
+        <Component class="javax.swing.JTextField" name="pierna_izquierda">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pierna_izquierdaKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_bra_der">
+        <Component class="javax.swing.JTextField" name="brazo_derecho">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="brazo_derechoKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_bra_izq">
+        <Component class="javax.swing.JTextField" name="brazo_izquierdo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="brazo_izquierdoKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_antebra_der">
+        <Component class="javax.swing.JTextField" name="antebrazo_derecho">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="antebrazo_derechoKeyTyped"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtf_antebra_izq">
+        <Component class="javax.swing.JTextField" name="antebrazo_izquierdo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="antebrazo_izquierdoKeyTyped"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel54">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Kgs"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel55">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel56">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel57">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel58">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel59">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel60">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel64">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel65">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel66">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel67">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel68">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel69">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel70">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="cms"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel92">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="%"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Aceptar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel17">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Registro Fisico del Cliente"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="nombre_reg_fisico">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="-"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>

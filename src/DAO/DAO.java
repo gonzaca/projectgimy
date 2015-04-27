@@ -465,9 +465,8 @@ public class DAO extends Observable {
     }
 
     public static LocalDate fromStringToDate(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.forLanguageTag("es-CR"));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy", Locale.forLanguageTag("es-CR"));
         LocalDate newDate = LocalDate.parse(date, formatter);
         return newDate;
     }
-
 }

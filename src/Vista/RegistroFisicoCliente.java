@@ -2,8 +2,10 @@ package Vista;
 
 import Controlador.Controlador;
 import Modelo.Cliente;
+import Modelo.Seguimiento;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class RegistroFisicoCliente extends javax.swing.JFrame {
 private Controlador control;
@@ -21,7 +23,10 @@ private Controlador control;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        nombre_reg_fisico = new javax.swing.JLabel();
+        panel_datos_seg = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -31,36 +36,61 @@ private Controlador control;
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jtf_peso = new javax.swing.JTextField();
+        peso = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jtf_imc = new javax.swing.JTextField();
-        jtf_grasa = new javax.swing.JTextField();
-        jtf_pecho = new javax.swing.JTextField();
-        jtf_espalda = new javax.swing.JTextField();
-        jtf_cadera = new javax.swing.JTextField();
-        jtf_gluteos = new javax.swing.JTextField();
-        jtf_cintura = new javax.swing.JTextField();
+        imc = new javax.swing.JTextField();
+        grasa = new javax.swing.JTextField();
+        pecho = new javax.swing.JTextField();
+        espalda = new javax.swing.JTextField();
+        cadera = new javax.swing.JTextField();
+        gluteos = new javax.swing.JTextField();
+        cintura = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jtf_pant_der = new javax.swing.JTextField();
-        jtf_pier_der = new javax.swing.JTextField();
-        jtf_pant_izq = new javax.swing.JTextField();
-        jtf_pier_izq = new javax.swing.JTextField();
-        jtf_bra_der = new javax.swing.JTextField();
-        jtf_bra_izq = new javax.swing.JTextField();
-        jtf_antebra_der = new javax.swing.JTextField();
-        jtf_antebra_izq = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        nombre_reg_fisico = new javax.swing.JLabel();
+        pantorrilla_derecha = new javax.swing.JTextField();
+        pierna_derecha = new javax.swing.JTextField();
+        pantorrilla_izquierda = new javax.swing.JTextField();
+        pierna_izquierda = new javax.swing.JTextField();
+        brazo_derecho = new javax.swing.JTextField();
+        brazo_izquierdo = new javax.swing.JTextField();
+        antebrazo_derecho = new javax.swing.JTextField();
+        antebrazo_izquierdo = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(5, 100, 152), new java.awt.Color(0, 102, 153), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 153, 153)));
+        jButton1.setText("Aceptar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel17.setText("Registro Fisico del Cliente");
+
+        nombre_reg_fisico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        nombre_reg_fisico.setText("-");
+
+        panel_datos_seg.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(5, 100, 152), new java.awt.Color(0, 102, 153), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 153, 153)));
 
         jLabel1.setText("Brazo derecho");
 
@@ -80,7 +110,55 @@ private Controlador control;
 
         jLabel9.setText("Glúteos");
 
+        peso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pesoKeyTyped(evt);
+            }
+        });
+
         jLabel10.setText("Pierna Derecha");
+
+        imc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                imcKeyTyped(evt);
+            }
+        });
+
+        grasa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                grasaKeyTyped(evt);
+            }
+        });
+
+        pecho.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pechoKeyTyped(evt);
+            }
+        });
+
+        espalda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                espaldaKeyTyped(evt);
+            }
+        });
+
+        cadera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                caderaKeyTyped(evt);
+            }
+        });
+
+        gluteos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                gluteosKeyTyped(evt);
+            }
+        });
+
+        cintura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cinturaKeyTyped(evt);
+            }
+        });
 
         jLabel11.setText("Pierna Izquierda");
 
@@ -94,171 +172,277 @@ private Controlador control;
 
         jLabel16.setText("IMC");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jtf_cadera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                        .addComponent(jtf_cintura, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel9)))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtf_imc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                .addComponent(jtf_peso)
-                                .addComponent(jtf_grasa)
-                                .addComponent(jtf_pecho)
-                                .addComponent(jtf_espalda))
-                            .addComponent(jtf_gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(123, 123, 123)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtf_pant_izq)
-                            .addComponent(jtf_pier_izq)
-                            .addComponent(jtf_pier_der, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf_antebra_izq, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtf_antebra_der, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtf_bra_izq, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtf_pant_der, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtf_bra_der, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel10)))
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtf_peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14)
-                        .addComponent(jtf_pier_izq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_imc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel10)
-                            .addComponent(jtf_pier_der, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_grasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_pecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(35, 35, 35)
-                            .addComponent(jLabel13))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jtf_pant_izq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jtf_pant_der, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jtf_bra_der, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jtf_bra_izq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_espalda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_cadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jtf_antebra_der, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jtf_gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jtf_antebra_izq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(jtf_cintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        pantorrilla_derecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pantorrilla_derechaKeyTyped(evt);
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel17.setText("Registro Fisico del Cliente");
+        pierna_derecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pierna_derechaKeyTyped(evt);
+            }
+        });
 
-        nombre_reg_fisico.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        nombre_reg_fisico.setText("-");
+        pantorrilla_izquierda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pantorrilla_izquierdaKeyTyped(evt);
+            }
+        });
+
+        pierna_izquierda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pierna_izquierdaKeyTyped(evt);
+            }
+        });
+
+        brazo_derecho.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                brazo_derechoKeyTyped(evt);
+            }
+        });
+
+        brazo_izquierdo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                brazo_izquierdoKeyTyped(evt);
+            }
+        });
+
+        antebrazo_derecho.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                antebrazo_derechoKeyTyped(evt);
+            }
+        });
+
+        antebrazo_izquierdo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                antebrazo_izquierdoKeyTyped(evt);
+            }
+        });
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel54.setText("Kgs");
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel55.setText("cms");
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel56.setText("cms");
+
+        jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel57.setText("cms");
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel58.setText("cms");
+
+        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel59.setText("cms");
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel60.setText("cms");
+
+        jLabel64.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel64.setText("cms");
+
+        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel65.setText("cms");
+
+        jLabel66.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel66.setText("cms");
+
+        jLabel67.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel67.setText("cms");
+
+        jLabel68.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel68.setText("cms");
+
+        jLabel69.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel69.setText("cms");
+
+        jLabel70.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel70.setText("cms");
+
+        jLabel92.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel92.setText("%");
+
+        javax.swing.GroupLayout panel_datos_segLayout = new javax.swing.GroupLayout(panel_datos_seg);
+        panel_datos_seg.setLayout(panel_datos_segLayout);
+        panel_datos_segLayout.setHorizontalGroup(
+            panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_datos_segLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8))
+                .addGap(27, 27, 27)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cadera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(espalda, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pecho, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(grasa, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imc, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cintura, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel54)
+                    .addComponent(jLabel92)
+                    .addComponent(jLabel55)
+                    .addComponent(jLabel56)
+                    .addComponent(jLabel57)
+                    .addComponent(jLabel58)
+                    .addComponent(jLabel59))
+                .addGap(59, 59, 59)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(26, 26, 26)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pierna_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pierna_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pantorrilla_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pantorrilla_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(antebrazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(antebrazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel60)
+                    .addComponent(jLabel64)
+                    .addComponent(jLabel65)
+                    .addComponent(jLabel66)
+                    .addComponent(jLabel67)
+                    .addComponent(jLabel68)
+                    .addComponent(jLabel69)
+                    .addComponent(jLabel70))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panel_datos_segLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadera, cintura, espalda, gluteos, grasa, imc, pecho, peso});
+
+        panel_datos_segLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {antebrazo_derecho, antebrazo_izquierdo, brazo_derecho, brazo_izquierdo, pantorrilla_derecha, pantorrilla_izquierda, pierna_derecha, pierna_izquierda});
+
+        panel_datos_segLayout.setVerticalGroup(
+            panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_datos_segLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14)
+                        .addComponent(pierna_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel54)
+                        .addComponent(jLabel60))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createSequentialGroup()
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(imc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16)
+                            .addComponent(pierna_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(grasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel92))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel55)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_datos_segLayout.createSequentialGroup()
+                            .addGap(35, 35, 35)
+                            .addComponent(jLabel13))
+                        .addGroup(panel_datos_segLayout.createSequentialGroup()
+                            .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(pantorrilla_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel65))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pantorrilla_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel66)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_datos_segLayout.createSequentialGroup()
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(brazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel67))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel68)))
+                    .addGroup(panel_datos_segLayout.createSequentialGroup()
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(espalda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel56))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel57))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(antebrazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel58)
+                    .addComponent(jLabel69))
+                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_datos_segLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(antebrazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel70)))
+                    .addGroup(panel_datos_segLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(cintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel59))))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addComponent(nombre_reg_fisico, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 109, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel_datos_seg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -269,8 +453,8 @@ private Controlador control;
                     .addComponent(jLabel17)
                     .addComponent(nombre_reg_fisico))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -280,26 +464,130 @@ private Controlador control;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         createSeguimiento();
+        JOptionPane.showMessageDialog(null, "Primeras Medidas o Seguimiento Agregado Correctamente.");
         this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void pesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pesoKeyTyped
+
+    private void imcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_imcKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_imcKeyTyped
+
+    private void grasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_grasaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_grasaKeyTyped
+
+    private void pechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pechoKeyTyped
+
+    private void espaldaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_espaldaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_espaldaKeyTyped
+
+    private void caderaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caderaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_caderaKeyTyped
+
+    private void gluteosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gluteosKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_gluteosKeyTyped
+
+    private void cinturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cinturaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_cinturaKeyTyped
+
+    private void pierna_izquierdaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pierna_izquierdaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pierna_izquierdaKeyTyped
+
+    private void pierna_derechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pierna_derechaKeyTyped
+       validaNumeros(evt);
+    }//GEN-LAST:event_pierna_derechaKeyTyped
+
+    private void pantorrilla_izquierdaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pantorrilla_izquierdaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pantorrilla_izquierdaKeyTyped
+
+    private void pantorrilla_derechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pantorrilla_derechaKeyTyped
+       validaNumeros(evt);
+    }//GEN-LAST:event_pantorrilla_derechaKeyTyped
+
+    private void brazo_derechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brazo_derechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_brazo_derechoKeyTyped
+
+    private void brazo_izquierdoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brazo_izquierdoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_brazo_izquierdoKeyTyped
+
+    private void antebrazo_derechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_antebrazo_derechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_antebrazo_derechoKeyTyped
+
+    private void antebrazo_izquierdoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_antebrazo_izquierdoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_antebrazo_izquierdoKeyTyped
 
   public void createSeguimiento() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         Date date = new Date();
         String time = sdf.format(date);
         System.out.println(time);
-//        control.getDao().setSeguimiento(
-//                Float.valueOf(jtf_peso.getText()), time, Float.valueOf(jtf_imc.getText()),
-//                Float.valueOf(jtf_grasa.getText()), Float.valueOf(jtf_pecho.getText()),
-//                Float.valueOf(jtf_espalda.getText()), Float.valueOf(jtf_cadera.getText()),
-//                Float.valueOf(jtf_gluteos.getText()), Float.valueOf(jtf_cintura.getText()),
-//                Float.valueOf(jtf_pier_izq.getText()), Float.valueOf(jtf_pier_der.getText()),
-//                Float.valueOf(jtf_pant_izq.getText()), Float.valueOf(jtf_pant_der.getText()),
-//                Float.valueOf(jtf_bra_izq.getText()),
-//                Float.valueOf(jtf_bra_der.getText()), Float.valueOf(jtf_antebra_der.getText()),
-//                Float.valueOf(jtf_antebra_izq.getText()), this.cliente);
+        Seguimiento seg = new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
+                time, Double.parseDouble(grasa.getText()),
+                Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
+                Double.parseDouble(cadera.getText()), Double.parseDouble(gluteos.getText()),
+                Double.parseDouble(cintura.getText()), Double.parseDouble(pierna_izquierda.getText()),
+                Double.parseDouble(pierna_derecha.getText()), Double.parseDouble(pantorrilla_izquierda.getText()),
+                Double.parseDouble(pantorrilla_derecha.getText()), Double.parseDouble(brazo_izquierdo.getText()),
+                Double.parseDouble(brazo_derecho.getText()), Double.parseDouble(antebrazo_derecho.getText()),
+                Double.parseDouble(antebrazo_izquierdo.getText()), cliente);
+        control.getDao().setSeguimiento(seg);//añade el seguimiento en la base de datos
+        JOptionPane.showMessageDialog(null, "Seguimiento añadido correctamente.");
+        clearCamposSeguimiento();
     }
+  
+    private void clearCamposSeguimiento() {
+        peso.setText("");
+        imc.setText("");
+        grasa.setText("");
+        pecho.setText("");
+        espalda.setText("");
+        cadera.setText("");
+        gluteos.setText("");
+        cintura.setText("");
+        pierna_izquierda.setText("");
+        pierna_derecha.setText("");
+        pantorrilla_izquierda.setText("");
+        pantorrilla_derecha.setText("");
+        brazo_izquierdo.setText("");
+        brazo_derecho.setText("");
+        antebrazo_derecho.setText("");
+        antebrazo_izquierdo.setText("");
+    }
+    
+    private void validaNumeros(java.awt.event.KeyEvent evt){
+        char car = evt.getKeyChar();
+        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA) && (car!=(char)java.awt.event.KeyEvent.VK_PERIOD))
+            evt.consume();
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField antebrazo_derecho;
+    private javax.swing.JTextField antebrazo_izquierdo;
+    private javax.swing.JTextField brazo_derecho;
+    private javax.swing.JTextField brazo_izquierdo;
+    private javax.swing.JTextField cadera;
+    private javax.swing.JTextField cintura;
+    private javax.swing.JTextField espalda;
+    private javax.swing.JTextField gluteos;
+    private javax.swing.JTextField grasa;
+    private javax.swing.JTextField imc;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -314,27 +602,32 @@ private Controlador control;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jtf_antebra_der;
-    private javax.swing.JTextField jtf_antebra_izq;
-    private javax.swing.JTextField jtf_bra_der;
-    private javax.swing.JTextField jtf_bra_izq;
-    private javax.swing.JTextField jtf_cadera;
-    private javax.swing.JTextField jtf_cintura;
-    private javax.swing.JTextField jtf_espalda;
-    private javax.swing.JTextField jtf_gluteos;
-    private javax.swing.JTextField jtf_grasa;
-    private javax.swing.JTextField jtf_imc;
-    private javax.swing.JTextField jtf_pant_der;
-    private javax.swing.JTextField jtf_pant_izq;
-    private javax.swing.JTextField jtf_pecho;
-    private javax.swing.JTextField jtf_peso;
-    private javax.swing.JTextField jtf_pier_der;
-    private javax.swing.JTextField jtf_pier_izq;
+    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel nombre_reg_fisico;
+    private javax.swing.JPanel panel_datos_seg;
+    private javax.swing.JTextField pantorrilla_derecha;
+    private javax.swing.JTextField pantorrilla_izquierda;
+    private javax.swing.JTextField pecho;
+    private javax.swing.JTextField peso;
+    private javax.swing.JTextField pierna_derecha;
+    private javax.swing.JTextField pierna_izquierda;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,24 +17,16 @@ import Modelo.Pago;
 import Modelo.Rutina;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
-import com.itextpdf.awt.DefaultFontMapper;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.awt.print.PageFormat;
-import java.awt.print.Printable;
-import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -44,6 +36,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -58,6 +51,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -293,12 +288,12 @@ public class Vista extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        detalle = new javax.swing.JComboBox();
         jLabel44 = new javax.swing.JLabel();
         btn_buscar_cliente_cobro = new javax.swing.JButton();
         text_nombre_cobro = new javax.swing.JTextField();
         text_apellidos_cobro = new javax.swing.JTextField();
         text_cedula_cobro = new javax.swing.JTextField();
+        detalle1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         jTable10 = new javax.swing.JTable();
@@ -352,6 +347,21 @@ public class Vista extends javax.swing.JFrame {
         brazo_izquierdo = new javax.swing.JTextField();
         antebrazo_derecho = new javax.swing.JTextField();
         antebrazo_izquierdo = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel92 = new javax.swing.JLabel();
         boton_añadir_seguimiento = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         label_fecha_seguimiento = new javax.swing.JLabel();
@@ -661,7 +671,7 @@ public class Vista extends javax.swing.JFrame {
             jPanel12Layout.setHorizontalGroup(
                 jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel12Layout.createSequentialGroup()
-                    .addContainerGap(143, Short.MAX_VALUE)
+                    .addContainerGap(116, Short.MAX_VALUE)
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel12Layout.createSequentialGroup()
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -735,7 +745,7 @@ public class Vista extends javax.swing.JFrame {
                                     .addComponent(jLabel30)
                                     .addGap(18, 18, 18)
                                     .addComponent(combo_embarazo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addContainerGap(144, Short.MAX_VALUE))
+                    .addContainerGap(116, Short.MAX_VALUE))
                 .addGroup(jPanel12Layout.createSequentialGroup()
                     .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel12Layout.createSequentialGroup()
@@ -855,6 +865,14 @@ public class Vista extends javax.swing.JFrame {
                     nombreActionPerformed(evt);
                 }
             });
+            nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    nombreKeyPressed(evt);
+                }
+                public void keyTyped(java.awt.event.KeyEvent evt) {
+                    nombreKeyTyped(evt);
+                }
+            });
 
             edad.setEditable(false);
             edad.addActionListener(new java.awt.event.ActionListener() {
@@ -864,6 +882,11 @@ public class Vista extends javax.swing.JFrame {
             });
 
             telefono.setInheritsPopupMenu(true);
+            telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyTyped(java.awt.event.KeyEvent evt) {
+                    telefonoKeyTyped(evt);
+                }
+            });
 
             jLNombre.setText("Nombre:");
 
@@ -875,6 +898,11 @@ public class Vista extends javax.swing.JFrame {
 
             jLTel.setText("Teléfono:");
 
+            email.addFocusListener(new java.awt.event.FocusAdapter() {
+                public void focusLost(java.awt.event.FocusEvent evt) {
+                    emailFocusLost(evt);
+                }
+            });
             email.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     emailActionPerformed(evt);
@@ -904,9 +932,23 @@ public class Vista extends javax.swing.JFrame {
 
             jLabel38.setText("Cedula");
 
+            cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyTyped(java.awt.event.KeyEvent evt) {
+                    cedulaKeyTyped(evt);
+                }
+            });
+
             apellidos.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     apellidosActionPerformed(evt);
+                }
+            });
+            apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyPressed(java.awt.event.KeyEvent evt) {
+                    apellidosKeyPressed(evt);
+                }
+                public void keyTyped(java.awt.event.KeyEvent evt) {
+                    apellidosKeyTyped(evt);
                 }
             });
 
@@ -941,7 +983,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(cedula))
                             .addComponent(nombre, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(148, 148, 148)
+                    .addGap(93, 93, 93)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLMail)
                         .addComponent(jLTel)
@@ -1109,17 +1151,19 @@ public class Vista extends javax.swing.JFrame {
             panel_reg_fisico.setLayout(panel_reg_fisicoLayout);
             panel_reg_fisicoLayout.setHorizontalGroup(
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(93, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(61, Short.MAX_VALUE))
-                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
+                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(15, Short.MAX_VALUE))))
             );
 
             panel_reg_fisicoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel12, jPanel13});
@@ -1127,16 +1171,13 @@ public class Vista extends javax.swing.JFrame {
             panel_reg_fisicoLayout.setVerticalGroup(
                 panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_reg_fisicoLayout.createSequentialGroup()
-                    .addContainerGap(735, Short.MAX_VALUE)
+                    .addContainerGap()
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())
-                .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(242, 242, 242)))
             );
 
             jLabel49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
@@ -1612,18 +1653,17 @@ public class Vista extends javax.swing.JFrame {
                 panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
                     .addContainerGap(259, Short.MAX_VALUE)
-                    .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel61)
-                        .addComponent(jLabel17))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
+                            .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel61)
+                                .addComponent(jLabel17))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(asigna_rutina_cliente))
                     .addContainerGap(259, Short.MAX_VALUE))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_rutinaLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(asigna_rutina_cliente)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_rutinaLayout.createSequentialGroup()
                         .addContainerGap(25, Short.MAX_VALUE)
@@ -1899,18 +1939,17 @@ public class Vista extends javax.swing.JFrame {
                 panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
                     .addContainerGap(311, Short.MAX_VALUE)
-                    .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel62)
-                        .addComponent(jLabel18))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
+                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel62)
+                                .addComponent(jLabel18))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Asigna_Nutricion))
                     .addContainerGap(306, Short.MAX_VALUE))
-                .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Asigna_Nutricion)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_perfilLayout.createSequentialGroup()
                         .addContainerGap(118, Short.MAX_VALUE)
@@ -1986,6 +2025,11 @@ public class Vista extends javax.swing.JFrame {
                     montoActionPerformed(evt);
                 }
             });
+            monto.addKeyListener(new java.awt.event.KeyAdapter() {
+                public void keyTyped(java.awt.event.KeyEvent evt) {
+                    montoKeyTyped(evt);
+                }
+            });
 
             boton_pagar_cobro.setText("Pagar");
             boton_pagar_cobro.setToolTipText("cancelar monto");
@@ -2007,8 +2051,6 @@ public class Vista extends javax.swing.JFrame {
             jLabel78.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 0), 1, true));
 
             jLabel27.setText("Detalle:");
-
-            detalle.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gimnasio", "Artes Marciales", "Gimansio y Artes Marciales" }));
 
             jLabel44.setText("Cedula");
 
@@ -2054,7 +2096,7 @@ public class Vista extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(monto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(dateChooserCobro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(detalle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(detalle1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(35, 35, 35)
                             .addComponent(boton_pagar_cobro, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(164, Short.MAX_VALUE))
@@ -2066,7 +2108,7 @@ public class Vista extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
-            jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dateChooserCobro, detalle, monto});
+            jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dateChooserCobro, monto});
 
             jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2081,9 +2123,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(0, 0, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel27)
-                                .addComponent(detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel27))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(dateChooserCobro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2101,14 +2141,18 @@ public class Vista extends javax.swing.JFrame {
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel77)
                                         .addComponent(text_apellidos_cobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel63)
-                                    .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel63)
+                                        .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(detalle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(0, 0, Short.MAX_VALUE))))
                         .addComponent(boton_pagar_cobro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(33, 33, 33))
             );
 
-            jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dateChooserCobro, detalle, monto});
+            jPanel4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dateChooserCobro, monto});
 
             jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 0), 1, true));
 
@@ -2356,7 +2400,55 @@ public class Vista extends javax.swing.JFrame {
 
                 jLabel9.setText("Glúteos");
 
+                peso.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pesoKeyTyped(evt);
+                    }
+                });
+
                 jLabel10.setText("Pierna Derecha");
+
+                imc.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        imcKeyTyped(evt);
+                    }
+                });
+
+                grasa.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        grasaKeyTyped(evt);
+                    }
+                });
+
+                pecho.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pechoKeyTyped(evt);
+                    }
+                });
+
+                espalda.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        espaldaKeyTyped(evt);
+                    }
+                });
+
+                cadera.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        caderaKeyTyped(evt);
+                    }
+                });
+
+                gluteos.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        gluteosKeyTyped(evt);
+                    }
+                });
+
+                cintura.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        cinturaKeyTyped(evt);
+                    }
+                });
 
                 jLabel11.setText("Pierna Izquierda");
 
@@ -2370,6 +2462,99 @@ public class Vista extends javax.swing.JFrame {
 
                 jLabel16.setText("IMC");
 
+                pantorrilla_derecha.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pantorrilla_derechaKeyTyped(evt);
+                    }
+                });
+
+                pierna_derecha.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pierna_derechaKeyTyped(evt);
+                    }
+                });
+
+                pantorrilla_izquierda.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pantorrilla_izquierdaKeyTyped(evt);
+                    }
+                });
+
+                pierna_izquierda.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        pierna_izquierdaKeyTyped(evt);
+                    }
+                });
+
+                brazo_derecho.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        brazo_derechoKeyTyped(evt);
+                    }
+                });
+
+                brazo_izquierdo.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        brazo_izquierdoKeyTyped(evt);
+                    }
+                });
+
+                antebrazo_derecho.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        antebrazo_derechoKeyTyped(evt);
+                    }
+                });
+
+                antebrazo_izquierdo.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        antebrazo_izquierdoKeyTyped(evt);
+                    }
+                });
+
+                jLabel54.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel54.setText("Kgs");
+
+                jLabel55.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel55.setText("cms");
+
+                jLabel56.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel56.setText("cms");
+
+                jLabel57.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel57.setText("cms");
+
+                jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel58.setText("cms");
+
+                jLabel59.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel59.setText("cms");
+
+                jLabel60.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel60.setText("cms");
+
+                jLabel64.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel64.setText("cms");
+
+                jLabel65.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel65.setText("cms");
+
+                jLabel66.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel66.setText("cms");
+
+                jLabel67.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel67.setText("cms");
+
+                jLabel68.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel68.setText("cms");
+
+                jLabel69.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel69.setText("cms");
+
+                jLabel70.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel70.setText("cms");
+
+                jLabel92.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+                jLabel92.setText("%");
+
                 javax.swing.GroupLayout panel_datos_segLayout = new javax.swing.GroupLayout(panel_datos_seg);
                 panel_datos_seg.setLayout(panel_datos_segLayout);
                 panel_datos_segLayout.setHorizontalGroup(
@@ -2377,66 +2562,70 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_datos_segLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cadera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                .addComponent(cintura, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel9)))
-                                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(imc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                                            .addComponent(peso)
-                                            .addComponent(grasa)
-                                            .addComponent(pecho)
-                                            .addComponent(espalda)))
-                                    .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel14))
+                        .addGap(27, 27, 27)
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jLabel10)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel12))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(pierna_derecha)
-                                            .addComponent(pantorrilla_izquierda, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                                            .addComponent(pierna_izquierda)))
-                                    .addComponent(jLabel1)
-                                    .addGroup(panel_datos_segLayout.createSequentialGroup()
-                                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4))
-                                        .addGap(26, 26, 26)
-                                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(antebrazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(antebrazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(pantorrilla_derecha, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(brazo_derecho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(peso)
+                            .addComponent(imc, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(grasa)
+                            .addComponent(pecho)
+                            .addComponent(espalda)
+                            .addComponent(cadera, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cintura))
+                        .addGap(3, 3, 3)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel54)
+                            .addComponent(jLabel92)
+                            .addComponent(jLabel55)
+                            .addComponent(jLabel56)
+                            .addComponent(jLabel57)
+                            .addComponent(jLabel58)
+                            .addComponent(jLabel59))
+                        .addGap(59, 59, 59)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(26, 26, 26)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pierna_izquierda)
+                            .addComponent(pierna_derecha)
+                            .addComponent(pantorrilla_izquierda, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(pantorrilla_derecha)
+                            .addComponent(brazo_derecho, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(antebrazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(antebrazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel60)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel65)
+                            .addComponent(jLabel66)
+                            .addComponent(jLabel67)
+                            .addComponent(jLabel68)
+                            .addComponent(jLabel69)
+                            .addComponent(jLabel70))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
+
+                panel_datos_segLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {antebrazo_derecho, antebrazo_izquierdo, brazo_derecho, brazo_izquierdo, pantorrilla_derecha, pantorrilla_izquierda, pierna_derecha, pierna_izquierda});
+
+                panel_datos_segLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cadera, cintura, espalda, gluteos, grasa, imc, pecho, peso});
+
                 panel_datos_segLayout.setVerticalGroup(
                     panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_datos_segLayout.createSequentialGroup()
@@ -2445,7 +2634,9 @@ public class Vista extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(peso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel14)
-                                .addComponent(pierna_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pierna_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel54)
+                                .addComponent(jLabel60))
                             .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2453,16 +2644,19 @@ public class Vista extends javax.swing.JFrame {
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(imc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel16)
-                                    .addComponent(jLabel10)
-                                    .addComponent(pierna_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(pierna_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel64)
+                                    .addComponent(jLabel10))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(grasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15))
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel92))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(pecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel55)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(panel_datos_segLayout.createSequentialGroup()
                                     .addGap(35, 35, 35)
@@ -2470,44 +2664,55 @@ public class Vista extends javax.swing.JFrame {
                                 .addGroup(panel_datos_segLayout.createSequentialGroup()
                                     .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(pantorrilla_izquierda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel12))
+                                        .addComponent(jLabel12)
+                                        .addComponent(jLabel65))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(pantorrilla_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(pantorrilla_derecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel66)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_datos_segLayout.createSequentialGroup()
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
-                                    .addComponent(brazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(brazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel67))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(brazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel68)))
                             .addGroup(panel_datos_segLayout.createSequentialGroup()
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(espalda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel56))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(cadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel57))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(antebrazo_derecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
-                            .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(gluteos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel58)
+                            .addComponent(jLabel69))
                         .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panel_datos_segLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(antebrazo_izquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel70)))
                             .addGroup(panel_datos_segLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panel_datos_segLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
-                                    .addComponent(cintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(cintura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel59))))
                         .addContainerGap(25, Short.MAX_VALUE))
                 );
 
@@ -2566,7 +2771,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(label_fecha_seguimiento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(combo_fecha_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(507, Short.MAX_VALUE))
+                                .addContainerGap(510, Short.MAX_VALUE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -2618,11 +2823,11 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(160, Short.MAX_VALUE)
                         .addGroup(panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panel_datos_seg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(161, Short.MAX_VALUE))
                 );
                 panel_seguimientosLayout.setVerticalGroup(
                     panel_seguimientosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2727,19 +2932,17 @@ public class Vista extends javax.swing.JFrame {
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addContainerGap(57, Short.MAX_VALUE)
-                        .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel_busqueda_clienteLayout.setVerticalGroup(
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                 );
@@ -2968,7 +3171,7 @@ public class Vista extends javax.swing.JFrame {
             try {
                 File f = new File(pathFotos);
                 String nl = photoLocation + cedula.getText() + ".jpg";
-                Files.move(Paths.get(pathFotos), Paths.get(nl));
+                Files.move(Paths.get(pathFotos), Paths.get(nl), REPLACE_EXISTING);
                 pathFotos = "";
             } catch (Exception e) {
                 System.err.println("Error en move de file.");
@@ -3234,7 +3437,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jLFotoMouseClicked
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_emailActionPerformed
 
     private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
@@ -3242,10 +3445,10 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidosActionPerformed
 
     private void boton_pagar_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_pagar_cobroActionPerformed
-
-        Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), detalle.getSelectedItem().toString(), clienteSelected);
+        Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), detalle1.getText(), clienteSelected);
         control.getDao().setPago(pago);
         JOptionPane.showMessageDialog(null, "Pago efectuado de forma exitosa.");
+        clearCamposCobro();
     }//GEN-LAST:event_boton_pagar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
@@ -3568,7 +3771,7 @@ public class Vista extends javax.swing.JFrame {
             }
             );
         } else {
-            JOptionPane.showMessageDialog(this, "Solo existe un seguimiento para este Cliente, no se puede hacer una proeccion de los datos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Solo existe un seguimiento para este Cliente, no se puede hacer una proyeccion de sus medidas", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jcb_proyecActionPerformed
 
@@ -3651,6 +3854,102 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_embarazoActionPerformed
 
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+        validaLetras(evt);
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
+ 
+    }//GEN-LAST:event_nombreKeyPressed
+
+    private void apellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidosKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidosKeyPressed
+
+    private void apellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidosKeyTyped
+        validaLetras(evt);
+    }//GEN-LAST:event_apellidosKeyTyped
+
+    private void montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_montoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_montoKeyTyped
+
+    private void pesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pesoKeyTyped
+
+    private void imcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_imcKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_imcKeyTyped
+
+    private void grasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_grasaKeyTyped
+       validaNumeros(evt);
+    }//GEN-LAST:event_grasaKeyTyped
+
+    private void pechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pechoKeyTyped
+
+    private void espaldaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_espaldaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_espaldaKeyTyped
+
+    private void caderaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_caderaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_caderaKeyTyped
+
+    private void gluteosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_gluteosKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_gluteosKeyTyped
+
+    private void cinturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cinturaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_cinturaKeyTyped
+
+    private void pierna_izquierdaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pierna_izquierdaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pierna_izquierdaKeyTyped
+
+    private void pierna_derechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pierna_derechaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pierna_derechaKeyTyped
+
+    private void pantorrilla_izquierdaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pantorrilla_izquierdaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pantorrilla_izquierdaKeyTyped
+
+    private void pantorrilla_derechaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pantorrilla_derechaKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_pantorrilla_derechaKeyTyped
+
+    private void brazo_derechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brazo_derechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_brazo_derechoKeyTyped
+
+    private void brazo_izquierdoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_brazo_izquierdoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_brazo_izquierdoKeyTyped
+
+    private void antebrazo_derechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_antebrazo_derechoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_antebrazo_derechoKeyTyped
+
+    private void antebrazo_izquierdoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_antebrazo_izquierdoKeyTyped
+        validaNumeros(evt);
+    }//GEN-LAST:event_antebrazo_izquierdoKeyTyped
+
+    private void emailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailFocusLost
+        validarCorreo();
+    }//GEN-LAST:event_emailFocusLost
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        validaCedula(evt);
+    }//GEN-LAST:event_cedulaKeyTyped
+
+    private void telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_telefonoKeyTyped
+        validaTelefono(evt);
+    }//GEN-LAST:event_telefonoKeyTyped
+
     private void seleccionaCliente() {
         clienteSelected = null;
         List<Cliente> cli;
@@ -3674,15 +3973,19 @@ public class Vista extends javax.swing.JFrame {
         List<Rutina> rut;
         try {
             rut = control.getDao().todoRutina();
-            lb_user.setText("Seleccionar una rutina");
-            cargaCombo(combo_busqueda, rut, true);
-            int codigoRutina = JOptionPane.showConfirmDialog(this, panel_busquedas, "Consultar Rutina", JOptionPane.OK_CANCEL_OPTION);
-            if (codigoRutina == JOptionPane.OK_OPTION && !combo_busqueda.getSelectedItem().equals("")) {
-                rutinaSelected = control.getDao().getRutina(rut.get(combo_busqueda.getSelectedIndex()).getId());
-            } else if (clienteSelected == null && codigoRutina != JOptionPane.CANCEL_OPTION) {
-                JOptionPane.showMessageDialog(this, "Error \nNo hay datos", "Error", JOptionPane.ERROR_MESSAGE);
+            if(rut != null){
+                lb_user.setText("Seleccionar una rutina");
+                cargaCombo(combo_busqueda, rut, true);
+                int codigoRutina = JOptionPane.showConfirmDialog(this, panel_busquedas, "Consultar Rutina", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoRutina == JOptionPane.OK_OPTION && !combo_busqueda.getSelectedItem().equals("")) {
+                    rutinaSelected = control.getDao().getRutina(rut.get(combo_busqueda.getSelectedIndex()).getId());
+                } else if (clienteSelected == null && codigoRutina != JOptionPane.CANCEL_OPTION) {
+                    JOptionPane.showMessageDialog(this, "Error \nNo hay datos", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                rut.clear();
+           } else {
+               JOptionPane.showMessageDialog(this, "Error \nNo hay Rutinas Existentes.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            rut.clear();
         } catch (SQLException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3772,8 +4075,8 @@ public class Vista extends javax.swing.JFrame {
     }
 
     private void cargaCombo(javax.swing.JComboBox x, List o, boolean rutina) {
-        Object[] mod = new Object[o.size()];
         if (!o.isEmpty()) {
+            Object[] mod = new Object[o.size()];
             if (rutina) {
                 for (int i = 0; i < o.size(); i++) {
                     String tr = ((Rutina) o.get(i)).getTipo_rutina() == 0 ? "General" : "Personalizada";
@@ -3854,7 +4157,6 @@ public class Vista extends javax.swing.JFrame {
         String location = photoLocation + ced + ".jpg";
         File f = new File(location);
         if (f.exists()) {
-            System.out.println("EXISTE");
             String p = f.getAbsolutePath();
             ImageIcon imagen = new ImageIcon(p);
             Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(ph.getWidth(), ph.getHeight(), Image.SCALE_DEFAULT));
@@ -3908,7 +4210,7 @@ public class Vista extends javax.swing.JFrame {
         text_apellidos_cobro.setText(null);
         dateChooserCobro.setCurrent(null);
         monto.setText("");
-        detalle.setSelectedIndex(-1);
+        detalle1.setText("");
     }
 
     private void limpiaTablas() {
@@ -4051,6 +4353,45 @@ public class Vista extends javax.swing.JFrame {
                 || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
 
     }
+    
+    private void validaLetras(java.awt.event.KeyEvent evt){
+        char car = evt.getKeyChar();
+        if((car<'a' || car>'z') && (car<'A' || car>'Z') && (car!=(char)java.awt.event.KeyEvent.VK_SPACE)) 
+            evt.consume();
+    }
+    
+    private void validaNumeros(java.awt.event.KeyEvent evt){
+        char car = evt.getKeyChar();
+        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA) && (car!=(char)java.awt.event.KeyEvent.VK_PERIOD))
+            evt.consume();
+    }
+    
+    private void validaCedula(java.awt.event.KeyEvent evt){
+        char car = evt.getKeyChar();
+        if(cedula.getText().length() >= 9)
+            evt.consume();
+        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA))
+            evt.consume();
+    }
+    
+    private void validaTelefono(java.awt.event.KeyEvent evt){
+        char car = evt.getKeyChar();
+        if(telefono.getText().length() >= 8)
+            evt.consume();
+        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA))
+            evt.consume();
+    }
+    
+    private void validarCorreo(){
+        try {
+            if(email.getText() != null || email.getText() != ""){
+                InternetAddress emailAddr = new InternetAddress(email.getText());
+                emailAddr.validate();
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext");
+        }
+    }
 
     private RegistroFisicoCliente registro_fisico;
     private Controlador control;
@@ -4099,7 +4440,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_rutinas_creadas;
     private datechooser.beans.DateChooserCombo dateChooserCobro;
     private javax.swing.JPanel desactivar_Cliente;
-    private javax.swing.JComboBox detalle;
+    private javax.swing.JTextField detalle1;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField edad;
     private javax.swing.JTextField email;
@@ -4184,11 +4525,25 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
@@ -4212,6 +4567,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;

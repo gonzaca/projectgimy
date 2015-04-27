@@ -47,7 +47,7 @@ public class Chart {
         plot.setRangeCrosshairVisible(true);
   
         DateAxis axis = (DateAxis) plot.getDomainAxis();
-        axis.setDateFormatOverride(new SimpleDateFormat("dd-MM-yy"));
+        axis.setDateFormatOverride(new SimpleDateFormat("dd/MM/yy"));
         return ch;
     }
 
@@ -58,6 +58,11 @@ public class Chart {
             int month =  Integer.parseInt(a.getKey().substring(3, 5));
             String y= a.getKey().substring(6);
             int year =  Integer.parseInt(y);
+            if(year>50){
+                year +=1000;
+            } else {
+                year+=2000;
+            }
             s1.add(new Day(day, month, year), a.getValue());
         });  
         TimeSeriesCollection dataset = new TimeSeriesCollection();
