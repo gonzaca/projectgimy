@@ -17,7 +17,18 @@ import Modelo.Pago;
 import Modelo.Rutina;
 import Modelo.SaludCliente;
 import Modelo.Seguimiento;
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfImportedPage;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -65,6 +76,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
+import org.icepdf.ri.common.views.DocumentViewController;
 import org.icepdf.ri.util.PropertiesManager;
 import org.jfree.chart.ChartPanel;
 
@@ -205,7 +217,6 @@ public class Vista extends javax.swing.JFrame {
         text_cliente_desactivar = new javax.swing.JTextField();
         panel_registro_rutinas = new javax.swing.JPanel();
         panel_menu1 = new javax.swing.JPanel();
-        jBEditarRutina = new javax.swing.JButton();
         jBAsignarRutina = new javax.swing.JButton();
         jBCrearRutina = new javax.swing.JButton();
         jBVerRutina = new javax.swing.JButton();
@@ -227,23 +238,24 @@ public class Vista extends javax.swing.JFrame {
         jBCreateRutina1 = new javax.swing.JButton();
         jScrollPane32 = new javax.swing.JScrollPane();
         tablePiernas = new javax.swing.JTable();
-        jScrollPane33 = new javax.swing.JScrollPane();
-        tableTrapecio = new javax.swing.JTable();
         jScrollPane35 = new javax.swing.JScrollPane();
         tablePantorrilla = new javax.swing.JTable();
-        jScrollPane37 = new javax.swing.JScrollPane();
-        tableAntebraso = new javax.swing.JTable();
         jScrollPane39 = new javax.swing.JScrollPane();
         tableBiceps1 = new javax.swing.JTable();
         jScrollPane41 = new javax.swing.JScrollPane();
         tableTriceps = new javax.swing.JTable();
+        jScrollPane37 = new javax.swing.JScrollPane();
+        tableAntebraso = new javax.swing.JTable();
         jScrollPane43 = new javax.swing.JScrollPane();
         tableHombros = new javax.swing.JTable();
         jScrollPane45 = new javax.swing.JScrollPane();
         tablePecho = new javax.swing.JTable();
         jScrollPane47 = new javax.swing.JScrollPane();
         tableEspalda = new javax.swing.JTable();
+        jScrollPane33 = new javax.swing.JScrollPane();
+        tableTrapecio = new javax.swing.JTable();
         bt_Print = new javax.swing.JButton();
+        jBEditarRutina = new javax.swing.JButton();
         jLabel48 = new javax.swing.JLabel();
         panel_asignar_rutina = new javax.swing.JPanel();
         text_cliente_rutina = new javax.swing.JTextField();
@@ -636,8 +648,18 @@ public class Vista extends javax.swing.JFrame {
             });
 
             combo_lesion_musc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "NO", "SI"}));
+            combo_lesion_musc.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    combo_lesion_muscActionPerformed(evt);
+                }
+            });
 
             combo_enfer_cardio.setModel(new javax.swing.DefaultComboBoxModel(new String[] {" ", "NO", "SI"}));
+            combo_enfer_cardio.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    combo_enfer_cardioActionPerformed(evt);
+                }
+            });
 
             combo_asfixia.setModel(new javax.swing.DefaultComboBoxModel(new String[] {" ", "NO", "SI"}));
 
@@ -1293,19 +1315,6 @@ public class Vista extends javax.swing.JFrame {
 
             panel_menu1.setBackground(new java.awt.Color(255, 255, 255));
 
-            jBEditarRutina.setBackground(new java.awt.Color(255, 255, 255));
-            jBEditarRutina.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-            jBEditarRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon.jpg"))); // NOI18N
-            jBEditarRutina.setText("Editar Rutina");
-            jBEditarRutina.setBorder(null);
-            jBEditarRutina.setBorderPainted(false);
-            jBEditarRutina.setContentAreaFilled(false);
-            jBEditarRutina.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jBEditarRutinaActionPerformed(evt);
-                }
-            });
-
             jBAsignarRutina.setBackground(new java.awt.Color(255, 255, 255));
             jBAsignarRutina.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
             jBAsignarRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/AsignarIcon.png"))); // NOI18N
@@ -1355,13 +1364,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_menu1Layout.createSequentialGroup()
                     .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jBCrearRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBAsignarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(0, 104, Short.MAX_VALUE))
+                    .addGap(915, 915, 915))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
                         .addComponent(jBVerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 127, Short.MAX_VALUE)))
+                        .addGap(0, 938, Short.MAX_VALUE)))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
                         .addComponent(jLabel83)
@@ -1374,14 +1382,12 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(jBCrearRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(29, 29, 29)
                     .addComponent(jBAsignarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(31, 31, 31)
-                    .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(948, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(jBVerRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(645, Short.MAX_VALUE)))
+                        .addGap(252, 252, 252)
+                        .addComponent(jBVerRutina)
+                        .addContainerGap(950, Short.MAX_VALUE)))
                 .addGroup(panel_menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu1Layout.createSequentialGroup()
                         .addComponent(jLabel83)
@@ -1439,23 +1445,11 @@ public class Vista extends javax.swing.JFrame {
             tablePiernas.setModel(setModelo("pi"));
             jScrollPane32.setViewportView(tablePiernas);
 
-            jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);
-            jScrollPane33.setAutoscrolls(true);
-
-            tableTrapecio.setModel(setModelo("tra"));
-            jScrollPane33.setViewportView(tableTrapecio);
-
             jScrollPane35.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane35.setAutoscrolls(true);
 
             tablePantorrilla.setModel(setModelo("pa"));
             jScrollPane35.setViewportView(tablePantorrilla);
-
-            jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);
-            jScrollPane37.setAutoscrolls(true);
-
-            tableAntebraso.setModel(setModelo("an"));
-            jScrollPane37.setViewportView(tableAntebraso);
 
             jScrollPane39.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane39.setAutoscrolls(true);
@@ -1468,6 +1462,12 @@ public class Vista extends javax.swing.JFrame {
 
             tableTriceps.setModel(setModelo("tri"));
             jScrollPane41.setViewportView(tableTriceps);
+
+            jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);
+            jScrollPane37.setAutoscrolls(true);
+
+            tableAntebraso.setModel(setModelo("an"));
+            jScrollPane37.setViewportView(tableAntebraso);
 
             jScrollPane43.getVerticalScrollBar().setUnitIncrement(20);
             jScrollPane43.setAutoscrolls(true);
@@ -1486,6 +1486,12 @@ public class Vista extends javax.swing.JFrame {
 
             tableEspalda.setModel(setModelo("es"));
             jScrollPane47.setViewportView(tableEspalda);
+
+            jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);
+            jScrollPane33.setAutoscrolls(true);
+
+            tableTrapecio.setModel(setModelo("tra"));
+            jScrollPane33.setViewportView(tableTrapecio);
 
             javax.swing.GroupLayout panel_crear_rutinaLayout = new javax.swing.GroupLayout(panel_crear_rutina);
             panel_crear_rutina.setLayout(panel_crear_rutinaLayout);
@@ -1581,6 +1587,19 @@ public class Vista extends javax.swing.JFrame {
                 }
             });
 
+            jBEditarRutina.setBackground(new java.awt.Color(255, 255, 255));
+            jBEditarRutina.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+            jBEditarRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon.jpg"))); // NOI18N
+            jBEditarRutina.setBorder(null);
+            jBEditarRutina.setBorderPainted(false);
+            jBEditarRutina.setContentAreaFilled(false);
+            jBEditarRutina.setVisible(false);
+            jBEditarRutina.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jBEditarRutinaActionPerformed(evt);
+                }
+            });
+
             jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
 
             javax.swing.GroupLayout panel_imp_rutinasLayout = new javax.swing.GroupLayout(panel_imp_rutinas);
@@ -1591,7 +1610,9 @@ public class Vista extends javax.swing.JFrame {
                     .addContainerGap(160, Short.MAX_VALUE)
                     .addComponent(panel_crear_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(bt_Print, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                        .addComponent(jBEditarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addContainerGap(210, Short.MAX_VALUE))
                 .addGroup(panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
@@ -1607,6 +1628,8 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
                     .addGap(20, 20, 20)
                     .addComponent(bt_Print, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jBEditarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_imp_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_imp_rutinasLayout.createSequentialGroup()
@@ -1696,7 +1719,7 @@ public class Vista extends javax.swing.JFrame {
             panel_registro_rutinasLayout.setHorizontalGroup(
                 panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
-                    .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
                     .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1710,7 +1733,7 @@ public class Vista extends javax.swing.JFrame {
                 .addComponent(panel_menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panel_registro_rutinasLayout.createSequentialGroup()
                     .addComponent(panel_datos1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE))
+                    .addGap(0, 635, Short.MAX_VALUE))
                 .addGroup(panel_registro_rutinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_rutinasLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3205,21 +3228,6 @@ public class Vista extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBAddClienteActionPerformed
 
-    private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
-        seleccionaRutina();
-        if (rutinaSelected != null) {
-            text_nombre_rutina.setText(rutinaSelected.getNombre());
-            jBCreateRutina1.setText("Modificar");
-            cargarTablas(rutinaSelected);
-            panel_datos1.setVisible(true);
-            panel_asignar_rutina.setVisible(false);
-            panel_crear_rutina.setVisible(true);
-            bt_Print.setVisible(true);
-            panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-            panel_crear_rutina.paintComponents(panel_crear_rutina.getGraphics());
-        }
-    }//GEN-LAST:event_jBEditarRutinaActionPerformed
-
     private void cargarTablas(Rutina r) {
         List<EjerciciosRutina> piernas = control.getDao().getSizeParte(r.getId(), "Piernas");
         cargaTabla(tablePiernas, piernas);
@@ -3309,8 +3317,10 @@ public class Vista extends javax.swing.JFrame {
 
     private void jBCrearRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCrearRutinaActionPerformed
         limpiaTablas();
+        setColumnWidth();
         text_nombre_rutina.setText(null);
         jBCreateRutina1.setText("Crear");
+        jBEditarRutina.setVisible(false);
         panel_datos1.setVisible(true);
         panel_asignar_rutina.setVisible(false);
         bt_Print.setVisible(true);
@@ -3587,66 +3597,95 @@ public class Vista extends javax.swing.JFrame {
     }
 
     private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
-        /*PrinterJob job = PrinterJob.getPrinterJob();
-         job.setJobName("Print Java Component");
+        String fileName = "C:\\PGS\\Rutina\\" + text_nombre_rutina.getText() + ".pdf";
+        printToPDF(fileName);
+        verPDFFrame(fileName);
 
-         job.setPrintable(new Printable() {
-         public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
-         if (pageIndex > 0) {
-         return (NO_SUCH_PAGE);
-         } else {
-         Graphics2D g2d = (Graphics2D) g;
-         g2d.translate(pageFormat.getImageableX(),
-         pageFormat.getImageableY());
-         panel_crear_rutina.paint(g2d);
-         return (PAGE_EXISTS);
-         }
-         }
-         });
-         if (job.printDialog()) {
-         try {
-         job.print();
-         } catch (Exception e) {
-         System.out.println("Error en el Printing de Rutinas");
-         }
-         }
 
-        final java.awt.Image image = getImageFromPanel(panel_crear_rutina);
-        String fileName = "newfile.pdf";
-        printToPDF(image, fileName);*/
     }//GEN-LAST:event_bt_PrintActionPerformed
 
-    
-    public void printToPDF(java.awt.Image awtImage, String fileName) {
+    private void printToPDF(String fileName) {
         try {
             Document d = new Document();
             PdfWriter writer = PdfWriter.getInstance(d, new FileOutputStream(
                     fileName));
             d.open();
 
+            PdfPTable tabletmp = new PdfPTable(1);
+            tabletmp.getDefaultCell().setBorder(Rectangle.NO_BORDER);
+            tabletmp.setWidthPercentage(85);
 
-            com.itextpdf.text.Image iTextImage = com.itextpdf.text.Image.getInstance(writer, awtImage, 1);
-            iTextImage.setAbsolutePosition(10, 10);
-            iTextImage.scalePercent(60);
-            d.add(iTextImage);
+            tabletmp.addCell("Nombre: " + rutinaSelected.getNombre());
 
+            tabletmp.addCell("Piernas");
+            tabletmp.addCell(getImageFromPanel(writer, tablePiernas.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePiernas));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Pantorillas");
+            tabletmp.addCell(getImageFromPanel(writer, tablePantorrilla.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePantorrilla));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Biceps");
+            tabletmp.addCell(getImageFromPanel(writer, tableBiceps1.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableBiceps1));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Triceps");
+            tabletmp.addCell(getImageFromPanel(writer, tableTriceps.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableTriceps));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Antebraso");
+            tabletmp.addCell(getImageFromPanel(writer, tableAntebraso.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableAntebraso));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Hombros");
+            tabletmp.addCell(getImageFromPanel(writer, tableHombros.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableHombros));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Pecho");
+            tabletmp.addCell(getImageFromPanel(writer, tablePecho.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePecho));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Espalda");
+            tabletmp.addCell(getImageFromPanel(writer, tableEspalda.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableEspalda));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Trapecio");
+            tabletmp.addCell(getImageFromPanel(writer, tableTrapecio.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableTrapecio));
+            tabletmp.addCell("\n");
+
+            d.add(tabletmp);
             d.close();
 
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
     }
 
-    public static java.awt.Image getImageFromPanel(Component component) {
+    public static com.itextpdf.text.Image getImageFromPanel(PdfWriter writer, Component component) throws BadElementException {
+        com.itextpdf.text.Image iTextImage = null;
+        try {
+            BufferedImage image = new BufferedImage(component.getWidth(),
+                    component.getHeight(), BufferedImage.TYPE_INT_RGB);
+            component.paint(image.getGraphics());
 
-        BufferedImage image = new BufferedImage(component.getWidth(),
-                component.getHeight(), BufferedImage.TYPE_INT_RGB);
-        component.paint(image.getGraphics());
-        return image;
+            iTextImage = com.itextpdf.text.Image.getInstance(writer, image, 1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return iTextImage;
     }
-    
-    
-    
+
+
     private void btn_add_plan_nutricionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_plan_nutricionalActionPerformed
         // TODO add your handling code here:
         JFrame parentFrame = new JFrame();
@@ -3733,7 +3772,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_sexoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         Cliente c = clienteSelected;
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         while (model.getRowCount() > 0) {
@@ -3753,7 +3792,7 @@ public class Vista extends javax.swing.JFrame {
         HashMap<String, Double> h
                 = control.getDao().getFechasYValores(c,
                         jcb_proyec.getSelectedItem().toString());
-        if(h != null){
+        if (h != null) {
             String n = c.getNombre();
             ChartPanel ch = Chart.getChartPanel(jcb_proyec.getSelectedItem().toString(),
                     control.getDao().getTipo_unidad(), h,
@@ -3840,7 +3879,79 @@ public class Vista extends javax.swing.JFrame {
 
     private void jBVerRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerRutinaActionPerformed
         // TODO add your handling code here:
+        seleccionaRutina();
+        if (rutinaSelected != null) {
+
+            text_nombre_rutina.setText(rutinaSelected.getNombre());
+            jBCreateRutina1.setVisible(false);
+            cargarTablas(rutinaSelected);
+            setColumnWidth();
+            permiteEditar(false);
+            jBEditarRutina.setVisible(true);
+            panel_datos1.setVisible(true);
+            panel_asignar_rutina.setVisible(false);
+            panel_crear_rutina.setVisible(true);
+            bt_Print.setVisible(true);
+            panel_datos1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+            panel_crear_rutina.paintComponents(panel_crear_rutina.getGraphics());
+        }
     }//GEN-LAST:event_jBVerRutinaActionPerformed
+
+    private void permiteEditar(boolean cond) {
+        text_nombre_rutina.setEditable(cond);
+        tablePiernas.setEnabled(cond);
+        tablePantorrilla.setEnabled(cond);
+        tableBiceps1.setEnabled(cond);
+        tableAntebraso.setEnabled(cond);
+        tableHombros.setEnabled(cond);
+        tableEspalda.setEnabled(cond);
+        tablePecho.setEnabled(cond);
+        tableTriceps.setEnabled(cond);
+        tableTrapecio.setEnabled(cond);
+    }
+
+    private void verPDFFrame(String filePath) {
+
+        // build a component controller
+        SwingController c = new SwingController();
+        c.setIsEmbeddedComponent(true);
+
+        PropertiesManager prop = new PropertiesManager(
+                System.getProperties(),
+                ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
+        
+        prop.set(PropertiesManager.PROPERTY_DEFAULT_ZOOM_LEVEL, "1.25");
+        prop.setBoolean(PropertiesManager.PROPERTY_VIEWPREF_FITWINDOW, Boolean.TRUE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_FIT, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ROTATE, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_TOOL, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_UPANE, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_SEARCH, Boolean.FALSE);
+
+        SwingViewBuilder fac = new SwingViewBuilder(c, prop);
+
+        // add interactive mouse link annotation support via callback
+        c.getDocumentViewController().setAnnotationCallback(
+                new org.icepdf.ri.common.MyAnnotationCallback(c.getDocumentViewController()));
+        javax.swing.JPanel viewerComponentPanel = fac.buildViewerPanel();
+        JFrame applicationFrame = new JFrame();
+        
+        applicationFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        applicationFrame.getContentPane().add(viewerComponentPanel);
+        // Now that the GUI is all in place, we can try openning a PDF
+        c.setPageFitMode(DocumentViewController.PAGE_FIT_WINDOW_WIDTH, false);
+        c.openDocument(filePath);
+        // show the component
+        applicationFrame.pack();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        applicationFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        applicationFrame.setSize(screenSize);
+        applicationFrame.setLocationRelativeTo(null);
+        applicationFrame.setResizable(false);
+        applicationFrame.setVisible(true);
+        
+    }
 
     private void combo_diabeticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_diabeticoActionPerformed
         // TODO add your handling code here:
@@ -3848,6 +3959,8 @@ public class Vista extends javax.swing.JFrame {
 
     private void combo_lesion_oseaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_oseaActionPerformed
         // TODO add your handling code here:
+        if(combo_lesion_osea.getSelectedIndex() == 1) osea_desc.setEnabled(false);
+        else osea_desc.setEnabled(true);
     }//GEN-LAST:event_combo_lesion_oseaActionPerformed
 
     private void combo_embarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_embarazoActionPerformed
@@ -3859,7 +3972,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreKeyTyped
 
     private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
- 
+
     }//GEN-LAST:event_nombreKeyPressed
 
     private void apellidosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidosKeyPressed
@@ -3883,7 +3996,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_imcKeyTyped
 
     private void grasaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_grasaKeyTyped
-       validaNumeros(evt);
+        validaNumeros(evt);
     }//GEN-LAST:event_grasaKeyTyped
 
     private void pechoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pechoKeyTyped
@@ -3950,6 +4063,25 @@ public class Vista extends javax.swing.JFrame {
         validaTelefono(evt);
     }//GEN-LAST:event_telefonoKeyTyped
 
+    private void jBEditarRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarRutinaActionPerformed
+        permiteEditar(true);
+        JOptionPane.showMessageDialog(this, "Ahora puede editar la rutina.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        jBCreateRutina1.setText("Modificar");
+        jBCreateRutina1.setVisible(true);
+    }//GEN-LAST:event_jBEditarRutinaActionPerformed
+
+    private void combo_lesion_muscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_muscActionPerformed
+        // TODO add your handling code here:
+        if(combo_lesion_musc.getSelectedIndex() == 1) muscular_desc.setEnabled(false);
+        else muscular_desc.setEnabled(true);
+    }//GEN-LAST:event_combo_lesion_muscActionPerformed
+
+    private void combo_enfer_cardioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_enfer_cardioActionPerformed
+        // TODO add your handling code here:
+        if(combo_enfer_cardio.getSelectedIndex() == 1) cardio_desc.setEnabled(false);
+        else cardio_desc.setEnabled(true);
+    }//GEN-LAST:event_combo_enfer_cardioActionPerformed
+
     private void seleccionaCliente() {
         clienteSelected = null;
         List<Cliente> cli;
@@ -3973,7 +4105,7 @@ public class Vista extends javax.swing.JFrame {
         List<Rutina> rut;
         try {
             rut = control.getDao().todoRutina();
-            if(rut != null){
+            if (rut != null) {
                 lb_user.setText("Seleccionar una rutina");
                 cargaCombo(combo_busqueda, rut, true);
                 int codigoRutina = JOptionPane.showConfirmDialog(this, panel_busquedas, "Consultar Rutina", JOptionPane.OK_CANCEL_OPTION);
@@ -3983,8 +4115,8 @@ public class Vista extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Error \nNo hay datos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
                 rut.clear();
-           } else {
-               JOptionPane.showMessageDialog(this, "Error \nNo hay Rutinas Existentes.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error \nNo hay Rutinas Existentes.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Vista.class.getName()).log(Level.SEVERE, null, ex);
@@ -4031,17 +4163,17 @@ public class Vista extends javax.swing.JFrame {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                
+
             }
         };
 
@@ -4225,6 +4357,18 @@ public class Vista extends javax.swing.JFrame {
         tableTriceps.setModel(setModelo("tri"));
     }
 
+    private void setColumnWidth() {
+        tablePiernas.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tablePantorrilla.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableAntebraso.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableBiceps1.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableEspalda.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableHombros.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tablePecho.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableTrapecio.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tableTriceps.getColumnModel().getColumn(0).setPreferredWidth(250);
+    }
+
     private javax.swing.table.DefaultTableModel setModelo(String id) {
         Object[][] o = {};
         String[] head = {"Ejercicio", "Serie", "Repeticion", "Peso"};
@@ -4353,43 +4497,49 @@ public class Vista extends javax.swing.JFrame {
                 || combo_gimnasio.getSelectedIndex() == 0 || combo_practica_act_deport.getSelectedIndex() == 0;
 
     }
-    
-    private void validaLetras(java.awt.event.KeyEvent evt){
+
+    private void validaLetras(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
-        if((car<'a' || car>'z') && (car<'A' || car>'Z') && (car!=(char)java.awt.event.KeyEvent.VK_SPACE)) 
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car != (char) java.awt.event.KeyEvent.VK_SPACE)) {
             evt.consume();
+        }
     }
-    
-    private void validaNumeros(java.awt.event.KeyEvent evt){
+
+    private void validaNumeros(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
-        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA) && (car!=(char)java.awt.event.KeyEvent.VK_PERIOD))
+        if ((car < '0' || car > '9') && (car != (char) java.awt.event.KeyEvent.VK_COMMA) && (car != (char) java.awt.event.KeyEvent.VK_PERIOD)) {
             evt.consume();
+        }
     }
-    
-    private void validaCedula(java.awt.event.KeyEvent evt){
+
+    private void validaCedula(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
-        if(cedula.getText().length() >= 9)
+        if (cedula.getText().length() >= 9) {
             evt.consume();
-        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA))
+        }
+        if ((car < '0' || car > '9') && (car != (char) java.awt.event.KeyEvent.VK_COMMA)) {
             evt.consume();
+        }
     }
-    
-    private void validaTelefono(java.awt.event.KeyEvent evt){
+
+    private void validaTelefono(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
-        if(telefono.getText().length() >= 8)
+        if (telefono.getText().length() >= 8) {
             evt.consume();
-        if((car<'0' || car>'9') && (car!=(char)java.awt.event.KeyEvent.VK_COMMA))
+        }
+        if ((car < '0' || car > '9') && (car != (char) java.awt.event.KeyEvent.VK_COMMA)) {
             evt.consume();
+        }
     }
-    
-    private void validarCorreo(){
+
+    private void validarCorreo() {
         try {
-            if(email.getText() != null || email.getText() != ""){
+            if (email.getText() != null || email.getText() != "") {
                 InternetAddress emailAddr = new InternetAddress(email.getText());
                 emailAddr.validate();
             }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext");
+            JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext");
         }
     }
 

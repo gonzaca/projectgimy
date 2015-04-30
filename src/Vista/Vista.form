@@ -880,6 +880,9 @@
                                   <Connection code="new javax.swing.DefaultComboBoxModel(new String[] { &quot; &quot;, &quot;NO&quot;, &quot;SI&quot;})" type="code"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_lesion_muscActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="combo_enfer_cardio">
                               <Properties>
@@ -887,6 +890,9 @@
                                   <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot; &quot;, &quot;NO&quot;, &quot;SI&quot;})" type="code"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combo_enfer_cardioActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="combo_asfixia">
                               <Properties>
@@ -1509,7 +1515,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panel_menu1" min="-2" max="-2" attributes="0"/>
+                      <Component id="panel_menu1" min="-2" pref="263" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="panel_datos1" pref="820" max="32767" attributes="0"/>
                   </Group>
@@ -1527,7 +1533,7 @@
                   <Component id="panel_menu1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="panel_datos1" min="-2" pref="618" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="635" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
@@ -1553,15 +1559,14 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jBCrearRutina" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jBEditarRutina" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                               <Component id="jBAsignarRutina" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="104" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="915" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jBVerRutina" min="-2" pref="136" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="127" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="938" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
@@ -1579,15 +1584,13 @@
                           <Component id="jBCrearRutina" min="-2" pref="51" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jBAsignarRutina" min="-2" pref="58" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="jBEditarRutina" min="-2" pref="51" max="-2" attributes="0"/>
-                          <EmptySpace pref="948" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="330" max="-2" attributes="0"/>
-                              <Component id="jBVerRutina" min="-2" pref="67" max="-2" attributes="0"/>
-                              <EmptySpace pref="645" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                              <Component id="jBVerRutina" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="950" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
@@ -1600,28 +1603,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="jBEditarRutina">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Imagen/registroIcon.jpg"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Editar Rutina"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditarRutinaActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="jBAsignarRutina">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -1717,7 +1698,10 @@
                               <EmptySpace pref="160" max="32767" attributes="0"/>
                               <Component id="panel_crear_rutina" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="bt_Print" min="-2" pref="56" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="bt_Print" pref="56" max="32767" attributes="0"/>
+                                  <Component id="jBEditarRutina" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace pref="210" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -1738,6 +1722,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="bt_Print" min="-2" pref="43" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jBEditarRutina" min="-2" pref="49" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -1963,25 +1949,6 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane33">
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);&#xa;jScrollPane33.setAutoscrolls(true);"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTable" name="tableTrapecio">
-                              <Properties>
-                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="setModelo(&quot;tra&quot;)" type="code"/>
-                                </Property>
-                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                                </Property>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane35">
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPane35.getVerticalScrollBar().setUnitIncrement(20);&#xa;jScrollPane35.setAutoscrolls(true);"/>
@@ -1993,25 +1960,6 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                   <Connection code="setModelo(&quot;pa&quot;)" type="code"/>
-                                </Property>
-                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                                </Property>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                        <Container class="javax.swing.JScrollPane" name="jScrollPane37">
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);&#xa;jScrollPane37.setAutoscrolls(true);"/>
-                          </AuxValues>
-
-                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                          <SubComponents>
-                            <Component class="javax.swing.JTable" name="tableAntebraso">
-                              <Properties>
-                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="setModelo(&quot;an&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -2050,6 +1998,25 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                   <Connection code="setModelo(&quot;tri&quot;)" type="code"/>
+                                </Property>
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane37">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPane37.getVerticalScrollBar().setUnitIncrement(20);&#xa;jScrollPane37.setAutoscrolls(true);"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="tableAntebraso">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="setModelo(&quot;an&quot;)" type="code"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -2115,6 +2082,25 @@
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Container class="javax.swing.JScrollPane" name="jScrollPane33">
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jScrollPane33.getVerticalScrollBar().setUnitIncrement(20);&#xa;jScrollPane33.setAutoscrolls(true);"/>
+                          </AuxValues>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="javax.swing.JTable" name="tableTrapecio">
+                              <Properties>
+                                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="setModelo(&quot;tra&quot;)" type="code"/>
+                                </Property>
+                                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                     <Component class="javax.swing.JButton" name="bt_Print">
@@ -2135,6 +2121,30 @@
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="bt_Print.setVisible(false);"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="jBEditarRutina">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Imagen/registroIcon.jpg"/>
+                        </Property>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="null"/>
+                        </Property>
+                        <Property name="borderPainted" type="boolean" value="false"/>
+                        <Property name="contentAreaFilled" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBEditarRutinaActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jBEditarRutina.setVisible(false);"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel48">
