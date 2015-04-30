@@ -1,0 +1,16 @@
+Las librerias estan en el dropbox se llama IcePDF
+Agregan solo las librerias
+
+Icepdf-viewer.jar
+Icepdf-core.jar
+
+se agregan normalmente 
+
+
+NUEVO
+Agregar una carpeta al directorio pgs de la siguiente manera:
+																		C:\PGS\Rutina
+
+esto para meter los archivos que se crean para imprimir! se pueden borrar pero no lo considere por el momento.
+Hay q agregar la libreria iText q creo q ya la lleva en caso de que no ahi esta el jar en el dropbox.
+	  
