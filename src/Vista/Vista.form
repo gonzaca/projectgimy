@@ -423,15 +423,10 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanel12" linkSize="14" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanel13" linkSize="14" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="15" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="jPanel12" linkSize="14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jPanel13" linkSize="14" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
@@ -4091,13 +4086,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace pref="57" max="32767" attributes="0"/>
-                                  <Component id="panel_parametros" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="panel_parametros" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="panel_muestra_datos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace pref="67" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="panel_muestra_datos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

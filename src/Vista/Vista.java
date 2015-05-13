@@ -62,6 +62,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.swing.Icon;
@@ -4564,10 +4566,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void validaCedula(java.awt.event.KeyEvent evt) {
         char car = evt.getKeyChar();
-        if (cedula.getText().length() >= 9) {
-            evt.consume();
-        }
-        if ((car < '0' || car > '9') && (car != (char) java.awt.event.KeyEvent.VK_COMMA)) {
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z') && (car < '0' || car > '9')) {
             evt.consume();
         }
     }
@@ -4577,16 +4576,17 @@ public class Vista extends javax.swing.JFrame {
         if (telefono.getText().length() >= 8) {
             evt.consume();
         }
-        if ((car < '0' || car > '9') && (car != (char) java.awt.event.KeyEvent.VK_COMMA)) {
+        if ((car < '0' || car > '9')) {
             evt.consume();
         }
     }
 
     private void validarCorreo() {
         try {
-            if (email.getText() != null || email.getText() != "") {
-                InternetAddress emailAddr = new InternetAddress(email.getText());
-                emailAddr.validate();
+            Pattern pattern = Pattern.compile(PATTERN_EMAIL);
+            Matcher matcher = pattern.matcher(email.getText());
+            if(!matcher.matches()){
+                JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext\n\n");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext");
@@ -4893,6 +4893,8 @@ public class Vista extends javax.swing.JFrame {
     private SwingViewBuilder factory = new SwingViewBuilder(controller, properties);
     private Cliente clienteSelected;
     private Rutina rutinaSelected;
+    private static final String PATTERN_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     private void clearCamposSeguimiento() {
         peso.setText("");
