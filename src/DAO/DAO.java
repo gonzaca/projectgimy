@@ -28,6 +28,7 @@ public class DAO extends Observable {
     private Dao<Seguimiento, String> daoSeguimiento;
     private Dao<Pago, String> daoPago;
     private Dao<Nutricion, String> daoNutricion;
+    private Dao<Administrador, String> daoAdmin;
     private JdbcConnectionSource connection;
     private static String databaseUrl = "jdbc:mysql://localhost:3306/gym";
     private String tipo_unidad;
@@ -44,6 +45,7 @@ public class DAO extends Observable {
         daoClienteRutina = DaoManager.createDao(connection, ClienteRutina.class);
         daoPago = DaoManager.createDao(connection, Pago.class);
         daoNutricion = DaoManager.createDao(connection, Nutricion.class);
+        daoAdmin = DaoManager.createDao(connection, Administrador.class);
         tipo_unidad = "cm";
     }
 
@@ -193,6 +195,18 @@ public class DAO extends Observable {
             System.out.println(ex.getMessage());
         }
         return l;
+    }
+    
+    public Administrador getAdmin(String user, String pass) {
+        Administrador a = null;
+        List<Administrador> l = null;
+        try {
+            l = daoAdmin.query(daoAdmin.queryBuilder().where().eq("userid", user).and().eq("pass", pass).prepare());
+            a = !l.isEmpty() ? l.get(0) : null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return a;
     }
 
     public List<EjerciciosRutina> getSizeParte(int att,String part) {

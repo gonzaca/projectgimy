@@ -103,8 +103,15 @@ public class VistaCliente extends javax.swing.JFrame {
     }
     
     private void cargarRutina(){
-        Rutina r = control.getDao().getRutinaCliente(c.getId_cliente());
-        cargarTablas(r);
+        try{
+            Rutina r = control.getDao().getRutinaCliente(c.getId_cliente());
+            if(r!= null){
+                cargarTablas(r);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No tiene una Rutina Asignada.\n\nComuniquese con el Administrador o Instructor a Cargo.");
+            System.err.println("Cliente sin Rutina.");
+        }
     }
     
     private String getProximoPago() {

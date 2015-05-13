@@ -15,7 +15,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.RectangleInsets;
 
 public class Chart {
- public Chart() {
+    public Chart() {
     }
 
     public static ChartPanel getChartPanel(String title, String y_label, 

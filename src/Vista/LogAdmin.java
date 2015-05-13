@@ -1,11 +1,13 @@
 package Vista;
 
 import Controlador.Controlador;
+import Modelo.Administrador;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class LogAdmin extends javax.swing.JFrame {
 
@@ -128,9 +130,18 @@ public class LogAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
-        this.setVisible(false);
         java.awt.EventQueue.invokeLater(() -> {
-            admin.setVisible(true);
+            try {
+                Administrador c = this.control.getDao().getAdmin(jTFUser.getText(), new String(jPFContraseña.getPassword()));
+                if(c != null){
+                    this.setVisible(false);
+                    admin.setVisible(true);
+                } else {
+                     JOptionPane.showMessageDialog(null, "Verifique que los datos esten correctos o que el usuario tenga permisos de acceso.");
+                }
+            } catch(Exception e){
+                System.err.println("Error en LogCliente - Search cedula");
+            }
         });
     }//GEN-LAST:event_jBloginActionPerformed
 
