@@ -1,4 +1,6 @@
 package Controlador;
+import Modelo.Administrador;
+import Modelo.Cliente;
 
 import DAO.DAO;
 import Vista.FileTypeFilter;
@@ -23,6 +25,8 @@ import org.jfree.chart.JFreeChart;
 public class Controlador {
 
     private DAO dao;
+    private Administrador a;
+    private Cliente cli;
 
     public Controlador() {
         try {
@@ -115,6 +119,22 @@ public class Controlador {
       } catch (MessagingException e) {
            System.out.println(e.getMessage());
       }
+    }
+
+    public Administrador getA() {
+        return a;
+    }
+
+    public void setA(Administrador a) {
+        this.a = a;
+    }
+
+    public Cliente getCli() {
+        return cli;
+    }
+
+    public void setCli(Cliente cli) {
+        this.cli = cli;
     }
 
 }

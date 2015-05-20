@@ -1,4 +1,5 @@
 package Vista;
+import pgs.*;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -19,15 +20,7 @@ import Modelo.SaludCliente;
 import Modelo.Seguimiento;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfImportedPage;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
@@ -64,8 +57,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -407,6 +398,9 @@ public class Vista extends javax.swing.JFrame {
         jLabel72 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
         jcb_proyec = new javax.swing.JComboBox();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         fotoChooser.setControlButtonsAreShown(false);
         fotoChooser.setCurrentDirectory(new java.io.File("C:\\"));
@@ -441,6 +435,14 @@ public class Vista extends javax.swing.JFrame {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setTitle("Power Gym System");
+            addWindowListener(new java.awt.event.WindowAdapter() {
+                public void windowClosed(java.awt.event.WindowEvent evt) {
+                    formWindowClosed(evt);
+                }
+                public void windowClosing(java.awt.event.WindowEvent evt) {
+                    formWindowClosing(evt);
+                }
+            });
 
             jTabbedPane1.setAutoscrolls(true);
             jTabbedPane1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
@@ -1181,12 +1183,9 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panel_reg_fisicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
-                            .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(15, Short.MAX_VALUE))))
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(15, Short.MAX_VALUE))
                 .addGroup(panel_reg_fisicoLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2973,12 +2972,10 @@ public class Vista extends javax.swing.JFrame {
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addContainerGap(57, Short.MAX_VALUE)
-                        .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel_busqueda_clienteLayout.setVerticalGroup(
                     panel_busqueda_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3118,6 +3115,20 @@ public class Vista extends javax.swing.JFrame {
 
                     jTabbedPane1.addTab("Búsqueda y Proyección", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_busqueda); // NOI18N
 
+                    jMenu1.setText("File");
+
+                    jMenuItem1.setText("Cerrar Sesion");
+                    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            jMenuItem1ActionPerformed(evt);
+                        }
+                    });
+                    jMenu1.add(jMenuItem1);
+
+                    jMenuBar1.add(jMenu1);
+
+                    setJMenuBar(jMenuBar1);
+
                     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
@@ -3223,7 +3234,11 @@ public class Vista extends javax.swing.JFrame {
             Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
                     email.getText(), nacimiento.getText(), cb_sexo.getSelectedIndex(), telefono.getText());
             //if(jBAddCliente.getText().equals("Editar Cliente")) cli.setId_cliente(clienteSelected.getId_cliente());
-            control.getDao().setCliente(cli);//mete el cliente en la base de datos
+            if (!clienteSelected.getId_cliente().equals(cedula.getText())) {
+                control.getDao().deleteCliente(clienteSelected.getId_cliente());
+            }
+
+            control.getDao().setCliente(cli);
 
             SaludCliente sc = new SaludCliente(combo_lesion_osea.getSelectedIndex(), osea_desc.getText(),
                     combo_lesion_musc.getSelectedIndex(), muscular_desc.getText(),
@@ -3420,17 +3435,17 @@ public class Vista extends javax.swing.JFrame {
 
     private void nacimientoOnCommit(datechooser.events.CommitEvent evt) {//GEN-FIRST:event_nacimientoOnCommit
         try {
-            if(nacimiento.getText()!= null || nacimiento.getText() != ""){
+            if (nacimiento.getText() != null || nacimiento.getText() != "") {
                 calcEdad();
             }
         } catch (Exception e) {
-            System.out.println("Error de conversion de fecha Nacimiento: '" + nacimiento.getText()+ "'");
+            System.out.println("Error de conversion de fecha Nacimiento: '" + nacimiento.getText() + "'");
         }
     }//GEN-LAST:event_nacimientoOnCommit
 
     private void calcEdad() {
         try {
-            if(nacimiento.getText()!= null || nacimiento.getText() != ""){
+            if (nacimiento.getText() != null || nacimiento.getText() != "") {
                 String dateStr = nacimiento.getText();
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                 Date fechaNac = (Date) formatter.parse(dateStr);
@@ -3480,7 +3495,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_apellidosActionPerformed
 
     private void boton_pagar_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_pagar_cobroActionPerformed
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), detalle1.getText(), clienteSelected);
             control.getDao().setPago(pago);
             JOptionPane.showMessageDialog(null, "Pago efectuado de forma exitosa.");
@@ -3491,7 +3506,7 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_pagar_cobroActionPerformed
 
     private void boton_añadir_seguimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_añadir_seguimientoActionPerformed
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             Seguimiento seg = new Seguimiento(Double.parseDouble(peso.getText()), Double.parseDouble(imc.getText()),
                     combo_fecha_seguimiento.getText(), Double.parseDouble(grasa.getText()),
                     Double.parseDouble(pecho.getText()), Double.parseDouble(espalda.getText()),
@@ -3630,7 +3645,7 @@ public class Vista extends javax.swing.JFrame {
     }
 
     private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
-        if(text_nombre_rutina.getText() != null || text_nombre_rutina.getText() != ""){
+        if (text_nombre_rutina.getText() != null || text_nombre_rutina.getText() != "") {
             String fileName = "C:\\PGS\\Rutina\\" + text_nombre_rutina.getText() + ".pdf";
             printToPDF(fileName);
             verPDFFrame(fileName);
@@ -3808,7 +3823,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Cliente c = clienteSelected;
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             while (model.getRowCount() > 0) {
                 for (int i = 0; i < model.getRowCount(); ++i) {
@@ -3826,7 +3841,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void jcb_proyecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_proyecActionPerformed
         Cliente c = clienteSelected;
-        if(c != null){
+        if (c != null) {
             HashMap<String, Double> h
                     = control.getDao().getFechasYValores(c,
                             jcb_proyec.getSelectedItem().toString());
@@ -3858,7 +3873,7 @@ public class Vista extends javax.swing.JFrame {
     private void btn_buscar_cliente_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_cliente_cobroActionPerformed
         // TODO add your handling code here:
         seleccionaCliente();
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             text_cedula_cobro.setText(clienteSelected.getId_cliente());
             text_nombre_cobro.setText(clienteSelected.getNombre());
             text_apellidos_cobro.setText(clienteSelected.getApellidos());
@@ -3876,7 +3891,7 @@ public class Vista extends javax.swing.JFrame {
     private void btn_buscar_cliente_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscar_cliente_pagoActionPerformed
         // TODO add your handling code here:
         seleccionaCliente();
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             text_cedula_pago.setText(clienteSelected.getId_cliente());
             text_nombre_pago.setText(clienteSelected.getNombre());
             text_apellidos_pago.setText(clienteSelected.getApellidos());
@@ -3887,7 +3902,7 @@ public class Vista extends javax.swing.JFrame {
     private void btn_busca_cliente_segActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_busca_cliente_segActionPerformed
         // TODO add your handling code here:
         seleccionaCliente();
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             text_cedula_seguimiento.setText(clienteSelected.getId_cliente());
             text_nombre_seguimiento.setText(clienteSelected.getNombre());
             text_apellidos_seguimiento.setText(clienteSelected.getApellidos());
@@ -3900,7 +3915,7 @@ public class Vista extends javax.swing.JFrame {
         lb_nombre.setText("Nombre:");
         lb_apellidos.setText("Apellidos:");
         seleccionaCliente();
-        if(clienteSelected != null){
+        if (clienteSelected != null) {
             lb_cedula.setText(lb_cedula.getText() + " " + clienteSelected.getId_cliente());
             lb_nombre.setText(lb_nombre.getText() + " " + clienteSelected.getNombre());
             lb_apellidos.setText(lb_apellidos.getText() + " " + clienteSelected.getApellidos());
@@ -3966,7 +3981,7 @@ public class Vista extends javax.swing.JFrame {
         PropertiesManager prop = new PropertiesManager(
                 System.getProperties(),
                 ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
-        
+
         prop.set(PropertiesManager.PROPERTY_DEFAULT_ZOOM_LEVEL, "1.25");
         prop.setBoolean(PropertiesManager.PROPERTY_VIEWPREF_FITWINDOW, Boolean.TRUE);
         prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.FALSE);
@@ -3983,7 +3998,7 @@ public class Vista extends javax.swing.JFrame {
                 new org.icepdf.ri.common.MyAnnotationCallback(c.getDocumentViewController()));
         javax.swing.JPanel viewerComponentPanel = fac.buildViewerPanel();
         JFrame applicationFrame = new JFrame();
-        
+
         applicationFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         applicationFrame.getContentPane().add(viewerComponentPanel);
         // Now that the GUI is all in place, we can try openning a PDF
@@ -3997,7 +4012,7 @@ public class Vista extends javax.swing.JFrame {
         applicationFrame.setLocationRelativeTo(null);
         applicationFrame.setResizable(false);
         applicationFrame.setVisible(true);
-        
+
     }
 
     private void combo_diabeticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_diabeticoActionPerformed
@@ -4006,8 +4021,11 @@ public class Vista extends javax.swing.JFrame {
 
     private void combo_lesion_oseaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_oseaActionPerformed
         // TODO add your handling code here:
-        if(combo_lesion_osea.getSelectedIndex() == 1) osea_desc.setEnabled(false);
-        else osea_desc.setEnabled(true);
+        if (combo_lesion_osea.getSelectedIndex() == 1) {
+            osea_desc.setEnabled(false);
+        } else {
+            osea_desc.setEnabled(true);
+        }
     }//GEN-LAST:event_combo_lesion_oseaActionPerformed
 
     private void combo_embarazoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_embarazoActionPerformed
@@ -4119,19 +4137,45 @@ public class Vista extends javax.swing.JFrame {
 
     private void combo_lesion_muscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_lesion_muscActionPerformed
         // TODO add your handling code here:
-        if(combo_lesion_musc.getSelectedIndex() == 1) muscular_desc.setEnabled(false);
-        else muscular_desc.setEnabled(true);
+        if (combo_lesion_musc.getSelectedIndex() == 1) {
+            muscular_desc.setEnabled(false);
+        } else {
+            muscular_desc.setEnabled(true);
+        }
     }//GEN-LAST:event_combo_lesion_muscActionPerformed
 
     private void combo_enfer_cardioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_enfer_cardioActionPerformed
         // TODO add your handling code here:
-        if(combo_enfer_cardio.getSelectedIndex() == 1) cardio_desc.setEnabled(false);
-        else cardio_desc.setEnabled(true);
+        if (combo_enfer_cardio.getSelectedIndex() == 1) {
+            cardio_desc.setEnabled(false);
+        } else {
+            cardio_desc.setEnabled(true);
+        }
     }//GEN-LAST:event_combo_enfer_cardioActionPerformed
 
     private void nacimientoOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_nacimientoOnSelectionChange
         // TODO add your handling code here:
     }//GEN-LAST:event_nacimientoOnSelectionChange
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        int opt = JOptionPane.showConfirmDialog(this, "Esta seguro que desea cerrar la sesion de: \n"+control.getA().getUserid()+"", "Cerrar sesion?", JOptionPane.YES_NO_OPTION);
+            if (opt == JOptionPane.YES_OPTION) {
+                PGS.mostrarInterfaz();
+                this.setVisible(false);
+                this.dispose();
+            }    
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void seleccionaCliente() {
         clienteSelected = null;
@@ -4585,7 +4629,7 @@ public class Vista extends javax.swing.JFrame {
         try {
             Pattern pattern = Pattern.compile(PATTERN_EMAIL);
             Matcher matcher = pattern.matcher(email.getText());
-            if(!matcher.matches()){
+            if (!matcher.matches()) {
                 JOptionPane.showMessageDialog(this, "Error en el formato del correo\n\nEl formato debe ser: email@dominio.ext\n\n");
             }
         } catch (Exception e) {
@@ -4774,6 +4818,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;

@@ -122,7 +122,6 @@ public class DAO extends Observable {
     public void deleteCliente(String id_cliente) {
         try {
             daoCliente.deleteById(id_cliente);
-            JOptionPane.showMessageDialog(null, "Usuario Desactivado con exito!");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

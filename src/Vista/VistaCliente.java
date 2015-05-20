@@ -33,6 +33,7 @@ import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
 import org.icepdf.ri.util.PropertiesManager;
 import org.jfree.chart.ChartPanel;
+import pgs.PGS;
 
 public class VistaCliente extends javax.swing.JFrame {
 
@@ -193,6 +194,9 @@ public class VistaCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lb_proximo_pago = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -240,7 +244,7 @@ public class VistaCliente extends javax.swing.JFrame {
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(169, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addComponent(jl_PGS)
                 .addGap(18, 18, 18)
                 .addComponent(jL_bienvenido)
@@ -253,7 +257,7 @@ public class VistaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pgs-logo_ico.png")), panel_inicio); // NOI18N
@@ -719,7 +723,7 @@ public class VistaCliente extends javax.swing.JFrame {
         );
         panel_rutinaLayout.setVerticalGroup(
             panel_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+            .addComponent(panel_datos1, javax.swing.GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Rutina actual", new javax.swing.ImageIcon(getClass().getResource("/Imagen/pesa.png")), panel_rutina); // NOI18N
@@ -776,7 +780,7 @@ public class VistaCliente extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(btn_ver_nutricion_actual))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -848,7 +852,7 @@ public class VistaCliente extends javax.swing.JFrame {
             );
             jp_chart1Layout.setVerticalGroup(
                 jp_chart1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 523, Short.MAX_VALUE)
+                .addGap(0, 502, Short.MAX_VALUE)
             );
 
             jButton8.setText("Exportar gráfico");
@@ -966,10 +970,24 @@ public class VistaCliente extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(392, Short.MAX_VALUE))
+                    .addContainerGap(371, Short.MAX_VALUE))
             );
 
             jTabbedPane1.addTab("Pagos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/cobro.png")), panel_cobro); // NOI18N
+
+            jMenu1.setText("File");
+
+            jMenuItem1.setText("Cerrar Sesion");
+            jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jMenuItem1ActionPerformed(evt);
+                }
+            });
+            jMenu1.add(jMenuItem1);
+
+            jMenuBar1.add(jMenu1);
+
+            setJMenuBar(jMenuBar1);
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -1060,6 +1078,16 @@ public class VistaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_ver_nutricion_actualActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        int opt = JOptionPane.showConfirmDialog(this, "Esta seguro que desea cerrar la sesion de: \n"+control.getCli().getNombre()+"", "Cerrar sesion?", JOptionPane.YES_NO_OPTION);
+            if (opt == JOptionPane.YES_OPTION) {
+                PGS.mostrarInterfaz();
+                this.setVisible(false);
+                this.dispose();
+            }  
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     final private String photoLocation;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Print;
@@ -1080,6 +1108,9 @@ public class VistaCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;

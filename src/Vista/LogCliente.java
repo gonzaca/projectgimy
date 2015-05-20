@@ -1,5 +1,6 @@
 package Vista;
 
+
 import Controlador.Controlador;
 import Modelo.Cliente;
 import java.awt.Dimension;
@@ -131,6 +132,7 @@ public class LogCliente extends javax.swing.JFrame {
                 Cliente c = this.control.getDao().getCliente("Cedula", cedula.getText());
                 if(c != null){
                     this.setVisible(false);
+                    control.setCli(c);
                     new VistaCliente(c ,control).setVisible(true);
                 } else {
                      JOptionPane.showMessageDialog(null, "Usuario no encontrado, por favor reintente denuevo.");

@@ -136,6 +136,7 @@ public class LogAdmin extends javax.swing.JFrame {
                 if(c != null){
                     this.setVisible(false);
                     admin.setVisible(true);
+                    control.setA(c);
                 } else {
                      JOptionPane.showMessageDialog(null, "Verifique que los datos esten correctos o que el usuario tenga permisos de acceso.");
                 }
