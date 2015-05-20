@@ -1,4 +1,5 @@
 package Vista;
+
 import pgs.*;
 
 import java.awt.Dimension;
@@ -1949,7 +1950,7 @@ public class Vista extends javax.swing.JFrame {
 
             jLabel62.setText("Cliente:");
 
-            jLabel18.setText("Rutina:");
+            jLabel18.setText("Perfil");
 
             jCBListFood2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
             listarArchivos(jCBListFood2);
@@ -1970,9 +1971,9 @@ public class Vista extends javax.swing.JFrame {
                     .addContainerGap(311, Short.MAX_VALUE)
                     .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel62)
-                                .addComponent(jLabel18))
+                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3117,7 +3118,7 @@ public class Vista extends javax.swing.JFrame {
 
                     jTabbedPane1.addTab("Búsqueda y Proyección", new javax.swing.ImageIcon(getClass().getResource("/Imagen/proyeccion.png")), panel_busqueda); // NOI18N
 
-                    jMenu1.setText("File");
+                    jMenu1.setText("Sesion");
 
                     jMenuItem1.setText("Cerrar Sesion");
                     jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -3236,7 +3237,7 @@ public class Vista extends javax.swing.JFrame {
             Cliente cli = new Cliente(cedula.getText(), nombre.getText(), apellidos.getText(), direccion.getText(),
                     email.getText(), nacimiento.getText(), cb_sexo.getSelectedIndex(), telefono.getText());
             //if(jBAddCliente.getText().equals("Editar Cliente")) cli.setId_cliente(clienteSelected.getId_cliente());
-            if (clienteSelected!=null && !clienteSelected.getId_cliente().equals(cedula.getText())) {
+            if (clienteSelected != null && !clienteSelected.getId_cliente().equals(cedula.getText())) {
                 control.getDao().deleteCliente(clienteSelected.getId_cliente());
             }
 
@@ -3498,10 +3499,14 @@ public class Vista extends javax.swing.JFrame {
 
     private void boton_pagar_cobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_pagar_cobroActionPerformed
         if (clienteSelected != null) {
-            Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), detalle1.getText(), clienteSelected);
-            control.getDao().setPago(pago);
-            JOptionPane.showMessageDialog(null, "Pago efectuado de forma exitosa.");
-            clearCamposCobro();
+            if (monto.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se ha digitado un monto para facturar.\n\nSe Digite el monto a cancelar.\n", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Pago pago = new Pago(dateChooserCobro.getText(), Double.parseDouble(monto.getText()), detalle1.getText(), clienteSelected);
+                control.getDao().setPago(pago);
+                JOptionPane.showMessageDialog(null, "Pago efectuado de forma exitosa.");
+                clearCamposCobro();
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Usuario No Seleccionado.\n\nSe debe Seleccionar un Usuario.\n", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -3604,18 +3609,21 @@ public class Vista extends javax.swing.JFrame {
 
     private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
         String nom = text_nombre_rutina.getText();
-        String msj = "agregado";
-        Rutina r = new Rutina(0, nom);
-        if (jBCreateRutina1.getText().equals("Modificar")) {
-            r.setId(rutinaSelected.getId());
-            msj = "modificado";
+        if (nom.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se ha asignado un nombre a la rutina.\n Escriba un numbre para su rutina.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String msj = "agregado";
+            Rutina r = new Rutina(0, nom);
+            if (jBCreateRutina1.getText().equals("Modificar")) {
+                r.setId(rutinaSelected.getId());
+                msj = "modificado";
+            }
+            control.getDao().setRutina(r);
+            creaER(r);
+            limpiaTablas();
+            text_nombre_rutina.setText(null);
+            JOptionPane.showMessageDialog(this, "Se ha " + msj + " la rutina con exito.", "Exito", JOptionPane.INFORMATION_MESSAGE);
         }
-        control.getDao().setRutina(r);
-        creaER(r);
-        limpiaTablas();
-        text_nombre_rutina.setText(null);
-        JOptionPane.showMessageDialog(this, "Se ha " + msj + " la rutina con exito.", "Exito", JOptionPane.INFORMATION_MESSAGE);
-
     }//GEN-LAST:event_jBCreateRutina1ActionPerformed
 
     private void creaER(Rutina r) {
@@ -4161,7 +4169,7 @@ public class Vista extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -4170,13 +4178,13 @@ public class Vista extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        int opt = JOptionPane.showConfirmDialog(this, "Esta seguro que desea cerrar la sesion de: \n"+control.getA().getUserid()+"", "Cerrar sesion?", JOptionPane.YES_NO_OPTION);
-            if (opt == JOptionPane.YES_OPTION) {
-                PGS.mostrarInterfaz();
-                this.setVisible(false);
-                this.dispose();
-            }    
-        
+        int opt = JOptionPane.showConfirmDialog(this, "Esta seguro que desea cerrar la sesion de: \n" + control.getA().getUserid() + "", "Cerrar sesion?", JOptionPane.YES_NO_OPTION);
+        if (opt == JOptionPane.YES_OPTION) {
+            PGS.mostrarInterfaz();
+            this.setVisible(false);
+            this.dispose();
+        }
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void seleccionaCliente() {
@@ -4963,6 +4971,5 @@ public class Vista extends javax.swing.JFrame {
         brazo_derecho.setText("");
         antebrazo_derecho.setText("");
         antebrazo_izquierdo.setText("");
-        clienteSelected = null;
     }
 }

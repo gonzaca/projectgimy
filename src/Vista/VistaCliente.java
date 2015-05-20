@@ -975,7 +975,7 @@ public class VistaCliente extends javax.swing.JFrame {
 
             jTabbedPane1.addTab("Pagos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/cobro.png")), panel_cobro); // NOI18N
 
-            jMenu1.setText("File");
+            jMenu1.setText("Sesion");
 
             jMenuItem1.setText("Cerrar Sesion");
             jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
