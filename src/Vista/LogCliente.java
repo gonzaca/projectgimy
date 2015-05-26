@@ -1,11 +1,11 @@
 package Vista;
 
-
 import Controlador.Controlador;
 import Modelo.Cliente;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,7 +15,7 @@ public class LogCliente extends javax.swing.JFrame {
     public LogCliente() {
         initComponents();
     }
-    
+
     public LogCliente(Controlador c) {
         super("Login Cliente");
         initComponents();
@@ -27,8 +27,9 @@ public class LogCliente extends javax.swing.JFrame {
         this.setSize(screenSize);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,11 +70,21 @@ public class LogCliente extends javax.swing.JFrame {
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+        jLabel5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jLabel5KeyTyped(evt);
+            }
+        });
 
         cedula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaActionPerformed(evt);
+            }
+        });
+        cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cedulaKeyTyped(evt);
             }
         });
 
@@ -130,14 +141,14 @@ public class LogCliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 Cliente c = this.control.getDao().getCliente("Cedula", cedula.getText());
-                if(c != null){
+                if (c != null) {
                     this.setVisible(false);
                     control.setCli(c);
-                    new VistaCliente(c ,control).setVisible(true);
+                    new VistaCliente(c, control).setVisible(true);
                 } else {
-                     JOptionPane.showMessageDialog(null, "Usuario no encontrado, por favor reintente denuevo.");
+                    JOptionPane.showMessageDialog(null, "Usuario no encontrado, por favor reintente denuevo.");
                 }
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.err.println("Error en LogCliente - Search cedula");
             }
         });
@@ -153,10 +164,20 @@ public class LogCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cedulaActionPerformed
 
+    private void jLabel5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel5KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5KeyTyped
+
+    private void cedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cedulaKeyTyped
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            jBlogin.doClick();
+        }
+    }//GEN-LAST:event_cedulaKeyTyped
+
     public void mostrar() {
         this.setVisible(true);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -192,8 +213,7 @@ public class LogCliente extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
     private Controlador control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cedula;

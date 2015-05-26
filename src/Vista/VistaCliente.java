@@ -4,16 +4,24 @@ import Controlador.Controlador;
 import Modelo.Cliente;
 import Modelo.EjerciciosRutina;
 import Modelo.Rutina;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,9 +36,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
+import org.icepdf.ri.common.views.DocumentViewController;
 import org.icepdf.ri.util.PropertiesManager;
 import org.jfree.chart.ChartPanel;
 import pgs.PGS;
@@ -39,6 +49,7 @@ public class VistaCliente extends javax.swing.JFrame {
 
     private Cliente c;
     private Controlador control;
+    private Rutina rutinaSelected;
 
     public VistaCliente(Cliente c, Controlador control) {
         super("Cliente");
@@ -105,9 +116,10 @@ public class VistaCliente extends javax.swing.JFrame {
     
     private void cargarRutina(){
         try{
-            Rutina r = control.getDao().getRutinaCliente(c.getId_cliente());
-            if(r!= null){
-                cargarTablas(r);
+            rutinaSelected = control.getDao().getRutinaCliente(c.getId_cliente());
+            if(rutinaSelected!= null){
+                cargarTablas(rutinaSelected);
+                permiteEditar(false);
             }
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "No tiene una Rutina Asignada.\n\nComuniquese con el Administrador o Instructor a Cargo.");
@@ -1039,31 +1051,134 @@ public class VistaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCreateRutina1ActionPerformed
 
     private void bt_PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_PrintActionPerformed
-        PrinterJob job = PrinterJob.getPrinterJob();
-        job.setJobName("Print Java Component");
-
-        job.setPrintable(new Printable() {
-            public int print(Graphics g, PageFormat pageFormat, int pageIndex) {
-                if (pageIndex > 0) {
-                    return (NO_SUCH_PAGE);
-                } else {
-                    Graphics2D g2d = (Graphics2D) g;
-                    g2d.translate(pageFormat.getImageableX(),
-                            pageFormat.getImageableY());
-                    panel_crear_rutina.paint(g2d);
-                    return (PAGE_EXISTS);
-                }
-            }
-        });
-        if (job.printDialog()) {
-            try {
-                job.print();
-            } catch (Exception e) {
-                System.out.println("Error en el Printing de Rutinas");
-            }
-        }
+        String fileName = "C:\\PGS\\Rutina\\" + rutinaSelected.getNombre()+ ".pdf";
+            printToPDF(fileName);
+            verPDFFrame(fileName);
     }//GEN-LAST:event_bt_PrintActionPerformed
 
+    private void printToPDF(String fileName) {
+        try {
+            Document d = new Document();
+            PdfWriter writer = PdfWriter.getInstance(d, new FileOutputStream(
+                    fileName));
+            d.open();
+
+            PdfPTable tabletmp = new PdfPTable(1);
+            tabletmp.getDefaultCell().setBorder(Rectangle.NO_BORDER);
+            tabletmp.setWidthPercentage(82);
+
+            tabletmp.addCell("Nombre: " + c.getNombre()+" "+c.getApellidos()+" Cedula: "+c.getId_cliente());
+
+            tabletmp.addCell("\nPiernas");
+            tabletmp.addCell(getImageFromPanel(writer, tablePiernas.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePiernas));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Pantorillas");
+            tabletmp.addCell(getImageFromPanel(writer, tablePantorrilla.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePantorrilla));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Biceps");
+            tabletmp.addCell(getImageFromPanel(writer, tableBiceps1.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableBiceps1));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Triceps");
+            tabletmp.addCell(getImageFromPanel(writer, tableTriceps.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableTriceps));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Antebraso");
+            tabletmp.addCell(getImageFromPanel(writer, tableAntebraso.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableAntebraso));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Hombros");
+            tabletmp.addCell(getImageFromPanel(writer, tableHombros.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableHombros));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Pecho");
+            tabletmp.addCell(getImageFromPanel(writer, tablePecho.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tablePecho));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Espalda");
+            tabletmp.addCell(getImageFromPanel(writer, tableEspalda.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableEspalda));
+            tabletmp.addCell("\n");
+
+            tabletmp.addCell("Trapecio");
+            tabletmp.addCell(getImageFromPanel(writer, tableTrapecio.getTableHeader()));
+            tabletmp.addCell(getImageFromPanel(writer, tableTrapecio));
+
+            d.add(tabletmp);
+            d.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static com.itextpdf.text.Image getImageFromPanel(PdfWriter writer, Component component) throws BadElementException {
+        com.itextpdf.text.Image iTextImage = null;
+        try {
+            BufferedImage image = new BufferedImage(component.getWidth(),
+                    component.getHeight(), BufferedImage.TYPE_INT_RGB);
+            component.paint(image.getGraphics());
+
+            iTextImage = com.itextpdf.text.Image.getInstance(writer, image, 1);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return iTextImage;
+    }
+    
+    private void verPDFFrame(String filePath) {
+
+        // build a component controller
+        SwingController c = new SwingController();
+        c.setIsEmbeddedComponent(true);
+
+        PropertiesManager prop = new PropertiesManager(
+                System.getProperties(),
+                ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
+
+        prop.set(PropertiesManager.PROPERTY_DEFAULT_ZOOM_LEVEL, "1.25");
+        prop.setBoolean(PropertiesManager.PROPERTY_VIEWPREF_FITWINDOW, Boolean.TRUE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_FIT, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ROTATE, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_TOOL, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_UPANE, Boolean.FALSE);
+        prop.setBoolean(PropertiesManager.PROPERTY_SHOW_UTILITY_SEARCH, Boolean.FALSE);
+
+        SwingViewBuilder fac = new SwingViewBuilder(c, prop);
+
+        // add interactive mouse link annotation support via callback
+        c.getDocumentViewController().setAnnotationCallback(
+                new org.icepdf.ri.common.MyAnnotationCallback(c.getDocumentViewController()));
+        javax.swing.JPanel viewerComponentPanel = fac.buildViewerPanel();
+        JFrame applicationFrame = new JFrame();
+
+        applicationFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        applicationFrame.getContentPane().add(viewerComponentPanel);
+        // Now that the GUI is all in place, we can try openning a PDF
+        c.setPageFitMode(DocumentViewController.PAGE_FIT_WINDOW_WIDTH, false);
+        c.openDocument(filePath);
+        // show the component
+        applicationFrame.pack();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        applicationFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        applicationFrame.setSize(screenSize);
+        applicationFrame.setLocationRelativeTo(null);
+        applicationFrame.setResizable(false);
+        applicationFrame.setVisible(true);
+
+    }
+    
     private void btn_ver_nutricion_actualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_nutricion_actualActionPerformed
         // TODO add your handling code here:
         try {
@@ -1088,6 +1203,18 @@ public class VistaCliente extends javax.swing.JFrame {
             }  
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void permiteEditar(boolean cond) {
+        tablePiernas.setEnabled(cond);
+        tablePantorrilla.setEnabled(cond);
+        tableBiceps1.setEnabled(cond);
+        tableAntebraso.setEnabled(cond);
+        tableHombros.setEnabled(cond);
+        tableEspalda.setEnabled(cond);
+        tablePecho.setEnabled(cond);
+        tableTriceps.setEnabled(cond);
+        tableTrapecio.setEnabled(cond);
+    }
+    
     final private String photoLocation;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Print;

@@ -135,6 +135,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPFContrase&#xf1;a">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPFContrase&#xf1;aKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>

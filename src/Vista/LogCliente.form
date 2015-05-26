@@ -129,6 +129,9 @@
           <Image iconType="3" name="/Imagen/PGSBackgroundVista.PNG"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jLabel5KeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="cedula">
       <Properties>
@@ -138,6 +141,7 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cedulaActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cedulaKeyTyped"/>
       </Events>
     </Component>
   </SubComponents>
