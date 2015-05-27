@@ -1804,7 +1804,7 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(btn_perfiles_Nutricionales, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(btn_asignar_pNutricional)
-                    .addContainerGap(817, Short.MAX_VALUE))
+                    .addContainerGap(828, Short.MAX_VALUE))
                 .addGroup(panel_menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_menu2Layout.createSequentialGroup()
                         .addComponent(jLabel84, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
@@ -1862,7 +1862,7 @@ public class Vista extends javax.swing.JFrame {
             panel_crear_perfil_nutricional.setLayout(panel_crear_perfil_nutricionalLayout);
             panel_crear_perfil_nutricionalLayout.setHorizontalGroup(
                 panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 783, Short.MAX_VALUE)
+                .addGap(0, 924, Short.MAX_VALUE)
                 .addGroup(panel_crear_perfil_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_crear_perfil_nutricionalLayout.createSequentialGroup()
                         .addContainerGap()
@@ -1878,7 +1878,7 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(jLabel28)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_add_plan_nutricional)
-                                .addGap(0, 99, Short.MAX_VALUE)))
+                                .addGap(0, 139, Short.MAX_VALUE)))
                         .addContainerGap()))
             );
             panel_crear_perfil_nutricionalLayout.setVerticalGroup(
@@ -1909,10 +1909,10 @@ public class Vista extends javax.swing.JFrame {
             panel_nutricion.setLayout(panel_nutricionLayout);
             panel_nutricionLayout.setHorizontalGroup(
                 panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panel_nutricionLayout.createSequentialGroup()
-                    .addGap(0, 77, Short.MAX_VALUE)
-                    .addComponent(panel_crear_perfil_nutricional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 84, Short.MAX_VALUE))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_nutricionLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panel_crear_perfil_nutricional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap())
                 .addGroup(panel_nutricionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_nutricionLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -2025,13 +2025,13 @@ public class Vista extends javax.swing.JFrame {
                 panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panel_menu2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
-                    .addComponent(panel_datos4, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel_datos4, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE))
                 .addGroup(panel_registro_nutricionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_registro_nutricionalLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(panel_asignar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(493, Short.MAX_VALUE)))
+                        .addContainerGap(504, Short.MAX_VALUE)))
             );
 
             jTabbedPane1.addTab("Nutrición", new javax.swing.ImageIcon(getClass().getResource("/Imagen/AgregarPN.png")), panel_registro_nutricional); // NOI18N
@@ -2119,7 +2119,7 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addContainerGap(207, Short.MAX_VALUE)
+                            .addGap(60, 60, 60)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel44)
                                 .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2131,14 +2131,10 @@ public class Vista extends javax.swing.JFrame {
                                 .addComponent(text_cedula_cobro, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGap(50, 50, 50)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(label_fecha_seguimiento1)
-                                        .addComponent(jLabel27))
-                                    .addGap(18, 18, 18))
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel63)
-                                    .addGap(21, 21, 21)))
+                                .addComponent(label_fecha_seguimiento1)
+                                .addComponent(jLabel27)
+                                .addComponent(jLabel63))
+                            .addGap(18, 18, 18)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(dateChooserCobro, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -3157,7 +3153,7 @@ public class Vista extends javax.swing.JFrame {
                     getContentPane().setLayout(layout);
                     layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1088, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
                     );
                     layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

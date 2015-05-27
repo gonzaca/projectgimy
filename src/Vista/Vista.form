@@ -2322,14 +2322,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panel_menu2" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="panel_datos4" min="-2" pref="591" max="-2" attributes="0"/>
+                      <Component id="panel_datos4" min="-2" pref="600" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="panel_asignar_perfil" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="493" max="32767" attributes="0"/>
+                          <EmptySpace pref="504" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -2368,7 +2368,7 @@
                           <Component id="btn_perfiles_Nutricionales" min="-2" pref="62" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btn_asignar_pNutricional" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="817" max="32767" attributes="0"/>
+                          <EmptySpace pref="828" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -2446,10 +2446,10 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
-                              <Component id="panel_crear_perfil_nutricional" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="84" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="panel_crear_perfil_nutricional" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -2486,7 +2486,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="783" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="924" max="32767" attributes="0"/>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -2502,7 +2502,7 @@
                                               <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btn_add_plan_nutricional" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="139" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -2791,7 +2791,7 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace pref="207" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel44" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel76" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
@@ -2805,18 +2805,11 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="label_fecha_seguimiento1" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="label_fecha_seguimiento1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel63" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="dateChooserCobro" linkSize="10" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
