@@ -1065,7 +1065,6 @@ public class VistaCliente extends javax.swing.JFrame {
 
             PdfPTable tabletmp = new PdfPTable(1);
             tabletmp.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-            tabletmp.setWidthPercentage(82);
 
             tabletmp.addCell("Nombre: " + c.getNombre()+" "+c.getApellidos()+" Cedula: "+c.getId_cliente());
 
