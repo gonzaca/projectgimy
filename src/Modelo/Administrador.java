@@ -9,6 +9,14 @@ public class Administrador {
     private String userid;
     @DatabaseField
     private String pass;
+    
+    public Administrador(){
+        
+    }
+    public Administrador(String n, String p){
+        this.userid = n;
+        this.pass=p;
+    }
 
     public String getUserid() {
         return userid;

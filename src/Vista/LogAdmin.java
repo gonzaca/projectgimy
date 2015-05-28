@@ -43,6 +43,9 @@ public class LogAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPFContraseña = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +81,20 @@ public class LogAdmin extends javax.swing.JFrame {
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/PGSBackgroundVista.PNG"))); // NOI18N
+
+        jMenu1.setText("Opciones");
+
+        jMenuItem1.setText("Crear Administrador");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +181,10 @@ public class LogAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPFContraseñaKeyTyped
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Registro r = new Registro(control);        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public void mostrar() {
         this.setVisible(true);
     }
@@ -210,6 +231,9 @@ public class LogAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPasswordField jPFContraseña;
     private javax.swing.JTextField jTFUser;
     // End of variables declaration//GEN-END:variables

@@ -146,21 +146,20 @@ public class DAO extends Observable {
         }
         return r;
     }
-    
+
     public Rutina getRutinaCliente(String att) {
         Rutina r = null;
         ClienteRutina cr = null;
         List<ClienteRutina> l = null;
         try {
             l = daoClienteRutina.queryForEq("cliente", att);
-            cr = !l.isEmpty() ? l.get(l.size()-1) : null;
-            r= getRutina(cr.getRutina());
+            cr = !l.isEmpty() ? l.get(l.size() - 1) : null;
+            r = getRutina(cr.getRutina());
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return r;
     }
-    
 
     public SaludCliente getSaludCliente(String att) {
         SaludCliente c = null;
@@ -179,7 +178,7 @@ public class DAO extends Observable {
         List<Nutricion> l = null;
         try {
             l = daoNutricion.queryForEq("cliente", att);
-            c = !l.isEmpty() ? l.get(0) : null;
+            c = !l.isEmpty() ? l.get(l.size()-1) : null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -195,7 +194,7 @@ public class DAO extends Observable {
         }
         return l;
     }
-    
+
     public Administrador getAdmin(String user, String pass) {
         Administrador a = null;
         List<Administrador> l = null;
@@ -208,25 +207,45 @@ public class DAO extends Observable {
         return a;
     }
 
-    public List<EjerciciosRutina> getSizeParte(int att,String part) {
+    public Administrador getAdmin(String att) {
+        Administrador c = null;
+        List<Administrador> l = null;
+        try {
+            l = daoAdmin.queryForEq("userid", att);
+            c = !l.isEmpty() ? l.get(0) : null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return c;
+    }
+    
+    public void setAdmin(Administrador c) {
+        try {
+            daoAdmin.createOrUpdate(c);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public List<EjerciciosRutina> getSizeParte(int att, String part) {
         List<EjerciciosRutina> l = null;
         try {
-        QueryBuilder<EjerciciosRutina, String> qb = daoEjerciciosRutina.queryBuilder();
-        Where where = qb.where();
-        where.eq("rutina", att);
-        where.and();
-        where.eq("parteCuerpo", part);
+            QueryBuilder<EjerciciosRutina, String> qb = daoEjerciciosRutina.queryBuilder();
+            Where where = qb.where();
+            where.eq("rutina", att);
+            where.and();
+            where.eq("parteCuerpo", part);
             l = qb.query();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return l;
     }
-    
+
     public HashMap<String, Double> getFechasYValores(Cliente c, String at) {
         List<Seguimiento> s = getSeguimientos(c.getId_cliente());
-         HashMap<String, Double> m = new HashMap<String, Double>();
-        if(s.size() > 1){
+        HashMap<String, Double> m = new HashMap<String, Double>();
+        if (s.size() > 1) {
             switch (at) {
                 case "Piernas":
                     s.stream().forEach((a) -> {
@@ -415,8 +434,6 @@ public class DAO extends Observable {
         }
         return c;
     }
-    
-    
 
     public List<Cliente> getClientesSegunPagos(String segun) {
         List<Cliente> clientes = new ArrayList<Cliente>();
