@@ -53,9 +53,17 @@ public class DAO extends Observable {
         return tipo_unidad;
     }
 
-    public void setCliente(Cliente c) {
+    public void insertCliente(Cliente c) {
         try {
-            daoCliente.createOrUpdate(c);
+            daoCliente.create(c);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void updateCliente(Cliente c) {
+        try {
+            daoCliente.update(c);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -69,14 +77,23 @@ public class DAO extends Observable {
         }
     }
 
-    public void setSaludCliente(SaludCliente saludC) {
+    public void insertSaludCliente(SaludCliente saludC) {
         try {
-            daoSaludCliente.createOrUpdate(saludC);
+            daoSaludCliente.create(saludC);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al ingresar el Cliente.");
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void updateSaludCliente(SaludCliente saludC) {
+        try {
+            daoSaludCliente.update(saludC);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-
+    
     public void setNutricionCliente(Nutricion NutricionC) {
         try {
             daoNutricion.createOrUpdate(NutricionC);
@@ -128,11 +145,12 @@ public class DAO extends Observable {
     }
 
     public List<Cliente> todoClientes() throws SQLException {
-        return daoCliente.queryForAll();
+        return daoCliente.query(daoCliente.queryBuilder().orderBy("id_cliente", true).prepare());
     }
 
     public List<Rutina> todoRutina() throws SQLException {
-        return daoRutina.queryForAll();
+        //return daoRutina.queryForAll();
+        return daoRutina.query(daoRutina.queryBuilder().orderBy("id", true).prepare());
     }
 
     public Rutina getRutina(int att) {

@@ -39,7 +39,7 @@ public class Cliente {
     }
     
     public Cliente(String id_cliente, String nombre, String apellidos, String direccion,
-            String email, String fechaNacimiento, int sexo, String telefono) {
+            String email, String fechaNacimiento, int sexo, String telefono, String fechaInscripcion) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -48,7 +48,7 @@ public class Cliente {
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
         this.telefono = telefono;
-        this.fechaInscripcion = currenDate();
+        this.fechaInscripcion = fechaInscripcion;
     }
     
     private String currenDate(){

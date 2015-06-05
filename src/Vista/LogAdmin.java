@@ -69,9 +69,11 @@ public class LogAdmin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Usuario");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Usuario:");
 
-        jLabel4.setText("Contraseña");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Contraseña:");
 
         jPFContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
