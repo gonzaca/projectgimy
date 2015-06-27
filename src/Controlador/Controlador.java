@@ -6,10 +6,9 @@ import DAO.DAO;
 import Vista.FileTypeFilter;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.stream.IntStream;
+import java.util.Properties;
 import javax.mail.Message;
-import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -27,6 +26,8 @@ public class Controlador {
     private DAO dao;
     private Administrador a;
     private Cliente cli;
+    private String passwordCorreo= "";
+    private String fromCorreo ="";
 
     public Controlador() {
         try {
@@ -91,33 +92,28 @@ public class Controlador {
         }
     }
 
-    public void sendEmail(String to, String asunto, String cuerpo) {
-      String from = "pablogonzaca@gmail.com";
-      final String username = "pablogonzaca@gmail.com";
-      final String password = "20DEjulioDE1992";
-      String host = "smtp.gmail.com";
-
+    public void sendEmail(String to, String asunto, String cuerpo) {      
       Properties props = new Properties();
-      props.put("mail.smtp.auth", "true");
-      props.put("mail.smtp.starttls.enable", "true");
-      props.put("mail.smtp.host", host);
-      props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
       Session session = Session.getInstance(props,
-      new javax.mail.Authenticator() {
-         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(username, password);
-         }
-      });
-
-      try {
-         Message message = new MimeMessage(session);
-         message.setFrom(new InternetAddress(from));
+        new javax.mail.Authenticator() {
+           protected PasswordAuthentication getPasswordAuthentication() {
+              return new PasswordAuthentication(fromCorreo, passwordCorreo);
+           }
+        });
+        try{
+        Message message = new MimeMessage(session);
+         message.setFrom(new InternetAddress(fromCorreo));
          message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
          message.setSubject(asunto);
          message.setText(cuerpo);
          Transport.send(message);
-      } catch (MessagingException e) {
-           System.out.println(e.getMessage());
+      } catch(Exception e){
+          System.out.println("Error al enviar correo.");
+          e.printStackTrace();
       }
     }
 
@@ -135,6 +131,22 @@ public class Controlador {
 
     public void setCli(Cliente cli) {
         this.cli = cli;
+    }
+
+    public String getPasswordCorreo() {
+        return passwordCorreo;
+    }
+
+    public void setPasswordCorreo(String passwordCorreo) {
+        this.passwordCorreo = passwordCorreo;
+    }
+
+    public String getFromCorreo() {
+        return fromCorreo;
+    }
+
+    public void setFromCorreo(String fromCorreo) {
+        this.fromCorreo = fromCorreo;
     }
 
 }

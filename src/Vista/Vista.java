@@ -121,6 +121,12 @@ public class Vista extends javax.swing.JFrame {
         combo_busqueda = new javax.swing.JComboBox();
         lb_user = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
+        panel_correo = new javax.swing.JPanel();
+        jLabel99 = new javax.swing.JLabel();
+        jLabel100 = new javax.swing.JLabel();
+        jLabel101 = new javax.swing.JLabel();
+        pass_correo = new javax.swing.JPasswordField();
+        correo_enviar = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panel_inicio = new javax.swing.JPanel();
         jl_PGS = new javax.swing.JLabel();
@@ -436,6 +442,58 @@ public class Vista extends javax.swing.JFrame {
             );
 
             jLabel45.setText("jLabel45");
+
+            jLabel99.setText("Correo Electronico:");
+
+            jLabel100.setText("Contraseña:");
+
+            jLabel101.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+            jLabel101.setText("Datos del Gimnasio");
+
+            correo_enviar.setText(control.getFromCorreo());
+            correo_enviar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    correo_enviarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout panel_correoLayout = new javax.swing.GroupLayout(panel_correo);
+            panel_correo.setLayout(panel_correoLayout);
+            panel_correoLayout.setHorizontalGroup(
+                panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_correoLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel101)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panel_correoLayout.createSequentialGroup()
+                    .addGap(51, 51, 51)
+                    .addGroup(panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel99)
+                        .addComponent(jLabel100))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(correo_enviar)
+                        .addComponent(pass_correo, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                    .addContainerGap(80, Short.MAX_VALUE))
+            );
+
+            panel_correoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {correo_enviar, pass_correo});
+
+            panel_correoLayout.setVerticalGroup(
+                panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panel_correoLayout.createSequentialGroup()
+                    .addGap(5, 5, 5)
+                    .addComponent(jLabel101)
+                    .addGap(18, 18, 18)
+                    .addGroup(panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel99)
+                        .addComponent(correo_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(panel_correoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel100)
+                        .addComponent(pass_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(14, Short.MAX_VALUE))
+            );
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setTitle("Power Gym System");
@@ -1335,7 +1393,7 @@ public class Vista extends javax.swing.JFrame {
             panel_registro_clienteLayout.setVerticalGroup(
                 panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panel_menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panel_registro_clienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_registro_clienteLayout.createSequentialGroup()
                         .addContainerGap(199, Short.MAX_VALUE)
@@ -1711,18 +1769,17 @@ public class Vista extends javax.swing.JFrame {
             panel_asignar_rutinaLayout.setHorizontalGroup(
                 panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
-                    .addContainerGap(383, Short.MAX_VALUE)
-                    .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel61)
-                        .addComponent(jLabel17))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(383, Short.MAX_VALUE))
-                .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(asigna_rutina_cliente)
+                    .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_asignar_rutinaLayout.createSequentialGroup()
+                            .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel61)
+                                .addComponent(jLabel17))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(combo_rutinas_creadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(text_cliente_rutina, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(asigna_rutina_cliente))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_asignar_rutinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_asignar_rutinaLayout.createSequentialGroup()
@@ -1993,18 +2050,17 @@ public class Vista extends javax.swing.JFrame {
             panel_asignar_perfilLayout.setHorizontalGroup(
                 panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
-                    .addContainerGap(313, Short.MAX_VALUE)
-                    .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(465, Short.MAX_VALUE))
-                .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Asigna_Nutricion)
+                    .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_asignar_perfilLayout.createSequentialGroup()
+                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jCBListFood2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(text_cliente_nutricion, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Asigna_Nutricion))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(panel_asignar_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 954, Short.MAX_VALUE))
@@ -2896,7 +2952,7 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(110, Short.MAX_VALUE))
-                    .addGroup(panel_seguimientosLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_seguimientosLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(boton_añadir_seguimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2911,9 +2967,9 @@ public class Vista extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
                         .addComponent(panel_datos_seg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(boton_añadir_seguimiento)
-                        .addContainerGap(322, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
 
                 jTabbedPane1.addTab("Seguimientos", new javax.swing.ImageIcon(getClass().getResource("/Imagen/registroIcon_1.jpg")), panel_seguimientos); // NOI18N
@@ -3009,7 +3065,7 @@ public class Vista extends javax.swing.JFrame {
                         .addContainerGap(57, Short.MAX_VALUE)
                         .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(67, Short.MAX_VALUE))
-                    .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_busqueda_clienteLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -3019,7 +3075,7 @@ public class Vista extends javax.swing.JFrame {
                     .addGroup(panel_busqueda_clienteLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(panel_parametros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panel_muestra_datos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                 );
@@ -3640,22 +3696,39 @@ public class Vista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcombo_projec_cobrosActionPerformed
 
+    
     private void jbutton_enviar_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_enviar_correoActionPerformed
+        if(jcombo_projec_cobros.getSelectedItem().toString().equals("Clientes morosos") || jcombo_projec_cobros.getSelectedItem().toString().equals("Cancelan en los próximos 7 días")){
+            int codigoCliente = JOptionPane.showConfirmDialog(this, panel_correo, "Enviar Correo", JOptionPane.OK_CANCEL_OPTION);
+            if (codigoCliente == JOptionPane.OK_OPTION && !correo_enviar.getText().equals("") && !pass_correo.getPassword().equals("")) {
+                control.setFromCorreo(correo_enviar.getText());
+                control.setPasswordCorreo(pass_correo.getText());
+                pass_correo.setText("");
+            } else if(codigoCliente != JOptionPane.CANCEL_OPTION){
+                JOptionPane.showMessageDialog(this, "Error \nNo se han completado los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+       } 
+       }
+        
         switch (jcombo_projec_cobros.getSelectedItem().toString()) {
             case "Clientes morosos":
                 control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
                         .stream().forEach(a -> control.sendEmail(a.getEmail(),
-                                        "Aviso de cobro por morosidad gimnasio Power Gym",
+                                        "Aviso de cobro por morosidad gimnasio Power Time",
                                         "Estimado cliente: " + a.getNombre() + " " + a.getApellidos()
-                                        + "le informamos que usted está moroso con la cancelación mensual del gimnasio"));
+                                        + ", le informamos que usted está moroso con la cancelación mensual del gimnasio Power Time.\n"
+                                                + "Por favor diríjase a las instalaciones a realizar el pago.\n"
+                                                + "\n\nDe no ser parte del gimnasio omita este mensaje."));
+                JOptionPane.showMessageDialog(this, "Mensaje enviado existosamente a clientes morosos.", "Correcto", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "Cancelan en los próximos 7 días":
                 control.getDao().getClientesSegunPagos(jcombo_projec_cobros.getSelectedItem().toString())
                         .stream().forEach(a -> control.sendEmail(a.getEmail(),
-                                        "Aviso de cobro gimnasio Power Gym",
+                                        "Aviso de cobro gimnasio Power Time",
                                         "Estimado cliente: " + a.getNombre() + " " + a.getApellidos()
-                                        + "le informamos que usted debe cancelar su mensualidad en los próximos 7 días," + "/n"
-                                        + " gracias por ser parte de Power Gym! "));
+                                        + ", le recordamos que usted debe cancelar su mensualidad en los próximos 7 días."
+                                        + "\nGracias por ser parte de Power Gym!"
+                                        + "\n\nDe no ser parte del gimnasio omita este mensaje."));
+                JOptionPane.showMessageDialog(this, "Mensaje enviado existosamente a clientes que cancelan proximamente.", "Correcto", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "Clientes que están al día":
                 jbutton_enviar_correo.setVisible(false);
@@ -3664,6 +3737,7 @@ public class Vista extends javax.swing.JFrame {
                 jbutton_enviar_correo.setVisible(false);
                 break;
         }
+        control.setPasswordCorreo("");
     }//GEN-LAST:event_jbutton_enviar_correoActionPerformed
 
     private void jBCreateRutina1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCreateRutina1ActionPerformed
@@ -4257,6 +4331,10 @@ public class Vista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaPagoOnCommit
 
+    private void correo_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correo_enviarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correo_enviarActionPerformed
+
     private void seleccionaCliente() {
         clienteSelected = null;
         List<Cliente> cli;
@@ -4777,6 +4855,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JComboBox combo_nauseas;
     private javax.swing.JComboBox combo_practica_act_deport;
     private javax.swing.JComboBox combo_rutinas_creadas;
+    private javax.swing.JTextField correo_enviar;
     private datechooser.beans.DateChooserCombo dateChooserCobro;
     private javax.swing.JPanel desactivar_Cliente;
     private javax.swing.JTextField detalle1;
@@ -4819,6 +4898,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jL_imagen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -4915,6 +4996,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -4973,6 +5055,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel panel_busqueda_cliente;
     private javax.swing.JPanel panel_busquedas;
     private javax.swing.JPanel panel_control_pagos;
+    private javax.swing.JPanel panel_correo;
     private javax.swing.JPanel panel_crear_perfil_nutricional;
     private javax.swing.JPanel panel_crear_rutina;
     private javax.swing.JScrollPane panel_datos;
@@ -4996,6 +5079,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JPanel panel_seguimientos;
     private javax.swing.JTextField pantorrilla_derecha;
     private javax.swing.JTextField pantorrilla_izquierda;
+    private javax.swing.JPasswordField pass_correo;
     private javax.swing.JTextField pecho;
     private javax.swing.JTextField peso;
     private javax.swing.JTextField pierna_derecha;
